@@ -1,0 +1,163 @@
+[2026-09-08 16:03:24] Script: C:\Users\lmhsilva\Projetos\StartupOne\entrega\06_Oracle\sql\04_oml_modelos.sql
+[2026-09-08 16:03:24] Conexao: STARTUP@localhost:1521/FREEPDB1 | 15 statement(s)
+[16:03:24] #01 PLSQL   BEGIN FOR m IN (SELECT model_name FROM user_mining_models WHERE model_name IN ('RETENA_...
+      OK em 0.68s
+[16:03:25] #02 CREATE  CREATE OR REPLACE VIEW VW_TREINO_TRANSICAO AS SELECT ID_CASO, TOTAL_EVENTOS, DIAS_ATIVO...
+      OK em 0.01s
+[16:03:25] #03 CREATE  CREATE OR REPLACE VIEW VW_TESTE_TRANSICAO AS SELECT ID_CASO, TOTAL_EVENTOS, DIAS_ATIVOS...
+      OK em 0.01s
+[16:03:25] #04 CREATE  CREATE OR REPLACE VIEW VW_TREINO_INATIVIDADE AS SELECT ID_CASO, EVENTOS_7D, EVENTOS_14D...
+      OK em 0.01s
+[16:03:25] #05 CREATE  CREATE OR REPLACE VIEW VW_TESTE_INATIVIDADE AS SELECT ID_CASO, EVENTOS_7D, EVENTOS_14D,...
+      OK em 0.01s
+[16:03:25] #06 SELECT  SELECT 'VW_TREINO_TRANSICAO' origem, COUNT(*) linhas, SUM(EVADIU_PROXIMA_FASE) positivo...
+      -----------------------+--------+-----------+--------
+       ORIGEM                | LINHAS | POSITIVOS | TAXA   
+      -----------------------+--------+-----------+--------
+       VW_TREINO_TRANSICAO   | 528    | 32        | 0.0606 
+       VW_TESTE_TRANSICAO    | 166    | 13        | 0.0783 
+       VW_TREINO_INATIVIDADE | 2682   | 311       | 0.116  
+       VW_TESTE_INATIVIDADE  | 1655   | 387       | 0.2338 
+      -----------------------+--------+-----------+--------
+      4 linha(s) exibida(s) em 0.01s
+[16:03:25] #07 PLSQL   DECLARE v_set DBMS_DATA_MINING.SETTING_LIST; v_t0 TIMESTAMP := SYSTIMESTAMP; BEGIN v_se...
+      OK em 0.93s
+[16:03:26] #08 PLSQL   DECLARE v_set DBMS_DATA_MINING.SETTING_LIST; v_t0 TIMESTAMP := SYSTIMESTAMP; BEGIN v_se...
+      OK em 0.97s
+[16:03:27] #09 PLSQL   DECLARE v_set DBMS_DATA_MINING.SETTING_LIST; v_t0 TIMESTAMP := SYSTIMESTAMP; BEGIN v_se...
+      OK em 0.34s
+[16:03:27] #10 SELECT  SELECT model_name, mining_function, algorithm, TO_CHAR(creation_date, 'YYYY-MM-DD HH24:...
+      ----------------------+-----------------+--------------------------+---------------------+------------+--------
+       MODEL_NAME           | MINING_FUNCTION | ALGORITHM                | CRIADO_EM           | SEG_TREINO | BYTES  
+      ----------------------+-----------------+--------------------------+---------------------+------------+--------
+       RETENA_INATIVO21_GLM | CLASSIFICATION  | GENERALIZED_LINEAR_MODEL | 2026-09-08 19:03:27 | 1          | 1505   
+       RETENA_INATIVO21_RF  | CLASSIFICATION  | RANDOM_FOREST            | 2026-09-08 19:03:26 | 1          | 802134 
+       RETENA_TRANSICAO_GLM | CLASSIFICATION  | GENERALIZED_LINEAR_MODEL | 2026-09-08 19:03:25 | 1          | 2087   
+      ----------------------+-----------------+--------------------------+---------------------+------------+--------
+      3 linha(s) exibida(s) em 0.00s
+[16:03:27] #11 SELECT  SELECT model_name, setting_name, setting_value, setting_type FROM user_mining_model_set...
+      ----------------------+------------------------------+-------------------------------+--------------
+       MODEL_NAME           | SETTING_NAME                 | SETTING_VALUE                 | SETTING_TYPE 
+      ----------------------+------------------------------+-------------------------------+--------------
+       RETENA_INATIVO21_GLM | ALGO_NAME                    | ALGO_GENERALIZED_LINEAR_MODEL | INPUT        
+       RETENA_INATIVO21_GLM | CLAS_WEIGHTS_BALANCED        | ON                            | INPUT        
+       RETENA_INATIVO21_GLM | GLMS_RIDGE_REGRESSION        | GLMS_RIDGE_REG_ENABLE         | INPUT        
+       RETENA_INATIVO21_GLM | ODMS_MISSING_VALUE_TREATMENT | ODMS_MISSING_VALUE_AUTO       | DEFAULT      
+       RETENA_INATIVO21_GLM | PREP_AUTO                    | ON                            | INPUT        
+       RETENA_INATIVO21_RF  | ALGO_NAME                    | ALGO_RANDOM_FOREST            | INPUT        
+       RETENA_INATIVO21_RF  | CLAS_WEIGHTS_BALANCED        | OFF                           | DEFAULT      
+       RETENA_INATIVO21_RF  | ODMS_MISSING_VALUE_TREATMENT | ODMS_MISSING_VALUE_AUTO       | DEFAULT      
+       RETENA_INATIVO21_RF  | ODMS_RANDOM_SEED             | 42                            | INPUT        
+       RETENA_INATIVO21_RF  | PREP_AUTO                    | ON                            | INPUT        
+       RETENA_INATIVO21_RF  | RFOR_NUM_TREES               | 200                           | INPUT        
+       RETENA_INATIVO21_RF  | RFOR_SAMPLING_RATIO          | 0.6                           | INPUT        
+       RETENA_TRANSICAO_GLM | ALGO_NAME                    | ALGO_GENERALIZED_LINEAR_MODEL | INPUT        
+       RETENA_TRANSICAO_GLM | CLAS_WEIGHTS_BALANCED        | ON                            | INPUT        
+       RETENA_TRANSICAO_GLM | GLMS_RIDGE_REGRESSION        | GLMS_RIDGE_REG_ENABLE         | INPUT        
+       RETENA_TRANSICAO_GLM | ODMS_MISSING_VALUE_TREATMENT | ODMS_MISSING_VALUE_AUTO       | DEFAULT      
+       RETENA_TRANSICAO_GLM | PREP_AUTO                    | ON                            | INPUT        
+      ----------------------+------------------------------+-------------------------------+--------------
+      17 linha(s) exibida(s) em 0.01s
+[16:03:27] #12 SELECT  SELECT model_name, attribute_name, attribute_type, data_type, target FROM user_mining_m...
+      ----------------------+-------------------------+----------------+-----------+--------
+       MODEL_NAME           | ATTRIBUTE_NAME          | ATTRIBUTE_TYPE | DATA_TYPE | TARGET 
+      ----------------------+-------------------------+----------------+-----------+--------
+       RETENA_INATIVO21_GLM | INATIVO_21D             | CATEGORICAL    | NUMBER    | YES    
+       RETENA_INATIVO21_GLM | CAPITULOS_DISTINTOS_28D | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_GLM | DIAS_ATIVOS_28D         | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_GLM | ENTREGAS_28D            | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_GLM | EVENTOS_14D             | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_GLM | EVENTOS_28D             | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_GLM | EVENTOS_7D              | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_GLM | PROGRESSO_28D           | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_GLM | QUIZ_28D                | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_GLM | RECENCIA_DIAS           | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_GLM | TENDENCIA               | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_RF  | INATIVO_21D             | CATEGORICAL    | NUMBER    | YES    
+       RETENA_INATIVO21_RF  | CAPITULOS_DISTINTOS_28D | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_RF  | DIAS_ATIVOS_28D         | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_RF  | ENTREGAS_28D            | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_RF  | EVENTOS_14D             | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_RF  | EVENTOS_28D             | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_RF  | EVENTOS_7D              | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_RF  | PROGRESSO_28D           | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_RF  | QUIZ_28D                | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_RF  | RECENCIA_DIAS           | NUMERICAL      | NUMBER    | NO     
+       RETENA_INATIVO21_RF  | TENDENCIA               | NUMERICAL      | NUMBER    | NO     
+       RETENA_TRANSICAO_GLM | EVADIU_PROXIMA_FASE     | CATEGORICAL    | NUMBER    | YES    
+       RETENA_TRANSICAO_GLM | CAPITULO_MAX            | NUMERICAL      | NUMBER    | NO     
+       RETENA_TRANSICAO_GLM | DIAS_ATIVOS             | NUMERICAL      | NUMBER    | NO     
+       RETENA_TRANSICAO_GLM | ENTREGAS_TAREFA         | NUMERICAL      | NUMBER    | NO     
+       RETENA_TRANSICAO_GLM | EVENTOS_PROGRESSO       | NUMERICAL      | NUMBER    | NO     
+       RETENA_TRANSICAO_GLM | PCT_CAPITULOS           | NUMERICAL      | NUMBER    | NO     
+       RETENA_TRANSICAO_GLM | QUIZ_ENTREGUES          | NUMERICAL      | NUMBER    | NO     
+       RETENA_TRANSICAO_GLM | QUIZ_INICIADOS          | NUMERICAL      | NUMBER    | NO     
+       RETENA_TRANSICAO_GLM | RECENCIA_FIM_FASE       | NUMERICAL      | NUMBER    | NO     
+       RETENA_TRANSICAO_GLM | SHARE_FIM_SEMANA        | NUMERICAL      | NUMBER    | NO     
+       RETENA_TRANSICAO_GLM | SHARE_NOITE             | NUMERICAL      | NUMBER    | NO     
+       RETENA_TRANSICAO_GLM | SPAN_DIAS               | NUMERICAL      | NUMBER    | NO     
+       RETENA_TRANSICAO_GLM | TENDENCIA               | NUMERICAL      | NUMBER    | NO     
+       RETENA_TRANSICAO_GLM | TOTAL_EVENTOS           | NUMERICAL      | NUMBER    | NO     
+      ----------------------+-------------------------+----------------+-----------+--------
+      36 linha(s) exibida(s) em 0.01s
+[16:03:27] #13 SELECT  SELECT view_name, view_type FROM user_mining_model_views WHERE model_name LIKE 'RETENA%...
+      ---------------------------+------------------------------------------
+       VIEW_NAME                 | VIEW_TYPE                                
+      ---------------------------+------------------------------------------
+       DM$VARETENA_INATIVO21_GLM | GLM Classification Row Diagnostics       
+       DM$VCRETENA_INATIVO21_GLM | Scoring Cost Matrix                      
+       DM$VDRETENA_INATIVO21_GLM | GLM Classification Attribute Diagnostics 
+       DM$VGRETENA_INATIVO21_GLM | Global Name-Value Pairs                  
+       DM$VNRETENA_INATIVO21_GLM | Normalization and Missing Value Handling 
+       DM$VSRETENA_INATIVO21_GLM | Computed Settings                        
+       DM$VTRETENA_INATIVO21_GLM | Classification Targets                   
+       DM$VWRETENA_INATIVO21_GLM | Model Build Alerts                       
+       DM$VARETENA_INATIVO21_RF  | Variable Importance                      
+       DM$VCRETENA_INATIVO21_RF  | Scoring Cost Matrix                      
+       DM$VGRETENA_INATIVO21_RF  | Global Name-Value Pairs                  
+       DM$VSRETENA_INATIVO21_RF  | Computed Settings                        
+       DM$VTRETENA_INATIVO21_RF  | Classification Targets                   
+       DM$VWRETENA_INATIVO21_RF  | Model Build Alerts                       
+       DM$VARETENA_TRANSICAO_GLM | GLM Classification Row Diagnostics       
+       DM$VCRETENA_TRANSICAO_GLM | Scoring Cost Matrix                      
+       DM$VDRETENA_TRANSICAO_GLM | GLM Classification Attribute Diagnostics 
+       DM$VGRETENA_TRANSICAO_GLM | Global Name-Value Pairs                  
+       DM$VNRETENA_TRANSICAO_GLM | Normalization and Missing Value Handling 
+       DM$VSRETENA_TRANSICAO_GLM | Computed Settings                        
+       DM$VTRETENA_TRANSICAO_GLM | Classification Targets                   
+       DM$VWRETENA_TRANSICAO_GLM | Model Build Alerts                       
+      ---------------------------+------------------------------------------
+      22 linha(s) exibida(s) em 0.01s
+[16:03:27] #14 SELECT  SELECT ID_CASO, EVADIU_PROXIMA_FASE AS real, PREDICTION(RETENA_TRANSICAO_GLM USING *) A...
+      ---------------+------+----------+-------------
+       ID_CASO       | REAL | PREVISTO | PROB_EVASAO 
+      ---------------+------+----------+-------------
+       Aluno 0194_F4 | 1    | 1        | 0.991       
+       Aluno 0165_F4 | 1    | 1        | 0.9572      
+       Aluno 0176_F4 | 1    | 1        | 0.9572      
+       Aluno 0175_F4 | 1    | 1        | 0.9561      
+       Aluno 0121_F4 | 1    | 1        | 0.9561      
+       Aluno 0184_F4 | 1    | 1        | 0.9554      
+       Aluno 0161_F4 | 0    | 1        | 0.9535      
+       Aluno 0154_F4 | 1    | 1        | 0.9397      
+       Aluno 0045_F4 | 1    | 1        | 0.9296      
+       Aluno 0006_F4 | 0    | 1        | 0.9188      
+      ---------------+------+----------+-------------
+      10 linha(s) exibida(s) em 0.02s
+[16:03:27] #15 SELECT  SELECT ID_CASO, INATIVO_21D AS real, ROUND(PREDICTION_PROBABILITY(RETENA_INATIVO21_RF, ...
+      ---------------------+------+---------+----------
+       ID_CASO             | REAL | PROB_RF | PROB_GLM 
+      ---------------------+------+---------+----------
+       Aluno 0227_20260628 | 1    | 0.9237  | 0.9976   
+       Aluno 0173_20260719 | 1    | 0.9237  | 1        
+       Aluno 0175_20260705 | 1    | 0.9237  | 1        
+       Aluno 0217_20260712 | 1    | 0.9237  | 0.9999   
+       Aluno 0216_20260607 | 1    | 0.9237  | 0.9964   
+       Aluno 0170_20260621 | 1    | 0.9237  | 0.9998   
+       Aluno 0170_20260628 | 1    | 0.9237  | 0.9999   
+       Aluno 0171_20260802 | 1    | 0.9237  | 1        
+       Aluno 0213_20260712 | 1    | 0.9237  | 0.9991   
+       Aluno 0121_20260712 | 1    | 0.9237  | 0.9988   
+      ---------------------+------+---------+----------
+      10 linha(s) exibida(s) em 0.16s
+[2026-09-08 16:03:28] Fim: 15 ok, 0 erro(s), 3.2s

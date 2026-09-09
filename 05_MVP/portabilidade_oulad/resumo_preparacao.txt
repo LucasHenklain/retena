@@ -1,0 +1,81 @@
+RESUMO DA PREPARACAO — OULAD (método Retena)
+Gerado por preparar_oulad.py em 2026-09-09 10:58; tempo total 17s
+studentVle bruto: 10.655.280 linhas -> 1,808,119 linhas aluno x apresentacao x dia (parquet oulad_cliques_dia.parquet)
+Matriculas (studentRegistration): 32,593; cliques sem matricula descartados: 0
+Cortes: t = 28, 35, ... <= duracao - 21, por apresentacao (22 apresentacoes, 7 modulos)
+Filtro por corte: registro ativo em t (unregistration nula ou > t; registration <= t) E >= 1 clique ate t
+  excluidos (aluno-corte): sem registro ativo 239,096; registrado mas sem nenhum clique ate t 14,657
+Base aluno-semana: 730,673 linhas, 24,392 alunos distintos, 27,018 matriculas, 32 valores de corte
+Taxa global inativo_21d = 21.026%; evadiu_28d = 2.466%
+Subconjunto acionavel (cliques_28d > 0): 624,979 linhas (85.5%); inativo_21d = 10.450%; evadiu_28d = 2.194%
+Parquet: oulad_base_semanal.parquet (12.1 MB), 22 colunas
+
+Por apresentacao (taxa de positivos):
+                   linhas  alunos  cortes  inativo_21d  evadiu_28d
+code_presentation                                                 
+2013B              101218    4015      28        0.200       0.028
+2013J              216383    7528      32        0.222       0.020
+2014B              157754    6092      28        0.233       0.030
+2014J              255318    8746      32        0.190       0.024
+
+Por modulo x apresentacao:
+                               linhas  alunos  cortes  inativo_21d  evadiu_28d
+code_module code_presentation                                                 
+AAA         2013J               11090     370      32        0.091       0.016
+            2014J               10419     348      32        0.121       0.018
+BBB         2013B               37197    1462      28        0.236       0.025
+            2013J               52049    1767      32        0.262       0.016
+            2014B               31286    1243      27        0.249       0.018
+            2014J               50418    1750      31        0.238       0.017
+CCC         2014B               33808    1469      28        0.217       0.046
+            2014J               52541    2005      32        0.174       0.038
+DDD         2013B               27514    1123      28        0.187       0.036
+            2013J               43891    1629      31        0.190       0.033
+            2014B               24483    1019      28        0.222       0.043
+            2014J               40009    1451      31        0.156       0.028
+EEE         2013J               26942     910      32        0.198       0.015
+            2014B               15347     593      28        0.221       0.019
+            2014J               29446    1004      32        0.176       0.016
+FFF         2013B               36507    1432      28        0.172       0.025
+            2013J               55870    1969      32        0.217       0.025
+            2014B               32234    1288      28        0.218       0.030
+            2014J               52396    1845      32        0.167       0.023
+GGG         2013J               26541     887      31        0.287       0.005
+            2014B               20596     767      28        0.282       0.011
+            2014J               20089     687      32        0.297       0.015
+
+Por dia de corte (todas as apresentacoes):
+           linhas  inativo_21d  evadiu_28d
+dia_corte                                 
+28          26617        0.092       0.036
+35          26453        0.103       0.034
+42          26307        0.111       0.035
+49          26126        0.128       0.033
+56          25919        0.165       0.030
+63          25742        0.194       0.028
+70          25540        0.206       0.028
+77          25354        0.176       0.029
+84          25214        0.167       0.031
+91          25065        0.172       0.030
+98          24865        0.183       0.029
+105         24659        0.183       0.027
+112         24471        0.186       0.026
+119         24327        0.198       0.026
+126         24174        0.205       0.027
+133         24010        0.214       0.028
+140         23856        0.214       0.030
+147         23702        0.210       0.031
+154         23535        0.228       0.029
+161         23334        0.246       0.024
+168         23140        0.268       0.019
+175         22969        0.272       0.016
+182         22851        0.267       0.015
+189         22773        0.257       0.016
+196         22698        0.260       0.018
+203         22603        0.261       0.018
+210         22503        0.265       0.016
+217         21316        0.259       0.013
+224         13904        0.235       0.009
+231         13855        0.289       0.006
+238         13795        0.407       0.001
+245          8996        0.489       0.000

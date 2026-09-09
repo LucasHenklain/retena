@@ -1,0 +1,72 @@
+[2026-09-08 16:09:15] Script: C:\Users\lmhsilva\Projetos\StartupOne\entrega\06_Oracle\sql\05_scoring_views.sql
+[2026-09-08 16:09:15] Conexao: STARTUP@localhost:1521/FREEPDB1 | 19 statement(s)
+[16:09:15] #01 CREATE  CREATE OR REPLACE VIEW VW_RISCO_ALUNO_ATUAL AS WITH s AS ( SELECT f.NOME, f.DT_CORTE, f...
+      ERRO em 0.09s: ORA-64630: unsupported use of SQL macro: use of SQL macro inside WITH clause is not supported
+Help: https://docs.oracle.com/error-help/db/ora-64630/
+[16:09:16] #02 PLSQL   BEGIN EXECUTE IMMEDIATE 'DROP VIEW RISCO_ALUNO_DV'; EXCEPTION WHEN OTHERS THEN IF SQLCO...
+      OK em 0.00s
+[16:09:16] #03 PLSQL   BEGIN EXECUTE IMMEDIATE 'DROP TABLE RISCO_ALUNO_SNAPSHOT PURGE'; EXCEPTION WHEN OTHERS ...
+      OK em 0.00s
+[16:09:16] #04 CREATE  CREATE TABLE RISCO_ALUNO_SNAPSHOT ( NOME VARCHAR2(30 CHAR) NOT NULL, DT_CORTE DATE NOT ...
+      OK em 0.09s
+[16:09:16] #05 CREATE  CREATE INDEX IX_RISCO_SNAPSHOT_FAIXA ON RISCO_ALUNO_SNAPSHOT (FAIXA_RISCO, PROB_INATIVO...
+      OK em 0.01s
+[16:09:16] #06 PLSQL   CREATE OR REPLACE PROCEDURE PRC_ATUALIZAR_RISCO IS v_t0 TIMESTAMP := SYSTIMESTAMP; v_qt...
+      OK em 0.02s
+[16:09:16] #07 PLSQL   BEGIN PRC_ATUALIZAR_RISCO; END;
+      ERRO em 0.00s: ORA-06550: line 2, column 3:
+PLS-00905: object STARTUP.PRC_ATUALIZAR_RISCO is invalid
+ORA-06550: line 2, column 3:
+PL/SQL: Statement ignored
+Help: https://docs.oracle.com/error-help/db/ora-06550/
+[16:09:16] #08 PLSQL   BEGIN BEGIN DBMS_SCHEDULER.DROP_JOB('JOB_RETENA_SCORING_SEMANAL', force => TRUE); EXCEP...
+      OK em 0.10s
+[16:09:16] #09 SELECT  SELECT job_name, job_type, job_action, repeat_interval, enabled, state, TO_CHAR(next_ru...
+      ----------------------------+------------------+---------------------+------------------------------------------+---------+-----------+-------------------------
+       JOB_NAME                   | JOB_TYPE         | JOB_ACTION          | REPEAT_INTERVAL                          | ENABLED | STATE     | PROXIMA_EXECUCAO        
+      ----------------------------+------------------+---------------------+------------------------------------------+---------+-----------+-------------------------
+       JOB_RETENA_SCORING_SEMANAL | STORED_PROCEDURE | PRC_ATUALIZAR_RISCO | FREQ=WEEKLY; BYDAY=MON; BYHOUR=6; BYM... | TRUE    | SCHEDULED | 2026-09-14 06:00 +00:00 
+      ----------------------------+------------------+---------------------+------------------------------------------+---------+-----------+-------------------------
+      1 linha(s) exibida(s) em 0.12s
+[16:09:16] #10 CREATE  CREATE OR REPLACE VIEW VW_RISCO_JSON AS SELECT JSON_OBJECT( 'produto' VALUE 'Retena', '...
+      OK em 0.01s
+[16:09:16] #11 CREATE  CREATE OR REPLACE JSON RELATIONAL DUALITY VIEW RISCO_ALUNO_DV AS SELECT JSON { '_id' : ...
+      OK em 0.03s
+[16:09:16] #12 SELECT  SELECT JSON_SERIALIZE(dv.DATA PRETTY) documento FROM RISCO_ALUNO_DV dv WHERE dv.DATA.fa...
+      -----------
+       DOCUMENTO 
+      -----------
+      -----------
+      0 linha(s) exibida(s) em 0.02s
+[16:09:16] #13 UPDATE  UPDATE RISCO_ALUNO_DV dv SET dv.DATA = JSON_TRANSFORM(dv.DATA, SET '$.atendimento.statu...
+      OK - 0 linha(s) afetada(s) em 0.01s
+[16:09:16] #14 SELECT  SELECT NOME, FAIXA_RISCO, STATUS_ATENDIMENTO, OBSERVACAO FROM RISCO_ALUNO_SNAPSHOT WHER...
+      ------+-------------+--------------------+------------
+       NOME | FAIXA_RISCO | STATUS_ATENDIMENTO | OBSERVACAO 
+      ------+-------------+--------------------+------------
+      ------+-------------+--------------------+------------
+      0 linha(s) exibida(s) em 0.00s
+[16:09:16] #15 UPDATE  UPDATE RISCO_ALUNO_SNAPSHOT SET STATUS_ATENDIMENTO = 'PENDENTE', OBSERVACAO = NULL WHER...
+      OK - 0 linha(s) afetada(s) em 0.01s
+[16:09:16] #16 COMMIT  COMMIT
+      OK em 0.00s
+[16:09:16] #17 SELECT  SELECT FAIXA_RISCO, COUNT(*) alunos, ROUND(AVG(PROB_INATIVO_21D), 4) prob_media, ROUND(...
+      -------------+--------+------------+----------------+-------------------
+       FAIXA_RISCO | ALUNOS | PROB_MEDIA | RECENCIA_MEDIA | EVENTOS_28D_MEDIA 
+      -------------+--------+------------+----------------+-------------------
+      -------------+--------+------------+----------------+-------------------
+      0 linha(s) exibida(s) em 0.00s
+[16:09:16] #18 SELECT  SELECT NOME, NUM_FASE_ATUAL fase, RECENCIA_DIAS recencia, EVENTOS_28D ev_28d, PROB_INAT...
+      ------+------+----------+--------+---------+----------+-------+-----------+--------------
+       NOME | FASE | RECENCIA | EV_28D | PROB_RF | PROB_GLM | FAIXA | PROB_FASE | FATORES_TOP3 
+      ------+------+----------+--------+---------+----------+-------+-----------+--------------
+      ------+------+----------+--------+---------+----------+-------+-----------+--------------
+      0 linha(s) exibida(s) em 0.01s
+[16:09:16] #19 SELECT  SELECT DBMS_LOB.GETLENGTH(PAYLOAD) bytes_payload, JSON_VALUE(PAYLOAD, '$.total_alunos')...
+      ---------------+-------+------+-------+-------+------------------
+       BYTES_PAYLOAD | TOTAL | ALTO | MEDIO | BAIXO | PRIMEIRO_DA_FILA 
+      ---------------+-------+------+-------+-------+------------------
+       301           | 0     | NULL | NULL  | NULL  | NULL             
+      ---------------+-------+------+-------+-------+------------------
+      1 linha(s) exibida(s) em 0.02s
+[2026-09-08 16:09:16] Fim: 17 ok, 2 erro(s), 0.6s

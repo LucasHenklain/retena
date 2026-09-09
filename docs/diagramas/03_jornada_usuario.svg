@@ -1,0 +1,269 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1000" viewBox="0 0 1800 1000" font-family="Sora, Inter, 'Segoe UI', sans-serif">
+<defs><marker id="m13315c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13315C"/></marker><marker id="m2ec4b6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2EC4B6"/></marker><marker id="m94a3b8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94A3B8"/></marker></defs>
+<rect width="1800" height="1000" fill="#F6F7F9"/>
+<rect width="1800" height="6" fill="#2EC4B6"/>
+<text x="56.0" y="58.0" font-size="28" fill="#0B2545" text-anchor="start" font-weight="600">Jornada da usuária — a semana de Mariana com a Retena</text>
+<text x="56.0" y="86.0" font-size="15" fill="#3A4A5C" text-anchor="start">Coordenadora de permanência: do job de domingo ao retreino mensal. A curva compara a emoção com a Retena e como é hoje, sem ela</text>
+<rect x="1517.9528" y="36" width="226.0" height="28" rx="14" fill="#0B2545"/>
+<text x="1631.0" y="55.0" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">Diagrama 03 · Jornada do usuário</text>
+<text x="1744.0" y="90.0" font-size="13" fill="#0B2545" text-anchor="end" font-weight="600">Retena</text>
+<rect x="200.0" y="118.0" width="150.0" height="26.0" rx="6" fill="#3A4A5C" stroke="#3A4A5C" stroke-width="0"/>
+<text x="275.0" y="136.0" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">AUTOMÁTICO</text>
+<rect x="354.4" y="118.0" width="458.8" height="26.0" rx="6" fill="#0B2545" stroke="#0B2545" stroke-width="0"/>
+<text x="583.8" y="136.0" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">SEGUNDA: PRIORIZAR E DISTRIBUIR</text>
+<rect x="817.6" y="118.0" width="304.4" height="26.0" rx="6" fill="#1C8C82" stroke="#1C8C82" stroke-width="0"/>
+<text x="969.8" y="136.0" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">CONTATO E REGISTRO</text>
+<rect x="1126.4" y="118.0" width="304.4" height="26.0" rx="6" fill="#13315C" stroke="#13315C" stroke-width="0"/>
+<text x="1278.6" y="136.0" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">APRENDER E AJUSTAR</text>
+<rect x="1435.2" y="118.0" width="304.4" height="26.0" rx="6" fill="#B07A00" stroke="#B07A00" stroke-width="0"/>
+<text x="1587.4" y="136.0" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">PROVAR VALOR E EVOLUIR</text>
+<rect x="56.0" y="156.0" width="1688.0" height="96.0" rx="8" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="64.0" y="178.0" font-size="11" fill="#94A3B8" text-anchor="start" font-weight="600">ETAPA</text>
+<rect x="56.0" y="262.0" width="1688.0" height="122.0" rx="8" fill="#EEF1F5" stroke="#EEF1F5" stroke-width="0"/>
+<text x="64.0" y="284.0" font-size="11" fill="#94A3B8" text-anchor="start" font-weight="600">AÇÃO</text>
+<rect x="56.0" y="394.0" width="1688.0" height="52.0" rx="8" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="64.0" y="416.0" font-size="11" fill="#94A3B8" text-anchor="start" font-weight="600">PONTO DE</text>
+<text x="64.0" y="429.0" font-size="11" fill="#94A3B8" text-anchor="start" font-weight="600">CONTATO</text>
+<rect x="56.0" y="456.0" width="1688.0" height="196.0" rx="8" fill="#EEF1F5" stroke="#EEF1F5" stroke-width="0"/>
+<text x="64.0" y="478.0" font-size="11" fill="#94A3B8" text-anchor="start" font-weight="600">EMOÇÃO</text>
+<rect x="56.0" y="662.0" width="1688.0" height="84.0" rx="8" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="64.0" y="684.0" font-size="11" fill="#94A3B8" text-anchor="start" font-weight="600">MÉTRICA</text>
+<circle cx="216.0" cy="176" r="12" fill="#0B2545" stroke="#FFFFFF" stroke-width="2"/>
+<text x="216.0" y="180.5" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">1</text>
+<text x="234.0" y="180.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Dom 23h</text>
+<text x="206.0" y="204.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Job semanal roda</text>
+<text x="206.0" y="219.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">sozinho</text>
+<text x="206.0" y="244.0" font-size="10" fill="#94A3B8" text-anchor="start">quem: sistema</text>
+<text x="206.0" y="280.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Recalcula features e</text>
+<text x="206.0" y="293.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">scores no Autonomous</text>
+<text x="206.0" y="306.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">DB (OML); gera a fila e</text>
+<text x="206.0" y="319.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">dispara o e-mail-resumo</text>
+<text x="206.0" y="332.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">para Mariana e tutores.</text>
+<rect x="206.0" y="408" width="65.1" height="22.5" rx="11.25" fill="#3A4A5C"/>
+<text x="217.0" y="420.5" font-size="10.5" fill="#FFFFFF" text-anchor="start" font-weight="600">job OML</text>
+<rect x="275.1424" y="408" width="53.8" height="22.5" rx="11.25" fill="#E6ECF5"/>
+<text x="286.1" y="420.5" font-size="10.5" fill="#0B2545" text-anchor="start" font-weight="600">e-mail</text>
+<text x="275.0" y="530.8" font-size="10" fill="#1C8C82" text-anchor="middle" font-weight="600">tranquila: roda sem ninguém</text>
+<text x="206.0" y="684.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">203 alunos pontuados</text>
+<text x="206.0" y="697.5" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">em minutos</text>
+<circle cx="370.4" cy="176" r="12" fill="#0B2545" stroke="#FFFFFF" stroke-width="2"/>
+<text x="370.4" y="180.5" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">2</text>
+<text x="388.4" y="180.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Seg 8h</text>
+<text x="360.4" y="204.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Abre o Pulso da</text>
+<text x="360.4" y="219.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">turma</text>
+<text x="360.4" y="244.0" font-size="10" fill="#94A3B8" text-anchor="start">quem: Mariana</text>
+<text x="360.4" y="280.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Painel APEX: 203</text>
+<text x="360.4" y="293.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">alunos, 31 vermelhos,</text>
+<text x="360.4" y="306.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">44 amarelos e a receita</text>
+<text x="360.4" y="319.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">em risco desta semana,</text>
+<text x="360.4" y="332.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">em R$.</text>
+<rect x="360.4" y="408" width="51.7" height="22.5" rx="11.25" fill="#0B2545"/>
+<text x="371.4" y="420.5" font-size="10.5" fill="#FFFFFF" text-anchor="start" font-weight="600">APEX</text>
+<text x="429.4" y="596.5" font-size="10" fill="#1C8C82" text-anchor="middle" font-weight="600">apreensiva: 31 vermelhos</text>
+<text x="360.4" y="684.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">31 vermelhos · 44</text>
+<text x="360.4" y="697.5" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">amarelos · R$ em risco</text>
+<line x1="352.2" y1="156" x2="352.2" y2="746" stroke="#94A3B8" stroke-width="0.8" stroke-dasharray="2 4"/>
+<circle cx="524.8" cy="176" r="12" fill="#0B2545" stroke="#FFFFFF" stroke-width="2"/>
+<text x="524.8" y="180.5" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">3</text>
+<text x="542.8" y="180.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Seg 8h30</text>
+<text x="514.8" y="204.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Prioriza a fila</text>
+<text x="514.8" y="244.0" font-size="10" fill="#94A3B8" text-anchor="start">quem: Mariana</text>
+<text x="514.8" y="280.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Ordena por probabilidade</text>
+<text x="514.8" y="293.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">× valor; cada linha traz o</text>
+<text x="514.8" y="306.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">motivo: &quot;12 dias sem</text>
+<text x="514.8" y="319.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">acesso, tendência −65%,</text>
+<text x="514.8" y="332.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">parado no cap 2 da F5&quot;.</text>
+<rect x="514.8" y="408" width="51.7" height="22.5" rx="11.25" fill="#0B2545"/>
+<text x="525.8" y="420.5" font-size="10.5" fill="#FFFFFF" text-anchor="start" font-weight="600">APEX</text>
+<text x="583.8" y="515.8" font-size="10" fill="#1C8C82" text-anchor="middle" font-weight="600">no controle: sabe por quê</text>
+<text x="514.8" y="684.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">top-20% da fila:</text>
+<text x="514.8" y="697.5" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">precisão 88%</text>
+<line x1="506.6" y1="156" x2="506.6" y2="746" stroke="#94A3B8" stroke-width="0.8" stroke-dasharray="2 4"/>
+<circle cx="679.2" cy="176" r="12" fill="#0B2545" stroke="#FFFFFF" stroke-width="2"/>
+<text x="679.2" y="180.5" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">4</text>
+<text x="697.2" y="180.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Seg 9h</text>
+<text x="669.2" y="204.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Distribui aos tutores</text>
+<text x="669.2" y="244.0" font-size="10" fill="#94A3B8" text-anchor="start">quem: Mariana</text>
+<text x="669.2" y="280.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Atribui responsáveis em</text>
+<text x="669.2" y="293.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">dois cliques; o sistema</text>
+<text x="669.2" y="306.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">sugere modelo de</text>
+<text x="669.2" y="319.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">mensagem e janela de</text>
+<text x="669.2" y="332.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">contato (19h–22h, terça</text>
+<text x="669.2" y="345.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">ou quarta).</text>
+<rect x="669.2" y="408" width="51.7" height="22.5" rx="11.25" fill="#0B2545"/>
+<text x="680.2" y="420.5" font-size="10.5" fill="#FFFFFF" text-anchor="start" font-weight="600">APEX</text>
+<rect x="724.8604" y="408" width="53.8" height="22.5" rx="11.25" fill="#E6ECF5"/>
+<text x="735.9" y="420.5" font-size="10.5" fill="#0B2545" text-anchor="start" font-weight="600">e-mail</text>
+<text x="738.2" y="504.5" font-size="10" fill="#1C8C82" text-anchor="middle" font-weight="600">ágil: dois cliques</text>
+<text x="669.2" y="684.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">100% da fila com tutor</text>
+<text x="669.2" y="697.5" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">em 10 min</text>
+<line x1="661.0" y1="156" x2="661.0" y2="746" stroke="#94A3B8" stroke-width="0.8" stroke-dasharray="2 4"/>
+<circle cx="833.6" cy="176" r="12" fill="#0B2545" stroke="#FFFFFF" stroke-width="2"/>
+<text x="833.6" y="180.5" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">5</text>
+<text x="851.6" y="180.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Ter–Qua 19h–22h</text>
+<text x="823.6" y="204.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Tutor contata o</text>
+<text x="823.6" y="219.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">aluno</text>
+<text x="823.6" y="244.0" font-size="10" fill="#94A3B8" text-anchor="start">quem: tutor</text>
+<text x="823.6" y="280.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Liga ou manda</text>
+<text x="823.6" y="293.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">mensagem no horário</text>
+<text x="823.6" y="306.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">sugerido, com ação</text>
+<text x="823.6" y="319.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">concreta: &quot;vamos</text>
+<text x="823.6" y="332.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">retomar o cap 2 juntos;</text>
+<text x="823.6" y="345.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">segue o resumo em</text>
+<text x="823.6" y="358.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">PDF&quot;.</text>
+<rect x="823.6" y="408" width="126.3" height="22.5" rx="11.25" fill="#2EC4B6"/>
+<text x="834.6" y="420.5" font-size="10.5" fill="#0B2545" text-anchor="start" font-weight="600">WhatsApp / telefone</text>
+<text x="892.6" y="511.2" font-size="10" fill="#1C8C82" text-anchor="middle" font-weight="600">expectativa: momento da</text>
+<text x="892.6" y="523.2" font-size="10" fill="#1C8C82" text-anchor="middle" font-weight="600">verdade</text>
+<text x="823.6" y="684.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">taxa de resposta por</text>
+<text x="823.6" y="697.5" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">horário</text>
+<line x1="815.4" y1="156" x2="815.4" y2="746" stroke="#94A3B8" stroke-width="0.8" stroke-dasharray="2 4"/>
+<circle cx="988.0" cy="176" r="12" fill="#0B2545" stroke="#FFFFFF" stroke-width="2"/>
+<text x="988.0" y="180.5" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">6</text>
+<text x="1006.0" y="180.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Ter–Qui</text>
+<text x="978.0" y="204.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Registra o resultado</text>
+<text x="978.0" y="244.0" font-size="10" fill="#94A3B8" text-anchor="start">quem: tutor</text>
+<text x="978.0" y="280.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Marca respondeu / não</text>
+<text x="978.0" y="293.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">respondeu / voltou; a</text>
+<text x="978.0" y="306.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">reativação é marcada</text>
+<text x="978.0" y="319.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">sozinha quando o LMS</text>
+<text x="978.0" y="332.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">registra novo acesso em</text>
+<text x="978.0" y="345.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">7 dias.</text>
+<rect x="978.0" y="408" width="51.7" height="22.5" rx="11.25" fill="#0B2545"/>
+<text x="989.0" y="420.5" font-size="10.5" fill="#FFFFFF" text-anchor="start" font-weight="600">APEX</text>
+<text x="1047.0" y="493.2" font-size="10" fill="#1C8C82" text-anchor="middle" font-weight="600">alívio: o aluno voltou</text>
+<text x="978.0" y="684.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">reativação em 7 dias</text>
+<text x="978.0" y="697.5" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">(novo acesso)</text>
+<line x1="969.8" y1="156" x2="969.8" y2="746" stroke="#94A3B8" stroke-width="0.8" stroke-dasharray="2 4"/>
+<circle cx="1142.4" cy="176" r="12" fill="#0B2545" stroke="#FFFFFF" stroke-width="2"/>
+<text x="1142.4" y="180.5" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">7</text>
+<text x="1160.4" y="180.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Qui</text>
+<text x="1132.4" y="204.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Confere o mapa de</text>
+<text x="1132.4" y="219.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">atrito</text>
+<text x="1132.4" y="244.0" font-size="10" fill="#94A3B8" text-anchor="start">quem: Mariana</text>
+<text x="1132.4" y="280.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Vê que os caps. 1–2 da</text>
+<text x="1132.4" y="293.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">F5 concentram</text>
+<text x="1132.4" y="306.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">travamentos; abre ticket</text>
+<text x="1132.4" y="319.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">para a coordenação</text>
+<text x="1132.4" y="332.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">pedagógica (dividir</text>
+<text x="1132.4" y="345.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">capítulo, vídeo curto).</text>
+<rect x="1132.4" y="408" width="51.7" height="22.5" rx="11.25" fill="#0B2545"/>
+<text x="1143.4" y="420.5" font-size="10.5" fill="#FFFFFF" text-anchor="start" font-weight="600">APEX</text>
+<text x="1201.4" y="585.2" font-size="10" fill="#1C8C82" text-anchor="middle" font-weight="600">preocupada: o cap 2 trava</text>
+<text x="1132.4" y="684.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">caps. 1–2: 25 alunos</text>
+<text x="1132.4" y="697.5" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">travados</text>
+<line x1="1124.2" y1="156" x2="1124.2" y2="746" stroke="#94A3B8" stroke-width="0.8" stroke-dasharray="2 4"/>
+<circle cx="1296.8" cy="176" r="12" fill="#0B2545" stroke="#FFFFFF" stroke-width="2"/>
+<text x="1296.8" y="180.5" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">8</text>
+<text x="1314.8" y="180.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Sob demanda</text>
+<text x="1286.8" y="204.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Pergunta em</text>
+<text x="1286.8" y="219.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">português</text>
+<text x="1286.8" y="244.0" font-size="10" fill="#94A3B8" text-anchor="start">quem: Mariana</text>
+<text x="1286.8" y="280.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Select AI: &quot;quantos</text>
+<text x="1286.8" y="293.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">amarelos da F4 não</text>
+<text x="1286.8" y="306.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">fizeram quiz nas últimas</text>
+<text x="1286.8" y="319.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">2 semanas?&quot; — e ajusta</text>
+<text x="1286.8" y="332.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">a fila sem pedir SQL a</text>
+<text x="1286.8" y="345.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">ninguém.</text>
+<rect x="1286.8" y="408" width="72.9" height="22.5" rx="11.25" fill="#FFB703"/>
+<text x="1297.8" y="420.5" font-size="10.5" fill="#0B2545" text-anchor="start" font-weight="600">Select AI</text>
+<text x="1355.8" y="492.5" font-size="10" fill="#1C8C82" text-anchor="middle" font-weight="600">autônoma: sem depender de</text>
+<text x="1355.8" y="504.5" font-size="10" fill="#1C8C82" text-anchor="middle" font-weight="600">TI</text>
+<text x="1286.8" y="684.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">resposta em segundos,</text>
+<text x="1286.8" y="697.5" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">sem SQL</text>
+<line x1="1278.6" y1="156" x2="1278.6" y2="746" stroke="#94A3B8" stroke-width="0.8" stroke-dasharray="2 4"/>
+<circle cx="1451.2" cy="176" r="12" fill="#0B2545" stroke="#FFFFFF" stroke-width="2"/>
+<text x="1451.2" y="180.5" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">9</text>
+<text x="1469.2" y="180.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Fim do mês</text>
+<text x="1441.2" y="204.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Relatório para</text>
+<text x="1441.2" y="219.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Renata</text>
+<text x="1441.2" y="244.0" font-size="10" fill="#94A3B8" text-anchor="start">quem: Mariana → diretora</text>
+<text x="1441.2" y="280.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Relatório executivo:</text>
+<text x="1441.2" y="293.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">alunos reativados,</text>
+<text x="1441.2" y="306.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">resposta por horário e</text>
+<text x="1441.2" y="319.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">receita preservada em</text>
+<text x="1441.2" y="332.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">R$ vs. custo da</text>
+<text x="1441.2" y="345.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">assinatura.</text>
+<rect x="1441.2" y="408" width="84.4" height="22.5" rx="11.25" fill="#0B2545"/>
+<text x="1452.2" y="420.5" font-size="10.5" fill="#FFFFFF" text-anchor="start" font-weight="600">APEX (PDF)</text>
+<text x="1510.2" y="478.2" font-size="10" fill="#1C8C82" text-anchor="middle" font-weight="600">orgulhosa: R$ na mesa</text>
+<text x="1441.2" y="684.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">R$ preservado ÷</text>
+<text x="1441.2" y="697.5" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">assinatura</text>
+<line x1="1433.0" y1="156" x2="1433.0" y2="746" stroke="#94A3B8" stroke-width="0.8" stroke-dasharray="2 4"/>
+<circle cx="1605.6000000000001" cy="176" r="12" fill="#0B2545" stroke="#FFFFFF" stroke-width="2"/>
+<text x="1605.6" y="180.5" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">10</text>
+<text x="1623.6" y="180.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Mensal</text>
+<text x="1595.6" y="204.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Retreino do modelo</text>
+<text x="1595.6" y="244.0" font-size="10" fill="#94A3B8" text-anchor="start">quem: sistema</text>
+<text x="1595.6" y="280.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Resultados registrados</text>
+<text x="1595.6" y="293.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">realimentam o OML; o</text>
+<text x="1595.6" y="306.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">score da próxima</text>
+<text x="1595.6" y="319.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">segunda já incorpora o</text>
+<text x="1595.6" y="332.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">que funcionou naquela</text>
+<text x="1595.6" y="345.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">IES.</text>
+<rect x="1595.6000000000001" y="408" width="65.1" height="22.5" rx="11.25" fill="#3A4A5C"/>
+<text x="1606.6" y="420.5" font-size="10.5" fill="#FFFFFF" text-anchor="start" font-weight="600">job OML</text>
+<text x="1664.6" y="489.5" font-size="10" fill="#1C8C82" text-anchor="middle" font-weight="600">confiante: o modelo aprende</text>
+<text x="1595.6" y="684.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">AUC e lift recalculados;</text>
+<text x="1595.6" y="697.5" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">faixas ajustadas</text>
+<line x1="1587.4" y1="156" x2="1587.4" y2="746" stroke="#94A3B8" stroke-width="0.8" stroke-dasharray="2 4"/>
+<line x1="200.0" y1="554" x2="1739.6000000000001" y2="554" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="194.0" y="558.0" font-size="9.5" fill="#94A3B8" text-anchor="end">neutro</text>
+<text x="194.0" y="483.0" font-size="12" fill="#94A3B8" text-anchor="end" font-weight="600">+</text>
+<text x="194.0" y="633.0" font-size="12" fill="#94A3B8" text-anchor="end" font-weight="600">−</text>
+<path d="M429.4,614.0 C506.6,611.5 763.9,600.2 892.6,599.0 C1021.3,597.8 1098.5,602.8 1201.4,606.5 C1304.3,610.2 1458.7,619.0 1510.2,621.5" fill="none" stroke="#94A3B8" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="429.4" cy="614.0" r="5" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2"/>
+<text x="429.4" y="630.0" font-size="9.5" fill="#3A4A5C" text-anchor="middle">hoje: descobre tarde, na</text>
+<text x="429.4" y="641.5" font-size="9.5" fill="#3A4A5C" text-anchor="middle">mensalidade</text>
+<circle cx="892.6" cy="599.0" r="5" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2"/>
+<text x="892.6" y="615.0" font-size="9.5" fill="#3A4A5C" text-anchor="middle">hoje: liga no escuro; soa</text>
+<text x="892.6" y="626.5" font-size="9.5" fill="#3A4A5C" text-anchor="middle">cobrança</text>
+<circle cx="1201.4" cy="606.5" r="5" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2"/>
+<text x="1201.4" y="622.5" font-size="9.5" fill="#3A4A5C" text-anchor="middle">hoje: só sabe pela</text>
+<text x="1201.4" y="634.0" font-size="9.5" fill="#3A4A5C" text-anchor="middle">reclamação</text>
+<circle cx="1510.2" cy="621.5" r="5" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2"/>
+<text x="1510.2" y="637.5" font-size="9.5" fill="#3A4A5C" text-anchor="middle">hoje: só via a receita cair</text>
+<path d="M275.0,542.8 C300.7,548.4 377.9,579.0 429.4,576.5 C480.9,574.0 532.3,537.8 583.8,527.8 C635.3,517.8 686.7,515.2 738.2,516.5 C789.7,517.8 841.1,537.1 892.6,535.2 C944.1,533.4 995.5,500.2 1047.0,505.2 C1098.5,510.2 1149.9,563.4 1201.4,565.2 C1252.9,567.1 1304.3,529.0 1355.8,516.5 C1407.3,504.0 1458.7,492.8 1510.2,490.2 C1561.7,487.8 1638.9,499.6 1664.6,501.5" fill="none" stroke="#2EC4B6" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="275.0" cy="542.8" r="6.5" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="429.4" cy="576.5" r="6.5" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="583.8" cy="527.8" r="6.5" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="738.2" cy="516.5" r="6.5" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="892.6" cy="535.2" r="6.5" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="1047.0" cy="505.2" r="6.5" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="1201.4" cy="565.2" r="6.5" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="1355.8" cy="516.5" r="6.5" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="1510.2" cy="490.2" r="6.5" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="1664.6" cy="501.5" r="6.5" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<path d="M1664.6,746.0 L1664.6,762.0 L275.0,762.0 L275.0,746.0" fill="none" stroke="#13315C" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#m13315c)" stroke-linejoin="round"/>
+<rect x="672.2" y="752.0" width="455.5" height="16.5" rx="4" fill="#F6F7F9" opacity="0.92"/>
+<text x="900.0" y="762.0" font-size="10.5" fill="#13315C" text-anchor="middle">o resultado registrado realimenta o modelo — a próxima segunda começa com uma fila melhor</text>
+<rect x="56.0" y="790.0" width="552.0" height="104.0" rx="12" fill="#E3F8F5" stroke="#2EC4B6" stroke-width="1.8"/>
+<text x="82.0" y="827.0" font-size="13" fill="#0B2545" text-anchor="start" font-weight="600">Momento da verdade (etapa 5)</text>
+<text x="82.0" y="849.1" font-size="10.5" fill="#3A4A5C" text-anchor="start">O tutor liga entre 19h e 22h, na janela em que o aluno de fato estuda, com um caminho concreto</text>
+<text x="82.0" y="863.2" font-size="10.5" fill="#3A4A5C" text-anchor="start">— não uma cobrança. É aqui que a probabilidade vira permanência.</text>
+<rect x="624.0" y="790.0" width="552.0" height="104.0" rx="12" fill="#FFF3D6" stroke="#FFB703" stroke-width="1.8"/>
+<text x="650.0" y="827.0" font-size="13" fill="#0B2545" text-anchor="start" font-weight="600">O que muda em relação a hoje</text>
+<text x="650.0" y="849.1" font-size="10.5" fill="#3A4A5C" text-anchor="start">Hoje Mariana descobre a evasão na mensalidade, o tutor liga no escuro e o capítulo que trava</text>
+<text x="650.0" y="863.2" font-size="10.5" fill="#3A4A5C" text-anchor="start">só aparece pela reclamação. Com a Retena, a semana começa com fila, motivo e janela de</text>
+<text x="650.0" y="877.4" font-size="10.5" fill="#3A4A5C" text-anchor="start">contato.</text>
+<rect x="1192.0" y="790.0" width="552.0" height="104.0" rx="12" fill="#E6ECF5" stroke="#13315C" stroke-width="1.8"/>
+<text x="1218.0" y="827.0" font-size="13" fill="#0B2545" text-anchor="start" font-weight="600">Ciclo fechado (etapas 6 → 10)</text>
+<text x="1218.0" y="849.1" font-size="10.5" fill="#3A4A5C" text-anchor="start">Cada contato registrado vira rótulo para o retreino mensal: o modelo aprende o que funcionou</text>
+<text x="1218.0" y="863.2" font-size="10.5" fill="#3A4A5C" text-anchor="start">naquela IES, sem cientista de dados e sem o dado sair do banco.</text>
+<rect x="56.0" y="908.0" width="1688.0" height="38.0" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+<line x1="70" y1="929" x2="96" y2="929" stroke="#2EC4B6" stroke-width="2.5" marker-end="url(#m2ec4b6)"/>
+<text x="106.0" y="934.0" font-size="11.5" fill="#3A4A5C" text-anchor="start">Emoção de Mariana com a Retena</text>
+<line x1="346" y1="929" x2="372" y2="929" stroke="#94A3B8" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#m94a3b8)"/>
+<text x="382.0" y="934.0" font-size="11.5" fill="#3A4A5C" text-anchor="start">Como é hoje, sem a Retena</text>
+<rect x="622.0" y="922.0" width="26.0" height="14.0" rx="3" fill="#0B2545" stroke="#0B2545" stroke-width="1"/>
+<text x="658.0" y="934.0" font-size="11.5" fill="#3A4A5C" text-anchor="start">APEX (painel / relatório)</text>
+<rect x="898.0" y="922.0" width="26.0" height="14.0" rx="3" fill="#2EC4B6" stroke="#2EC4B6" stroke-width="1"/>
+<text x="934.0" y="934.0" font-size="11.5" fill="#3A4A5C" text-anchor="start">Contato com o aluno</text>
+<rect x="1174.0" y="922.0" width="26.0" height="14.0" rx="3" fill="#FFB703" stroke="#FFB703" stroke-width="1"/>
+<text x="1210.0" y="934.0" font-size="11.5" fill="#3A4A5C" text-anchor="start">Select AI (pergunta em português)</text>
+<rect x="1450.0" y="922.0" width="26.0" height="14.0" rx="3" fill="#3A4A5C" stroke="#3A4A5C" stroke-width="1"/>
+<text x="1486.0" y="934.0" font-size="11.5" fill="#3A4A5C" text-anchor="start">Automático (job OML)</text>
+<line x1="56" y1="956" x2="1744" y2="956" stroke="#94A3B8" stroke-width="1"/>
+<text x="56.0" y="974.0" font-size="12" fill="#3A4A5C" text-anchor="start">Retena · Startup One / Enterprise Challenge Oracle · FIAP 2026</text>
+<text x="1744.0" y="974.0" font-size="12" fill="#3A4A5C" text-anchor="end">Jornada validada com a persona usuária (conceito final, seção 7)</text>
+</svg>

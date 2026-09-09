@@ -1,0 +1,73 @@
+[2026-09-08 15:55:57] Script: C:\Users\lmhsilva\Projetos\StartupOne\entrega\06_Oracle\sql\03_features_semanais.sql
+[2026-09-08 15:55:57] Conexao: STARTUP@localhost:1521/FREEPDB1 | 14 statement(s)
+[15:55:57] #01 CREATE  CREATE OR REPLACE VIEW VW_CORTES_SEMANAIS AS SELECT DATE '2026-02-01' + 7 * (LEVEL - 1)...
+      OK em 0.04s
+[15:55:57] #02 CREATE  CREATE OR REPLACE VIEW VW_ATIVIDADE_DIARIA AS SELECT e.NOME, TRUNC(e.TS_EVENTO) AS DIA,...
+      OK em 0.01s
+[15:55:57] #03 CREATE  CREATE OR REPLACE VIEW VW_CAPITULOS_DIARIOS AS SELECT DISTINCT e.NOME, TRUNC(e.TS_EVENT...
+      OK em 0.01s
+[15:55:57] #04 PLSQL   CREATE OR REPLACE FUNCTION FN_FEATURES_SEMANAIS(p_tipo_corte IN VARCHAR2 DEFAULT 'TODOS...
+      OK em 0.03s
+[15:55:57] #05 CREATE  CREATE OR REPLACE VIEW VW_FEATURES_SEMANAIS AS SELECT * FROM FN_FEATURES_SEMANAIS('HIST')
+      OK em 0.08s
+[15:55:57] #06 CREATE  CREATE OR REPLACE VIEW VW_FEATURES_ATUAIS AS SELECT * FROM FN_FEATURES_SEMANAIS('ATUAL')
+      OK em 0.07s
+[15:55:57] #07 PLSQL   BEGIN EXECUTE IMMEDIATE 'DROP TABLE BASE_RISCO_SEMANAL PURGE'; EXCEPTION WHEN OTHERS TH...
+      OK em 0.07s
+[15:55:57] #08 CREATE  CREATE TABLE BASE_RISCO_SEMANAL AS SELECT * FROM VW_FEATURES_SEMANAIS
+      OK em 18.16s
+[15:56:15] #09 ALTER   ALTER TABLE BASE_RISCO_SEMANAL ADD CONSTRAINT PK_BASE_RISCO_SEMANAL PRIMARY KEY (ID_CASO)
+      OK em 0.06s
+[15:56:15] #10 CREATE  CREATE INDEX IX_BASE_RISCO_CORTE ON BASE_RISCO_SEMANAL (DT_CORTE, NOME)
+      OK em 0.03s
+[15:56:15] #11 PLSQL   BEGIN DBMS_STATS.GATHER_TABLE_STATS(USER, 'BASE_RISCO_SEMANAL'); END;
+      OK em 0.50s
+[15:56:16] #12 SELECT  SELECT CONJUNTO, COUNT(DISTINCT DT_CORTE) CORTES, COUNT(*) LINHAS, SUM(INATIVO_21D) POS...
+      ----------+--------+--------+-----------+------------------+----------------+--------------
+       CONJUNTO | CORTES | LINHAS | POSITIVOS | TAXA_INATIVIDADE | PRIMEIRO_CORTE | ULTIMO_CORTE 
+      ----------+--------+--------+-----------+------------------+----------------+--------------
+       TREINO   | 18     | 2682   | 311       | 0.116            | 2026-02-01     | 2026-05-31   
+       TESTE    | 9      | 1655   | 387       | 0.2338           | 2026-06-07     | 2026-08-02   
+      ----------+--------+--------+-----------+------------------+----------------+--------------
+      2 linha(s) exibida(s) em 0.03s
+[15:56:16] #13 SELECT  SELECT TO_CHAR(DT_CORTE, 'YYYY-MM-DD') CORTE, CONJUNTO, COUNT(*) ALUNOS, SUM(INATIVO_21...
+      ------------+----------+--------+--------------+-------+--------------+----------------
+       CORTE      | CONJUNTO | ALUNOS | INATIVOS_21D | TAXA  | MEDIA_EV_28D | MEDIA_RECENCIA 
+      ------------+----------+--------+--------------+-------+--------------+----------------
+       2026-02-01 | TREINO   | 2      | 0            | 0     | 176.5        | 11             
+       2026-02-08 | TREINO   | 121    | 0            | 0     | 6.5          | 1.7            
+       2026-02-15 | TREINO   | 136    | 12           | 0.088 | 61.8         | 3.2            
+       2026-02-22 | TREINO   | 138    | 7            | 0.051 | 108.6        | 5.4            
+       2026-03-01 | TREINO   | 142    | 7            | 0.049 | 154.2        | 5.1            
+       2026-03-08 | TREINO   | 147    | 11           | 0.075 | 174.5        | 5.3            
+       2026-03-15 | TREINO   | 150    | 12           | 0.08  | 163          | 4.5            
+       2026-03-22 | TREINO   | 157    | 17           | 0.108 | 177          | 5.5            
+       2026-03-29 | TREINO   | 162    | 16           | 0.099 | 251.1        | 7.1            
+       2026-04-05 | TREINO   | 163    | 15           | 0.092 | 413.3        | 8.2            
+       2026-04-12 | TREINO   | 164    | 18           | 0.11  | 571.3        | 7.1            
+       2026-04-19 | TREINO   | 165    | 20           | 0.121 | 806          | 6.2            
+       2026-04-26 | TREINO   | 168    | 33           | 0.196 | 914.3        | 7.3            
+       2026-05-03 | TREINO   | 169    | 27           | 0.16  | 869.1        | 10             
+       2026-05-10 | TREINO   | 171    | 27           | 0.158 | 825.9        | 11.3           
+       2026-05-17 | TREINO   | 171    | 26           | 0.152 | 753.6        | 11.9           
+       2026-05-24 | TREINO   | 178    | 29           | 0.163 | 704.1        | 11.1           
+       2026-05-31 | TREINO   | 178    | 34           | 0.191 | 823.5        | 12.5           
+       2026-06-07 | TESTE    | 178    | 32           | 0.18  | 798.2        | 13.7           
+       2026-06-14 | TESTE    | 183    | 41           | 0.224 | 678.9        | 14.4           
+       2026-06-21 | TESTE    | 183    | 43           | 0.235 | 618.6        | 15.5           
+       2026-06-28 | TESTE    | 183    | 35           | 0.191 | 693.2        | 16.2           
+       2026-07-05 | TESTE    | 184    | 37           | 0.201 | 623.4        | 19.4           
+       2026-07-12 | TESTE    | 184    | 37           | 0.201 | 550          | 23.1           
+       2026-07-19 | TESTE    | 184    | 57           | 0.31  | 434.3        | 18.7           
+       2026-07-26 | TESTE    | 187    | 53           | 0.283 | 168.9        | 23             
+       2026-08-02 | TESTE    | 189    | 52           | 0.275 | 133.1        | 25.7           
+      ------------+----------+--------+--------------+-------+--------------+----------------
+      27 linha(s) exibida(s) em 0.01s
+[15:56:16] #14 SELECT  SELECT COUNT(*) ALUNOS_CORTE_ATUAL, TO_CHAR(MAX(DT_CORTE), 'YYYY-MM-DD') DT_CORTE_ATUAL...
+      --------------------+----------------+-----------------+---------------
+       ALUNOS_CORTE_ATUAL | DT_CORTE_ATUAL | JA_INATIVOS_21D | ATIVOS_ULT_7D 
+      --------------------+----------------+-----------------+---------------
+       203                | 2026-08-26     | 50              | 104           
+      --------------------+----------------+-----------------+---------------
+      1 linha(s) exibida(s) em 21.12s
+[2026-09-08 15:56:37] Fim: 14 ok, 0 erro(s), 40.2s

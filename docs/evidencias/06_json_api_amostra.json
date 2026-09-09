@@ -1,0 +1,707 @@
+{
+  "produto": "Retena",
+  "gerado_em": "2026-09-09T01:02:20.848+00:00",
+  "dt_corte": "2026-08-26",
+  "dt_scoring": "2026-09-08T19:26:31",
+  "modelo": "RETENA_INATIVO21_RF (Oracle Machine Learning, Random Forest, in-database)",
+  "horizonte_dias": 21,
+  "total_alunos": 203,
+  "resumo": {
+    "alto": 59,
+    "medio": 15,
+    "baixo": 129,
+    "prob_media": 0.3145
+  },
+  "alunos": [
+    {
+      "aluno": "Aluno 0045",
+      "fase": 4,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 76,
+      "eventos_28d": 0,
+      "progresso_fase": 0.3636,
+      "prob_evasao_fase": 0.9296,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "76",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0046",
+      "fase": 3,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 76,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.8915,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "76",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0047",
+      "fase": 1,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 76,
+      "eventos_28d": 0,
+      "progresso_fase": 1,
+      "prob_evasao_fase": 0.7227,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "76",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0048",
+      "fase": 1,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 77,
+      "eventos_28d": 0,
+      "progresso_fase": 1,
+      "prob_evasao_fase": 0.9813,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "77",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0052",
+      "fase": 1,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 77,
+      "eventos_28d": 0,
+      "progresso_fase": 0.2,
+      "prob_evasao_fase": 0.9231,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "77",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0076",
+      "fase": 4,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 106,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.3453,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "106",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0121",
+      "fase": 4,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 120,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.9561,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "120",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0154",
+      "fase": 4,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 154,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.9397,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "154",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0165",
+      "fase": 4,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 125,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.9572,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "125",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0167",
+      "fase": 2,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 155,
+      "eventos_28d": 0,
+      "progresso_fase": 0.1667,
+      "prob_evasao_fase": 0.9463,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "155",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0170",
+      "fase": 1,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 162,
+      "eventos_28d": 0,
+      "progresso_fase": 0.1,
+      "prob_evasao_fase": 0.9524,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "162",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0171",
+      "fase": 1,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 163,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.9436,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "163",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0173",
+      "fase": 1,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 174,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.9484,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "174",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0174",
+      "fase": 1,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 195,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.956,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "195",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0175",
+      "fase": 4,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 195,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.9561,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "195",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0176",
+      "fase": 4,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 197,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.9572,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "197",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0177",
+      "fase": 1,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 197,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.9566,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "197",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0178",
+      "fase": 1,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 198,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.9571,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "198",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0184",
+      "fase": 4,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 96,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.9554,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "96",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    },
+    {
+      "aluno": "Aluno 0193",
+      "fase": 3,
+      "prob_inativo_21d": 0.9237,
+      "faixa": "Alto",
+      "recencia_dias": 134,
+      "eventos_28d": 0,
+      "progresso_fase": 0,
+      "prob_evasao_fase": 0.9296,
+      "fatores": [
+        {
+          "atributo": "RECENCIA_DIAS",
+          "valor": "134",
+          "peso": 82.1,
+          "rank": 1
+        },
+        {
+          "atributo": "DIAS_ATIVOS_28D",
+          "valor": "0",
+          "peso": 36.51,
+          "rank": 2
+        },
+        {
+          "atributo": "EVENTOS_28D",
+          "valor": "0",
+          "peso": 21.55,
+          "rank": 3
+        }
+      ],
+      "acao_sugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "status_atendimento": "PENDENTE"
+    }
+  ],
+  "_amostra": {
+    "alunos_exibidos": 20,
+    "alunos_no_payload_completo": 203,
+    "origem": "SELECT PAYLOAD FROM VW_RISCO_JSON (JSON_OBJECT + JSON_ARRAYAGG, Oracle 26ai)",
+    "extraido_em": "2026-09-08 22:02:20"
+  },
+  "_duality_view_amostra": [
+    {
+      "_id": "Aluno 0045",
+      "_metadata": {
+        "etag": "EE8E2EC488242FF9EA2BE0B6ABBD2616",
+        "asof": "000000000024D497"
+      },
+      "fatoresTop3": "RECENCIA_DIAS=76 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)",
+      "recenciaDias": 76,
+      "nomeFase": "Fase 4",
+      "atendimento": {
+        "status": "PENDENTE",
+        "observacao": null
+      },
+      "probInativo21d": 0.9237,
+      "eventos28d": 0,
+      "dtCorte": "2026-08-26T00:00:00",
+      "faixa": "Alto",
+      "acaoSugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "fase": 4,
+      "dtScoring": "2026-09-08T19:26:31.193284"
+    },
+    {
+      "_id": "Aluno 0046",
+      "_metadata": {
+        "etag": "96B20A592133513271BBDBE0A9AA0F34",
+        "asof": "000000000024D497"
+      },
+      "fatoresTop3": "RECENCIA_DIAS=76 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)",
+      "recenciaDias": 76,
+      "nomeFase": "Fase 3",
+      "atendimento": {
+        "status": "PENDENTE",
+        "observacao": null
+      },
+      "probInativo21d": 0.9237,
+      "eventos28d": 0,
+      "dtCorte": "2026-08-26T00:00:00",
+      "faixa": "Alto",
+      "acaoSugerida": "Contato ativo do tutor (telefone/WhatsApp) em 48h",
+      "fase": 3,
+      "dtScoring": "2026-09-08T19:26:31.193284"
+    }
+  ]
+}

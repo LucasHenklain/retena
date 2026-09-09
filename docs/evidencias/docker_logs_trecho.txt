@@ -1,0 +1,42 @@
+$ docker logs --tail 40 oracle-free
+# executado em 2026-09-08 22:02:22
+2026-09-09T00:45:59.711121+00:00
+Thread 1 advanced to log sequence 106 (LGWR switch),  current SCN: 2368261
+  Current log# 2 seq# 106 mem# 0: /opt/oracle/oradata/FREE/redo02.log
+2026-09-09T00:46:26.106466+00:00
+Thread 1 advanced to log sequence 107 (LGWR switch),  current SCN: 2371977
+  Current log# 1 seq# 107 mem# 0: /opt/oracle/oradata/FREE/redo01.log
+2026-09-09T00:46:33.934639+00:00
+Resize operation completed for file# 18, fname /opt/oracle/oradata/FREE/undotbs01.dbf, old size 11264K, new size 21504K
+2026-09-09T00:46:52.865004+00:00
+Thread 1 advanced to log sequence 108 (LGWR switch),  current SCN: 2374779
+  Current log# 2 seq# 108 mem# 0: /opt/oracle/oradata/FREE/redo02.log
+2026-09-09T00:47:21.185039+00:00
+Thread 1 advanced to log sequence 109 (LGWR switch),  current SCN: 2381411
+  Current log# 1 seq# 109 mem# 0: /opt/oracle/oradata/FREE/redo01.log
+2026-09-09T00:47:25.403761+00:00
+Resize operation completed for file# 18, fname /opt/oracle/oradata/FREE/undotbs01.dbf, old size 21504K, new size 31744K
+2026-09-09T00:47:39.389143+00:00
+Thread 1 advanced to log sequence 110 (LGWR switch),  current SCN: 2386142
+  Current log# 2 seq# 110 mem# 0: /opt/oracle/oradata/FREE/redo02.log
+2026-09-09T00:48:02.672513+00:00
+Thread 1 advanced to log sequence 111 (LGWR switch),  current SCN: 2390381
+  Current log# 1 seq# 111 mem# 0: /opt/oracle/oradata/FREE/redo01.log
+2026-09-09T00:48:30.631413+00:00
+Resize operation completed for file# 18, fname /opt/oracle/oradata/FREE/undotbs01.dbf, old size 31744K, new size 41984K
+2026-09-09T00:48:36.252896+00:00
+Thread 1 advanced to log sequence 112 (LGWR switch),  current SCN: 2395135
+  Current log# 2 seq# 112 mem# 0: /opt/oracle/oradata/FREE/redo02.log
+2026-09-09T00:49:07.969184+00:00
+Thread 1 advanced to log sequence 113 (LGWR switch),  current SCN: 2400854
+  Current log# 1 seq# 113 mem# 0: /opt/oracle/oradata/FREE/redo01.log
+2026-09-09T00:49:59.260010+00:00
+Begin automatic SQL Tuning Advisor run for special tuning task "SYS_AUTO_SQL_TUNING_TASK".
+2026-09-09T00:50:00.905783+00:00
+End automatic SQL Tuning Advisor run for special tuning task "SYS_AUTO_SQL_TUNING_TASK".
+2026-09-09T00:52:17.260420+00:00
+Thread 1 advanced to log sequence 114 (LGWR switch),  current SCN: 2410036
+  Current log# 2 seq# 114 mem# 0: /opt/oracle/oradata/FREE/redo02.log
+2026-09-09T01:00:24.449105+00:00
+FREEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P759 (46273) VALUES LESS THAN (TO_DATE(' 2026-09-10 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+FREEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P762 (46273) VALUES LESS THAN (TO_DATE(' 2026-09-10 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))

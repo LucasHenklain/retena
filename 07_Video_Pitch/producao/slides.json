@@ -1,0 +1,115 @@
+[
+  {"id": "s02_capa", "layout": "capa", "tema": "escuro", "kicker": "Startup One · Enterprise Challenge Oracle · FIAP 2026",
+   "titulo": "Ninguém desiste de repente.<br/><span style='color:var(--acento)'>A Retena percebe antes.</span>",
+   "subtitulo": "Radar de permanência para o ensino superior EAD: lê os sinais do LMS e entrega, toda segunda, quem está a duas semanas de sumir — por quê e o que fazer.",
+   "rodape": "retena.com.br · Retenção preditiva in-database"},
+
+  {"id": "s03_persona", "layout": "cards", "tema": "claro", "kicker": "Para quem",
+   "titulo": "Instituições privadas com EAD: quem compra e quem usa",
+   "cards": [
+     {"icone": "🏛️", "titulo": "Renata · Diretora de Operações Acadêmicas", "texto": "Responde pela receita das mensalidades e pela meta de permanência. Compra proteção de receita: quer ver a evasão em R$ e o retorno em rematrícula."},
+     {"icone": "📋", "titulo": "Mariana · Coordenadora de Permanência", "texto": "Lidera 12 tutores. Hoje descobre a evasão tarde e prioriza no escuro. Quer, toda segunda, a lista de quem chamar, por quê e como."},
+     {"icone": "🎓", "titulo": "Aluno EAD trabalhador", "texto": "Estuda das 19h às 22h, de segunda a quinta. Trava em um capítulo, perde o ritmo por duas semanas e, sem ninguém perceber, desiste."}
+   ]},
+
+  {"id": "s04_numero", "layout": "numero", "tema": "escuro", "kicker": "O problema",
+   "numero": "41,6%", "legenda": "dos alunos EAD desistiram em 2024 — o maior índice da série histórica",
+   "fonte": "Instituto Semesp, 16º Mapa do Ensino Superior no Brasil (2026) · INEP, Censo da Educação Superior 2024: EAD = 50,7% das matrículas (5,19 milhões de alunos)"},
+
+  {"id": "s04_custo", "layout": "cards", "tema": "escuro", "kicker": "O custo de descobrir tarde",
+   "titulo": "Cada aluno que evade leva embora receita e investimento",
+   "cards": [
+     {"icone": "💸", "titulo": "R$ 3 a 5 mil / ano", "texto": "Receita anual preservada por aluno retido (ticket EAD estimado de R$ 250–450/mês)."},
+     {"icone": "📣", "titulo": "CAC > R$ 1.000", "texto": "Custo estimado para captar um novo aluno EAD. Reter ficou mais barato que captar."},
+     {"icone": "⏳", "titulo": "Semanas de atraso", "texto": "A instituição percebe no financeiro ou na rematrícula. O LMS registra cada sinal muito antes."}
+   ]},
+
+  {"id": "s05_evidencia", "layout": "bullets", "tema": "claro", "kicker": "Evidência na base real (anonimizada)",
+   "titulo": "684.723 eventos · 203 alunos · 5 fases · jan–ago/2026",
+   "itens": [
+     "<b>61 alunos (30%)</b> estavam há mais de 14 dias sem acesso em um único dia — sem nenhum alerta.",
+     "<b>12% dos ingressantes</b> se perderam ao longo de 7 meses: funil 94% → 94% → 92% → 88%.",
+     "Travamentos se repetem nos <b>mesmos capítulos</b> em todas as fases; conteúdo quase só em HTML.",
+     "Pico de estudo <b>19h–22h</b>, de segunda a quinta: o aluno trabalhador."
+   ],
+   "destaque": "O LMS já sabia. Só faltava alguém ouvir."},
+
+  {"id": "s06_pilares", "layout": "cards", "tema": "escuro", "kicker": "A solução",
+   "titulo": "Três entregas, toda semana",
+   "cards": [
+     {"icone": "📡", "titulo": "Score de risco explicável", "texto": "Probabilidade de o aluno ficar 21 dias sem acessar, com os motivos em linguagem simples."},
+     {"icone": "🧭", "titulo": "Mapa de atrito de conteúdo", "texto": "Capítulos e formatos onde os alunos travam, com recomendação de ajuste para a coordenação pedagógica."},
+     {"icone": "📞", "titulo": "Fila semanal de intervenção", "texto": "Quem contatar, por quê, quando (19h–22h) e o que dizer — com resultado registrado e medido em R$."}
+   ]},
+
+  {"id": "s06_fluxo", "layout": "fluxo", "tema": "escuro", "kicker": "O ritual da semana",
+   "titulo": "Toda segunda, quem chamar. Toda sexta, quem voltou.",
+   "passos": [
+     "<b>Domingo 23h</b><br/>Logs do LMS viram features e scores dentro do banco.",
+     "<b>Segunda 8h</b><br/>Coordenadora abre a fila priorizada: motivo, tutor, mensagem, horário.",
+     "<b>Terça a quinta</b><br/>Tutores contatam no horário em que cada aluno estuda.",
+     "<b>Sexta</b><br/>Resultado registrado: reativado, sem resposta, plano de retomada.",
+     "<b>Mensal</b><br/>Receita preservada em R$ e retreino do modelo com o que funcionou."
+   ]},
+
+  {"id": "s08_resultados", "layout": "cards", "tema": "claro", "kicker": "Resultados do modelo · teste temporal (jun–ago/2026)",
+   "titulo": "Treinado no passado, testado no futuro",
+   "cards": [
+     {"icone": "🎯", "titulo": "AUC-ROC 0,88", "texto": "Capacidade de ordenar quem vai ficar inativo em 21 dias (baseline logística: 0,89)."},
+     {"icone": "✅", "titulo": "88% de precisão no top-20%", "texto": "Entre os 20% apontados como maior risco, 88% de fato ficaram inativos. Lift de 3×."},
+     {"icone": "🔴", "titulo": "Faixa Alto: 95%", "texto": "95 de cada 100 alunos classificados como alto risco realmente sumiram."},
+     {"icone": "📚", "titulo": "Transição de fase: AUC 0,93", "texto": "Modelo que antecipa quem não inicia a fase seguinte (validação por fase)."}
+   ]},
+
+  {"id": "s09_oracle", "layout": "fluxo", "tema": "escuro", "kicker": "Por que dentro do Oracle",
+   "titulo": "O modelo roda onde o dado já mora",
+   "passos": [
+     "<b>Eventos do LMS</b><br/>CSV/API → tabela EVENTOS_LMS no Oracle AI Database 26ai.",
+     "<b>Features em SQL</b><br/>Recência, tendência, capítulos, quiz — por aluno e semana.",
+     "<b>Oracle Machine Learning</b><br/>DBMS_DATA_MINING treina e pontua in-database (PREDICTION_PROBABILITY).",
+     "<b>SQL + JSON</b><br/>Views de risco prontas para APEX, Select AI e API.",
+     "<b>Produção</b><br/>Autonomous AI Database na OCI · APEX · Select AI · Object Storage."
+   ]},
+
+  {"id": "s09_evidencia_oracle", "layout": "bullets", "tema": "escuro", "kicker": "Já está funcionando neste projeto",
+   "titulo": "Evidência de integração Oracle",
+   "itens": [
+     "Oracle AI Database 26ai Free em Docker, conectado via python-oracledb.",
+     "684.723 eventos carregados; features de risco calculadas em SQL analítico.",
+     "Modelos treinados <b>dentro do banco</b> com DBMS_DATA_MINING (OML).",
+     "Risco por aluno exposto por SQL e JSON — pronto para APEX e Select AI."
+   ],
+   "destaque": "O dado do aluno não sai da instituição. LGPD por arquitetura."},
+
+  {"id": "s10_preco", "layout": "tabela", "tema": "claro", "kicker": "Monetização",
+   "titulo": "SaaS por aluno ativo/mês · piloto de 90 dias com meta acordada",
+   "cabecalho": ["Faixa de volume", "Preço / aluno ativo / mês", "Exemplo anual"],
+   "linhas": [
+     ["1 mil a 10 mil alunos", "R$ 6,00", "5 mil alunos → R$ 360 mil"],
+     ["10 mil a 50 mil alunos", "R$ 4,00", "12 mil alunos → R$ 576 mil"],
+     ["Acima de 50 mil (megagrupos)", "R$ 3,00", "Fase 2, via ecossistema Oracle"],
+     ["Mínimo mensal · setup", "R$ 5 mil · R$ 10–25 mil", "Reter 1,1% da base paga o contrato"]
+   ]},
+
+  {"id": "s10_roi", "layout": "cards", "tema": "claro", "kicker": "A conta do cliente-referência (12 mil alunos EAD)",
+   "titulo": "Se paga na primeira rematrícula",
+   "cards": [
+     {"icone": "🧾", "titulo": "R$ 576 mil / ano", "texto": "12.000 alunos × R$ 4,00 × 12 meses. Setup único de R$ 20 mil."},
+     {"icone": "🔁", "titulo": "137 alunos retidos", "texto": "≈ 1,1% da base a R$ 4.200/ano de receita preservada por aluno já paga o contrato."},
+     {"icone": "📈", "titulo": "R$ 500 mil por ponto", "texto": "Cada 1 p.p. de desistência evitado (~120 alunos) vale ~R$ 500 mil/ano. Estimativas com ticket de R$ 350/mês."}
+   ]},
+
+  {"id": "s11_mercado", "layout": "cards", "tema": "escuro", "kicker": "Mercado",
+   "titulo": "5,2 milhões de alunos EAD · 2.244 IES privadas",
+   "cards": [
+     {"icone": "🌎", "titulo": "TAM · R$ 249 mi/ano", "texto": "5,19 mi matrículas EAD (INEP 2024) × R$ 4 × 12 meses."},
+     {"icone": "🎯", "titulo": "SAM · R$ 126 mi/ano", "texto": "IES privadas fora dos megagrupos: ~2,6 mi alunos (Semesp 2026)."},
+     {"icone": "🚀", "titulo": "SOM · R$ 2,5–4,3 mi ARR", "texto": "8–12 IES médias em 3 anos + 1 megagrupo piloto via canal Oracle."}
+   ]},
+
+  {"id": "s12_fechamento", "layout": "fechamento", "tema": "escuro",
+   "titulo": "Ninguém desiste de repente.<br/><span style='color:var(--acento)'>A Retena percebe antes.</span>",
+   "subtitulo": "Radar de permanência dentro do banco que a instituição já usa.",
+   "chamada": "Piloto de 90 dias · retena.com.br",
+   "rodape": "Startup One · Enterprise Challenge Oracle · FIAP 2026 · Equipe Retena"}
+]

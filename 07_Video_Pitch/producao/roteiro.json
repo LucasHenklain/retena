@@ -1,0 +1,88 @@
+{
+  "fps": 30, "largura": 1920, "altura": 1080, "fonte_legenda": "Inter", "tamanho_legenda": 42,
+  "cenas": [
+    {"id": "01", "tipo": "sequencia", "audio": "audio/01.mp3", "pausa_fim": 0.5,
+     "itens": [
+       {"tipo": "video", "video": "broll/clip_01_aluno_noite.mp4", "duracao": 5.5},
+       {"tipo": "video", "video": "broll/clip_08_desistindo.mp4", "duracao": 5.5},
+       {"tipo": "imagem", "imagem": "broll/05_maos_teclado.png", "movimento": "zoom_in"}
+     ],
+     "narracao": "Toda noite, milhões de brasileiros abrem o notebook depois do trabalho para estudar a distância. E, todo ano, quatro em cada dez desistem. Ninguém desiste de repente. Mas a instituição só percebe quando a mensalidade para."},
+
+    {"id": "02", "tipo": "slide", "html": "slides/s02_capa.html", "audio": "audio/02.mp3", "movimento": "zoom_in", "pausa_fim": 0.6,
+     "narracao": "Nós somos a Retena: o radar de permanência que lê os sinais do LMS e avisa quem está a duas semanas de sumir, por quê, e o que fazer."},
+
+    {"id": "03", "tipo": "sequencia", "audio": "audio/03.mp3", "pausa_fim": 0.5,
+     "itens": [
+       {"tipo": "video", "video": "broll/clip_02_coordenadora.mp4", "duracao": 5.0},
+       {"tipo": "video", "video": "broll/clip_04_tutor.mp4", "duracao": 5.0},
+       {"tipo": "slide", "html": "slides/s03_persona.html", "movimento": "zoom_in"}
+     ],
+     "narracao": "Nosso cliente é a instituição de ensino superior privada com EAD. Quem compra é a diretora de operações acadêmicas, responsável pela receita das mensalidades. Quem usa todo dia é a coordenadora de permanência e seus tutores, que hoje agem no escuro sobre trinta por cento de alunos inativos."},
+
+    {"id": "04", "tipo": "sequencia", "audio": "audio/04.mp3", "pausa_fim": 0.5,
+     "itens": [
+       {"tipo": "slide", "html": "slides/s04_numero.html", "movimento": "zoom_in", "duracao": 12.5},
+       {"tipo": "slide", "html": "slides/s04_custo.html", "movimento": "pan_right"}
+     ],
+     "narracao": "O problema é grande e cresce. Em 2024, o EAD virou maioria das matrículas no Brasil: mais de cinco milhões de alunos. E a desistência chegou a 41,6%, recorde histórico, segundo o Semesp. Cada aluno que evade leva de três a cinco mil reais por ano, além de um custo de captação que passa de mil reais."},
+
+    {"id": "05", "tipo": "sequencia", "audio": "audio/05.mp3", "pausa_fim": 0.5,
+     "itens": [
+       {"tipo": "slide", "html": "slides/s05_evidencia.html", "movimento": "zoom_in", "duracao": 16.0},
+       {"tipo": "imagem", "imagem": "../../05_MVP/outputs/figs/fig_funil_fases.png", "movimento": "zoom_in", "ajuste": "conter", "cor_fundo": "white"}
+     ],
+     "narracao": "Analisamos uma base real e anonimizada: 685 mil eventos de 203 alunos, em cinco fases de um curso. Em um único dia, 61 alunos, 30% da turma, estavam há mais de duas semanas sem acessar. 12% dos ingressantes se perderam em sete meses. E os travamentos se repetem nos mesmos capítulos. O LMS já sabia. Faltava alguém ouvir."},
+
+    {"id": "06", "tipo": "sequencia", "audio": "audio/06.mp3", "pausa_fim": 0.5,
+     "itens": [
+       {"tipo": "slide", "html": "slides/s06_pilares.html", "movimento": "zoom_in", "duracao": 14.0},
+       {"tipo": "slide", "html": "slides/s06_fluxo.html", "movimento": "pan_right"}
+     ],
+     "narracao": "A Retena transforma esses logs em três coisas: um score de risco por aluno, atualizado toda semana; um diagnóstico de atrito de conteúdo, que mostra em quais capítulos e formatos os alunos travam; e uma fila semanal de intervenção, com motivo, ação sugerida e melhor horário de contato. Toda segunda-feira, a coordenação sabe quem chamar. Toda sexta, sabe quem voltou."},
+
+    {"id": "07", "tipo": "sequencia", "audio": "audio/07.mp3", "pausa_fim": 0.5,
+     "itens": [
+       {"tipo": "imagem", "imagem": "../../05_MVP/outputs/figs/dashboard_hero_1920x1080.png", "movimento": "zoom_in", "duracao": 11.0},
+       {"tipo": "imagem", "imagem": "demo/dashboard_fila.png", "movimento": "pan_right", "duracao": 9.0},
+       {"tipo": "imagem", "imagem": "demo/dashboard_atrito.png", "movimento": "zoom_out"}
+     ],
+     "narracao": "Assim funciona. O painel mostra a turma de hoje: ativos, alto risco, quem sumiu. Cada aluno em risco vem com os fatores: dias sem acesso, queda nos acessos, capítulo em que parou. E com a ação: mensagem do tutor, no horário em que ele costuma estudar. No mapa de atrito, o capítulo que mais derruba alunos aparece em destaque, com a recomendação de dividir em microaulas e inserir um quiz."},
+
+    {"id": "08", "tipo": "sequencia", "audio": "audio/08.mp3", "pausa_fim": 0.5,
+     "itens": [
+       {"tipo": "slide", "html": "slides/s08_resultados.html", "movimento": "zoom_in", "duracao": 15.0},
+       {"tipo": "imagem", "imagem": "../../05_MVP/outputs/figs/fig_roc_pr.png", "movimento": "static", "ajuste": "conter", "cor_fundo": "white"}
+     ],
+     "narracao": "E funciona. Treinamos o modelo nos primeiros meses e testamos nos seguintes, sem olhar o futuro. Resultado: AUC de 0,88. Entre os 20% apontados como maior risco, 88% de fato ficaram inativos, três vezes a média. Na faixa de alto risco, 95 em cada 100 realmente sumiram. É uma lista em que o tutor pode confiar."},
+
+    {"id": "09", "tipo": "sequencia", "audio": "audio/09.mp3", "pausa_fim": 0.5,
+     "itens": [
+       {"tipo": "imagem", "imagem": "broll/07_datacenter.png", "movimento": "zoom_in", "duracao": 9.0},
+       {"tipo": "slide", "html": "slides/s09_oracle.html", "movimento": "pan_right", "duracao": 18.0},
+       {"tipo": "slide", "html": "slides/s09_evidencia_oracle.html", "movimento": "zoom_in"}
+     ],
+     "narracao": "Por que ninguém fez isso antes? BI mostra o passado, CRM cobra quando a mensalidade já parou, e analytics exige cientistas de dados que a maioria das instituições não tem. A Retena roda onde os dados já estão: dentro do Oracle AI Database. As features são calculadas em SQL e o modelo é treinado e pontuado pelo Oracle Machine Learning, sem o dado do aluno sair do banco. Já está funcionando: carregamos os 685 mil eventos e treinamos os modelos dentro do banco. Em produção, é o Autonomous AI Database, com APEX para o painel e Select AI para perguntar em português."},
+
+    {"id": "10", "tipo": "sequencia", "audio": "audio/10.mp3", "pausa_fim": 0.5,
+     "itens": [
+       {"tipo": "slide", "html": "slides/s10_preco.html", "movimento": "zoom_in", "duracao": 15.0},
+       {"tipo": "slide", "html": "slides/s10_roi.html", "movimento": "pan_right"}
+     ],
+     "narracao": "Nosso modelo é SaaS por aluno ativo por mês, de três a seis reais conforme o porte, com piloto de noventa dias e meta de rematrícula acordada. Para uma instituição com 12 mil alunos EAD, são cerca de 570 mil reais por ano. Reter 1% da base já paga o contrato, e cada ponto de desistência evitado vale meio milhão por ano. A conta fecha na primeira rematrícula."},
+
+    {"id": "11", "tipo": "sequencia", "audio": "audio/11.mp3", "pausa_fim": 0.5,
+     "itens": [
+       {"tipo": "slide", "html": "slides/s11_mercado.html", "movimento": "zoom_in", "duracao": 13.0},
+       {"tipo": "imagem", "imagem": "broll/03_campus.png", "movimento": "pan_left"}
+     ],
+     "narracao": "O mercado: 2.244 instituições privadas e 5,2 milhões de alunos EAD. Nosso alvo inicial são as instituições de médio porte fora dos megagrupos, e o modelo é portável para qualquer LMS do tipo Moodle, o que abre caminho para o ensino técnico e corporativo."},
+
+    {"id": "12", "tipo": "sequencia", "audio": "audio/12.mp3", "pausa_fim": 1.2,
+     "itens": [
+       {"tipo": "video", "video": "broll/clip_06_formatura.mp4", "duracao": 5.0},
+       {"tipo": "slide", "html": "slides/s12_fechamento.html", "movimento": "zoom_in"}
+     ],
+     "narracao": "A evasão não é um evento. É um processo silencioso que dura semanas. A Retena escuta esse silêncio e devolve tempo para quem pode agir. Ninguém desiste de repente. A Retena percebe antes. Obrigado."}
+  ]
+}

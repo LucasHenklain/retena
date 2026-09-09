@@ -1,0 +1,329 @@
+EVIDENCIA - oci/sql/09_merge_risco_snapshot.sql executado DUAS VEZES seguidas (idempotencia do MERGE)
+=====================================================================================================
+Gerado em      : 2026-09-09 11:39:17 -0300 (horario local; o banco esta em UTC, +00:00)
+Banco          : Oracle AI Database 26ai Free Release 23.26.3.0.0 - Develop, Learn, and Run for Free | Version 23.26.3.0.0
+Ambiente       : Docker container oracle-free | dsn localhost:1521/FREEPDB1 | usuario STARTUP | python-oracledb 4.0.2 (thin)
+Comando (x2)   : python oci\executar_sql_oci.py oci\sql\09_merge_risco_snapshot.sql --log-dir <pasta> --max-linhas 60
+Criterio       : as contagens de RISCO_ALUNO_SNAPSHOT (chave NOME) e RISCO_ALUNO_HISTORICO (chave NOME + DT_CORTE)
+                 devem ser IGUAIS nas duas execucoes e as consultas de duplicatas devem retornar 0 linhas.
+
+RESUMO - EXECUCAO 1
+  inicio (banco, UTC): 2026-09-09 13:58:49.268 +00:00   fim: 2026-09-09 13:59:10.560 +00:00
+  #10 MERGE INTO RISCO_ALUNO_SNAPSHOT  : 203 linha(s) afetada(s) em 0.12s
+  #11 MERGE INTO RISCO_ALUNO_HISTORICO : 203 linha(s) afetada(s) em 0.14s
+  #12 MERGE INTO RISCO_ALUNO_SNAPSHOT  : 203 linha(s) afetada(s) em 3.80s
+  RISCO_ALUNO_SNAPSHOT  : 203 linhas | 203 chaves distintas | corte 2026-08-26 | ultimo processamento 2026-09-09 UTC
+  RISCO_ALUNO_HISTORICO : 203 linhas | 203 chaves distintas | corte 2026-08-26 | ultimo processamento 2026-09-09 UTC
+  duplicatas (GROUP BY ... HAVING COUNT(*) > 1): snapshot=0 linha(s), historico=0 linha(s)
+  runner: 19 ok, 0 erro(s), 22.2s
+
+RESUMO - EXECUCAO 2 (mesmo script, ~1 s depois)
+  inicio (banco, UTC): 2026-09-09 13:59:11.270 +00:00   fim: 2026-09-09 13:59:33.765 +00:00
+  #10 MERGE INTO RISCO_ALUNO_SNAPSHOT  : 203 linha(s) afetada(s) em 0.02s
+  #11 MERGE INTO RISCO_ALUNO_HISTORICO : 203 linha(s) afetada(s) em 0.01s
+  #12 MERGE INTO RISCO_ALUNO_SNAPSHOT  : 203 linha(s) afetada(s) em 4.09s
+  RISCO_ALUNO_SNAPSHOT  : 203 linhas | 203 chaves distintas | corte 2026-08-26 | ultimo processamento 2026-09-09 UTC
+  RISCO_ALUNO_HISTORICO : 203 linhas | 203 chaves distintas | corte 2026-08-26 | ultimo processamento 2026-09-09 UTC
+  duplicatas (GROUP BY ... HAVING COUNT(*) > 1): snapshot=0 linha(s), historico=0 linha(s)
+  runner: 19 ok, 0 erro(s), 22.6s
+
+VERIFICACAO INDEPENDENTE (consulta direta via oracledb, apos as duas execucoes)
+  SYSTIMESTAMP           : 2026-09-09 14:39:17.714 +00:00
+  RISCO_ALUNO_SNAPSHOT   : 203 linhas | 203 NOME distintos | duplicatas: 0
+  RISCO_ALUNO_HISTORICO  : 203 linhas | 203 (NOME, DT_CORTE) distintos | duplicatas: 0
+  RISCO_ALUNO_STG        : 203 linhas (staging, truncada e recarregada a cada execucao)
+  Conclusao              : OK - nenhuma duplicacao apos 2 execucoes
+
+Observacoes
+  - PK real de RISCO_ALUNO_SNAPSHOT e (NOME) - tabela de estado atual, 1 linha por aluno (inspecao em USER_CONSTRAINTS no log).
+    A chave natural "aluno + corte" do padrao EduRetain foi aplicada na tabela nova RISCO_ALUNO_HISTORICO (NOME, DT_CORTE).
+  - O passo mais caro e o INSERT na staging (~17-18 s): materializa VW_RISCO_ALUNO_ATUAL (PREDICTION_PROBABILITY +
+    PREDICTION_DETAILS sobre 684.723 eventos) uma unica vez; os MERGEs em si levam 0,01-0,14 s (o 3o, ~4 s, avalia
+    VW_RISCO_TRANSICAO_ATUAL).
+  - Horarios do runner ([hh:mm:ss] no inicio das linhas) sao locais (-03:00); os do banco (INICIO/FIM_EXECUCAO, DT_SCORING) sao UTC.
+
+=====================================================================================================
+LOG INTEGRAL - EXECUCAO 1
+=====================================================================================================
+[2026-09-09 10:58:48] Script: C:\Users\lmhsilva\Projetos\StartupOne\entrega\06_Oracle\oci\sql\09_merge_risco_snapshot.sql
+[2026-09-09 10:58:48] Conexao: STARTUP@localhost:1521/FREEPDB1 | 19 statement(s)
+[10:58:48] #01 SELECT  SELECT table_name, column_id, column_name, data_type, data_length, nullable FROM user_t...
+      ----------------------+-----------+-------------------------+--------------+-------------+----------
+       TABLE_NAME           | COLUMN_ID | COLUMN_NAME             | DATA_TYPE    | DATA_LENGTH | NULLABLE 
+      ----------------------+-----------+-------------------------+--------------+-------------+----------
+       RISCO_ALUNO_SNAPSHOT | 1         | NOME                    | VARCHAR2     | 120         | N        
+       RISCO_ALUNO_SNAPSHOT | 2         | DT_CORTE                | DATE         | 7           | N        
+       RISCO_ALUNO_SNAPSHOT | 3         | NUM_FASE_ATUAL          | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 4         | NOME_FASE               | VARCHAR2     | 80          | Y        
+       RISCO_ALUNO_SNAPSHOT | 5         | RECENCIA_DIAS           | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 6         | EVENTOS_7D              | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 7         | EVENTOS_14D             | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 8         | EVENTOS_28D             | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 9         | DIAS_ATIVOS_28D         | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 10        | PROGRESSO_28D           | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 11        | CAPITULOS_DISTINTOS_28D | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 12        | QUIZ_28D                | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 13        | ENTREGAS_28D            | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 14        | TENDENCIA               | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 15        | EVENTOS_ACUMULADOS      | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 16        | PROB_INATIVO_21D        | NUMBER       | 22          | N        
+       RISCO_ALUNO_SNAPSHOT | 17        | PROB_INATIVO_21D_GLM    | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 18        | FAIXA_RISCO             | VARCHAR2     | 40          | N        
+       RISCO_ALUNO_SNAPSHOT | 19        | FATORES_TOP3            | VARCHAR2     | 2400        | Y        
+       RISCO_ALUNO_SNAPSHOT | 20        | FATORES_JSON            | VARCHAR2     | 4000        | Y        
+       RISCO_ALUNO_SNAPSHOT | 21        | CAPITULO_MAX_FASE       | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 22        | PCT_CAPITULOS_FASE      | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 23        | PROB_EVASAO_FASE        | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 24        | ACAO_SUGERIDA           | VARCHAR2     | 480         | Y        
+       RISCO_ALUNO_SNAPSHOT | 25        | STATUS_ATENDIMENTO      | VARCHAR2     | 80          | N        
+       RISCO_ALUNO_SNAPSHOT | 26        | OBSERVACAO              | VARCHAR2     | 1600        | Y        
+       RISCO_ALUNO_SNAPSHOT | 27        | DT_SCORING              | TIMESTAMP(6) | 11          | N        
+       VW_RISCO_ALUNO_ATUAL | 1         | NOME                    | VARCHAR2     | 120         | N        
+       VW_RISCO_ALUNO_ATUAL | 2         | DT_CORTE                | DATE         | 7           | Y        
+       VW_RISCO_ALUNO_ATUAL | 3         | NUM_FASE_ATUAL          | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 4         | NOME_FASE               | VARCHAR2     | 80          | Y        
+       VW_RISCO_ALUNO_ATUAL | 5         | RECENCIA_DIAS           | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 6         | EVENTOS_7D              | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 7         | EVENTOS_14D             | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 8         | EVENTOS_28D             | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 9         | DIAS_ATIVOS_28D         | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 10        | PROGRESSO_28D           | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 11        | CAPITULOS_DISTINTOS_28D | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 12        | QUIZ_28D                | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 13        | ENTREGAS_28D            | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 14        | TENDENCIA               | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 15        | EVENTOS_ACUMULADOS      | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 16        | PROB_INATIVO_21D        | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 17        | PROB_INATIVO_21D_GLM    | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 18        | FAIXA_RISCO             | VARCHAR2     | 6           | Y        
+       VW_RISCO_ALUNO_ATUAL | 19        | FATORES_TOP3            | VARCHAR2     | 4000        | Y        
+       VW_RISCO_ALUNO_ATUAL | 20        | FATORES_JSON            | VARCHAR2     | 1000        | Y        
+       VW_RISCO_ALUNO_ATUAL | 21        | ACAO_SUGERIDA           | VARCHAR2     | 62          | Y        
+      ----------------------+-----------+-------------------------+--------------+-------------+----------
+      48 linha(s) exibida(s) em 0.13s
+[10:58:48] #02 SELECT  SELECT uc.constraint_name, uc.constraint_type, LISTAGG(ucc.column_name, ', ') WITHIN GR...
+      -------------------------+-----------------+---------
+       CONSTRAINT_NAME         | CONSTRAINT_TYPE | COLUNAS 
+      -------------------------+-----------------+---------
+       PK_RISCO_ALUNO_SNAPSHOT | P               | NOME    
+      -------------------------+-----------------+---------
+      1 linha(s) exibida(s) em 0.81s
+[10:58:49] #03 SELECT  SELECT TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI:SS.FF3 TZH:TZM') inicio_execucao, SYS_...
+      --------------------------------+---------+-----------
+       INICIO_EXECUCAO                | USUARIO | CONTAINER 
+      --------------------------------+---------+-----------
+       2026-09-09 13:58:49.268 +00:00 | STARTUP | FREEPDB1  
+      --------------------------------+---------+-----------
+      1 linha(s) exibida(s) em 0.00s
+[10:58:49] #04 CREATE  CREATE TABLE IF NOT EXISTS RISCO_ALUNO_STG ( NOME VARCHAR2(30 CHAR) NOT NULL, DT_CORTE ...
+      OK em 0.18s
+[10:58:49] #05 TRUNCATE TRUNCATE TABLE RISCO_ALUNO_STG
+      OK em 0.04s
+[10:58:49] #06 INSERT  INSERT INTO RISCO_ALUNO_STG ( NOME, DT_CORTE, NUM_FASE_ATUAL, NOME_FASE, RECENCIA_DIAS,...
+      OK - 203 linha(s) afetada(s) em 16.86s
+[10:59:06] #07 COMMIT  COMMIT
+      OK em 0.00s
+[10:59:06] #08 SELECT  SELECT COUNT(*) linhas_stg, COUNT(DISTINCT NOME) alunos_distintos, TO_CHAR(MAX(DT_CORTE...
+      ------------+------------------+------------
+       LINHAS_STG | ALUNOS_DISTINTOS | DT_CORTE   
+      ------------+------------------+------------
+       203        | 203              | 2026-08-26 
+      ------------+------------------+------------
+      1 linha(s) exibida(s) em 0.01s
+[10:59:06] #09 CREATE  CREATE TABLE IF NOT EXISTS RISCO_ALUNO_HISTORICO ( NOME VARCHAR2(30 CHAR) NOT NULL, DT_...
+      OK em 0.06s
+[10:59:06] #10 MERGE   MERGE INTO RISCO_ALUNO_SNAPSHOT d USING RISCO_ALUNO_STG s ON (d.NOME = s.NOME) WHEN MAT...
+      OK - 203 linha(s) afetada(s) em 0.12s
+[10:59:06] #11 MERGE   MERGE INTO RISCO_ALUNO_HISTORICO h USING (SELECT s.NOME, s.DT_CORTE, s.NUM_FASE_ATUAL, ...
+      OK - 203 linha(s) afetada(s) em 0.14s
+[10:59:06] #12 MERGE   MERGE INTO RISCO_ALUNO_SNAPSHOT d USING VW_RISCO_TRANSICAO_ATUAL t ON (d.NOME = t.NOME ...
+      OK - 203 linha(s) afetada(s) em 3.80s
+[10:59:10] #13 COMMIT  COMMIT
+      OK em 0.01s
+[10:59:10] #14 SELECT  SELECT 'RISCO_ALUNO_SNAPSHOT' tabela, COUNT(*) linhas, COUNT(DISTINCT NOME) chaves_dist...
+      -----------------------+--------+------------------+------------+-------------------------
+       TABELA                | LINHAS | CHAVES_DISTINTAS | DT_CORTE   | ULTIMO_PROCESSAMENTO    
+      -----------------------+--------+------------------+------------+-------------------------
+       RISCO_ALUNO_SNAPSHOT  | 203    | 203              | 2026-08-26 | 2026-09-09 13:59:06.533 
+       RISCO_ALUNO_HISTORICO | 203    | 203              | 2026-08-26 | 2026-09-09 13:59:06.683 
+      -----------------------+--------+------------------+------------+-------------------------
+      2 linha(s) exibida(s) em 0.01s
+[10:59:10] #15 SELECT  SELECT NOME, COUNT(*) qtd FROM RISCO_ALUNO_SNAPSHOT GROUP BY NOME HAVING COUNT(*) > 1
+      ------+-----
+       NOME | QTD 
+      ------+-----
+      ------+-----
+      0 linha(s) exibida(s) em 0.01s
+[10:59:10] #16 SELECT  SELECT NOME, DT_CORTE, COUNT(*) qtd FROM RISCO_ALUNO_HISTORICO GROUP BY NOME, DT_CORTE ...
+      ------+----------+-----
+       NOME | DT_CORTE | QTD 
+      ------+----------+-----
+      ------+----------+-----
+      0 linha(s) exibida(s) em 0.01s
+[10:59:10] #17 SELECT  SELECT FAIXA_RISCO, COUNT(*) alunos, ROUND(AVG(PROB_INATIVO_21D), 4) prob_media, SUM(CA...
+      -------------+--------+------------+-----------
+       FAIXA_RISCO | ALUNOS | PROB_MEDIA | PENDENTES 
+      -------------+--------+------------+-----------
+       Alto        | 59     | 0.8444     | 59        
+       Médio       | 15     | 0.4719     | 15        
+       Baixo       | 129    | 0.0539     | 129       
+      -------------+--------+------------+-----------
+      3 linha(s) exibida(s) em 0.01s
+[10:59:10] #18 SELECT  SELECT MODELO_VERSAO, TO_CHAR(DT_CORTE, 'YYYY-MM-DD') dt_corte, COUNT(*) alunos FROM RI...
+      --------------------------------+------------+--------
+       MODELO_VERSAO                  | DT_CORTE   | ALUNOS 
+      --------------------------------+------------+--------
+       RETENA_INATIVO21_RF@2026-09-08 | 2026-08-26 | 203    
+      --------------------------------+------------+--------
+      1 linha(s) exibida(s) em 0.01s
+[10:59:10] #19 SELECT  SELECT TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI:SS.FF3 TZH:TZM') fim_execucao FROM dual
+      --------------------------------
+       FIM_EXECUCAO                   
+      --------------------------------
+       2026-09-09 13:59:10.560 +00:00 
+      --------------------------------
+      1 linha(s) exibida(s) em 0.00s
+[2026-09-09 10:59:10] Fim: 19 ok, 0 erro(s), 22.2s
+
+=====================================================================================================
+LOG INTEGRAL - EXECUCAO 2
+=====================================================================================================
+[2026-09-09 10:59:11] Script: C:\Users\lmhsilva\Projetos\StartupOne\entrega\06_Oracle\oci\sql\09_merge_risco_snapshot.sql
+[2026-09-09 10:59:11] Conexao: STARTUP@localhost:1521/FREEPDB1 | 19 statement(s)
+[10:59:11] #01 SELECT  SELECT table_name, column_id, column_name, data_type, data_length, nullable FROM user_t...
+      ----------------------+-----------+-------------------------+--------------+-------------+----------
+       TABLE_NAME           | COLUMN_ID | COLUMN_NAME             | DATA_TYPE    | DATA_LENGTH | NULLABLE 
+      ----------------------+-----------+-------------------------+--------------+-------------+----------
+       RISCO_ALUNO_SNAPSHOT | 1         | NOME                    | VARCHAR2     | 120         | N        
+       RISCO_ALUNO_SNAPSHOT | 2         | DT_CORTE                | DATE         | 7           | N        
+       RISCO_ALUNO_SNAPSHOT | 3         | NUM_FASE_ATUAL          | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 4         | NOME_FASE               | VARCHAR2     | 80          | Y        
+       RISCO_ALUNO_SNAPSHOT | 5         | RECENCIA_DIAS           | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 6         | EVENTOS_7D              | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 7         | EVENTOS_14D             | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 8         | EVENTOS_28D             | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 9         | DIAS_ATIVOS_28D         | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 10        | PROGRESSO_28D           | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 11        | CAPITULOS_DISTINTOS_28D | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 12        | QUIZ_28D                | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 13        | ENTREGAS_28D            | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 14        | TENDENCIA               | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 15        | EVENTOS_ACUMULADOS      | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 16        | PROB_INATIVO_21D        | NUMBER       | 22          | N        
+       RISCO_ALUNO_SNAPSHOT | 17        | PROB_INATIVO_21D_GLM    | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 18        | FAIXA_RISCO             | VARCHAR2     | 40          | N        
+       RISCO_ALUNO_SNAPSHOT | 19        | FATORES_TOP3            | VARCHAR2     | 2400        | Y        
+       RISCO_ALUNO_SNAPSHOT | 20        | FATORES_JSON            | VARCHAR2     | 4000        | Y        
+       RISCO_ALUNO_SNAPSHOT | 21        | CAPITULO_MAX_FASE       | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 22        | PCT_CAPITULOS_FASE      | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 23        | PROB_EVASAO_FASE        | NUMBER       | 22          | Y        
+       RISCO_ALUNO_SNAPSHOT | 24        | ACAO_SUGERIDA           | VARCHAR2     | 480         | Y        
+       RISCO_ALUNO_SNAPSHOT | 25        | STATUS_ATENDIMENTO      | VARCHAR2     | 80          | N        
+       RISCO_ALUNO_SNAPSHOT | 26        | OBSERVACAO              | VARCHAR2     | 1600        | Y        
+       RISCO_ALUNO_SNAPSHOT | 27        | DT_SCORING              | TIMESTAMP(6) | 11          | N        
+       VW_RISCO_ALUNO_ATUAL | 1         | NOME                    | VARCHAR2     | 120         | N        
+       VW_RISCO_ALUNO_ATUAL | 2         | DT_CORTE                | DATE         | 7           | Y        
+       VW_RISCO_ALUNO_ATUAL | 3         | NUM_FASE_ATUAL          | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 4         | NOME_FASE               | VARCHAR2     | 80          | Y        
+       VW_RISCO_ALUNO_ATUAL | 5         | RECENCIA_DIAS           | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 6         | EVENTOS_7D              | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 7         | EVENTOS_14D             | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 8         | EVENTOS_28D             | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 9         | DIAS_ATIVOS_28D         | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 10        | PROGRESSO_28D           | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 11        | CAPITULOS_DISTINTOS_28D | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 12        | QUIZ_28D                | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 13        | ENTREGAS_28D            | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 14        | TENDENCIA               | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 15        | EVENTOS_ACUMULADOS      | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 16        | PROB_INATIVO_21D        | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 17        | PROB_INATIVO_21D_GLM    | NUMBER       | 22          | Y        
+       VW_RISCO_ALUNO_ATUAL | 18        | FAIXA_RISCO             | VARCHAR2     | 6           | Y        
+       VW_RISCO_ALUNO_ATUAL | 19        | FATORES_TOP3            | VARCHAR2     | 4000        | Y        
+       VW_RISCO_ALUNO_ATUAL | 20        | FATORES_JSON            | VARCHAR2     | 1000        | Y        
+       VW_RISCO_ALUNO_ATUAL | 21        | ACAO_SUGERIDA           | VARCHAR2     | 62          | Y        
+      ----------------------+-----------+-------------------------+--------------+-------------+----------
+      48 linha(s) exibida(s) em 0.08s
+[10:59:11] #02 SELECT  SELECT uc.constraint_name, uc.constraint_type, LISTAGG(ucc.column_name, ', ') WITHIN GR...
+      -------------------------+-----------------+---------
+       CONSTRAINT_NAME         | CONSTRAINT_TYPE | COLUNAS 
+      -------------------------+-----------------+---------
+       PK_RISCO_ALUNO_SNAPSHOT | P               | NOME    
+      -------------------------+-----------------+---------
+      1 linha(s) exibida(s) em 0.00s
+[10:59:11] #03 SELECT  SELECT TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI:SS.FF3 TZH:TZM') inicio_execucao, SYS_...
+      --------------------------------+---------+-----------
+       INICIO_EXECUCAO                | USUARIO | CONTAINER 
+      --------------------------------+---------+-----------
+       2026-09-09 13:59:11.270 +00:00 | STARTUP | FREEPDB1  
+      --------------------------------+---------+-----------
+      1 linha(s) exibida(s) em 0.00s
+[10:59:11] #04 CREATE  CREATE TABLE IF NOT EXISTS RISCO_ALUNO_STG ( NOME VARCHAR2(30 CHAR) NOT NULL, DT_CORTE ...
+      OK em 0.00s
+[10:59:11] #05 TRUNCATE TRUNCATE TABLE RISCO_ALUNO_STG
+      OK em 0.08s
+[10:59:11] #06 INSERT  INSERT INTO RISCO_ALUNO_STG ( NOME, DT_CORTE, NUM_FASE_ATUAL, NOME_FASE, RECENCIA_DIAS,...
+      OK - 203 linha(s) afetada(s) em 18.26s
+[10:59:29] #07 COMMIT  COMMIT
+      OK em 0.00s
+[10:59:29] #08 SELECT  SELECT COUNT(*) linhas_stg, COUNT(DISTINCT NOME) alunos_distintos, TO_CHAR(MAX(DT_CORTE...
+      ------------+------------------+------------
+       LINHAS_STG | ALUNOS_DISTINTOS | DT_CORTE   
+      ------------+------------------+------------
+       203        | 203              | 2026-08-26 
+      ------------+------------------+------------
+      1 linha(s) exibida(s) em 0.00s
+[10:59:29] #09 CREATE  CREATE TABLE IF NOT EXISTS RISCO_ALUNO_HISTORICO ( NOME VARCHAR2(30 CHAR) NOT NULL, DT_...
+      OK em 0.00s
+[10:59:29] #10 MERGE   MERGE INTO RISCO_ALUNO_SNAPSHOT d USING RISCO_ALUNO_STG s ON (d.NOME = s.NOME) WHEN MAT...
+      OK - 203 linha(s) afetada(s) em 0.02s
+[10:59:29] #11 MERGE   MERGE INTO RISCO_ALUNO_HISTORICO h USING (SELECT s.NOME, s.DT_CORTE, s.NUM_FASE_ATUAL, ...
+      OK - 203 linha(s) afetada(s) em 0.01s
+[10:59:29] #12 MERGE   MERGE INTO RISCO_ALUNO_SNAPSHOT d USING VW_RISCO_TRANSICAO_ATUAL t ON (d.NOME = t.NOME ...
+      OK - 203 linha(s) afetada(s) em 4.09s
+[10:59:33] #13 COMMIT  COMMIT
+      OK em 0.01s
+[10:59:33] #14 SELECT  SELECT 'RISCO_ALUNO_SNAPSHOT' tabela, COUNT(*) linhas, COUNT(DISTINCT NOME) chaves_dist...
+      -----------------------+--------+------------------+------------+-------------------------
+       TABELA                | LINHAS | CHAVES_DISTINTAS | DT_CORTE   | ULTIMO_PROCESSAMENTO    
+      -----------------------+--------+------------------+------------+-------------------------
+       RISCO_ALUNO_SNAPSHOT  | 203    | 203              | 2026-08-26 | 2026-09-09 13:59:29.629 
+       RISCO_ALUNO_HISTORICO | 203    | 203              | 2026-08-26 | 2026-09-09 13:59:29.650 
+      -----------------------+--------+------------------+------------+-------------------------
+      2 linha(s) exibida(s) em 0.00s
+[10:59:33] #15 SELECT  SELECT NOME, COUNT(*) qtd FROM RISCO_ALUNO_SNAPSHOT GROUP BY NOME HAVING COUNT(*) > 1
+      ------+-----
+       NOME | QTD 
+      ------+-----
+      ------+-----
+      0 linha(s) exibida(s) em 0.00s
+[10:59:33] #16 SELECT  SELECT NOME, DT_CORTE, COUNT(*) qtd FROM RISCO_ALUNO_HISTORICO GROUP BY NOME, DT_CORTE ...
+      ------+----------+-----
+       NOME | DT_CORTE | QTD 
+      ------+----------+-----
+      ------+----------+-----
+      0 linha(s) exibida(s) em 0.00s
+[10:59:33] #17 SELECT  SELECT FAIXA_RISCO, COUNT(*) alunos, ROUND(AVG(PROB_INATIVO_21D), 4) prob_media, SUM(CA...
+      -------------+--------+------------+-----------
+       FAIXA_RISCO | ALUNOS | PROB_MEDIA | PENDENTES 
+      -------------+--------+------------+-----------
+       Alto        | 59     | 0.8444     | 59        
+       Médio       | 15     | 0.4719     | 15        
+       Baixo       | 129    | 0.0539     | 129       
+      -------------+--------+------------+-----------
+      3 linha(s) exibida(s) em 0.00s
+[10:59:33] #18 SELECT  SELECT MODELO_VERSAO, TO_CHAR(DT_CORTE, 'YYYY-MM-DD') dt_corte, COUNT(*) alunos FROM RI...
+      --------------------------------+------------+--------
+       MODELO_VERSAO                  | DT_CORTE   | ALUNOS 
+      --------------------------------+------------+--------
+       RETENA_INATIVO21_RF@2026-09-08 | 2026-08-26 | 203    
+      --------------------------------+------------+--------
+      1 linha(s) exibida(s) em 0.00s
+[10:59:33] #19 SELECT  SELECT TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI:SS.FF3 TZH:TZM') fim_execucao FROM dual
+      --------------------------------
+       FIM_EXECUCAO                   
+      --------------------------------
+       2026-09-09 13:59:33.765 +00:00 
+      --------------------------------
+      1 linha(s) exibida(s) em 0.00s
+[2026-09-09 10:59:33] Fim: 19 ok, 0 erro(s), 22.6s

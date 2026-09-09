@@ -1,0 +1,82 @@
+{
+  "nome": "modelo_risco_21d",
+  "algoritmo": "HistGradientBoostingClassifier (scikit-learn)",
+  "gerado_em": "2026-09-08 12:15",
+  "features": [
+    "eventos_7d",
+    "eventos_14d",
+    "eventos_28d",
+    "dias_ativos_7d",
+    "dias_ativos_14d",
+    "dias_ativos_28d",
+    "recencia_dias",
+    "progresso_28d",
+    "capitulos_distintos_28d",
+    "capitulo_max_fase_atual",
+    "pct_capitulos_fase_atual",
+    "quiz_iniciados_28d",
+    "quiz_entregues_28d",
+    "entregas_28d",
+    "tendencia",
+    "share_noite_28d",
+    "share_fim_semana_28d",
+    "semanas_ativas_ultimas_8",
+    "eventos_acumulados",
+    "dias_ativos_acumulados",
+    "fase_atual",
+    "semanas_desde_primeiro_evento"
+  ],
+  "rotulo": "inativo_21d",
+  "horizonte_dias": 21,
+  "hiperparametros": {
+    "learning_rate": 0.05,
+    "max_iter": 300,
+    "max_leaf_nodes": 8,
+    "min_samples_leaf": 40,
+    "l2_regularization": 2.0
+  },
+  "treino_final": {
+    "n_linhas": 4083,
+    "alunos": 183,
+    "taxa_positivos": 0.18099436688709283,
+    "primeiro_corte": "2026-02-01",
+    "ultimo_corte": "2026-08-02"
+  },
+  "avaliacao_temporal": {
+    "split": "treino: cortes < 2026-06-01 (com embargo de 21 dias); teste: cortes ≥ 2026-06-01",
+    "auc_roc": 0.8818852582442404,
+    "auc_pr": 0.8390818330692464,
+    "f1_05": 0.7125827814569536,
+    "precisao_top20": 0.8819875776397516,
+    "auc_roc_acionavel": 0.7427082298746198,
+    "auc_pr_acionavel": 0.4596085264954577,
+    "baseline_logistica_auc_roc": 0.8925651257340762
+  },
+  "faixas_risco": {
+    "Alto": ">= 0.6",
+    "Médio": "[0.3, 0.6)",
+    "Baixo": "< 0.3"
+  },
+  "modelo_transicao": {
+    "arquivo": "modelo_transicao_fases.joblib",
+    "features": [
+      "eventos_fase",
+      "dias_ativos_fase",
+      "span_dias",
+      "capitulo_max",
+      "pct_capitulos",
+      "quiz_iniciados",
+      "quiz_entregues",
+      "entregas",
+      "progresso",
+      "share_noite",
+      "share_fim_semana",
+      "recencia_fim_fase",
+      "atraso_inicio_dias",
+      "eventos_ultimas_2sem",
+      "tendencia_fase"
+    ],
+    "auc_roc_medio_lopo": 0.926118742074175,
+    "auc_pr_medio_lopo": 0.6508489226712479
+  }
+}

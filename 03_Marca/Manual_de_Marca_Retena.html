@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Retena — Manual de Marca v1.0</title>
+<style>
+@font-face{font-family:'Sora';src:url('fontes/Sora-Variable.ttf') format('truetype');font-weight:100 800;font-display:block}
+@font-face{font-family:'Inter';src:url('fontes/Inter-Variable.ttf') format('truetype');font-weight:100 900;font-display:block}
+:root{--azul:#0B2545;--azul2:#13315C;--verde:#2EC4B6;--ambar:#FFB703;--coral:#FF6B4A;--off:#F6F7F9;--grafite:#3A4A5C;--neutra:#94A3B8;--branco:#FFFFFF;--linha:#DCE1E8}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#7d8792;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:Inter,'Segoe UI',system-ui,sans-serif;color:var(--grafite);font-size:12px;line-height:1.5}
+@page{size:A4 landscape;margin:0}
+.pagina{width:297mm;height:210mm;position:relative;overflow:hidden;background:var(--off);page-break-after:always;break-after:page;page-break-inside:avoid;margin:0 auto}
+.pagina:last-child{page-break-after:auto;break-after:auto}
+@media screen{.pagina{margin:14px auto;box-shadow:0 6px 30px rgba(0,0,0,.35)}}
+@media print{html,body{background:none}.pagina{margin:0;box-shadow:none}}
+h1,h2,h3,h4,.sora{font-family:Sora,'Segoe UI',system-ui,sans-serif;color:var(--azul);font-weight:700;line-height:1.15}
+h3{font-size:14px;font-weight:600;margin-bottom:6px}
+p{margin-bottom:8px}
+strong{color:var(--azul);font-weight:600}
+.escura{background:var(--azul);color:#CFD8E3}
+.escura h1,.escura h2,.escura h3,.escura h4,.escura strong{color:#fff}
+.escura .cab .tit{color:#fff}
+.escura .rod{color:#7F93AD;border-top-color:rgba(255,255,255,.12)}
+.cab{position:absolute;top:0;left:0;right:0;height:70px;padding:28px 56px 0;display:flex;justify-content:space-between;align-items:flex-end}
+.cab .esq{display:flex;align-items:baseline;gap:14px}
+.cab .num{font-family:Sora;font-weight:700;color:var(--verde);font-size:14px;letter-spacing:.06em}
+.cab .tit{font-family:Sora;font-weight:700;font-size:22px;color:var(--azul)}
+.cab .sec{font-size:10px;color:var(--neutra);letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+.rod{position:absolute;bottom:0;left:56px;right:56px;height:38px;border-top:1px solid var(--linha);display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--neutra);letter-spacing:.02em}
+.rod .pg{font-feature-settings:'tnum';font-weight:500}
+.conteudo{position:absolute;top:92px;left:56px;right:56px;bottom:52px}
+.cols{display:grid;gap:28px;height:100%}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:1fr 1fr 1fr}.c4{grid-template-columns:repeat(4,1fr)}
+.lead{font-size:15px;line-height:1.5;color:var(--azul)}
+.escura .lead{color:#E6ECF3}
+.mini{font-size:10.5px;color:var(--neutra);line-height:1.4}
+.etq{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--verde);margin-bottom:6px;display:block}
+.card{background:#fff;border:1px solid var(--linha);border-radius:10px;padding:16px 18px}
+.card.azul{background:var(--azul);border-color:var(--azul);color:#CFD8E3}
+.card.azul h3{color:#fff}
+.tag{display:inline-block;padding:3px 9px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:.04em}
+.x{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:var(--coral);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;line-height:1}
+.certo,.errado{padding:12px 14px;border-radius:8px;font-size:12px}
+.certo{background:#E8F8F6;border-left:4px solid var(--verde)}
+.errado{background:#FFF0EC;border-left:4px solid var(--coral)}
+.certo b,.errado b{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.certo b{color:#1A8C82}.errado b{color:#D9482A}
+table{border-collapse:collapse;width:100%;font-size:11px}
+th{font-family:Sora;font-weight:600;color:var(--azul);text-align:left;padding:7px 10px;border-bottom:2px solid var(--azul);font-size:10.5px;letter-spacing:.04em}
+td{padding:6px 10px;border-bottom:1px solid var(--linha);vertical-align:top}
+.tnum{font-feature-settings:'tnum';font-variant-numeric:tabular-nums}
+.mono{font-family:Consolas,'Cascadia Mono',monospace;font-size:10.5px;color:var(--azul2)}
+.logo-card{border-radius:10px;display:flex;align-items:center;justify-content:center;position:relative;height:150px;border:1px solid var(--linha)}
+.logo-card img{max-width:78%;max-height:64%}
+.legenda{font-size:10.5px;color:var(--grafite);margin-top:6px;line-height:1.35}
+.legenda .mono{display:block;color:var(--neutra);font-size:9.5px;margin-top:2px}
+.foto{background-size:cover;background-position:center}
+.veu{position:relative}
+.veu::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,37,69,.88),rgba(19,49,92,.62));border-radius:inherit}
+.veu>*{position:relative}
+.sw{border-radius:10px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff}
+.sw .nome{font-family:Sora;font-weight:700;font-size:14px}
+.sw .hex{font-family:Consolas,monospace;font-size:10.5px;opacity:.9;white-space:nowrap;display:block}
+.sw .uso{font-size:10px;line-height:1.35;margin-top:6px;opacity:.85}
+.sw.claro{color:var(--azul);border:1px solid var(--linha)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-weight:600;font-size:11px}
+.pill i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.sumario li{display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px solid var(--linha);font-size:13px;color:var(--azul)}
+.sumario li .n{font-family:Sora;font-weight:700;color:var(--verde);width:26px;font-size:12px}
+.sumario li .p{margin-left:auto;font-feature-settings:'tnum';color:var(--neutra);font-size:11px}
+.sumario ul{list-style:none}
+.grupo{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--neutra);font-weight:600;margin:14px 0 2px}
+.grupo:first-child{margin-top:0}
+</style>
+</head>
+<body>
+
+<!-- 1 CAPA -->
+<section class="pagina escura" id="p1">
+  <svg style="position:absolute;right:-60px;bottom:-90px;width:620px;height:620px;opacity:.07" viewBox="0 0 120 120"><path d="M 8 72 H 32 L 43 88 L 55 50 L 65 72 H 78 L 99 44" fill="none" stroke="#2EC4B6" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><circle cx="104" cy="38" r="8.5" fill="#2EC4B6"/></svg>
+  <div style="position:absolute;left:72px;top:88px">
+    <img src="logo/retena_horizontal_claro_sobre_escuro.svg" alt="Retena" style="height:132px">
+  </div>
+  <div style="position:absolute;left:78px;top:300px;max-width:640px">
+    <p class="sora" style="font-size:34px;color:#fff;font-weight:600;line-height:1.2;margin-bottom:18px">Ninguém desiste de repente.<br>A Retena percebe antes.</p>
+    <p style="font-size:13px;color:#9FB0C6;max-width:520px">Radar de permanência para instituições de ensino superior com EAD. Machine learning dentro do Oracle Autonomous AI Database.</p>
+  </div>
+  <div style="position:absolute;left:78px;bottom:64px">
+    <p class="sora" style="font-size:20px;color:#fff;margin-bottom:6px">Manual de Marca</p>
+    <p style="font-size:12px;color:#9FB0C6;letter-spacing:.08em">v1.0 · setembro/2026</p>
+  </div>
+  <div style="position:absolute;right:72px;bottom:64px;text-align:right;font-size:11px;color:#7F93AD;letter-spacing:.06em">Startup One · Enterprise Challenge Oracle · FIAP 2026</div>
+</section>
+
+<!-- 2 SUMÁRIO -->
+<section class="pagina" id="p2">
+  <div class="cab"><div class="esq"><span class="num">02</span><span class="tit">Sumário</span></div><span class="sec">Manual de Marca · v1.0</span></div>
+  <div class="conteudo">
+    <div class="cols" style="grid-template-columns:1fr 1fr 300px;gap:44px">
+      <div class="sumario">
+        <div class="grupo">Fundamentos</div>
+        <ul>
+          <li><span class="n">03</span>A marca<span class="p">3</span></li>
+          <li><span class="n">04</span>Tagline e mensagens<span class="p">4</span></li>
+        </ul>
+        <div class="grupo">Identidade</div>
+        <ul>
+          <li><span class="n">05</span>Símbolo — a linha do batimento<span class="p">5</span></li>
+          <li><span class="n">06</span>Logotipo e versões<span class="p">6</span></li>
+          <li><span class="n">07</span>Área de proteção e tamanhos mínimos<span class="p">7</span></li>
+          <li><span class="n">08</span>Usos incorretos<span class="p">8</span></li>
+        </ul>
+      </div>
+      <div class="sumario">
+        <div class="grupo">Sistema</div>
+        <ul>
+          <li><span class="n">09</span>Paleta de cores<span class="p">9</span></li>
+          <li><span class="n">10</span>Semântica de cor no produto<span class="p">10</span></li>
+          <li><span class="n">11</span>Tipografia<span class="p">11</span></li>
+          <li><span class="n">12</span>Tom de voz<span class="p">12</span></li>
+        </ul>
+        <div class="grupo">Uso</div>
+        <ul>
+          <li><span class="n">13</span>Aplicações<span class="p">13</span></li>
+          <li><span class="n">14</span>Iconografia e ilustração<span class="p">14</span></li>
+          <li><span class="n">15</span>Checklist de entrega e arquivos<span class="p">15</span></li>
+        </ul>
+      </div>
+      <div class="card azul" style="display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <span class="etq">Como usar este manual</span>
+          <p style="font-size:12px;line-height:1.55">Este documento é a referência única da identidade da Retena. Vale para produto, apresentações, documentos, site e redes. Quando uma peça fugir do que está aqui, ela não é Retena.</p>
+          <p style="font-size:12px;line-height:1.55">Regra de ouro: a marca nunca aparece sem a linha do batimento, e nunca fala em cobrar ou vigiar.</p>
+        </div>
+        <img src="logo/retena_simbolo.svg" alt="" style="width:72px;align-self:flex-end;opacity:.95">
+      </div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">2</span></div>
+</section>
+
+<!-- 3 A MARCA -->
+<section class="pagina" id="p3">
+  <div class="cab"><div class="esq"><span class="num">03</span><span class="tit">A marca</span></div><span class="sec">Fundamentos</span></div>
+  <div class="conteudo">
+    <div class="cols" style="grid-template-columns:400px 1fr;gap:36px">
+      <div class="foto veu" style="background-image:url('img/coordenadora.jpg');border-radius:12px;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff">
+        <span class="etq">Origem do nome</span>
+        <p class="sora" style="font-size:44px;color:#fff;letter-spacing:-.02em;line-height:1;margin-bottom:14px"><span style="color:var(--verde)">reten</span>ção<br>+ ant<span style="color:var(--verde)">ena</span></p>
+        <p class="sora" style="font-size:52px;color:#fff;font-weight:700;letter-spacing:-.02em;line-height:1;margin-bottom:14px">Retena</p>
+        <p style="font-size:12px;line-height:1.5;color:#DDE5EF">Três sílabas, pronúncia natural em pt-BR, grafia sem acento. Funciona como verbo interno da IES: "passar no Retena", "a lista do Retena". Artigo feminino: <strong style="color:#fff">a</strong> Retena.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div>
+          <span class="etq">Propósito</span>
+          <p class="lead">Perceber o aluno que está indo embora enquanto ainda dá tempo de chamar de volta.</p>
+          <p>A Retena capta sinais fracos no LMS (recência de acesso, tendência de queda, capítulo travado) antes que o silêncio vire evasão. É uma antena para retenção: escuta, não vigia.</p>
+        </div>
+        <div>
+          <span class="etq">Posicionamento</span>
+          <p>Para <strong>coordenadoras de permanência e diretoras de operações acadêmicas de IES privadas com EAD</strong>, a Retena é o radar de permanência que transforma os logs brutos do LMS (Moodle/FIAP ON) em <strong>score de risco de evasão por aluno</strong>, <strong>diagnóstico de atrito de conteúdo</strong> e <strong>fila semanal de intervenção com receita preservada em R$</strong>, rodando dentro do Oracle Autonomous AI Database, sem pipeline externo e sem projeto de TI.</p>
+          <p>Diferente de BI passivo (mostra o passado) e de CRM de cobrança (age quando a mensalidade já parou), a Retena diz quem contatar, por quê, quando e o que ajustar no curso, com valor visível em 30 dias e ROI medido em rematrícula.</p>
+        </div>
+        <div class="cols c3" style="height:auto;gap:12px">
+          <div class="card" style="padding:12px 14px"><span class="etq">Categoria</span><p style="font-size:11.5px;margin:0;color:var(--azul);font-weight:500">Retenção preditiva in-database para o ensino superior EAD</p></div>
+          <div class="card" style="padding:12px 14px"><span class="etq">Personalidade</span><p style="font-size:11.5px;margin:0">Atenta, calma, próxima. Uma coordenadora experiente, não um alarme.</p></div>
+          <div class="card" style="padding:12px 14px"><span class="etq">Nomes reservados</span><p style="font-size:11.5px;margin:0">Módulos: <strong>Pulso</strong> (painel semanal), <strong>Alento</strong> (reativação), <strong>Maré</strong> (coorte e receita).</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">3</span></div>
+</section>
+
+<!-- 4 TAGLINE E MENSAGENS -->
+<section class="pagina" id="p4">
+  <div class="cab"><div class="esq"><span class="num">04</span><span class="tit">Tagline e mensagens</span></div><span class="sec">Fundamentos</span></div>
+  <div class="conteudo">
+    <div class="cols" style="grid-template-columns:1.15fr 1fr;gap:36px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card azul" style="padding:26px 28px;flex:1;display:flex;flex-direction:column;justify-content:center">
+          <span class="etq">Tagline principal · narrativa</span>
+          <p class="sora" style="font-size:31px;color:#fff;font-weight:600;line-height:1.2;letter-spacing:-.01em;margin-bottom:12px">Ninguém desiste de repente.<br>A Retena percebe antes.</p>
+          <p style="font-size:11.5px;color:#9FB0C6;margin:0">Usar em capas, abertura de pitch, site, assinatura institucional. Sempre em duas frases, sempre com ponto final. Não traduzir, não abreviar, não trocar "percebe" por "detecta".</p>
+        </div>
+        <div class="card" style="padding:22px 26px">
+          <span class="etq">Tagline de apoio · produto e ação</span>
+          <p class="sora" style="font-size:20px;font-weight:600;line-height:1.3;margin-bottom:8px">Toda segunda, quem está a duas semanas de sumir. E o que fazer.</p>
+          <p class="mini" style="margin:0">Usar em telas de produto, e-mail semanal, material comercial. Traz o ritual ("toda segunda") e a promessa concreta (prazo + ação).</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card" style="padding:20px 24px;border-left:4px solid var(--verde)">
+          <span class="etq">Frase-síntese para a banca · 222 de 300 caracteres</span>
+          <p style="font-size:13.5px;line-height:1.55;color:var(--azul);margin:0">"Coordenadores de EAD só descobrem a evasão quando a mensalidade para. A Retena lê os logs do LMS, pontua o risco de cada aluno dentro do banco Oracle e entrega toda segunda quem contatar, por quê e o que mudar no conteúdo."</p>
+        </div>
+        <div class="card" style="padding:18px 24px;flex:1">
+          <span class="etq">Hierarquia de mensagens</span>
+          <table style="margin-top:4px">
+            <tr><td style="width:26px" class="sora">1</td><td><strong>Promessa</strong> — a tagline principal. Emocional, sobre o aluno.</td></tr>
+            <tr><td class="sora">2</td><td><strong>Mecânica</strong> — a tagline de apoio. Ritual semanal, prazo, ação.</td></tr>
+            <tr><td class="sora">3</td><td><strong>Prova</strong> — número com fonte e com uma pessoa: "25 alunos parados no cap. 2", nunca "25 registros".</td></tr>
+            <tr><td class="sora">4</td><td><strong>Tecnologia</strong> — só depois: "ML in-database no Oracle Autonomous AI Database, sem pipeline externo".</td></tr>
+          </table>
+          <p class="mini" style="margin-top:12px">Grafia: <strong>Retena</strong> (R maiúsculo, sem acento, nunca em caixa alta no texto corrido). Módulos: Pulso, Alento, Maré. Produto: "radar de permanência", nunca "sistema anti-evasão".</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">4</span></div>
+</section>
+
+<!-- 5 SÍMBOLO -->
+<section class="pagina escura" id="p5">
+  <div class="cab"><div class="esq"><span class="num">05</span><span class="tit">Símbolo — a linha do batimento</span></div><span class="sec" style="color:#7F93AD">Identidade</span></div>
+  <div class="conteudo">
+    <div class="cols" style="grid-template-columns:560px 1fr;gap:40px">
+      <div style="display:flex;align-items:center;justify-content:center">
+        <svg viewBox="-6 -6 132 132" width="560" height="560" font-family="Inter" style="overflow:visible">
+          <defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,.14)" stroke-width=".4"/></pattern></defs>
+          <rect x="0" y="0" width="120" height="120" fill="url(#grid)" stroke="rgba(255,255,255,.35)" stroke-width=".5"/>
+          <!-- linhas-guia -->
+          <line x1="0" y1="72" x2="120" y2="72" stroke="rgba(255,183,3,.55)" stroke-width=".5" stroke-dasharray="2 1.5"/>
+          <line x1="0" y1="88" x2="120" y2="88" stroke="rgba(255,107,74,.6)" stroke-width=".5" stroke-dasharray="2 1.5"/>
+          <line x1="0" y1="38" x2="120" y2="38" stroke="rgba(46,196,182,.6)" stroke-width=".5" stroke-dasharray="2 1.5"/>
+          <!-- esqueleto -->
+          <path d="M 8 72 H 32 L 43 88 L 55 50 L 65 72 H 78 L 99 44" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 8 72 H 32 L 43 88 L 55 50 L 65 72 H 78 L 99 44" fill="none" stroke="#2EC4B6" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/>
+          <circle cx="104" cy="38" r="8.5" fill="#2EC4B6"/>
+          <path d="M 8 72 H 32 L 43 88 L 55 50 L 65 72 H 78 L 99 44" fill="none" stroke="#0B2545" stroke-width=".5" stroke-dasharray="1.2 1"/>
+          <!-- pontos -->
+          <g fill="#fff"><circle cx="8" cy="72" r="1.1"/><circle cx="32" cy="72" r="1.1"/><circle cx="43" cy="88" r="1.1"/><circle cx="55" cy="50" r="1.1"/><circle cx="65" cy="72" r="1.1"/><circle cx="78" cy="72" r="1.1"/><circle cx="99" cy="44" r="1.1"/><circle cx="104" cy="38" r="1.1" fill="#0B2545"/></g>
+          <!-- numeração -->
+          <g font-size="4.2" font-weight="700" fill="#fff">
+            <text x="18" y="66" text-anchor="middle">1</text>
+            <text x="38" y="86" text-anchor="middle">2</text>
+            <text x="53" y="44" text-anchor="middle">3</text>
+            <text x="71.5" y="80" text-anchor="middle">4</text>
+            <text x="86" y="52" text-anchor="middle">5</text>
+            <text x="104" y="27" text-anchor="middle">6</text>
+          </g>
+          <!-- cotas -->
+          <g font-size="3.4" fill="#CFD8E3" font-weight="500">
+            <text x="1.5" y="70.4">y 72</text><text x="1.5" y="86.4">y 88</text><text x="1.5" y="36.4">y 38</text>
+            <text x="112" y="118">120u</text>
+            <line x1="94" y1="96" x2="94" y2="104" stroke="#CFD8E3" stroke-width=".4"/><line x1="104" y1="96" x2="104" y2="104" stroke="#CFD8E3" stroke-width=".4"/><line x1="94" y1="100" x2="104" y2="100" stroke="#CFD8E3" stroke-width=".4"/>
+            <text x="99" y="108.5" text-anchor="middle">traço 10u</text>
+            <line x1="110" y1="72" x2="110" y2="88" stroke="#CFD8E3" stroke-width=".4"/><text x="111.5" y="81.2">16u</text>
+          </g>
+        </svg>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;gap:10px">
+        <p class="lead" style="margin-bottom:6px">Um pulso que ameaça cair, é sustentado e vira trilha ascendente até o ponto final: a formatura.</p>
+        <table style="font-size:11.5px;color:#CFD8E3">
+          <tr><td style="width:22px;color:var(--verde);font-family:Sora;font-weight:700;border-color:rgba(255,255,255,.1)">1</td><td style="border-color:rgba(255,255,255,.1)"><strong>Linha de base</strong> (y 72) — o aluno em ritmo regular.</td></tr>
+          <tr><td style="color:var(--verde);font-family:Sora;font-weight:700;border-color:rgba(255,255,255,.1)">2</td><td style="border-color:rgba(255,255,255,.1)"><strong>Queda</strong> até y 88 — o sinal fraco: recência caindo, capítulo travado. Não toca o chão.</td></tr>
+          <tr><td style="color:var(--verde);font-family:Sora;font-weight:700;border-color:rgba(255,255,255,.1)">3</td><td style="border-color:rgba(255,255,255,.1)"><strong>Sustentação</strong> — a intervenção. A retomada é mais íngreme que a queda: recupera mais rápido do que se perdeu.</td></tr>
+          <tr><td style="color:var(--verde);font-family:Sora;font-weight:700;border-color:rgba(255,255,255,.1)">4</td><td style="border-color:rgba(255,255,255,.1)"><strong>Novo patamar</strong> — de volta à linha de base, estável.</td></tr>
+          <tr><td style="color:var(--verde);font-family:Sora;font-weight:700;border-color:rgba(255,255,255,.1)">5</td><td style="border-color:rgba(255,255,255,.1)"><strong>Trilha ascendente</strong> — progresso contínuo, ~53° de inclinação.</td></tr>
+          <tr><td style="color:var(--verde);font-family:Sora;font-weight:700;border-color:rgba(255,255,255,.1)">6</td><td style="border-color:rgba(255,255,255,.1)"><strong>Ponto final</strong> (104, 38; r 8,5u) — a formatura. Separado da linha: o futuro ainda não chegou, mas está à vista.</td></tr>
+        </table>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px">
+          <div style="background:rgba(255,255,255,.06);border-radius:8px;padding:10px 12px">
+            <span class="etq">Grade e proporções</span>
+            <p class="mini" style="color:#9FB0C6;margin:0">Módulo de 120 unidades. Traço de 10u (1/12 do módulo), terminações e junções arredondadas. Ponto com raio 8,5u (0,85 do traço). Amplitude do pulso: 16u abaixo e 22u acima da base.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border-radius:8px;padding:10px 12px">
+            <span class="etq">Regras</span>
+            <p class="mini" style="color:#9FB0C6;margin:0">Não redesenhar, não suavizar em curvas, não animar como eletrocardiograma. Versão principal: verde-sinal sobre azul-profundo. Mono azul para documentos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">5</span></div>
+</section>
+
+<!-- 6 LOGOTIPO E VERSÕES -->
+<section class="pagina" id="p6">
+  <div class="cab"><div class="esq"><span class="num">06</span><span class="tit">Logotipo e versões</span></div><span class="sec">Identidade</span></div>
+  <div class="conteudo">
+    <div class="cols c4" style="height:auto;gap:16px">
+      <div>
+        <div class="logo-card" style="background:var(--azul);border-color:var(--azul)"><img src="logo/retena_horizontal_claro_sobre_escuro.svg" alt=""><span class="tag" style="position:absolute;top:10px;left:10px;background:var(--verde);color:var(--azul)">PRINCIPAL</span></div>
+        <p class="legenda"><strong>Horizontal · claro sobre escuro</strong><br>Slides, site, produto, fundos azul-profundo ou azul-médio.<span class="mono">retena_horizontal_claro_sobre_escuro.svg</span></p>
+      </div>
+      <div>
+        <div class="logo-card" style="background:#fff"><img src="logo/retena_horizontal_escuro_sobre_claro.svg" alt=""></div>
+        <p class="legenda"><strong>Horizontal · escuro sobre claro</strong><br>Documentos, papel, fundos brancos e off-white.<span class="mono">retena_horizontal_escuro_sobre_claro.svg</span></p>
+      </div>
+      <div>
+        <div class="logo-card" style="background:var(--off)"><img src="logo/retena_horizontal_mono_azul.svg" alt=""></div>
+        <p class="legenda"><strong>Mono azul</strong><br>Uma cor: Word, carimbo, gravação, impressão P&amp;B (converter para preto).<span class="mono">retena_horizontal_mono_azul.svg</span></p>
+      </div>
+      <div>
+        <div class="logo-card" style="background:var(--azul2);border-color:var(--azul2)"><img src="logo/retena_horizontal_mono_branco.svg" alt=""></div>
+        <p class="legenda"><strong>Mono branco</strong><br>Sobre foto com véu e fundos escuros fora da paleta (co-branding).<span class="mono">retena_horizontal_mono_branco.svg</span></p>
+      </div>
+      <div>
+        <div class="logo-card" style="background:var(--azul);border-color:var(--azul)"><img src="logo/retena_vertical_claro_sobre_escuro.svg" alt="" style="max-height:80%"></div>
+        <p class="legenda"><strong>Vertical · claro sobre escuro</strong><br>Formatos quadrados, crachá, abertura de vídeo.<span class="mono">retena_vertical_claro_sobre_escuro.svg</span></p>
+      </div>
+      <div>
+        <div class="logo-card" style="background:#fff"><img src="logo/retena_vertical_escuro_sobre_claro.svg" alt="" style="max-height:80%"></div>
+        <p class="legenda"><strong>Vertical · escuro sobre claro</strong><br>Mesmos usos, em fundo claro.<span class="mono">retena_vertical_escuro_sobre_claro.svg</span></p>
+      </div>
+      <div>
+        <div class="logo-card" style="background:var(--azul);border-color:var(--azul)"><img src="logo/retena_horizontal_com_tagline_claro.svg" alt="" style="max-width:88%"></div>
+        <p class="legenda"><strong>Com tagline · claro</strong><br>Capa de apresentação, capa de documento, hero do site.<span class="mono">retena_horizontal_com_tagline_claro.svg</span></p>
+      </div>
+      <div>
+        <div class="logo-card" style="background:#fff"><img src="logo/retena_horizontal_com_tagline_escuro.svg" alt="" style="max-width:88%"></div>
+        <p class="legenda"><strong>Com tagline · escuro</strong><br>Versão para fundo claro. Só em tamanhos ≥ 200 px de largura.<span class="mono">retena_horizontal_com_tagline_escuro.svg</span></p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:18px">
+      <div class="card" style="padding:12px 16px"><span class="etq">Ordem de preferência</span><p class="mini" style="margin:0;color:var(--grafite)">1. Claro sobre escuro &nbsp;2. Escuro sobre claro &nbsp;3. Mono azul &nbsp;4. Mono branco. A versão vertical só quando a horizontal não couber.</p></div>
+      <div class="card" style="padding:12px 16px"><span class="etq">Cores fixas</span><p class="mini" style="margin:0;color:var(--grafite)">Símbolo sempre em verde-sinal (#2EC4B6) nas versões coloridas. Nome em branco (fundo escuro) ou azul-profundo (fundo claro). Nunca gradiente, sombra ou contorno.</p></div>
+      <div class="card" style="padding:12px 16px"><span class="etq">Formatos</span><p class="mini" style="margin:0;color:var(--grafite)">SVG para tela e impressão vetorial; PNG (fundo transparente) quando SVG não for aceito. Os arquivos *_preview.png têm fundo e servem só para conferência.</p></div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">6</span></div>
+</section>
+
+<!-- 7 ÁREA DE PROTEÇÃO E TAMANHOS MÍNIMOS -->
+<section class="pagina" id="p7">
+  <div class="cab"><div class="esq"><span class="num">07</span><span class="tit">Área de proteção e tamanhos mínimos</span></div><span class="sec">Identidade</span></div>
+  <div class="conteudo">
+    <div class="cols" style="grid-template-columns:1fr 1fr;gap:32px;height:auto">
+      <div class="card" style="background:var(--azul);border-color:var(--azul);height:330px;display:flex;align-items:center;justify-content:center;position:relative">
+        <!-- logo 424x120 em altura 110px: símbolo ≈ 58px de altura → margem 29px -->
+        <div style="position:relative;padding:29px;border:1.5px dashed rgba(255,183,3,.9);border-radius:4px">
+          <img src="logo/retena_horizontal_claro_sobre_escuro.svg" alt="" style="height:110px;display:block">
+          <span style="position:absolute;left:5px;top:50%;transform:translateY(-50%);color:var(--ambar);font-size:10px;font-weight:600">½X</span>
+          <span style="position:absolute;right:5px;top:50%;transform:translateY(-50%);color:var(--ambar);font-size:10px;font-weight:600">½X</span>
+          <span style="position:absolute;top:6px;left:50%;transform:translateX(-50%);color:var(--ambar);font-size:10px;font-weight:600">½X</span>
+          <span style="position:absolute;bottom:6px;left:50%;transform:translateX(-50%);color:var(--ambar);font-size:10px;font-weight:600">½X</span>
+          <!-- cota X = altura do símbolo -->
+          <div style="position:absolute;right:-30px;top:56px;height:58px;border-right:1.5px solid var(--verde);border-top:1.5px solid var(--verde);border-bottom:1.5px solid var(--verde);width:8px"></div>
+          <span style="position:absolute;right:-50px;top:76px;color:var(--verde);font-size:12px;font-weight:700;font-family:Sora">X</span>
+        </div>
+        <span class="tag" style="position:absolute;left:14px;bottom:12px;background:rgba(255,255,255,.1);color:#CFD8E3">Área de proteção = ½ X em todos os lados · X = altura do símbolo</span>
+      </div>
+      <div class="card" style="height:330px;display:flex;align-items:center;justify-content:space-around;position:relative">
+        <div style="position:relative;padding:32px;border:1.5px dashed var(--ambar);border-radius:4px">
+          <img src="logo/retena_simbolo_mono_azul.svg" alt="" style="height:120px;display:block">
+          <span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);color:#C48A00;font-size:10px;font-weight:600">½X</span>
+          <span style="position:absolute;top:8px;left:50%;transform:translateX(-50%);color:#C48A00;font-size:10px;font-weight:600">½X</span>
+        </div>
+        <div style="position:relative;padding:30px;border:1.5px dashed var(--ambar);border-radius:4px">
+          <img src="logo/retena_vertical_escuro_sobre_claro.svg" alt="" style="height:150px;display:block">
+          <span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);color:#C48A00;font-size:10px;font-weight:600">½X</span>
+          <span style="position:absolute;top:7px;left:50%;transform:translateX(-50%);color:#C48A00;font-size:10px;font-weight:600">½X</span>
+        </div>
+        <span class="tag" style="position:absolute;left:14px;bottom:12px;background:var(--off);color:var(--grafite)">Símbolo e vertical: mesma regra, X = altura do símbolo em cada versão</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:16px;margin-top:20px;align-items:stretch">
+      <div class="card" style="padding:14px 18px">
+        <span class="etq">Tamanhos mínimos</span>
+        <table style="font-size:11px">
+          <tr><th>Versão</th><th>Tela</th><th>Impresso</th></tr>
+          <tr><td>Símbolo</td><td class="tnum">24 px de altura</td><td class="tnum">6 mm</td></tr>
+          <tr><td>Horizontal</td><td class="tnum">120 px de largura</td><td class="tnum">30 mm</td></tr>
+          <tr><td>Vertical</td><td class="tnum">64 px de altura</td><td class="tnum">16 mm</td></tr>
+          <tr><td>Com tagline</td><td class="tnum">200 px de largura</td><td class="tnum">50 mm</td></tr>
+        </table>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><img src="logo/retena_simbolo_mono_azul.svg" alt="" style="height:24px"><span class="mini">Símbolo a 24 px (tamanho real)</span></div>
+      <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><img src="logo/retena_horizontal_escuro_sobre_claro.svg" alt="" style="width:120px"><span class="mini">Horizontal a 120 px (tamanho real)</span></div>
+      <div class="card" style="padding:14px 16px"><span class="etq">Abaixo do mínimo</span><p class="mini" style="margin:0;color:var(--grafite)">Use só o símbolo (favicon, avatar, ícone de app). Em 16 px, use <span class="mono">retena_favicon.svg</span>, que já traz o fundo azul.</p></div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">7</span></div>
+</section>
+
+<!-- 8 USOS INCORRETOS -->
+<section class="pagina" id="p8">
+  <div class="cab"><div class="esq"><span class="num">08</span><span class="tit">Usos incorretos</span></div><span class="sec">Identidade</span></div>
+  <div class="conteudo">
+    <p style="max-width:760px;margin-bottom:14px">Os arquivos oficiais já resolvem cor, proporção e espaçamento. Qualquer alteração fora deles descaracteriza a marca. Os exemplos abaixo são os erros mais prováveis.</p>
+    <div class="cols c3" style="height:auto;gap:18px">
+      <div>
+        <div class="logo-card" style="background:var(--azul);border-color:var(--azul);height:158px;overflow:hidden"><img src="logo/retena_horizontal_claro_sobre_escuro.svg" alt="" style="height:52px;max-width:none;transform:scaleX(1.45)"><span class="x">✕</span></div>
+        <p class="legenda"><strong>Não distorcer.</strong> Nunca esticar ou comprimir. Redimensione sempre com a proporção travada.</p>
+      </div>
+      <div>
+        <div class="logo-card" style="background:var(--azul);border-color:var(--azul);height:158px;overflow:hidden"><img src="logo/retena_horizontal_claro_sobre_escuro.svg" alt="" style="height:56px;transform:rotate(-14deg)"><span class="x">✕</span></div>
+        <p class="legenda"><strong>Não rotacionar.</strong> A linha do batimento só faz sentido na horizontal. Nem inclinada, nem na vertical em lombadas.</p>
+      </div>
+      <div>
+        <div class="logo-card" style="background:#fff;height:158px;gap:10px"><svg viewBox="0 0 120 120" width="52" height="52"><path d="M 8 72 H 32 L 43 88 L 55 50 L 65 72 H 78 L 99 44" fill="none" stroke="#E11D48" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><circle cx="104" cy="38" r="8.5" fill="#7C3AED"/></svg><span class="sora" style="font-size:34px;color:#7C3AED;letter-spacing:-.02em">Retena</span><span class="x">✕</span></div>
+        <p class="legenda"><strong>Não trocar cores fora da paleta.</strong> Vermelho, roxo, gradientes ou "a cor da IES". Só as versões oficiais.</p>
+      </div>
+      <div>
+        <div class="logo-card" style="background:#fff;height:158px;gap:10px"><svg viewBox="0 0 64 40" width="60" height="38"><path d="M2 20 C 12 4, 52 4, 62 20 C 52 36, 12 36, 2 20 Z" fill="none" stroke="#0B2545" stroke-width="4" stroke-linejoin="round"/><circle cx="32" cy="20" r="8" fill="#2EC4B6"/><circle cx="32" cy="20" r="3.5" fill="#0B2545"/></svg><span class="sora" style="font-size:34px;letter-spacing:-.02em">Retena</span><span class="x">✕</span></div>
+        <p class="legenda"><strong>Não usar ícone de olho ou retina.</strong> Reforça a confusão sonora com "retina" e a ideia de vigilância. Também não: âncora, pinça, alvo.</p>
+      </div>
+      <div>
+        <div class="logo-card foto" style="background-image:url('img/campus.jpg');height:158px;border:none"><img src="logo/retena_horizontal_claro_sobre_escuro.svg" alt="" style="height:52px"><span class="x">✕</span></div>
+        <p class="legenda"><strong>Não aplicar sobre foto sem véu.</strong> Sobre imagem, use sempre o véu azul (p. 14) e a versão claro sobre escuro ou mono branco.</p>
+      </div>
+      <div>
+        <div class="logo-card" style="background:#fff;height:158px;gap:12px;flex-direction:column"><span class="sora" style="font-size:36px;letter-spacing:-.02em">Retena</span><span class="mini" style="color:var(--coral);font-weight:600">nome sem o batimento</span><span class="x">✕</span></div>
+        <p class="legenda"><strong>Não separar símbolo do nome em peças externas.</strong> O nome só aparece sozinho no texto corrido. Em peça de marca, a linha do batimento vai junto.</p>
+      </div>
+    </div>
+    <div style="display:flex;gap:16px;margin-top:16px">
+      <div class="errado" style="flex:1"><b>Também não</b>Sombra, contorno, efeito 3D, transparência no nome, fundo em âmbar ou coral, símbolo como marcador de lista, símbolo como gráfico real de dados.</div>
+      <div class="certo" style="flex:1"><b>Em dúvida</b>Use o arquivo oficial mais próximo do contexto, na área de proteção, sobre azul-profundo ou off-white. Se ainda não resolver, fale com a equipe de marca.</div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">8</span></div>
+</section>
+
+<!-- 9 PALETA -->
+<section class="pagina" id="p9">
+  <div class="cab"><div class="esq"><span class="num">09</span><span class="tit">Paleta de cores</span></div><span class="sec">Sistema</span></div>
+  <div class="conteudo">
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:12px;height:250px">
+      <div class="sw" style="background:#0B2545"><span class="nome">Azul-profundo</span><span class="hex">#0B2545</span><span class="hex" style="opacity:.75">RGB 11 · 37 · 69</span><span class="uso">Marca, títulos, fundos de abertura. Confiança institucional.</span></div>
+      <div class="sw" style="background:#13315C"><span class="nome">Azul-médio</span><span class="hex">#13315C</span><span class="hex" style="opacity:.75">RGB 19 · 49 · 92</span><span class="uso">Cartões e superfícies sobre o azul-profundo; hover; gradientes de véu.</span></div>
+      <div class="sw" style="background:#2EC4B6;color:#0B2545"><span class="nome">Verde-sinal</span><span class="hex">#2EC4B6</span><span class="hex" style="opacity:.75">RGB 46 · 196 · 182</span><span class="uso">Símbolo, aluno ativo/reativado, faixa verde, botões primários sobre azul.</span></div>
+      <div class="sw" style="background:#FFB703;color:#0B2545"><span class="nome">Âmbar-alerta</span><span class="hex">#FFB703</span><span class="hex" style="opacity:.75">RGB 255 · 183 · 3</span><span class="uso">Faixa amarela, risco moderado, destaques de atenção.</span></div>
+      <div class="sw" style="background:#FF6B4A;color:#0B2545"><span class="nome">Coral-urgência</span><span class="hex">#FF6B4A</span><span class="hex" style="opacity:.75">RGB 255 · 107 · 74</span><span class="uso">Faixa vermelha. Urgência humana, não alarme frio. Uso restrito.</span></div>
+      <div class="sw claro" style="background:#F6F7F9"><span class="nome">Off-white</span><span class="hex">#F6F7F9</span><span class="hex" style="opacity:.75">RGB 246 · 247 · 249</span><span class="uso">Fundo de UI, slides de conteúdo e documentos.</span></div>
+      <div class="sw" style="background:#3A4A5C"><span class="nome">Grafite</span><span class="hex">#3A4A5C</span><span class="hex" style="opacity:.75">RGB 58 · 74 · 92</span><span class="uso">Texto corrido, dados em tabela, ícones secundários.</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:28px;margin-top:20px">
+      <div>
+        <span class="etq">Proporção de uso</span>
+        <div style="display:flex;height:34px;border-radius:8px;overflow:hidden;font-size:10.5px;font-weight:600">
+          <div style="width:60%;background:#0B2545;color:#fff;display:flex;align-items:center;padding-left:12px;white-space:nowrap">60% azul-profundo + off-white</div>
+          <div style="width:25%;background:#13315C;color:#fff;display:flex;align-items:center;padding-left:12px;white-space:nowrap;font-size:10px">25% azul-médio/grafite</div>
+          <div style="width:10%;background:#2EC4B6;color:#0B2545;display:flex;align-items:center;justify-content:center">10%</div>
+          <div style="width:5%;background:linear-gradient(180deg,#FFB703 50%,#FF6B4A 50%);color:#0B2545;display:flex;align-items:center;justify-content:center">5%</div>
+        </div>
+        <p class="mini" style="margin-top:8px">Base (60%): fundos e texto. Apoio (25%): superfícies, dados, ícones. Acento (10%): verde-sinal para marca, progresso e ação primária. Sinalização (5%): âmbar e coral só com significado semântico, nunca decorativos.</p>
+        <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+          <span class="pill" style="background:#fff;border:1px solid var(--linha);color:var(--grafite)"><i style="background:#94A3B8"></i>Neutra #94A3B8 · linhas, legendas, estados desabilitados</span>
+          <span class="pill" style="background:#fff;border:1px solid var(--linha);color:var(--grafite)"><i style="background:#fff;border:1px solid #DCE1E8"></i>Branco #FFFFFF · cartões sobre off-white</span>
+        </div>
+      </div>
+      <div>
+        <span class="etq">Contraste (WCAG 2.1 · mínimo AA 4,5:1 para texto)</span>
+        <table style="font-size:10.5px">
+          <tr><th>Combinação</th><th style="text-align:right">Razão</th><th>Uso</th></tr>
+          <tr><td><span class="pill" style="background:#0B2545;color:#fff;padding:2px 8px">Branco sobre azul-profundo</span></td><td class="tnum" style="text-align:right">15,6:1</td><td>Texto em qualquer tamanho</td></tr>
+          <tr><td><span class="pill" style="background:#F6F7F9;color:#0B2545;padding:2px 8px;border:1px solid var(--linha)">Azul-profundo sobre off-white</span></td><td class="tnum" style="text-align:right">14,3:1</td><td>Texto em qualquer tamanho</td></tr>
+          <tr><td><span class="pill" style="background:#fff;color:#3A4A5C;padding:2px 8px;border:1px solid var(--linha)">Grafite sobre branco</span></td><td class="tnum" style="text-align:right">8,6:1</td><td>Texto corrido</td></tr>
+          <tr><td><span class="pill" style="background:#0B2545;color:#2EC4B6;padding:2px 8px">Verde-sinal sobre azul-profundo</span></td><td class="tnum" style="text-align:right">7,1:1</td><td>Texto, ícones, símbolo</td></tr>
+          <tr><td><span class="pill" style="background:#0B2545;color:#FFB703;padding:2px 8px">Âmbar sobre azul-profundo</span></td><td class="tnum" style="text-align:right">8,8:1</td><td>Texto e ícones</td></tr>
+          <tr><td><span class="pill" style="background:#0B2545;color:#FF6B4A;padding:2px 8px">Coral sobre azul-profundo</span></td><td class="tnum" style="text-align:right">5,5:1</td><td>Texto ≥ 12 px</td></tr>
+          <tr><td><span class="pill" style="background:#fff;color:#2EC4B6;padding:2px 8px;border:1px solid var(--linha)">Verde, âmbar ou coral sobre claro</span></td><td class="tnum" style="text-align:right;color:var(--coral)">&lt; 3:1</td><td><strong>Nunca como texto.</strong> Só preenchimento, com rótulo em azul ou grafite</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">9</span></div>
+</section>
+
+<!-- 10 SEMÂNTICA DE COR -->
+<section class="pagina" id="p10">
+  <div class="cab"><div class="esq"><span class="num">10</span><span class="tit">Semântica de cor no produto</span></div><span class="sec">Sistema</span></div>
+  <div class="conteudo">
+    <p style="max-width:820px;margin-bottom:14px">No produto, cor é informação. Cada uma das três cores de sinal tem um único significado e vem sempre acompanhada de texto ou ícone. Ninguém deve precisar distinguir cores para entender o risco.</p>
+    <div class="cols c3" style="height:auto;gap:18px">
+      <div class="card" style="border-top:6px solid var(--verde)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><h3 style="margin:0">Verde-sinal</h3><span class="pill" style="background:#E8F8F6;color:#0B2545"><i style="background:#2EC4B6"></i>Baixo risco</span></div>
+        <p style="font-size:11.5px"><strong>Significa:</strong> aluno ativo, ritmo regular, reativado após contato, meta atingida, progresso.</p>
+        <p style="font-size:11.5px"><strong>Onde:</strong> faixa verde do score, badge "Reativado", linha do batimento, botão primário, confirmações.</p>
+        <p class="mini" style="margin:0">Celebre retornos: "12 alunos voltaram esta semana" ganha verde. É a cor mais frequente da interface depois dos azuis.</p>
+      </div>
+      <div class="card" style="border-top:6px solid var(--ambar)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><h3 style="margin:0">Âmbar-alerta</h3><span class="pill" style="background:#FFF4D6;color:#0B2545"><i style="background:#FFB703"></i>Risco médio</span></div>
+        <p style="font-size:11.5px"><strong>Significa:</strong> sinal fraco detectado, tendência de queda, atenção nesta semana.</p>
+        <p style="font-size:11.5px"><strong>Onde:</strong> faixa amarela do score, badge "Atenção", destaque de capítulo com atrito, prazos próximos.</p>
+        <p class="mini" style="margin:0">Âmbar convida a olhar, não a correr. Sempre com o motivo em linguagem simples ao lado: "sem acesso há 9 dias".</p>
+      </div>
+      <div class="card" style="border-top:6px solid var(--coral)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><h3 style="margin:0">Coral-urgência</h3><span class="pill" style="background:#FFE9E3;color:#0B2545"><i style="background:#FF6B4A"></i>Alto risco</span></div>
+        <p style="font-size:11.5px"><strong>Significa:</strong> alta probabilidade de sair nas próximas duas semanas. Prioridade da fila.</p>
+        <p style="font-size:11.5px"><strong>Onde:</strong> faixa vermelha do score, topo da fila de segunda, receita em risco. <strong>Uso restrito:</strong> nunca em fundos grandes, títulos ou decoração.</p>
+        <p class="mini" style="margin:0">Coral é urgência humana: "vale ligar hoje". Nunca vermelho puro (#FF0000, #E00), nunca sirene, piscar ou ícone de perigo.</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:24px;margin-top:18px">
+      <div class="card">
+        <span class="etq">Faixas do score de risco (0–100)</span>
+        <div style="display:flex;height:26px;border-radius:6px;overflow:hidden;margin:6px 0 4px;font-size:10.5px;font-weight:600;color:#0B2545">
+          <div style="width:40%;background:#2EC4B6;display:flex;align-items:center;padding-left:10px">Baixo · 0–39</div>
+          <div style="width:30%;background:#FFB703;display:flex;align-items:center;padding-left:10px">Médio · 40–69</div>
+          <div style="width:30%;background:#FF6B4A;display:flex;align-items:center;padding-left:10px">Alto · 70–100</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:9.5px;color:var(--neutra)" class="tnum"><span>0</span><span>40</span><span>70</span><span>100</span></div>
+        <p class="mini" style="margin-top:8px">Cortes ilustrativos; os limites reais vêm da calibração do modelo em cada IES. Ao lado do score, sempre o motivo principal e a ação sugerida. Sem dados suficientes: cinza neutro com rótulo "Sem sinal ainda", nunca verde.</p>
+      </div>
+      <div class="card">
+        <span class="etq">Badges de risco (componentes)</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 10px">
+          <span class="pill" style="background:#E8F8F6;color:#0B2545;border:1px solid #BFEDE8"><i style="background:#2EC4B6"></i>Ativo</span>
+          <span class="pill" style="background:#E8F8F6;color:#0B2545;border:1px solid #BFEDE8"><i style="background:#2EC4B6"></i>Reativado ↑</span>
+          <span class="pill" style="background:#FFF4D6;color:#0B2545;border:1px solid #FFE3A0"><i style="background:#FFB703"></i>Atenção</span>
+          <span class="pill" style="background:#FFE9E3;color:#0B2545;border:1px solid #FFC9BB"><i style="background:#FF6B4A"></i>Alto risco</span>
+          <span class="pill" style="background:#EEF1F5;color:#3A4A5C;border:1px solid #DCE1E8"><i style="background:#94A3B8"></i>Sem sinal ainda</span>
+        </div>
+        <p class="mini" style="margin:0">Fundo em tinta clara da cor (12–15%), ponto sólido, texto sempre em azul-profundo. Sobre fundo escuro, inverta: ponto e texto na cor, sem fundo. Nunca texto colorido sobre claro.</p>
+      </div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">10</span></div>
+</section>
+
+<!-- 11 TIPOGRAFIA -->
+<section class="pagina" id="p11">
+  <div class="cab"><div class="esq"><span class="num">11</span><span class="tit">Tipografia</span></div><span class="sec">Sistema</span></div>
+  <div class="conteudo">
+    <div class="cols" style="grid-template-columns:300px 1fr;gap:32px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card azul" style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:20px">
+          <div><span class="etq">Títulos</span><p class="sora" style="font-size:22px;color:#fff;margin:0">Sora</p></div>
+          <p class="sora" style="font-size:96px;color:#fff;line-height:1;letter-spacing:-.03em;margin:0">Aa</p>
+          <div><p style="font-size:11px;color:#9FB0C6;margin:0">Pesos 600 (SemiBold) e 700 (Bold). Geométrica, aberta, com personalidade sem ruído. Espaçamento -1% a -2% acima de 24 px.</p></div>
+        </div>
+        <div class="card" style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:20px">
+          <div><span class="etq">Texto, UI e dados</span><p class="sora" style="font-size:22px;margin:0">Inter</p></div>
+          <p style="font-family:Inter;font-weight:500;font-size:96px;color:var(--azul);line-height:1;letter-spacing:-.02em;margin:0">Aa</p>
+          <div><p class="mini" style="margin:0;color:var(--grafite)">Pesos 400 (Regular) e 500 (Medium). Números tabulares em tabelas e KPIs (<span class="mono">font-feature-settings: "tnum"</span>). Fallback: Segoe UI, system-ui.</p></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span class="etq">Escala tipográfica</span>
+        <table style="font-size:11px">
+          <tr><th style="width:110px">Nível</th><th style="width:150px">Especificação</th><th>Exemplo</th></tr>
+          <tr><td>Display</td><td class="mini">Sora 700 · 48/52 · -2%</td><td><span class="sora" style="font-size:40px;letter-spacing:-.02em;line-height:1.1">Percebe antes.</span></td></tr>
+          <tr><td>Título 1</td><td class="mini">Sora 700 · 32/38 · -1%</td><td><span class="sora" style="font-size:28px;letter-spacing:-.01em;line-height:1.15">Fila da semana</span></td></tr>
+          <tr><td>Título 2</td><td class="mini">Sora 600 · 24/30</td><td><span class="sora" style="font-size:21px;font-weight:600;line-height:1.2">Atrito de conteúdo por capítulo</span></td></tr>
+          <tr><td>Título 3</td><td class="mini">Sora 600 · 18/24</td><td><span class="sora" style="font-size:16px;font-weight:600">Receita preservada em 30 dias</span></td></tr>
+          <tr><td>Corpo</td><td class="mini">Inter 400 · 14/21</td><td style="font-size:13px;color:var(--grafite)">A Retena lê os logs do LMS e pontua o risco de cada aluno dentro do banco, sem pipeline externo.</td></tr>
+          <tr><td>Corpo ênfase</td><td class="mini">Inter 500 · 14/21</td><td style="font-size:13px;font-weight:500;color:var(--azul)">25 alunos parados no capítulo 2 — sugerimos revisar o vídeo da aula 2.3.</td></tr>
+          <tr><td>Legenda</td><td class="mini">Inter 500 · 11/14 · +8% caixa alta</td><td style="font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--neutra)">Atualizado segunda, 07:00 · fonte: LMS</td></tr>
+          <tr><td>Dado</td><td class="mini">Inter 500 · 28/32 · tnum</td><td><span class="tnum" style="font-size:26px;font-weight:500;color:var(--azul)">R$ 184.300</span> <span class="mini" style="margin-left:6px">receita em risco</span></td></tr>
+        </table>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:2px">
+          <div class="card" style="padding:12px 16px;display:flex;gap:18px;align-items:center">
+            <div style="flex:none"><span class="etq">Números tabulares</span>
+              <div class="tnum" style="display:grid;grid-template-columns:auto auto;column-gap:8px;font-size:13px;font-weight:500;color:var(--azul);line-height:1.5;white-space:nowrap"><span style="text-align:right">1.204</span><span>alunos</span><span style="text-align:right">318</span><span>em atenção</span><span style="text-align:right">97</span><span>alto risco</span></div></div>
+            <p class="mini" style="margin:0">Colunas alinham, o olho compara. Obrigatório em tabelas, KPIs e listas com valores.</p>
+          </div>
+          <div class="card" style="padding:12px 16px"><span class="etq">Regras</span><p class="mini" style="margin:0;color:var(--grafite)">Nunca Sora em texto corrido nem Inter em título de slide. Sem itálico decorativo, sem caixa alta em frases longas, sem justificar. Máximo de 2 pesos por peça além do corpo.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">11</span></div>
+</section>
+
+<!-- 12 TOM DE VOZ -->
+<section class="pagina" id="p12">
+  <div class="cab"><div class="esq"><span class="num">12</span><span class="tit">Tom de voz</span></div><span class="sec">Sistema</span></div>
+  <div class="conteudo">
+    <div class="cols c3" style="height:auto;gap:16px">
+      <div class="card azul" style="padding:16px 18px"><span class="etq">Humano</span><p style="font-size:12px;margin:0">Fala de pessoas, não de registros. Todo número vem com um aluno, uma turma ou uma coordenadora ao lado. "25 alunos parados no cap. 2", nunca "25 registros com flag".</p></div>
+      <div class="card azul" style="padding:16px 18px"><span class="etq">Direto</span><p style="font-size:12px;margin:0">Frases curtas. Um motivo em linguagem simples ao lado de cada score. Verbo de ação no fim: "...E aja." Sem jargão de dados quando o leitor é coordenação.</p></div>
+      <div class="card azul" style="padding:16px 18px"><span class="etq">Sem alarmismo</span><p style="font-size:12px;margin:0">A Retena percebe antes e chama de volta. Não cobra, não vigia, não prevê "com 100%". Fala de probabilidade e priorização, e rotula estimativas como estimativas.</p></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1.25fr;gap:24px;margin-top:16px">
+      <div class="card" style="padding:14px 18px">
+        <span class="etq">Vocabulário</span>
+        <table style="font-size:11px">
+          <tr><th style="color:#1A8C82">Dizemos</th><th style="color:#D9482A">Não dizemos</th></tr>
+          <tr><td>perceber antes</td><td>detectar inadimplência</td></tr>
+          <tr><td>chamar de volta, reativar</td><td>cobrar, recuperar o devedor</td></tr>
+          <tr><td>aluno em risco, aluno em atenção</td><td>evasor, desistente, churn</td></tr>
+          <tr><td>fila da semana, quem contatar</td><td>lista negra, alvos, monitorados</td></tr>
+          <tr><td>alta probabilidade de sair em duas semanas</td><td>vai evadir, vai abandonar</td></tr>
+          <tr><td>priorizar, acompanhar</td><td>vigiar, rastrear, monitorar o aluno</td></tr>
+          <tr><td>sinal fraco, capítulo travado</td><td>anomalia, outlier, flag</td></tr>
+          <tr><td>Aluno 0417 (materiais externos)</td><td>nome e CPF do aluno</td></tr>
+        </table>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="certo"><b>Certo · notificação de segunda</b>Bom dia, Mariana. 14 alunos de Gestão EAD estão a duas semanas de sumir. 9 travaram no capítulo 2. Vale ligar para 5 hoje. Veja a fila.</div>
+          <div class="errado"><b>Errado</b>ALERTA: 14 registros com score crítico detectados. Risco de inadimplência elevado. Ação imediata requerida.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="certo"><b>Certo · card de KPI</b>R$ 184 mil em mensalidades de alunos que a Retena ajudou a trazer de volta em 30 dias (estimativa).</div>
+          <div class="errado"><b>Errado</b>R$ 184.300,00 de receita recuperada. Precisão do modelo: 100%.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="certo"><b>Certo · motivo ao lado do score</b>Sem acesso há 9 dias. Antes entrava toda terça e quinta.</div>
+          <div class="errado"><b>Errado</b>Recência: 9d. Δ tendência: -0,62. Feature importance: 0,31.</div>
+        </div>
+        <p class="mini" style="margin:0">Regra dos três: pessoa, motivo, próximo passo. Se a frase não tem os três, não está pronta.</p>
+      </div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">12</span></div>
+</section>
+
+<!-- 13 APLICAÇÕES -->
+<section class="pagina" id="p13">
+  <div class="cab"><div class="esq"><span class="num">13</span><span class="tit">Aplicações</span></div><span class="sec">Uso</span></div>
+  <div class="conteudo">
+    <div style="display:grid;grid-template-columns:1.55fr 1fr;gap:18px;height:100%">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <!-- dashboard -->
+        <div>
+          <span class="etq">Cabeçalho do dashboard</span>
+          <div style="border-radius:10px;overflow:hidden;border:1px solid var(--linha);background:#fff">
+            <div style="background:var(--azul);height:54px;display:flex;align-items:center;padding:0 18px;gap:26px">
+              <img src="logo/retena_horizontal_claro_sobre_escuro.svg" alt="" style="height:28px">
+              <nav style="display:flex;gap:16px;font-size:10.5px;font-weight:500;color:#9FB0C6;white-space:nowrap"><span style="color:#fff;border-bottom:2px solid var(--verde);padding-bottom:3px">Pulso da turma</span><span>Fila da semana</span><span>Atrito de conteúdo</span><span>Receita em risco</span></nav>
+              <div style="margin-left:auto;display:flex;align-items:center;gap:8px;font-size:10.5px;color:#CFD8E3"><span style="width:26px;height:26px;border-radius:50%;background:var(--verde);color:var(--azul);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px">MA</span></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:14px 18px;background:var(--off)">
+              <div class="card" style="padding:12px 14px">
+                <span class="mini" style="font-weight:500;text-transform:uppercase;letter-spacing:.08em;font-size:9.5px">Alto risco esta semana</span>
+                <div style="display:flex;align-items:flex-end;gap:10px"><span class="tnum" style="font-size:26px;font-weight:500;color:var(--azul);line-height:1.1;white-space:nowrap">14</span><span class="pill" style="background:#FFE9E3;color:var(--azul);font-size:9.5px;padding:2px 7px"><i style="background:#FF6B4A"></i>ligar para 5 hoje</span></div>
+                <p class="mini" style="margin:4px 0 0">9 alunos travados no cap. 2</p>
+              </div>
+              <div class="card" style="padding:12px 14px">
+                <span class="mini" style="font-weight:500;text-transform:uppercase;letter-spacing:.08em;font-size:9.5px">Reativados em 30 dias</span>
+                <div style="display:flex;align-items:flex-end;gap:10px"><span class="tnum" style="font-size:26px;font-weight:500;color:var(--azul);line-height:1.1;white-space:nowrap">12</span><svg viewBox="0 0 80 26" width="80" height="26"><path d="M2 18 L14 18 L20 23 L28 8 L36 18 L48 18 L62 9 L72 5" fill="none" stroke="#2EC4B6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="76" cy="4" r="2.5" fill="#2EC4B6"/></svg></div>
+                <p class="mini" style="margin:4px 0 0;color:#1A8C82;font-weight:500">↑ 4 a mais que na semana passada</p>
+              </div>
+              <div class="card" style="padding:12px 14px">
+                <span class="mini" style="font-weight:500;text-transform:uppercase;letter-spacing:.08em;font-size:9.5px">Receita preservada (est.)</span>
+                <div style="display:flex;align-items:flex-end;gap:10px"><span class="tnum" style="font-size:26px;font-weight:500;color:var(--azul);line-height:1.1;white-space:nowrap">R$ 184 mil</span></div>
+                <p class="mini" style="margin:4px 0 0">mensalidades de quem voltou</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:14px;flex:1">
+          <!-- slide -->
+          <div>
+            <span class="etq">Slide de apresentação (16:9)</span>
+            <div class="foto veu" style="background-image:url('img/aluno_noite.jpg');border-radius:10px;height:196px;padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between;color:#fff">
+              <img src="logo/retena_horizontal_claro_sobre_escuro.svg" alt="" style="height:26px;align-self:flex-start">
+              <div><p class="sora" style="font-size:22px;color:#fff;font-weight:600;line-height:1.2;margin-bottom:6px">Ninguém desiste de repente.<br>A Retena percebe antes.</p><p style="font-size:10px;color:#9FB0C6;margin:0">Startup One · Enterprise Challenge Oracle · FIAP 2026</p></div>
+            </div>
+          </div>
+          <!-- assinatura -->
+          <div>
+            <span class="etq">Assinatura de e-mail</span>
+            <div class="card" style="height:196px;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:18px 20px">
+              <div><p class="sora" style="font-size:14px;margin:0">Mariana Alves</p><p class="mini" style="margin:0">Coordenadora de Permanência · Retena</p></div>
+              <div style="border-top:1px solid var(--linha);padding-top:10px;display:flex;align-items:center;justify-content:space-between"><img src="logo/retena_horizontal_escuro_sobre_claro.svg" alt="" style="height:22px"><span class="mini tnum">+55 11 0000-0000</span></div>
+              <p style="font-size:10px;color:var(--azul);font-weight:500;margin:0">Ninguém desiste de repente. A Retena percebe antes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div>
+          <span class="etq">Post social 1:1</span>
+          <div class="foto veu" style="background-image:url('img/tutor.jpg');border-radius:10px;width:100%;aspect-ratio:1/1;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:#fff">
+            <span class="pill" style="background:rgba(46,196,182,.18);color:#2EC4B6;align-self:flex-start;border:1px solid rgba(46,196,182,.5)"><i style="background:#2EC4B6"></i>Toda segunda</span>
+            <div><p class="sora" style="font-size:26px;color:#fff;font-weight:600;line-height:1.15;letter-spacing:-.01em;margin-bottom:10px">Quem está a duas semanas de sumir. E o que fazer.</p><p style="font-size:11px;color:#CFD8E3;margin:0">Radar de permanência para IES com EAD.</p></div>
+            <img src="logo/retena_horizontal_claro_sobre_escuro.svg" alt="" style="height:30px;align-self:flex-start">
+          </div>
+        </div>
+        <div class="card" style="padding:12px 16px;flex:1">
+          <span class="etq">Badges de risco</span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+            <span class="pill" style="background:#E8F8F6;color:#0B2545;border:1px solid #BFEDE8"><i style="background:#2EC4B6"></i>Reativado ↑</span>
+            <span class="pill" style="background:#FFF4D6;color:#0B2545;border:1px solid #FFE3A0"><i style="background:#FFB703"></i>Atenção · 9 dias sem acesso</span>
+            <span class="pill" style="background:#FFE9E3;color:#0B2545;border:1px solid #FFC9BB"><i style="background:#FF6B4A"></i>Alto risco · ligar hoje</span>
+          </div>
+          <span class="etq">Regras das aplicações</span>
+          <p class="mini" style="margin:0;color:var(--grafite)">Fundo escuro para abertura e fechamento; off-white para conteúdo. Foto sempre com véu azul (p. 14). Um único KPI grande por card, com uma frase humana embaixo. Logo no canto, dentro da área de proteção, nunca centralizado sobre a foto.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">13</span></div>
+</section>
+
+<!-- 14 ICONOGRAFIA E ILUSTRAÇÃO -->
+<section class="pagina" id="p14">
+  <div class="cab"><div class="esq"><span class="num">14</span><span class="tit">Iconografia e ilustração</span></div><span class="sec">Uso</span></div>
+  <div class="conteudo">
+    <div class="cols" style="grid-template-columns:1fr 1.15fr;gap:32px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div>
+          <span class="etq">Ícones · linha 2 px, cantos arredondados, grade 24 px</span>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+            <div class="card" style="padding:12px 8px;text-align:center"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14h5l2 4 3-9 2 5h3l4-5"/><circle cx="21" cy="8" r="1.4" fill="#2EC4B6" stroke="none"/></svg><p class="mini" style="margin:4px 0 0">Pulso</p></div>
+            <div class="card" style="padding:12px 8px;text-align:center"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><path d="M6.5 9a7 7 0 0 1 11 0"/><path d="M3.5 6a11 11 0 0 1 17 0"/><circle cx="12" cy="11" r="1.5" fill="#2EC4B6" stroke="none"/></svg><p class="mini" style="margin:4px 0 0">Antena</p></div>
+            <div class="card" style="padding:12px 8px;text-align:center"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="8" cy="15" r="1.4" fill="#2EC4B6" stroke="none"/></svg><p class="mini" style="margin:4px 0 0">Segunda</p></div>
+            <div class="card" style="padding:12px 8px;text-align:center"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H10l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="M8 11h8" stroke="#2EC4B6"/></svg><p class="mini" style="margin:4px 0 0">Chamar de volta</p></div>
+            <div class="card" style="padding:12px 8px;text-align:center"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 0-3 3z"/><path d="M5 4v16a3 3 0 0 1 3-3h11"/><path d="M10 9h5" stroke="#2EC4B6"/></svg><p class="mini" style="margin:4px 0 0">Capítulo</p></div>
+            <div class="card" style="padding:12px 8px;text-align:center"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg><p class="mini" style="margin:4px 0 0">Aluno</p></div>
+            <div class="card" style="padding:12px 8px;text-align:center"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M15 20a4.5 4.5 0 0 1 6-4"/></svg><p class="mini" style="margin:4px 0 0">Turma</p></div>
+            <div class="card" style="padding:12px 8px;text-align:center"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18l6-7 4 4 6-8"/><path d="M15 7h5v5"/><circle cx="20" cy="7" r="1.4" fill="#2EC4B6" stroke="none"/></svg><p class="mini" style="margin:4px 0 0">Progresso</p></div>
+          </div>
+        </div>
+        <div class="card" style="padding:12px 16px">
+          <span class="etq">Regras</span>
+          <p class="mini" style="margin:0;color:var(--grafite)">Traço de 2 px em grade de 24 px, terminações e junções arredondadas, sem preenchimento. Azul-profundo sobre claro, branco sobre escuro; um único detalhe em verde-sinal quando ajudar a leitura. Nunca ícone de olho, retina, alvo, âncora, pinça, sirene ou cadeado para falar de alunos. Sem ilustrações de personagens em vetor "flat": a Retena usa fotografia.</p>
+        </div>
+        <div class="errado" style="display:flex;gap:14px;align-items:center"><svg viewBox="0 0 64 40" width="44" height="28"><path d="M2 20 C 12 4, 52 4, 62 20 C 52 36, 12 36, 2 20 Z" fill="none" stroke="#D9482A" stroke-width="3.5"/><circle cx="32" cy="20" r="7" fill="none" stroke="#D9482A" stroke-width="3.5"/></svg><div><b>Não</b>Olho, retina, alvo: vigilância. A Retena escuta sinais, não observa pessoas.</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span class="etq" style="margin-bottom:-6px">Fotografia · documental, luz natural, pessoas reais</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+          <div class="foto" style="background-image:url('img/coordenadora.jpg');border-radius:8px;height:126px"></div>
+          <div class="foto" style="background-image:url('img/aluno_noite.jpg');border-radius:8px;height:126px"></div>
+          <div class="foto" style="background-image:url('img/formatura.jpg');border-radius:8px;height:126px"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="foto" style="background-image:url('img/tutor.jpg');border-radius:8px;height:110px;position:relative"><span class="tag" style="position:absolute;left:8px;bottom:8px;background:rgba(255,255,255,.9);color:var(--azul)">Sem véu: só em conteúdo editorial</span></div>
+          <div class="foto veu" style="background-image:url('img/tutor.jpg');border-radius:8px;height:110px;display:flex;align-items:flex-end;padding:8px"><span class="tag" style="background:rgba(46,196,182,.2);color:#2EC4B6;border:1px solid rgba(46,196,182,.5)">Com véu: sempre que houver logo ou texto</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="card" style="padding:12px 14px"><span class="etq">Sim</span><p class="mini" style="margin:0;color:var(--grafite)">Alunos estudando à noite, coordenadoras no trabalho real, tutores em chamada, formatura vista de perto. Luz natural ou ambiente, enquadramento próximo, pele e cenário sem retoque pesado.</p></div>
+          <div class="card" style="padding:12px 14px"><span class="etq">Não</span><p class="mini" style="margin:0;color:var(--grafite)">Stock sorridente olhando para a câmera, aperto de mão, gráfico flutuando, fundo branco de estúdio, cores saturadas, filtros. Nada que exponha nome ou tela com dados reais de aluno.</p></div>
+        </div>
+        <div class="card azul" style="padding:12px 16px"><span class="etq">Véu azul</span><p class="mini" style="margin:0;color:#CFD8E3">Gradiente 135° de azul-profundo a 88% para azul-médio a 62%: <span class="mono" style="color:#9FB0C6">linear-gradient(135deg, rgba(11,37,69,.88), rgba(19,49,92,.62))</span>. Logo em claro sobre escuro ou mono branco por cima, sempre dentro da área de proteção.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">14</span></div>
+</section>
+
+<!-- 15 CHECKLIST E ARQUIVOS -->
+<section class="pagina" id="p15">
+  <div class="cab"><div class="esq"><span class="num">15</span><span class="tit">Checklist de entrega e arquivos</span></div><span class="sec">Uso</span></div>
+  <div class="conteudo">
+    <div class="cols" style="grid-template-columns:1.6fr 1fr;gap:28px">
+      <div>
+        <span class="etq">Pasta 03_Marca/logo · cada item existe em .svg e .png</span>
+        <table style="font-size:10.5px">
+          <tr><th>Arquivo</th><th>Versão</th><th>Uso</th></tr>
+          <tr><td class="mono">retena_horizontal_claro_sobre_escuro</td><td>Principal</td><td>Slides, site, produto, fundos azul-profundo e azul-médio</td></tr>
+          <tr><td class="mono">retena_horizontal_escuro_sobre_claro</td><td>Fundo claro</td><td>Documentos, papel, e-mail, fundos brancos e off-white</td></tr>
+          <tr><td class="mono">retena_horizontal_mono_azul</td><td>Uma cor</td><td>Word, carimbo, gravação, impressão P&amp;B</td></tr>
+          <tr><td class="mono">retena_horizontal_mono_branco</td><td>Uma cor</td><td>Sobre foto com véu, fundos escuros de terceiros (co-branding)</td></tr>
+          <tr><td class="mono">retena_horizontal_com_tagline_claro / _escuro</td><td>Com tagline</td><td>Capa de apresentação e de documento, hero do site (≥ 200 px)</td></tr>
+          <tr><td class="mono">retena_vertical_claro_sobre_escuro / _escuro_sobre_claro</td><td>Vertical</td><td>Formatos quadrados, crachá, abertura de vídeo</td></tr>
+          <tr><td class="mono">retena_simbolo</td><td>Símbolo</td><td>Avatar, marca d'água, ilustração de apoio (verde sobre azul)</td></tr>
+          <tr><td class="mono">retena_simbolo_mono_azul</td><td>Símbolo 1 cor</td><td>Símbolo em fundo claro, documentos</td></tr>
+          <tr><td class="mono">retena_simbolo_app</td><td>Ícone de app</td><td>Fundo azul com cantos arredondados; ícone de aplicativo e PWA</td></tr>
+          <tr><td class="mono">retena_favicon</td><td>Favicon</td><td>16 / 32 px, aba do navegador</td></tr>
+          <tr><td class="mono">*_preview.png</td><td>Conferência</td><td>Têm fundo. Só para revisão, nunca em peças</td></tr>
+        </table>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div class="card" style="padding:10px 14px"><span class="etq">Fontes · 03_Marca/fontes</span><p class="mini" style="margin:0;color:var(--grafite)"><span class="mono">Sora-Variable.ttf</span> (100–800) e <span class="mono">Inter-Variable.ttf</span> (100–900), licença SIL Open Font. Os demais arquivos da pasta são estudos de seleção e não fazem parte da identidade.</p></div>
+          <div class="card" style="padding:10px 14px"><span class="etq">Fonte da verdade</span><p class="mini" style="margin:0;color:var(--grafite)"><span class="mono">marca.json</span> guarda nome, taglines, cores e caminhos. <span class="mono">gerar_logo.py</span> regenera todos os arquivos de logo a partir dele e da fonte Sora. Nunca edite os SVGs à mão.</p></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card" style="flex:1">
+          <span class="etq">Checklist antes de publicar uma peça</span>
+          <ul style="list-style:none;font-size:11.5px;line-height:1.45;color:var(--grafite)">
+            <li style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--linha)"><span style="width:14px;height:14px;border:1.5px solid var(--azul);border-radius:3px;flex:none;margin-top:2px"></span>Logo é um arquivo oficial, sem alteração de cor ou proporção</li>
+            <li style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--linha)"><span style="width:14px;height:14px;border:1.5px solid var(--azul);border-radius:3px;flex:none;margin-top:2px"></span>A linha do batimento aparece na peça</li>
+            <li style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--linha)"><span style="width:14px;height:14px;border:1.5px solid var(--azul);border-radius:3px;flex:none;margin-top:2px"></span>Área de proteção (½ X) e tamanho mínimo respeitados</li>
+            <li style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--linha)"><span style="width:14px;height:14px;border:1.5px solid var(--azul);border-radius:3px;flex:none;margin-top:2px"></span>Foto com véu azul quando há logo ou texto por cima</li>
+            <li style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--linha)"><span style="width:14px;height:14px;border:1.5px solid var(--azul);border-radius:3px;flex:none;margin-top:2px"></span>Sora só em títulos; Inter no texto; números tabulares em dados</li>
+            <li style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--linha)"><span style="width:14px;height:14px;border:1.5px solid var(--azul);border-radius:3px;flex:none;margin-top:2px"></span>Verde, âmbar e coral só com significado; nunca como texto sobre claro</li>
+            <li style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--linha)"><span style="width:14px;height:14px;border:1.5px solid var(--azul);border-radius:3px;flex:none;margin-top:2px"></span>Texto sem "cobrar", "vigiar", "inadimplência", "100%"</li>
+            <li style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--linha)"><span style="width:14px;height:14px;border:1.5px solid var(--azul);border-radius:3px;flex:none;margin-top:2px"></span>Todo número acompanhado de uma pessoa e de uma fonte</li>
+            <li style="display:flex;gap:8px;padding:5px 0"><span style="width:14px;height:14px;border:1.5px solid var(--azul);border-radius:3px;flex:none;margin-top:2px"></span>Nenhum dado nominal de aluno em material externo ("Aluno NNNN")</li>
+          </ul>
+        </div>
+        <div class="card azul" style="padding:12px 16px"><span class="etq">Versão</span><p class="mini" style="margin:0;color:#CFD8E3">Manual de Marca v1.0 · setembro/2026. Alterações na paleta, no símbolo ou nas taglines exigem nova versão deste manual e regeneração dos arquivos via <span class="mono" style="color:#9FB0C6">gerar_logo.py</span>.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="rod"><span>Retena · Manual de Marca v1.0</span><span class="pg">15</span></div>
+</section>
+
+<!-- 16 CONTRACAPA -->
+<section class="pagina escura" id="p16">
+  <svg style="position:absolute;left:-120px;top:-140px;width:560px;height:560px;opacity:.07" viewBox="0 0 120 120"><path d="M 8 72 H 32 L 43 88 L 55 50 L 65 72 H 78 L 99 44" fill="none" stroke="#2EC4B6" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><circle cx="104" cy="38" r="8.5" fill="#2EC4B6"/></svg>
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:28px">
+    <img src="logo/retena_simbolo.svg" alt="" style="height:96px">
+    <p class="sora" style="font-size:32px;color:#fff;font-weight:600;line-height:1.25;letter-spacing:-.01em">Ninguém desiste de repente.<br>A Retena percebe antes.</p>
+  </div>
+  <div style="position:absolute;left:72px;bottom:56px;font-size:11px;color:#7F93AD;letter-spacing:.06em">Manual de Marca · v1.0 · setembro/2026</div>
+  <div style="position:absolute;right:72px;bottom:56px;font-size:11px;color:#7F93AD;letter-spacing:.06em;text-align:right">Startup One · Enterprise Challenge Oracle · FIAP 2026</div>
+</section>
+
+<script>
+// Visualização de uma única página para conferência: ?p=N
+(function(){
+  var p = new URLSearchParams(location.search).get('p');
+  if(!p) return;
+  document.querySelectorAll('.pagina').forEach(function(el,i){ if(String(i+1)!==p) el.style.display='none'; else el.style.margin='0'; });
+  document.documentElement.style.background='#fff';
+  document.body.style.background='#fff';
+})();
+</script>
+</body>
+</html>

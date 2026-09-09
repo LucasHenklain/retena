@@ -1,0 +1,212 @@
+[2026-09-08 16:32:32] Script: C:\Users\lmhsilva\Projetos\StartupOne\entrega\06_Oracle\sql\06_avaliacao.sql
+[2026-09-08 16:32:32] Conexao: STARTUP@localhost:1521/FREEPDB1 | 27 statement(s)
+[16:32:32] #01 PLSQL   BEGIN FOR t IN (SELECT table_name FROM user_tables WHERE table_name IN ('SCORES_TESTE',...
+      OK em 0.05s
+[16:32:32] #02 CREATE  CREATE TABLE SCORES_TESTE AS SELECT 'RETENA_INATIVO21_RF' AS MODELO, ID_CASO, INATIVO_2...
+      OK em 0.23s
+[16:32:33] #03 CREATE  CREATE TABLE AVALIACAO_MODELOS ( MODELO VARCHAR2(40) NOT NULL, METRICA VARCHAR2(60) NOT...
+      OK em 0.02s
+[16:32:33] #04 INSERT  INSERT INTO AVALIACAO_MODELOS (MODELO, METRICA, VALOR, DETALHE) SELECT MODELO, 'N_TESTE...
+      OK - 3 linha(s) afetada(s) em 0.02s
+[16:32:33] #05 INSERT  INSERT INTO AVALIACAO_MODELOS (MODELO, METRICA, VALOR, DETALHE) SELECT MODELO, 'POSITIV...
+      OK - 3 linha(s) afetada(s) em 0.01s
+[16:32:33] #06 INSERT  INSERT INTO AVALIACAO_MODELOS (MODELO, METRICA, VALOR, DETALHE) SELECT MODELO, 'PREVALE...
+      OK - 3 linha(s) afetada(s) em 0.00s
+[16:32:33] #07 INSERT  INSERT INTO AVALIACAO_MODELOS (MODELO, METRICA, VALOR, DETALHE) WITH r AS ( SELECT MODE...
+      OK - 3 linha(s) afetada(s) em 0.01s
+[16:32:33] #08 CREATE  CREATE TABLE ALVO_TESTE_INATIVO21 AS SELECT ID_CASO, INATIVO_21D AS ALVO FROM VW_TESTE_...
+      OK em 0.04s
+[16:32:33] #09 CREATE  CREATE TABLE ALVO_TESTE_TRANSICAO AS SELECT ID_CASO, EVADIU_PROXIMA_FASE AS ALVO FROM V...
+      OK em 0.02s
+[16:32:33] #10 CREATE  CREATE TABLE APPLY_INATIVO21_RF AS SELECT ID_CASO, 1 AS PREDICTION, PROB AS PROBABILITY...
+      OK em 0.04s
+[16:32:33] #11 CREATE  CREATE TABLE APPLY_INATIVO21_GLM AS SELECT ID_CASO, 1 AS PREDICTION, PROB AS PROBABILIT...
+      OK em 0.02s
+[16:32:33] #12 CREATE  CREATE TABLE APPLY_TRANSICAO_GLM AS SELECT ID_CASO, 1 AS PREDICTION, PROB AS PROBABILIT...
+      OK em 0.02s
+[16:32:33] #13 PLSQL   DECLARE v_auc NUMBER; PROCEDURE avaliar(p_modelo VARCHAR2, p_apply VARCHAR2, p_alvo VAR...
+      ERRO em 0.01s: ORA-06550: line 33, column 67:
+PL/SQL: ORA-00984: column not allowed here
+ORA-06550: line 32, column 5:
+PL/SQL: SQL Statement ignored
+Help: https://docs.oracle.com/error-help/db/ora-06550/
+[16:32:33] #14 INSERT  INSERT INTO AVALIACAO_MODELOS (MODELO, METRICA, VALOR, DETALHE) WITH m AS ( SELECT MODE...
+      OK - 12 linha(s) afetada(s) em 0.01s
+[16:32:33] #15 INSERT  INSERT INTO AVALIACAO_MODELOS (MODELO, METRICA, VALOR, DETALHE) WITH m AS ( SELECT MODE...
+      OK - 18 linha(s) afetada(s) em 0.01s
+[16:32:33] #16 CREATE  CREATE OR REPLACE VIEW VW_AVALIACAO_FAIXAS AS SELECT MODELO, CASE WHEN PROB >= 0.60 THE...
+      OK em 0.01s
+[16:32:33] #17 INSERT  INSERT INTO AVALIACAO_MODELOS (MODELO, METRICA, VALOR, DETALHE) SELECT MODELO, 'TAXA_OB...
+      OK - 9 linha(s) afetada(s) em 0.01s
+[16:32:33] #18 COMMIT  COMMIT
+      OK em 0.00s
+[16:32:33] #19 SELECT  SELECT MODELO, METRICA, VALOR, DETALHE FROM AVALIACAO_MODELOS WHERE METRICA IN ('N_TEST...
+      ----------------------+-------------------+--------+------------------------------------------
+       MODELO               | METRICA           | VALOR  | DETALHE                                  
+      ----------------------+-------------------+--------+------------------------------------------
+       RETENA_INATIVO21_GLM | N_TESTE           | 1655   | casos no conjunto de teste (cortes >=... 
+       RETENA_INATIVO21_GLM | POSITIVOS_TESTE   | 387    | casos com alvo = 1 no teste              
+       RETENA_INATIVO21_GLM | PREVALENCIA_TESTE | 0.2338 | taxa base de positivos no teste          
+       RETENA_INATIVO21_GLM | AUC_SQL           | 0.9451 | AUC-ROC calculada em SQL puro (funcoe... 
+       RETENA_INATIVO21_GLM | ACURACIA_0.5      | 0.8604 | limiar 0,5                               
+       RETENA_INATIVO21_GLM | ACUR_BALANC_0.5   | 0.8757 | media de recall e especificidade         
+       RETENA_INATIVO21_GLM | PRECISAO_0.5      | 0.6434 | limiar 0,5                               
+       RETENA_INATIVO21_GLM | RECALL_0.5        | 0.9044 | limiar 0,5 (sensibilidade)               
+       RETENA_INATIVO21_GLM | ESPECIFIC_0.5     | 0.847  | limiar 0,5                               
+       RETENA_INATIVO21_GLM | F1_0.5            | 0.7519 | limiar 0,5                               
+       RETENA_INATIVO21_RF  | N_TESTE           | 1655   | casos no conjunto de teste (cortes >=... 
+       RETENA_INATIVO21_RF  | POSITIVOS_TESTE   | 387    | casos com alvo = 1 no teste              
+       RETENA_INATIVO21_RF  | PREVALENCIA_TESTE | 0.2338 | taxa base de positivos no teste          
+       RETENA_INATIVO21_RF  | AUC_SQL           | 0.949  | AUC-ROC calculada em SQL puro (funcoe... 
+       RETENA_INATIVO21_RF  | ACURACIA_0.5      | 0.9184 | limiar 0,5                               
+       RETENA_INATIVO21_RF  | ACUR_BALANC_0.5   | 0.8794 | media de recall e especificidade         
+       RETENA_INATIVO21_RF  | PRECISAO_0.5      | 0.8387 | limiar 0,5                               
+       RETENA_INATIVO21_RF  | RECALL_0.5        | 0.8062 | limiar 0,5 (sensibilidade)               
+       RETENA_INATIVO21_RF  | ESPECIFIC_0.5     | 0.9527 | limiar 0,5                               
+       RETENA_INATIVO21_RF  | F1_0.5            | 0.8221 | limiar 0,5                               
+       RETENA_TRANSICAO_GLM | N_TESTE           | 166    | casos no conjunto de teste (cortes >=... 
+       RETENA_TRANSICAO_GLM | POSITIVOS_TESTE   | 13     | casos com alvo = 1 no teste              
+       RETENA_TRANSICAO_GLM | PREVALENCIA_TESTE | 0.0783 | taxa base de positivos no teste          
+       RETENA_TRANSICAO_GLM | AUC_SQL           | 0.9718 | AUC-ROC calculada em SQL puro (funcoe... 
+       RETENA_TRANSICAO_GLM | ACURACIA_0.5      | 0.9398 | limiar 0,5                               
+       RETENA_TRANSICAO_GLM | ACUR_BALANC_0.5   | 0.8617 | media de recall e especificidade         
+       RETENA_TRANSICAO_GLM | PRECISAO_0.5      | 0.5882 | limiar 0,5                               
+       RETENA_TRANSICAO_GLM | RECALL_0.5        | 0.7692 | limiar 0,5 (sensibilidade)               
+       RETENA_TRANSICAO_GLM | ESPECIFIC_0.5     | 0.9542 | limiar 0,5                               
+       RETENA_TRANSICAO_GLM | F1_0.5            | 0.6667 | limiar 0,5                               
+      ----------------------+-------------------+--------+------------------------------------------
+      30 linha(s) exibida(s) em 0.01s
+[16:32:33] #20 SELECT  SELECT MODELO, METRICA, VALOR FROM AVALIACAO_MODELOS WHERE METRICA LIKE 'T%\_0.5' ESCAP...
+      ----------------------+---------+--------
+       MODELO               | METRICA | VALOR  
+      ----------------------+---------+--------
+       RETENA_INATIVO21_GLM | F1_0.5  | 0.7519 
+       RETENA_INATIVO21_GLM | FN_0.5  | 37     
+       RETENA_INATIVO21_GLM | FP_0.5  | 194    
+       RETENA_INATIVO21_GLM | TN_0.5  | 1074   
+       RETENA_INATIVO21_GLM | TP_0.5  | 350    
+       RETENA_INATIVO21_RF  | F1_0.5  | 0.8221 
+       RETENA_INATIVO21_RF  | FN_0.5  | 75     
+       RETENA_INATIVO21_RF  | FP_0.5  | 60     
+       RETENA_INATIVO21_RF  | TN_0.5  | 1208   
+       RETENA_INATIVO21_RF  | TP_0.5  | 312    
+       RETENA_TRANSICAO_GLM | F1_0.5  | 0.6667 
+       RETENA_TRANSICAO_GLM | FN_0.5  | 3      
+       RETENA_TRANSICAO_GLM | FP_0.5  | 7      
+       RETENA_TRANSICAO_GLM | TN_0.5  | 146    
+       RETENA_TRANSICAO_GLM | TP_0.5  | 10     
+      ----------------------+---------+--------
+      15 linha(s) exibida(s) em 0.01s
+[16:32:33] #21 SELECT  SELECT * FROM VW_AVALIACAO_FAIXAS ORDER BY MODELO, PROB_MEDIA DESC
+      ----------------------+-------+-------+-----------+----------------+------------+-----------------------
+       MODELO               | FAIXA | CASOS | POSITIVOS | TAXA_OBSERVADA | PROB_MEDIA | CAPTURA_DOS_POSITIVOS 
+      ----------------------+-------+-------+-----------+----------------+------------+-----------------------
+       RETENA_INATIVO21_GLM | Alto  | 477   | 340       | 0.7128         | 0.8956     | 0.8786                
+       RETENA_INATIVO21_GLM | Médio | 239   | 23        | 0.0962         | 0.4431     | 0.0594                
+       RETENA_INATIVO21_GLM | Baixo | 939   | 24        | 0.0256         | 0.0528     | 0.062                 
+       RETENA_INATIVO21_RF  | Alto  | 347   | 296       | 0.853          | 0.8429     | 0.7649                
+       RETENA_INATIVO21_RF  | Médio | 53    | 27        | 0.5094         | 0.4688     | 0.0698                
+       RETENA_INATIVO21_RF  | Baixo | 1255  | 64        | 0.051          | 0.044      | 0.1654                
+       RETENA_TRANSICAO_GLM | Alto  | 17    | 10        | 0.5882         | 0.906      | 0.7692                
+       RETENA_TRANSICAO_GLM | Médio | 1     | 1         | 1              | 0.3453     | 0.0769                
+       RETENA_TRANSICAO_GLM | Baixo | 148   | 2         | 0.0135         | 0.0012     | 0.1538                
+      ----------------------+-------+-------+-----------+----------------+------------+-----------------------
+      9 linha(s) exibida(s) em 0.01s
+[16:32:33] #22 SELECT  SELECT QUANTILE_NUMBER decil, PROBABILITY_THRESHOLD limiar_prob, TARGETS_CUMULATIVE pos...
+      ERRO em 0.00s: ORA-00942: table or view "STARTUP"."LIFT_INATIVO21_RF" does not exist
+Help: https://docs.oracle.com/error-help/db/ora-00942/
+[16:32:33] #23 SELECT  SELECT PROBABILITY, TRUE_POSITIVES, FALSE_NEGATIVES, FALSE_POSITIVES, TRUE_NEGATIVES, R...
+      ERRO em 0.00s: ORA-00942: table or view "STARTUP"."ROC_INATIVO21_RF" does not exist
+Help: https://docs.oracle.com/error-help/db/ora-00942/
+[16:32:33] #24 SELECT  SELECT ATTRIBUTE_NAME, ROUND(ATTRIBUTE_IMPORTANCE, 4) IMPORTANCIA, ROUND(RATIO_TO_REPOR...
+      ERRO em 0.00s: ORA-00923: FROM keyword not found where expected
+Help: https://docs.oracle.com/error-help/db/ora-00923/
+[16:32:33] #25 SELECT  SELECT NVL(ATTRIBUTE_NAME, '(intercepto)') ATRIBUTO, ROUND(COEFFICIENT, 4) COEFICIENTE,...
+      -------------------------+-------------+-------------+---------+------------
+       ATRIBUTO                | COEFICIENTE | ERRO_PADRAO | P_VALOR | ODDS_RATIO 
+      -------------------------+-------------+-------------+---------+------------
+       (intercepto)            | -0.7547     | 0.3841      | 0.0494  | 0.4701     
+       DIAS_ATIVOS_28D         | 0.5301      | 0.0858      | 0       | 1.699      
+       RECENCIA_DIAS           | -0.0796     | 0.0201      | 0.0001  | 0.9234     
+       TENDENCIA               | -0.0779     | 0.1266      | 0.5382  | 0.925      
+       CAPITULOS_DISTINTOS_28D | -0.0215     | 0.0643      | 0.7377  | 0.9787     
+       ENTREGAS_28D            | -0.0161     | 0.0714      | 0.822   | 0.9841     
+       EVENTOS_14D             | -0.0111     | 0.004       | 0.0055  | 0.989      
+       EVENTOS_28D             | 0.0087      | 0.0047      | 0.0663  | 1.0088     
+       QUIZ_28D                | -0.0069     | 0.0288      | 0.812   | 0.9932     
+       PROGRESSO_28D           | 0.0013      | 0.0036      | 0.7208  | 1.0013     
+       EVENTOS_7D              | 0.0006      | 0.0008      | 0.506   | 1.0006     
+      -------------------------+-------------+-------------+---------+------------
+      11 linha(s) exibida(s) em 0.01s
+[16:32:33] #26 SELECT  SELECT NVL(ATTRIBUTE_NAME, '(intercepto)') ATRIBUTO, ROUND(COEFFICIENT, 4) COEFICIENTE,...
+      -------------------+-------------+-------------+---------+------------
+       ATRIBUTO          | COEFICIENTE | ERRO_PADRAO | P_VALOR | ODDS_RATIO 
+      -------------------+-------------+-------------+---------+------------
+       SHARE_FIM_SEMANA  | -10.7317    | 31.1682     | 0.7306  | 0          
+       PCT_CAPITULOS     | 3.984       | 12.1521     | 0.743   | 53.7315    
+       (intercepto)      | 1.9777      | 1.8822      | 0.2934  | 7.2258     
+       QUIZ_ENTREGUES    | -0.9298     | 1.3454      | 0.4895  | 0.3946     
+       SHARE_NOITE       | 0.7955      | 3.6114      | 0.8257  | 2.2156     
+       DIAS_ATIVOS       | -0.5737     | 0.5889      | 0.33    | 0.5634     
+       TENDENCIA         | 0.3081      | 6.2071      | 0.9604  | 1.3608     
+       CAPITULO_MAX      | -0.2142     | 1.1345      | 0.8502  | 0.8072     
+       ENTREGAS_TAREFA   | -0.1899     | 2.3811      | 0.9364  | 0.8271     
+       QUIZ_INICIADOS    | -0.1183     | 0.5728      | 0.8364  | 0.8884     
+       SPAN_DIAS         | -0.0281     | 0.0296      | 0.3422  | 0.9723     
+       RECENCIA_FIM_FASE | 0.0082      | 0.0128      | 0.5217  | 1.0082     
+       EVENTOS_PROGRESSO | -0.0003     | 0.0064      | 0.9575  | 0.9997     
+       TOTAL_EVENTOS     | 0.0003      | 0.0057      | 0.9535  | 1.0003     
+      -------------------+-------------+-------------+---------+------------
+      14 linha(s) exibida(s) em 0.01s
+[16:32:33] #27 SELECT  SELECT 'RETENA_TRANSICAO_GLM' MODELO, NAME, NUMERIC_VALUE, STRING_VALUE FROM DM$VGRETEN...
+      ----------------------+-------------------------+---------------+--------------
+       MODELO               | NAME                    | NUMERIC_VALUE | STRING_VALUE 
+      ----------------------+-------------------------+---------------+--------------
+       RETENA_INATIVO21_GLM | AIC_INTERCEPT           | 764.2872      | NULL         
+       RETENA_INATIVO21_GLM | AIC_MODEL               | 364.0051      | NULL         
+       RETENA_INATIVO21_GLM | CONVERGED               | NULL          | YES          
+       RETENA_INATIVO21_GLM | DEPENDENT_MEAN          | 0.5           | NULL         
+       RETENA_INATIVO21_GLM | ITERATIONS              | 10            | NULL         
+       RETENA_INATIVO21_GLM | LR_CHI_SQ               | 420.2821      | NULL         
+       RETENA_INATIVO21_GLM | LR_CHI_SQ_P_VALUE       | 0             | NULL         
+       RETENA_INATIVO21_GLM | LR_DF                   | 10            | NULL         
+       RETENA_INATIVO21_GLM | NEG2_LL_INTERCEPT       | 762.2872      | NULL         
+       RETENA_INATIVO21_GLM | NEG2_LL_MODEL           | 342.0051      | NULL         
+       RETENA_INATIVO21_GLM | NUM_PARAMS              | 11            | NULL         
+       RETENA_INATIVO21_GLM | NUM_ROWS                | 2682          | NULL         
+       RETENA_INATIVO21_GLM | PCT_CORRECT             | 0.8359        | NULL         
+       RETENA_INATIVO21_GLM | PCT_INCORRECT           | 0.1641        | NULL         
+       RETENA_INATIVO21_GLM | PCT_TIED                | 0             | NULL         
+       RETENA_INATIVO21_GLM | PSEUDO_R_SQ_CS          | 0.145         | NULL         
+       RETENA_INATIVO21_GLM | PSEUDO_R_SQ_N           | 0.5863        | NULL         
+       RETENA_INATIVO21_GLM | RANK_DEFICIENCY         | 0             | NULL         
+       RETENA_INATIVO21_GLM | SC_INTERCEPT            | 770.1815      | NULL         
+       RETENA_INATIVO21_GLM | SC_MODEL                | 428.8426      | NULL         
+       RETENA_INATIVO21_GLM | VALID_COVARIANCE_MATRIX | NULL          | YES          
+       RETENA_INATIVO21_RF  | AVG_DEPTH               | 11.17         | NULL         
+       RETENA_INATIVO21_RF  | AVG_NODECOUNT           | 82.05         | NULL         
+       RETENA_INATIVO21_RF  | MAX_DEPTH               | 15            | NULL         
+       RETENA_INATIVO21_RF  | MAX_NODECOUNT           | 107           | NULL         
+       RETENA_INATIVO21_RF  | MIN_DEPTH               | 14            | NULL         
+       RETENA_INATIVO21_RF  | MIN_NODECOUNT           | 65            | NULL         
+       RETENA_INATIVO21_RF  | NUM_ROWS                | 2682          | NULL         
+       RETENA_TRANSICAO_GLM | AIC_INTERCEPT           | 85.3457       | NULL         
+       RETENA_TRANSICAO_GLM | AIC_MODEL               | 47.0501       | NULL         
+       RETENA_TRANSICAO_GLM | CONVERGED               | NULL          | YES          
+       RETENA_TRANSICAO_GLM | DEPENDENT_MEAN          | 0.5           | NULL         
+       RETENA_TRANSICAO_GLM | ITERATIONS              | 12            | NULL         
+       RETENA_TRANSICAO_GLM | LR_CHI_SQ               | 64.2956       | NULL         
+       RETENA_TRANSICAO_GLM | LR_CHI_SQ_P_VALUE       | 0             | NULL         
+       RETENA_TRANSICAO_GLM | LR_DF                   | 13            | NULL         
+       RETENA_TRANSICAO_GLM | NEG2_LL_INTERCEPT       | 83.3457       | NULL         
+       RETENA_TRANSICAO_GLM | NEG2_LL_MODEL           | 19.0501       | NULL         
+       RETENA_TRANSICAO_GLM | NUM_PARAMS              | 14            | NULL         
+       RETENA_TRANSICAO_GLM | NUM_ROWS                | 528           | NULL         
+       RETENA_TRANSICAO_GLM | PCT_CORRECT             | 0.911         | NULL         
+       RETENA_TRANSICAO_GLM | PCT_INCORRECT           | 0.089         | NULL         
+       RETENA_TRANSICAO_GLM | PCT_TIED                | 0             | NULL         
+       RETENA_TRANSICAO_GLM | PSEUDO_R_SQ_CS          | 0.1146        | NULL         
+       RETENA_TRANSICAO_GLM | PSEUDO_R_SQ_N           | 0.7851        | NULL         
+      ----------------------+-------------------------+---------------+--------------
+      45 linha(s) exibida(s) (ha mais) em 0.01s
+[2026-09-08 16:32:33] Fim: 23 ok, 4 erro(s), 0.6s

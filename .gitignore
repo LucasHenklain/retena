@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+_work/
+_preview/
+_figs_tmp/
+*.zip
+~$*
+08_Dados/*.parquet
+08_Dados/*.xlsx
+05_MVP/outputs/*.parquet
+.env

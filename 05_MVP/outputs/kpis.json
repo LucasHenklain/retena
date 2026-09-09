@@ -1,0 +1,332 @@
+{
+  "instituicao": "IES Demo",
+  "data_referencia": "2026-08-26",
+  "corte_scoring": "2026-08-23",
+  "periodo_dados": [
+    "2026-01-15",
+    "2026-08-26"
+  ],
+  "eventos_total": 679892,
+  "eventos_atividade": 651238,
+  "alunos_matriculados": 203,
+  "alunos_com_atividade": 196,
+  "alunos_ativos_7d": 100,
+  "alunos_ativos_28d": 149,
+  "alunos_inativos_14d": 62,
+  "alunos_inativos_30d": 45,
+  "alunos_inativos_60d": 35,
+  "pct_inativos_14d": 0.3163,
+  "recencia_mediana_dias": 7.0,
+  "risco": {
+    "alunos_avaliados": 196,
+    "alto": 55,
+    "medio": 6,
+    "baixo": 135,
+    "pct_alto_risco": 0.2806,
+    "pct_medio_risco": 0.0306,
+    "alto_risco_ainda_ativos_28d": 11,
+    "probabilidade_media": 0.3077,
+    "limiares": {
+      "alto": 0.6,
+      "medio": 0.3
+    }
+  },
+  "funil_fases": [
+    {
+      "fase": 1,
+      "nome": "Fase 1 - Pensando Aplicação Mobile",
+      "alunos_ativos": 165,
+      "pct_dos_ingressantes_f1": 1.0,
+      "em_andamento": false
+    },
+    {
+      "fase": 2,
+      "nome": "Fase 2 - Serviços São Fundamentais",
+      "alunos_ativos": 163,
+      "pct_dos_ingressantes_f1": 0.9273,
+      "em_andamento": false
+    },
+    {
+      "fase": 3,
+      "nome": "Fase 3 - Evolução Tecnológica",
+      "alunos_ativos": 165,
+      "pct_dos_ingressantes_f1": 0.9212,
+      "em_andamento": false
+    },
+    {
+      "fase": 4,
+      "nome": "Fase 4 - Integração",
+      "alunos_ativos": 153,
+      "pct_dos_ingressantes_f1": 0.8909,
+      "em_andamento": false
+    },
+    {
+      "fase": 5,
+      "nome": "Fase 5 - Tecnologias",
+      "alunos_ativos": 143,
+      "pct_dos_ingressantes_f1": 0.8061,
+      "em_andamento": true
+    }
+  ],
+  "conclusao_por_fase": [
+    {
+      "fase": 1,
+      "alunos_ativos": 165,
+      "alunos_ultimo_capitulo": 132,
+      "taxa_conclusao": 0.8,
+      "em_andamento": false
+    },
+    {
+      "fase": 2,
+      "alunos_ativos": 163,
+      "alunos_ultimo_capitulo": 123,
+      "taxa_conclusao": 0.7546,
+      "em_andamento": false
+    },
+    {
+      "fase": 3,
+      "alunos_ativos": 165,
+      "alunos_ultimo_capitulo": 127,
+      "taxa_conclusao": 0.7697,
+      "em_andamento": false
+    },
+    {
+      "fase": 4,
+      "alunos_ativos": 153,
+      "alunos_ultimo_capitulo": 120,
+      "taxa_conclusao": 0.7843,
+      "em_andamento": false
+    },
+    {
+      "fase": 5,
+      "alunos_ativos": 143,
+      "alunos_ultimo_capitulo": 37,
+      "taxa_conclusao": 0.2587,
+      "em_andamento": true
+    }
+  ],
+  "curva_semanal_ativos": [
+    {
+      "semana_fim": "2026-01-18",
+      "alunos_ativos": 1,
+      "eventos": 73
+    },
+    {
+      "semana_fim": "2026-01-25",
+      "alunos_ativos": 0,
+      "eventos": 0
+    },
+    {
+      "semana_fim": "2026-02-01",
+      "alunos_ativos": 1,
+      "eventos": 3
+    },
+    {
+      "semana_fim": "2026-02-08",
+      "alunos_ativos": 18,
+      "eventos": 166
+    },
+    {
+      "semana_fim": "2026-02-15",
+      "alunos_ativos": 118,
+      "eventos": 7184
+    },
+    {
+      "semana_fim": "2026-02-22",
+      "alunos_ativos": 90,
+      "eventos": 6337
+    },
+    {
+      "semana_fim": "2026-03-01",
+      "alunos_ativos": 109,
+      "eventos": 6421
+    },
+    {
+      "semana_fim": "2026-03-08",
+      "alunos_ativos": 113,
+      "eventos": 3507
+    },
+    {
+      "semana_fim": "2026-03-15",
+      "alunos_ativos": 116,
+      "eventos": 6044
+    },
+    {
+      "semana_fim": "2026-03-22",
+      "alunos_ativos": 126,
+      "eventos": 8548
+    },
+    {
+      "semana_fim": "2026-03-29",
+      "alunos_ativos": 110,
+      "eventos": 17635
+    },
+    {
+      "semana_fim": "2026-04-05",
+      "alunos_ativos": 103,
+      "eventos": 29983
+    },
+    {
+      "semana_fim": "2026-04-12",
+      "alunos_ativos": 124,
+      "eventos": 32569
+    },
+    {
+      "semana_fim": "2026-04-19",
+      "alunos_ativos": 136,
+      "eventos": 47936
+    },
+    {
+      "semana_fim": "2026-04-26",
+      "alunos_ativos": 137,
+      "eventos": 37292
+    },
+    {
+      "semana_fim": "2026-05-03",
+      "alunos_ativos": 105,
+      "eventos": 23859
+    },
+    {
+      "semana_fim": "2026-05-10",
+      "alunos_ativos": 111,
+      "eventos": 27021
+    },
+    {
+      "semana_fim": "2026-05-17",
+      "alunos_ativos": 115,
+      "eventos": 36406
+    },
+    {
+      "semana_fim": "2026-05-24",
+      "alunos_ativos": 129,
+      "eventos": 35830
+    },
+    {
+      "semana_fim": "2026-05-31",
+      "alunos_ativos": 130,
+      "eventos": 43686
+    },
+    {
+      "semana_fim": "2026-06-07",
+      "alunos_ativos": 115,
+      "eventos": 20811
+    },
+    {
+      "semana_fim": "2026-06-14",
+      "alunos_ativos": 124,
+      "eventos": 16746
+    },
+    {
+      "semana_fim": "2026-06-21",
+      "alunos_ativos": 113,
+      "eventos": 24985
+    },
+    {
+      "semana_fim": "2026-06-28",
+      "alunos_ativos": 129,
+      "eventos": 57404
+    },
+    {
+      "semana_fim": "2026-07-05",
+      "alunos_ativos": 95,
+      "eventos": 8886
+    },
+    {
+      "semana_fim": "2026-07-12",
+      "alunos_ativos": 66,
+      "eventos": 5511
+    },
+    {
+      "semana_fim": "2026-07-19",
+      "alunos_ativos": 59,
+      "eventos": 4147
+    },
+    {
+      "semana_fim": "2026-07-26",
+      "alunos_ativos": 74,
+      "eventos": 10619
+    },
+    {
+      "semana_fim": "2026-08-02",
+      "alunos_ativos": 81,
+      "eventos": 4092
+    },
+    {
+      "semana_fim": "2026-08-09",
+      "alunos_ativos": 109,
+      "eventos": 38084
+    },
+    {
+      "semana_fim": "2026-08-16",
+      "alunos_ativos": 99,
+      "eventos": 25677
+    },
+    {
+      "semana_fim": "2026-08-23",
+      "alunos_ativos": 107,
+      "eventos": 51918
+    },
+    {
+      "semana_fim": "2026-08-30",
+      "alunos_ativos": 54,
+      "eventos": 11858
+    }
+  ],
+  "distribuicao_recencia": {
+    "0-7": 100,
+    "8-14": 34,
+    "15-30": 17,
+    "31-60": 10,
+    ">60": 35
+  },
+  "atrito": {
+    "capitulos_avaliados": 51,
+    "top5_indice_atrito": [
+      {
+        "fase": 4,
+        "capitulo": 2,
+        "titulo": "Cap 2 - Estudo de Caso",
+        "taxa_queda": 0.0221,
+        "esforco_relativo": 3.417,
+        "indice_atrito": 0.0754,
+        "alunos_perdidos": 3
+      },
+      {
+        "fase": 3,
+        "capitulo": 2,
+        "titulo": "Cap 2 - Introdução à ciência de dados",
+        "taxa_queda": 0.049,
+        "esforco_relativo": 1.286,
+        "indice_atrito": 0.0629,
+        "alunos_perdidos": 7
+      },
+      {
+        "fase": 2,
+        "capitulo": 11,
+        "titulo": "Cap 11 - Cloud Computing & Data Science Azure",
+        "taxa_queda": 0.0465,
+        "esforco_relativo": 1.176,
+        "indice_atrito": 0.0547,
+        "alunos_perdidos": 6
+      },
+      {
+        "fase": 1,
+        "capitulo": 2,
+        "titulo": "Cap 2 - Sistemas Operacionais",
+        "taxa_queda": 0.027,
+        "esforco_relativo": 1.6,
+        "indice_atrito": 0.0432,
+        "alunos_perdidos": 4
+      },
+      {
+        "fase": 4,
+        "capitulo": 3,
+        "titulo": "Cap 3 - Persistência de Dados",
+        "taxa_queda": 0.0226,
+        "esforco_relativo": 1.625,
+        "indice_atrito": 0.0367,
+        "alunos_perdidos": 3
+      }
+    ]
+  }
+}

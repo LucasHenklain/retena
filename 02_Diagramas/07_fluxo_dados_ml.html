@@ -1,0 +1,234 @@
+<!doctype html><html><head><meta charset="utf-8"><title>07_fluxo_dados_ml</title>
+<style>
+@font-face{font-family:'Sora';src:url('../03_Marca/fontes/Sora-Variable.ttf') format('truetype');font-weight:100 800;}
+@font-face{font-family:'Inter';src:url('../03_Marca/fontes/Inter-Variable.ttf') format('truetype');font-weight:100 900;}
+html,body{margin:0;padding:0;background:#F6F7F9;width:1600px;height:900px;overflow:hidden;}
+svg{display:block;font-family:Sora, Inter, 'Segoe UI', sans-serif;}
+</style></head><body>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Sora, Inter, 'Segoe UI', sans-serif">
+<defs><marker id="m13315c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13315C"/></marker><marker id="m2ec4b6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2EC4B6"/></marker><marker id="m94a3b8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94A3B8"/></marker></defs>
+<rect width="1600" height="900" fill="#F6F7F9"/>
+<rect width="1600" height="6" fill="#2EC4B6"/>
+<text x="56.0" y="58.0" font-size="28" fill="#0B2545" text-anchor="start" font-weight="600">Fluxo de dados e ML — de 684.723 eventos à fila semanal</text>
+<text x="56.0" y="86.0" font-size="15" fill="#3A4A5C" text-anchor="start">Como os logs do LMS viram probabilidade de evasão, faixa de risco e ação. Métricas do teste temporal (Fase 4) e equivalentes in-database no OML (Fase 6)</text>
+<rect x="1336.1856" y="36" width="207.8" height="28" rx="14" fill="#0B2545"/>
+<text x="1440.1" y="55.0" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">Diagrama 07 · Dados e modelo</text>
+<text x="1544.0" y="90.0" font-size="13" fill="#0B2545" text-anchor="end" font-weight="600">Retena</text>
+<rect x="56.0" y="124.0" width="540.0" height="24.0" rx="6" fill="#0B2545" stroke="#0B2545" stroke-width="0"/>
+<text x="326.0" y="141.0" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">DADOS</text>
+<rect x="626.0" y="124.0" width="540.0" height="24.0" rx="6" fill="#1C8C82" stroke="#1C8C82" stroke-width="0"/>
+<text x="896.0" y="141.0" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">MODELO</text>
+<rect x="1196.0" y="124.0" width="350.0" height="24.0" rx="6" fill="#B07A00" stroke="#B07A00" stroke-width="0"/>
+<text x="1371.0" y="141.0" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">DECISÃO E AÇÃO</text>
+<text x="136.0" y="176.0" font-size="12" fill="#0B2545" text-anchor="middle" font-weight="600">1. Logs brutos do LMS</text>
+<text x="326.0" y="176.0" font-size="12" fill="#0B2545" text-anchor="middle" font-weight="600">2. Normalização</text>
+<text x="516.0" y="176.0" font-size="12" fill="#0B2545" text-anchor="middle" font-weight="600">3. Base aluno-semana</text>
+<text x="706.0" y="176.0" font-size="12" fill="#0B2545" text-anchor="middle" font-weight="600">4. Split temporal</text>
+<text x="896.0" y="176.0" font-size="12" fill="#0B2545" text-anchor="middle" font-weight="600">5. Treino dos modelos</text>
+<text x="1086.0" y="176.0" font-size="12" fill="#0B2545" text-anchor="middle" font-weight="600">6. Avaliação (teste)</text>
+<text x="1276.0" y="176.0" font-size="12" fill="#0B2545" text-anchor="middle" font-weight="600">7. Faixas de risco</text>
+<text x="1466.0" y="176.0" font-size="12" fill="#0B2545" text-anchor="middle" font-weight="600">8. Fila + mapa de atrito</text>
+<path d="M56,220 v68 a80.0,14 0 0 0 160,0 v-68" fill="#E6ECF5" stroke="#0B2545" stroke-width="1.5"/>
+<ellipse cx="136.0" cy="220" rx="80.0" ry="14" fill="#E6ECF5" stroke="#0B2545" stroke-width="1.5"/>
+<text x="136.0" y="254.0" font-size="13" fill="#0B2545" text-anchor="middle" font-weight="600">684.723 eventos</text>
+<text x="136.0" y="273.6" font-size="10.5" fill="#3A4A5C" text-anchor="middle">203 alunos · FIAP ON</text>
+<rect x="246.0" y="206.0" width="160.0" height="96.0" rx="10" fill="#FFFFFF" stroke="#0B2545" stroke-width="1.8"/>
+<text x="326.0" y="243.0" font-size="12.5" fill="#0B2545" text-anchor="middle" font-weight="600">Limpar e padronizar</text>
+<text x="326.0" y="260.0" font-size="10.5" fill="#3A4A5C" text-anchor="middle">pseudonimizar ·</text>
+<text x="326.0" y="273.0" font-size="10.5" fill="#3A4A5C" text-anchor="middle">semana ISO</text>
+<path d="M436,220 v68 a80.0,14 0 0 0 160,0 v-68" fill="#E6ECF5" stroke="#0B2545" stroke-width="1.5"/>
+<ellipse cx="516.0" cy="220" rx="80.0" ry="14" fill="#E6ECF5" stroke="#0B2545" stroke-width="1.5"/>
+<text x="516.0" y="254.0" font-size="13" fill="#0B2545" text-anchor="middle" font-weight="600">aluno × semana</text>
+<text x="516.0" y="273.6" font-size="10.5" fill="#3A4A5C" text-anchor="middle">features + rótulo</text>
+<rect x="626.0" y="206.0" width="160.0" height="96.0" rx="10" fill="#FFFFFF" stroke="#0B2545" stroke-width="1.8"/>
+<rect x="632.0" y="212.0" width="86.4" height="84.0" rx="6" fill="#E6ECF5" stroke="#E6ECF5" stroke-width="0"/>
+<rect x="722.4" y="212.0" width="53.6" height="84.0" rx="6" fill="#FFF3D6" stroke="#FFF3D6" stroke-width="0"/>
+<text x="675.2" y="251.0" font-size="11.5" fill="#0B2545" text-anchor="middle" font-weight="600">treino</text>
+<text x="675.2" y="266.0" font-size="10" fill="#3A4A5C" text-anchor="middle">&lt; jun/2026</text>
+<text x="749.2" y="251.0" font-size="11.5" fill="#B07A00" text-anchor="middle" font-weight="600">teste</text>
+<text x="749.2" y="266.0" font-size="10" fill="#3A4A5C" text-anchor="middle">≥ jun/26</text>
+<rect x="816.0" y="206.0" width="160.0" height="96.0" rx="10" fill="#E3F8F5" stroke="#2EC4B6" stroke-width="2.2"/>
+<text x="896.0" y="243.0" font-size="12.5" fill="#0B2545" text-anchor="middle" font-weight="600">Gradient boosting</text>
+<text x="896.0" y="260.0" font-size="10.5" fill="#3A4A5C" text-anchor="middle">+ regressão logística</text>
+<text x="896.0" y="273.0" font-size="10.5" fill="#3A4A5C" text-anchor="middle">(baseline)</text>
+<rect x="1006.0" y="206.0" width="160.0" height="96.0" rx="10" fill="#E3F8F5" stroke="#2EC4B6" stroke-width="2.2"/>
+<text x="1086.0" y="243.0" font-size="12.5" fill="#0B2545" text-anchor="middle" font-weight="600">AUC-ROC 0,88</text>
+<text x="1086.0" y="260.0" font-size="10.5" fill="#3A4A5C" text-anchor="middle">precisão@top-20%</text>
+<text x="1086.0" y="273.0" font-size="10.5" fill="#3A4A5C" text-anchor="middle">88% · lift 3×</text>
+<rect x="1196.0" y="206.0" width="160.0" height="96.0" rx="10" fill="#FFFFFF" stroke="#0B2545" stroke-width="1.8"/>
+<rect x="1202.0" y="212.0" width="148.0" height="26.7" rx="4" fill="#FFE4DC" stroke="#FFE4DC" stroke-width="0"/>
+<text x="1276.0" y="229.3" font-size="11" fill="#B3401F" text-anchor="middle" font-weight="600">Alto ≥ 0,60</text>
+<rect x="1202.0" y="240.7" width="148.0" height="26.7" rx="4" fill="#FFF3D6" stroke="#FFF3D6" stroke-width="0"/>
+<text x="1276.0" y="258.0" font-size="11" fill="#B07A00" text-anchor="middle" font-weight="600">Médio 0,30–0,60</text>
+<rect x="1202.0" y="269.3" width="148.0" height="26.7" rx="4" fill="#E3F8F5" stroke="#E3F8F5" stroke-width="0"/>
+<text x="1276.0" y="286.7" font-size="11" fill="#1C8C82" text-anchor="middle" font-weight="600">Baixo &lt; 0,30</text>
+<rect x="1386" y="202" width="160" height="82" rx="8" fill="#FFFFFF" stroke="#0B2545" stroke-width="1.5"/>
+<rect x="1392" y="208" width="148" height="70" rx="4" fill="#E6ECF5"/>
+<rect x="1448.0" y="284" width="36" height="10" fill="#0B2545"/>
+<rect x="1426.0" y="294" width="80" height="5" rx="2" fill="#0B2545"/>
+<text x="1466.0" y="230.0" font-size="13" fill="#0B2545" text-anchor="middle" font-weight="600">Fila semanal</text>
+<text x="1466.0" y="249.6" font-size="11.5" fill="#3A4A5C" text-anchor="middle">APEX · segunda 8h</text>
+<path d="M217.0,254.0 L245.0,254.0" fill="none" stroke="#13315C" stroke-width="2" marker-end="url(#m13315c)" stroke-linejoin="round"/>
+<path d="M407.0,254.0 L435.0,254.0" fill="none" stroke="#13315C" stroke-width="2" marker-end="url(#m13315c)" stroke-linejoin="round"/>
+<path d="M597.0,254.0 L625.0,254.0" fill="none" stroke="#13315C" stroke-width="2" marker-end="url(#m13315c)" stroke-linejoin="round"/>
+<path d="M787.0,254.0 L815.0,254.0" fill="none" stroke="#13315C" stroke-width="2" marker-end="url(#m13315c)" stroke-linejoin="round"/>
+<path d="M977.0,254.0 L1005.0,254.0" fill="none" stroke="#13315C" stroke-width="2" marker-end="url(#m13315c)" stroke-linejoin="round"/>
+<path d="M1167.0,254.0 L1195.0,254.0" fill="none" stroke="#13315C" stroke-width="2" marker-end="url(#m13315c)" stroke-linejoin="round"/>
+<path d="M1357.0,254.0 L1385.0,254.0" fill="none" stroke="#13315C" stroke-width="2" marker-end="url(#m13315c)" stroke-linejoin="round"/>
+<rect x="56.0" y="328.0" width="160.0" height="246.0" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+<path d="M136.0,306.0 L136.0,326.0" fill="none" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#m94a3b8)" stroke-linejoin="round"/>
+<text x="66.0" y="350.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="76.0" y="350.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">203 alunos, fases</text>
+<text x="76.0" y="362.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">F1–F5 (FIAP ON)</text>
+<text x="66.0" y="380.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="76.0" y="380.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">eventos: acesso,</text>
+<text x="76.0" y="392.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">capítulo visto, quiz,</text>
+<text x="76.0" y="405.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">download PDF/HTML,</text>
+<text x="76.0" y="417.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">horário</text>
+<text x="66.0" y="435.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="76.0" y="435.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">extração: CSV</text>
+<text x="76.0" y="447.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">exportado (padrão</text>
+<text x="76.0" y="460.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Moodle) ou API — sem</text>
+<text x="76.0" y="472.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">projeto de TI</text>
+<text x="66.0" y="490.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="76.0" y="490.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">dado nominal fica no</text>
+<text x="76.0" y="502.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">banco da IES</text>
+<rect x="246.0" y="328.0" width="160.0" height="246.0" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+<path d="M326.0,306.0 L326.0,326.0" fill="none" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#m94a3b8)" stroke-linejoin="round"/>
+<text x="256.0" y="350.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="266.0" y="350.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">limpeza e</text>
+<text x="266.0" y="362.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">deduplicação de</text>
+<text x="266.0" y="375.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">eventos</text>
+<text x="256.0" y="392.5" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="266.0" y="392.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">pseudonimização:</text>
+<text x="266.0" y="405.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Aluno NNNN fora do</text>
+<text x="266.0" y="417.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">painel</text>
+<text x="256.0" y="435.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="266.0" y="435.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">calendário semanal</text>
+<text x="266.0" y="447.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">(seg–dom) e</text>
+<text x="266.0" y="460.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">fase/capítulo por</text>
+<text x="266.0" y="472.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">evento</text>
+<text x="256.0" y="490.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="266.0" y="490.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">tabela EVENTO(aluno,</text>
+<text x="266.0" y="502.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">semana, tipo, fase,</text>
+<text x="266.0" y="515.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">capítulo)</text>
+<rect x="436.0" y="328.0" width="160.0" height="246.0" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+<path d="M516.0,306.0 L516.0,326.0" fill="none" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#m94a3b8)" stroke-linejoin="round"/>
+<text x="446.0" y="350.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="456.0" y="350.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">1 linha = aluno ×</text>
+<text x="456.0" y="362.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">semana</text>
+<text x="446.0" y="380.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="456.0" y="380.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">features em janelas de</text>
+<text x="456.0" y="392.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">7 / 14 / 28 dias: nº de</text>
+<text x="456.0" y="405.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">acessos, dias ativos,</text>
+<text x="456.0" y="417.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">tendência (Δ%),</text>
+<text x="456.0" y="430.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">capítulo atual,</text>
+<text x="456.0" y="442.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">quizzes, PDFs, horário</text>
+<text x="456.0" y="455.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">típico</text>
+<text x="446.0" y="472.5" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="456.0" y="472.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">rótulo inativo_21d:</text>
+<text x="456.0" y="485.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">nenhum acesso nos 21</text>
+<text x="456.0" y="497.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">dias seguintes</text>
+<rect x="626.0" y="328.0" width="160.0" height="246.0" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+<path d="M706.0,306.0 L706.0,326.0" fill="none" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#m94a3b8)" stroke-linejoin="round"/>
+<text x="636.0" y="350.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="646.0" y="350.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">treino: semanas</text>
+<text x="646.0" y="362.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">anteriores a jun/2026</text>
+<text x="636.0" y="380.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="646.0" y="380.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">teste: semanas a partir</text>
+<text x="646.0" y="392.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">de jun/2026</text>
+<text x="636.0" y="410.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="646.0" y="410.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">sem vazamento</text>
+<text x="646.0" y="422.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">temporal — o modelo</text>
+<text x="646.0" y="435.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">só vê o passado</text>
+<text x="636.0" y="452.5" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="646.0" y="452.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">reproduz a produção:</text>
+<text x="646.0" y="465.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">pontuar hoje o que</text>
+<text x="646.0" y="477.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">acontece daqui a 3</text>
+<text x="646.0" y="490.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">semanas</text>
+<rect x="816.0" y="328.0" width="160.0" height="246.0" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+<path d="M896.0,306.0 L896.0,326.0" fill="none" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#m94a3b8)" stroke-linejoin="round"/>
+<text x="826.0" y="350.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="836.0" y="350.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">HistGradientBoosting</text>
+<text x="836.0" y="362.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">(principal): melhor</text>
+<text x="836.0" y="375.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">ranking</text>
+<text x="826.0" y="392.5" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="836.0" y="392.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">regressão logística</text>
+<text x="836.0" y="405.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">(baseline):</text>
+<text x="836.0" y="417.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">coeficientes explicam</text>
+<text x="836.0" y="430.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">o motivo</text>
+<text x="826.0" y="447.5" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="836.0" y="447.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">equivalentes OML</text>
+<text x="836.0" y="460.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">in-database: XGBoost</text>
+<text x="836.0" y="472.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">/ GLM</text>
+<text x="826.0" y="490.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="836.0" y="490.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">saída: probabilidade</text>
+<text x="836.0" y="502.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">0–1 por aluno-semana</text>
+<rect x="1006.0" y="328.0" width="160.0" height="246.0" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+<path d="M1086.0,306.0 L1086.0,326.0" fill="none" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#m94a3b8)" stroke-linejoin="round"/>
+<text x="1018.0" y="358.0" font-size="19" fill="#1C8C82" text-anchor="start" font-weight="600">0,88</text>
+<text x="1018.0" y="372.0" font-size="9.5" fill="#3A4A5C" text-anchor="start">AUC-ROC no teste temporal</text>
+<text x="1018.0" y="410.0" font-size="19" fill="#1C8C82" text-anchor="start" font-weight="600">88%</text>
+<text x="1018.0" y="424.0" font-size="9.5" fill="#3A4A5C" text-anchor="start">precisão no top-20% da fila</text>
+<text x="1018.0" y="462.0" font-size="19" fill="#1C8C82" text-anchor="start" font-weight="600">3×</text>
+<text x="1018.0" y="476.0" font-size="9.5" fill="#3A4A5C" text-anchor="start">lift vs. escolha aleatória</text>
+<text x="1018.0" y="514.0" font-size="19" fill="#1C8C82" text-anchor="start" font-weight="600">95%</text>
+<text x="1018.0" y="528.0" font-size="9.5" fill="#3A4A5C" text-anchor="start">da faixa Alto de fato inativos</text>
+<text x="1018.0" y="562.0" font-size="9" fill="#94A3B8" text-anchor="start" font-style="italic">preliminares: F5 em curso</text>
+<rect x="1196.0" y="328.0" width="160.0" height="246.0" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+<path d="M1276.0,306.0 L1276.0,326.0" fill="none" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#m94a3b8)" stroke-linejoin="round"/>
+<text x="1206.0" y="350.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="1216.0" y="350.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Alto ≥ 0,60 → contato</text>
+<text x="1216.0" y="362.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">do tutor (19h–22h)</text>
+<text x="1206.0" y="380.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="1216.0" y="380.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Médio 0,30–0,60 →</text>
+<text x="1216.0" y="392.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">mensagem automática</text>
+<text x="1206.0" y="410.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="1216.0" y="410.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Baixo &lt; 0,30 → apenas</text>
+<text x="1216.0" y="422.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">monitorar</text>
+<text x="1206.0" y="440.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="1216.0" y="440.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">limiares recalibrados</text>
+<text x="1216.0" y="452.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">no retreino mensal, por</text>
+<text x="1216.0" y="465.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">IES</text>
+<rect x="1386.0" y="328.0" width="160.0" height="246.0" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+<path d="M1466.0,306.0 L1466.0,326.0" fill="none" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#m94a3b8)" stroke-linejoin="round"/>
+<text x="1396.0" y="350.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="1406.0" y="350.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">fila ordenada por</text>
+<text x="1406.0" y="362.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">probabilidade × valor,</text>
+<text x="1406.0" y="375.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">com motivo explicável</text>
+<text x="1396.0" y="392.5" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="1406.0" y="392.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">mapa de atrito: fase ×</text>
+<text x="1406.0" y="405.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">capítulo em que o</text>
+<text x="1406.0" y="417.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">aluno trava</text>
+<text x="1396.0" y="435.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="1406.0" y="435.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">e-mail-resumo para</text>
+<text x="1406.0" y="447.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">Mariana e tutores</text>
+<text x="1396.0" y="465.0" font-size="10.5" fill="#2EC4B6" text-anchor="start" font-weight="600">•</text>
+<text x="1406.0" y="465.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">Select AI para</text>
+<text x="1406.0" y="477.5" font-size="10.5" fill="#3A4A5C" text-anchor="start">perguntas em</text>
+<text x="1406.0" y="490.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">português</text>
+<path d="M1466.0,574.0 L1466.0,598.0 L896.0,598.0 L896.0,576.0" fill="none" stroke="#2EC4B6" stroke-width="2.2" stroke-dasharray="8 5" marker-end="url(#m2ec4b6)" stroke-linejoin="round"/>
+<rect x="978.7" y="579.0" width="404.6" height="16.5" rx="4" fill="#F6F7F9" opacity="0.92"/>
+<text x="1181.0" y="589.0" font-size="10.5" fill="#2EC4B6" text-anchor="middle">retreino mensal: resultados dos contatos viram novos rótulos e recalibram limiares</text>
+<rect x="56.0" y="640.0" width="485.3" height="168.0" rx="12" fill="#E6ECF5" stroke="#13315C" stroke-width="1.8"/>
+<text x="82.0" y="677.0" font-size="13" fill="#0B2545" text-anchor="start" font-weight="600">Por que split temporal, e não aleatório</text>
+<text x="82.0" y="699.1" font-size="10.5" fill="#3A4A5C" text-anchor="start">Evasão é um fenômeno no tempo: misturar semanas futuras no treino infla as</text>
+<text x="82.0" y="713.2" font-size="10.5" fill="#3A4A5C" text-anchor="start">métricas. O corte em jun/2026 reproduz a produção — o modelo só conhece o</text>
+<text x="82.0" y="727.4" font-size="10.5" fill="#3A4A5C" text-anchor="start">passado quando pontua a semana corrente.</text>
+<rect x="557.3" y="640.0" width="485.3" height="168.0" rx="12" fill="#E3F8F5" stroke="#2EC4B6" stroke-width="1.8"/>
+<text x="583.3" y="677.0" font-size="13" fill="#0B2545" text-anchor="start" font-weight="600">Por que duas famílias de modelo</text>
+<text x="583.3" y="699.1" font-size="10.5" fill="#3A4A5C" text-anchor="start">O gradient boosting entrega o melhor ranking (AUC 0,88); a regressão logística</text>
+<text x="583.3" y="713.2" font-size="10.5" fill="#3A4A5C" text-anchor="start">traduz o motivo em linguagem simples para a coordenadora. No Oracle, OML</text>
+<text x="583.3" y="727.4" font-size="10.5" fill="#3A4A5C" text-anchor="start">oferece os equivalentes (XGBoost / GLM) treinados e pontuados em SQL, sem o</text>
+<text x="583.3" y="741.6" font-size="10.5" fill="#3A4A5C" text-anchor="start">dado sair do banco.</text>
+<rect x="1058.7" y="640.0" width="485.3" height="168.0" rx="12" fill="#FFF3D6" stroke="#FFB703" stroke-width="1.8"/>
+<text x="1084.7" y="677.0" font-size="13" fill="#0B2545" text-anchor="start" font-weight="600">Rótulo preliminar e retreino</text>
+<text x="1084.7" y="699.1" font-size="10.5" fill="#3A4A5C" text-anchor="start">Com 203 alunos e a F5 em andamento, inativo_21d é um rótulo proxy e as métricas</text>
+<text x="1084.7" y="713.2" font-size="10.5" fill="#3A4A5C" text-anchor="start">são preliminares. O retreino mensal incorpora o resultado dos contatos (respondeu /</text>
+<text x="1084.7" y="727.4" font-size="10.5" fill="#3A4A5C" text-anchor="start">voltou) e recalibra os limiares para cada IES.</text>
+<line x1="56" y1="856" x2="1544" y2="856" stroke="#94A3B8" stroke-width="1"/>
+<text x="56.0" y="874.0" font-size="12" fill="#3A4A5C" text-anchor="start">Retena · Startup One / Enterprise Challenge Oracle · FIAP 2026</text>
+<text x="1544.0" y="874.0" font-size="12" fill="#3A4A5C" text-anchor="end">Base FIAP ON: 684.723 eventos · 203 alunos · teste temporal ≥ jun/2026</text>
+</svg>
+
+</body></html>

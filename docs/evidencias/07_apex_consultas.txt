@@ -1,0 +1,86 @@
+07 - Consultas prontas para APEX (sql/07_apex_ready.sql) - resultados reais
+===========================================================================
+Gerado em (maquina local): 2026-09-08 22:02:28
+Conexao: STARTUP@localhost:1521/FREEPDB1 (python-oracledb thin)
+Script: C:\Users\lmhsilva\Projetos\StartupOne\entrega\06_Oracle\scripts\gerar_evidencias.py
+
+
+== 1) FILA DE SEGUNDA-FEIRA - quem contatar, por que e o que fazer (pagina inicial do coordenador) ==
+25 linha(s) retornada(s) em 0.01 s (exibindo ate 15)
+---------+------------+--------+-----------+----------+-----------------+-------------+-----------+-------+--------------------------------------------------------------+---------------------------------------------------+----------+-------------
+ POSICAO | ALUNO      | FASE   | CAP_ATUAL | PCT_FASE | DIAS_SEM_ACESSO | EVENTOS_28D | RISCO_PCT | FAIXA | POR_QUE                                                      | O_QUE_FAZER                                       | STATUS   | PONTUADO_EM 
+---------+------------+--------+-----------+----------+-----------------+-------------+-----------+-------+--------------------------------------------------------------+---------------------------------------------------+----------+-------------
+ 1       | Aluno 0178 | Fase 1 | 0         | 0        | 198             | 0           | 92.4      | Alto  | RECENCIA_DIAS=198 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 2       | Aluno 0177 | Fase 1 | 0         | 0        | 197             | 0           | 92.4      | Alto  | RECENCIA_DIAS=197 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 3       | Aluno 0176 | Fase 4 | 0         | 0        | 197             | 0           | 92.4      | Alto  | RECENCIA_DIAS=197 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 4       | Aluno 0175 | Fase 4 | 0         | 0        | 195             | 0           | 92.4      | Alto  | RECENCIA_DIAS=195 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 5       | Aluno 0174 | Fase 1 | 0         | 0        | 195             | 0           | 92.4      | Alto  | RECENCIA_DIAS=195 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 6       | Aluno 0173 | Fase 1 | 0         | 0        | 174             | 0           | 92.4      | Alto  | RECENCIA_DIAS=174 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 7       | Aluno 0171 | Fase 1 | 0         | 0        | 163             | 0           | 92.4      | Alto  | RECENCIA_DIAS=163 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 8       | Aluno 0170 | Fase 1 | 1         | 10       | 162             | 0           | 92.4      | Alto  | RECENCIA_DIAS=162 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 9       | Aluno 0218 | Fase 2 | 0         | 0        | 160             | 0           | 92.4      | Alto  | RECENCIA_DIAS=160 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 10      | Aluno 0167 | Fase 2 | 2         | 17       | 155             | 0           | 92.4      | Alto  | RECENCIA_DIAS=155 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 11      | Aluno 0217 | Fase 2 | 0         | 0        | 155             | 0           | 92.4      | Alto  | RECENCIA_DIAS=155 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 12      | Aluno 0154 | Fase 4 | 0         | 0        | 154             | 0           | 92.4      | Alto  | RECENCIA_DIAS=154 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 13      | Aluno 0216 | Fase 2 | 0         | 0        | 141             | 0           | 92.4      | Alto  | RECENCIA_DIAS=141 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 14      | Aluno 0215 | Fase 2 | 10        | 83       | 141             | 0           | 92.4      | Alto  | RECENCIA_DIAS=141 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+ 15      | Aluno 0193 | Fase 3 | 0         | 0        | 134             | 0           | 92.4      | Alto  | RECENCIA_DIAS=134 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 3... | Contato ativo do tutor (telefone/WhatsApp) em 48h | PENDENTE | 08/09 19:26 
+---------+------------+--------+-----------+----------+-----------------+-------------+-----------+-------+--------------------------------------------------------------+---------------------------------------------------+----------+-------------
+
+== 2) FUNIL POR FASE - quantos iniciaram cada fase, quantos avancaram e onde a coorte se perde ==
+5 linha(s) retornada(s) em 0.01 s (exibindo ate 15)
+----------+-----------+-----------------+-----------+-----------+----------+-----------------+------------------+---------------------+-------------------+--------------------------------
+ NUM_FASE | NOME_FASE | TOTAL_CAPITULOS | INICIARAM | AVANCARAM | EVADIRAM | TAXA_EVASAO_PCT | PCT_DA_COORTE_F1 | PROGRESSO_MEDIO_PCT | DIAS_ATIVOS_MEDIO | OBS                            
+----------+-----------+-----------------+-----------+-----------+----------+-----------------+------------------+---------------------+-------------------+--------------------------------
+ 1        | Fase 1    | 10              | 175       | 165       | 10       | 5.7             | 100              | 81.8                | 14.3              | NULL                           
+ 2        | Fase 2    | 12              | 174       | 168       | 6        | 3.4             | 99.4             | 80.7                | 13.6              | NULL                           
+ 3        | Fase 3    | 10              | 179       | 163       | 16       | 8.9             | 102.3            | 76.1                | 12.6              | NULL                           
+ 4        | Fase 4    | 11              | 166       | 153       | 13       | 7.8             | 94.9             | 78.3                | 15                | NULL                           
+ 5        | Fase 5    | 8               | 161       | 161       | 0        | 0               | 92               | 39                  | 6.3               | fase em andamento (sem rótulo) 
+----------+-----------+-----------------+-----------+-----------+----------+-----------------+------------------+---------------------+-------------------+--------------------------------
+
+== 3) MAPA DE ATRITO POR CAPITULO - em qual capitulo os alunos "travam" antes de evadir ==
+43 linha(s) retornada(s) em 5.38 s (exibindo ate 15)
+--------+-----+----------+--------------------+------------+-------------------+--------------
+ FASE   | CAP | CHEGARAM | PARARAM_E_EVADIRAM | ATRITO_PCT | EVENTOS_POR_ALUNO | RECOMENDACAO 
+--------+-----+----------+--------------------+------------+-------------------+--------------
+ Fase 1 | 1   | 152      | 1                  | 0.7        | 5                 | NULL         
+ Fase 1 | 2   | 151      | 1                  | 0.7        | 23.4              | NULL         
+ Fase 1 | 3   | 147      | 0                  | 0          | 7.5               | NULL         
+ Fase 1 | 4   | 145      | 0                  | 0          | 8.5               | NULL         
+ Fase 1 | 5   | 143      | 0                  | 0          | 9.5               | NULL         
+ Fase 1 | 6   | 141      | 0                  | 0          | 8                 | NULL         
+ Fase 1 | 7   | 140      | 0                  | 0          | 6.8               | NULL         
+ Fase 1 | 8   | 139      | 0                  | 0          | 6.8               | NULL         
+ Fase 1 | 9   | 137      | 0                  | 0          | 6.2               | NULL         
+ Fase 1 | 10  | 136      | 2                  | 1.5        | 9.3               | NULL         
+ Fase 2 | 1   | 152      | 0                  | 0          | 2.9               | NULL         
+ Fase 2 | 2   | 148      | 1                  | 0.7        | 8                 | NULL         
+ Fase 2 | 3   | 145      | 0                  | 0          | 8.9               | NULL         
+ Fase 2 | 4   | 144      | 0                  | 0          | 18.7              | NULL         
+ Fase 2 | 5   | 144      | 0                  | 0          | 9.2               | NULL         
+--------+-----+----------+--------------------+------------+-------------------+--------------
+
+== 4) RECEITA EM RISCO - por faixa e total, parametrizada pelo ticket medio da IES ==
+4 linha(s) retornada(s) em 0.00 s (exibindo ate 15)
+-------+--------+------------+--------+----------------------+-------------------------+------------------------+----------------------
+ FAIXA | ALUNOS | PROB_MEDIA | TICKET | RECEITA_MENSAL_BRUTA | RECEITA_MENSAL_EM_RISCO | RECEITA_CICLO_EM_RISCO | PCT_RECEITA_EM_RISCO 
+-------+--------+------------+--------+----------------------+-------------------------+------------------------+----------------------
+ Alto  | 59     | 0.844      | 350    | 20650                | 17436.2                 | 104617.17              | 84.4                 
+ Médio | 15     | 0.472      | 350    | 5250                 | 2477.55                 | 14865.27               | 47.2                 
+ Baixo | 129    | 0.054      | 350    | 45150                | 2434.08                 | 14604.45               | 5.4                  
+ TOTAL | 203    | 0.315      | 350    | 71050                | 22347.82                | 134086.89              | 31.5                 
+-------+--------+------------+--------+----------------------+-------------------------+------------------------+----------------------
+
+== 5) REATIVACOES - alunos ja inativos (> 21 dias sem acesso no corte) que voltaram nos 21 dias seguintes ==
+6 linha(s) retornada(s) em 0.01 s (exibindo ate 15)
+-----------+--------+--------------------+----------------+---------------------+-------------------------------+-----------------------------+---------------------------
+ MES_CORTE | CORTES | CASOS_INATIVOS_21D | REATIVADOS_21D | TAXA_REATIVACAO_PCT | DIAS_INATIVO_MEDIO_REATIVADOS | ALUNOS_DISTINTOS_REATIVADOS | RECEITA_MENSAL_PRESERVADA 
+-----------+--------+--------------------+----------------+---------------------+-------------------------------+-----------------------------+---------------------------
+ 2026-03   | 4      | 37                 | 14             | 37.8                | 28.5                          | 11                          | 3850                      
+ 2026-04   | 4      | 59                 | 17             | 28.8                | 29.9                          | 11                          | 3850                      
+ 2026-05   | 5      | 124                | 31             | 25                  | 32.5                          | 19                          | 6650                      
+ 2026-06   | 4      | 121                | 12             | 9.9                 | 40.7                          | 10                          | 3500                      
+ 2026-07   | 4      | 155                | 14             | 9                   | 34                            | 9                           | 3150                      
+ 2026-08   | 1      | 37                 | 1              | 2.7                 | 34                            | 1                           | 350                       
+-----------+--------+--------------------+----------------+---------------------+-------------------------------+-----------------------------+---------------------------

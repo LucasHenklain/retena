@@ -1,0 +1,194 @@
+04 - Metricas dos modelos (conjunto de teste: cortes >= 2026-06-01 / transicao F4->F5)
+======================================================================================
+Gerado em (maquina local): 2026-09-08 22:02:20
+Conexao: STARTUP@localhost:1521/FREEPDB1 (python-oracledb thin)
+Script: C:\Users\lmhsilva\Projetos\StartupOne\entrega\06_Oracle\scripts\gerar_evidencias.py
+
+== AVALIACAO_MODELOS - metricas no conjunto de TESTE (validacao temporal) ==
+----------------------+-------------------+--------+-----------------------------------------------------------------------------------+---------------------
+ MODELO               | METRICA           | VALOR  | DETALHE                                                                           | DT_AVALIACAO        
+----------------------+-------------------+--------+-----------------------------------------------------------------------------------+---------------------
+ RETENA_INATIVO21_GLM | N_TESTE           | 1655   | casos no conjunto de teste (cortes >= 2026-06-01 / fase 4)                        | 2026-09-09 00:56:19 
+ RETENA_INATIVO21_GLM | POSITIVOS_TESTE   | 387    | casos com alvo = 1 no teste                                                       | 2026-09-09 00:56:19 
+ RETENA_INATIVO21_GLM | PREVALENCIA_TESTE | 0.2338 | taxa base de positivos no teste                                                   | 2026-09-09 00:56:19 
+ RETENA_INATIVO21_GLM | AUC_COMPUTE_ROC   | 0.9451 | DBMS_DATA_MINING.COMPUTE_ROC (tabela ROC_INATIVO21_GLM)                           | 2026-09-09 00:56:21 
+ RETENA_INATIVO21_GLM | AUC_SQL           | 0.9451 | AUC-ROC calculada em SQL puro (funcoes analiticas, estatistica U de Mann-Whitney) | 2026-09-09 00:56:19 
+ RETENA_INATIVO21_GLM | ACURACIA_0.5      | 0.8604 | limiar 0,5                                                                        | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | ACUR_BALANC_0.5   | 0.8757 | media de recall e especificidade                                                  | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | PRECISAO_0.5      | 0.6434 | limiar 0,5                                                                        | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | RECALL_0.5        | 0.9044 | limiar 0,5 (sensibilidade)                                                        | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | ESPECIFIC_0.5     | 0.847  | limiar 0,5                                                                        | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | F1_0.5            | 0.7519 | limiar 0,5                                                                        | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | TP_0.5            | 350    | matriz de confusao, limiar 0,5                                                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | FP_0.5            | 194    | matriz de confusao, limiar 0,5                                                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | FN_0.5            | 37     | matriz de confusao, limiar 0,5                                                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | TN_0.5            | 1074   | matriz de confusao, limiar 0,5                                                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | CAPTURA_TOP20PCT  | 0.7571 | 331 casos no top-20% (293 positivos de 387); prevalencia .2338                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | LIFT_TOP20PCT     | 3.786  | 331 casos no top-20% (293 positivos de 387); prevalencia .2338                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | PRECISAO_TOP20PCT | 0.8852 | 331 casos no top-20% (293 positivos de 387); prevalencia .2338                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | TAXA_OBS_ALTO     | 0.7128 | 477 casos, 340 positivos, captura 87.9% dos positivos                             | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | TAXA_OBS_BAIXO    | 0.0256 | 939 casos, 24 positivos, captura 6.2% dos positivos                               | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_GLM | TAXA_OBS_MÉDIO    | 0.0962 | 239 casos, 23 positivos, captura 5.9% dos positivos                               | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | N_TESTE           | 1655   | casos no conjunto de teste (cortes >= 2026-06-01 / fase 4)                        | 2026-09-09 00:56:19 
+ RETENA_INATIVO21_RF  | POSITIVOS_TESTE   | 387    | casos com alvo = 1 no teste                                                       | 2026-09-09 00:56:19 
+ RETENA_INATIVO21_RF  | PREVALENCIA_TESTE | 0.2338 | taxa base de positivos no teste                                                   | 2026-09-09 00:56:19 
+ RETENA_INATIVO21_RF  | AUC_COMPUTE_ROC   | 0.949  | DBMS_DATA_MINING.COMPUTE_ROC (tabela ROC_INATIVO21_RF)                            | 2026-09-09 00:56:20 
+ RETENA_INATIVO21_RF  | AUC_SQL           | 0.949  | AUC-ROC calculada em SQL puro (funcoes analiticas, estatistica U de Mann-Whitney) | 2026-09-09 00:56:19 
+ RETENA_INATIVO21_RF  | ACURACIA_0.5      | 0.9184 | limiar 0,5                                                                        | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | ACUR_BALANC_0.5   | 0.8794 | media de recall e especificidade                                                  | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | PRECISAO_0.5      | 0.8387 | limiar 0,5                                                                        | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | RECALL_0.5        | 0.8062 | limiar 0,5 (sensibilidade)                                                        | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | ESPECIFIC_0.5     | 0.9527 | limiar 0,5                                                                        | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | F1_0.5            | 0.8221 | limiar 0,5                                                                        | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | TP_0.5            | 312    | matriz de confusao, limiar 0,5                                                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | FP_0.5            | 60     | matriz de confusao, limiar 0,5                                                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | FN_0.5            | 75     | matriz de confusao, limiar 0,5                                                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | TN_0.5            | 1208   | matriz de confusao, limiar 0,5                                                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | CAPTURA_TOP20PCT  | 0.7494 | 331 casos no top-20% (290 positivos de 387); prevalencia .2338                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | LIFT_TOP20PCT     | 3.747  | 331 casos no top-20% (290 positivos de 387); prevalencia .2338                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | PRECISAO_TOP20PCT | 0.8761 | 331 casos no top-20% (290 positivos de 387); prevalencia .2338                    | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | TAXA_OBS_ALTO     | 0.853  | 347 casos, 296 positivos, captura 76.5% dos positivos                             | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | TAXA_OBS_BAIXO    | 0.051  | 1255 casos, 64 positivos, captura 16.5% dos positivos                             | 2026-09-09 00:56:22 
+ RETENA_INATIVO21_RF  | TAXA_OBS_MÉDIO    | 0.5094 | 53 casos, 27 positivos, captura 7% dos positivos                                  | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | N_TESTE           | 166    | casos no conjunto de teste (cortes >= 2026-06-01 / fase 4)                        | 2026-09-09 00:56:19 
+ RETENA_TRANSICAO_GLM | POSITIVOS_TESTE   | 13     | casos com alvo = 1 no teste                                                       | 2026-09-09 00:56:19 
+ RETENA_TRANSICAO_GLM | PREVALENCIA_TESTE | 0.0783 | taxa base de positivos no teste                                                   | 2026-09-09 00:56:19 
+ RETENA_TRANSICAO_GLM | AUC_COMPUTE_ROC   | 0.9718 | DBMS_DATA_MINING.COMPUTE_ROC (tabela ROC_TRANSICAO_GLM)                           | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | AUC_SQL           | 0.9718 | AUC-ROC calculada em SQL puro (funcoes analiticas, estatistica U de Mann-Whitney) | 2026-09-09 00:56:19 
+ RETENA_TRANSICAO_GLM | ACURACIA_0.5      | 0.9398 | limiar 0,5                                                                        | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | ACUR_BALANC_0.5   | 0.8617 | media de recall e especificidade                                                  | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | PRECISAO_0.5      | 0.5882 | limiar 0,5                                                                        | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | RECALL_0.5        | 0.7692 | limiar 0,5 (sensibilidade)                                                        | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | ESPECIFIC_0.5     | 0.9542 | limiar 0,5                                                                        | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | F1_0.5            | 0.6667 | limiar 0,5                                                                        | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | TP_0.5            | 10     | matriz de confusao, limiar 0,5                                                    | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | FP_0.5            | 7      | matriz de confusao, limiar 0,5                                                    | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | FN_0.5            | 3      | matriz de confusao, limiar 0,5                                                    | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | TN_0.5            | 146    | matriz de confusao, limiar 0,5                                                    | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | CAPTURA_TOP20PCT  | 0.9231 | 33 casos no top-20% (12 positivos de 13); prevalencia .0783                       | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | LIFT_TOP20PCT     | 4.644  | 33 casos no top-20% (12 positivos de 13); prevalencia .0783                       | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | PRECISAO_TOP20PCT | 0.3636 | 33 casos no top-20% (12 positivos de 13); prevalencia .0783                       | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | TAXA_OBS_ALTO     | 0.5882 | 17 casos, 10 positivos, captura 76.9% dos positivos                               | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | TAXA_OBS_BAIXO    | 0.0135 | 148 casos, 2 positivos, captura 15.4% dos positivos                               | 2026-09-09 00:56:22 
+ RETENA_TRANSICAO_GLM | TAXA_OBS_MÉDIO    | 1      | 1 casos, 1 positivos, captura 7.7% dos positivos                                  | 2026-09-09 00:56:22 
+----------------------+-------------------+--------+-----------------------------------------------------------------------------------+---------------------
+63 linha(s)
+
+== Resumo comparativo (AUC e F1 por modelo) ==
+----------------------+---------+-------------+-----------------+---------+-----------------+----------+--------+--------
+ MODELO               | N_TESTE | PREVALENCIA | AUC_COMPUTE_ROC | AUC_SQL | ACUR_BALANCEADA | PRECISAO | RECALL | F1     
+----------------------+---------+-------------+-----------------+---------+-----------------+----------+--------+--------
+ RETENA_INATIVO21_GLM | 1655    | 0.2338      | 0.9451          | 0.9451  | 0.8757          | 0.6434   | 0.9044 | 0.7519 
+ RETENA_INATIVO21_RF  | 1655    | 0.2338      | 0.949           | 0.949   | 0.8794          | 0.8387   | 0.8062 | 0.8221 
+ RETENA_TRANSICAO_GLM | 166     | 0.0783      | 0.9718          | 0.9718  | 0.8617          | 0.5882   | 0.7692 | 0.6667 
+----------------------+---------+-------------+-----------------+---------+-----------------+----------+--------+--------
+3 linha(s)
+
+== Matriz de confusao (limiar 0,5) ==
+----------------------+-----+-----+----+------
+ MODELO               | TP  | FP  | FN | TN   
+----------------------+-----+-----+----+------
+ RETENA_INATIVO21_GLM | 350 | 194 | 37 | 1074 
+ RETENA_INATIVO21_RF  | 312 | 60  | 75 | 1208 
+ RETENA_TRANSICAO_GLM | 10  | 7   | 3  | 146  
+----------------------+-----+-----+----+------
+3 linha(s)
+
+== Taxa observada por faixa (Alto >= 0,60 | Medio 0,30-0,60 | Baixo) ==
+----------------------+-------+-------+-----------+----------------+------------+-----------------------
+ MODELO               | FAIXA | CASOS | POSITIVOS | TAXA_OBSERVADA | PROB_MEDIA | CAPTURA_DOS_POSITIVOS 
+----------------------+-------+-------+-----------+----------------+------------+-----------------------
+ RETENA_INATIVO21_GLM | Alto  | 477   | 340       | 0.7128         | 0.8956     | 0.8786                
+ RETENA_INATIVO21_GLM | Médio | 239   | 23        | 0.0962         | 0.4431     | 0.0594                
+ RETENA_INATIVO21_GLM | Baixo | 939   | 24        | 0.0256         | 0.0528     | 0.062                 
+ RETENA_INATIVO21_RF  | Alto  | 347   | 296       | 0.853          | 0.8429     | 0.7649                
+ RETENA_INATIVO21_RF  | Médio | 53    | 27        | 0.5094         | 0.4688     | 0.0698                
+ RETENA_INATIVO21_RF  | Baixo | 1255  | 64        | 0.051          | 0.044      | 0.1654                
+ RETENA_TRANSICAO_GLM | Alto  | 17    | 10        | 0.5882         | 0.906      | 0.7692                
+ RETENA_TRANSICAO_GLM | Médio | 1     | 1         | 1              | 0.3453     | 0.0769                
+ RETENA_TRANSICAO_GLM | Baixo | 148   | 2         | 0.0135         | 0.0012     | 0.1538                
+----------------------+-------+-------+-----------+----------------+------------+-----------------------
+9 linha(s)
+
+== Precisao / captura / lift no TOP-20% de risco (fila operacional do tutor) ==
+----------------------+----------------+---------------+------------+----------------------------------------------------------------
+ MODELO               | PRECISAO_TOP20 | CAPTURA_TOP20 | LIFT_TOP20 | DETALHE                                                        
+----------------------+----------------+---------------+------------+----------------------------------------------------------------
+ RETENA_INATIVO21_GLM | 0.8852         | 0.7571        | 3.786      | 331 casos no top-20% (293 positivos de 387); prevalencia .2338 
+ RETENA_INATIVO21_RF  | 0.8761         | 0.7494        | 3.747      | 331 casos no top-20% (290 positivos de 387); prevalencia .2338 
+ RETENA_TRANSICAO_GLM | 0.3636         | 0.9231        | 4.644      | 33 casos no top-20% (12 positivos de 13); prevalencia .0783    
+----------------------+----------------+---------------+------------+----------------------------------------------------------------
+3 linha(s)
+
+== Lift por decil - RETENA_INATIVO21_RF (DBMS_DATA_MINING.COMPUTE_LIFT) ==
+-------+-------------+----------------+-----------+--------------+----------------
+ DECIL | LIMIAR_PROB | POSITIVOS_ACUM | LIFT_ACUM | CAPTURA_ACUM | PCT_CASOS_ACUM 
+-------+-------------+----------------+-----------+--------------+----------------
+ 1     | 0.9237      | 162.9541       | 4.198     | 0.4211       | 0.1003         
+ 2     | 0.6457      | 290            | 3.735     | 0.7494       | 0.2006         
+ 3     | 0.1702      | 340            | 2.92      | 0.8786       | 0.3009         
+ 4     | 0.0773      | 361            | 2.325     | 0.9328       | 0.4012         
+ 5     | 0.0288      | 374            | 1.927     | 0.9664       | 0.5015         
+ 6     | 0.0145      | 379            | 1.629     | 0.9793       | 0.6012         
+ 7     | 0.0071      | 382            | 1.408     | 0.9871       | 0.7009         
+ 8     | 0.0025      | 387            | 1.249     | 1            | 0.8006         
+ 9     | 0.0004      | 387            | 1.111     | 1            | 0.9003         
+ 10    | 0           | 387            | 1         | 1            | 1              
+-------+-------------+----------------+-----------+--------------+----------------
+10 linha(s)
+
+== Importancia de atributos - RETENA_INATIVO21_RF (DM$VA - Random Forest) ==
+-------------------------+-------------+--------------
+ ATTRIBUTE_NAME          | IMPORTANCIA | PARTICIPACAO 
+-------------------------+-------------+--------------
+ DIAS_ATIVOS_28D         | 1.8264      | 0.2895       
+ RECENCIA_DIAS           | 1.1399      | 0.1807       
+ EVENTOS_28D             | 0.8367      | 0.1326       
+ EVENTOS_14D             | 0.5551      | 0.088        
+ QUIZ_28D                | 0.5427      | 0.086        
+ TENDENCIA               | 0.5126      | 0.0813       
+ EVENTOS_7D              | 0.4011      | 0.0636       
+ CAPITULOS_DISTINTOS_28D | 0.2758      | 0.0437       
+ PROGRESSO_28D           | 0.1678      | 0.0266       
+ ENTREGAS_28D            | 0.0499      | 0.0079       
+-------------------------+-------------+--------------
+10 linha(s)
+
+== Coeficientes - RETENA_INATIVO21_GLM (DM$VD, escala transformada pelo PREP_AUTO) ==
+-------------------------+-------------+-------------+---------+------------
+ ATRIBUTO                | COEFICIENTE | ERRO_PADRAO | P_VALOR | ODDS_RATIO 
+-------------------------+-------------+-------------+---------+------------
+ (intercepto)            | -0.7547     | 0.3841      | 0.0494  | 0.4701     
+ DIAS_ATIVOS_28D         | 0.5301      | 0.0858      | 0       | 1.699      
+ RECENCIA_DIAS           | -0.0796     | 0.0201      | 0.0001  | 0.9234     
+ TENDENCIA               | -0.0779     | 0.1266      | 0.5382  | 0.925      
+ CAPITULOS_DISTINTOS_28D | -0.0215     | 0.0643      | 0.7377  | 0.9787     
+ ENTREGAS_28D            | -0.0161     | 0.0714      | 0.822   | 0.9841     
+ EVENTOS_14D             | -0.0111     | 0.004       | 0.0055  | 0.989      
+ EVENTOS_28D             | 0.0087      | 0.0047      | 0.0663  | 1.0088     
+ QUIZ_28D                | -0.0069     | 0.0288      | 0.812   | 0.9932     
+ PROGRESSO_28D           | 0.0013      | 0.0036      | 0.7208  | 1.0013     
+ EVENTOS_7D              | 0.0006      | 0.0008      | 0.506   | 1.0006     
+-------------------------+-------------+-------------+---------+------------
+11 linha(s)
+
+== Coeficientes - RETENA_TRANSICAO_GLM (DM$VD) ==
+-------------------+-------------+-------------+---------+------------
+ ATRIBUTO          | COEFICIENTE | ERRO_PADRAO | P_VALOR | ODDS_RATIO 
+-------------------+-------------+-------------+---------+------------
+ SHARE_FIM_SEMANA  | -10.7317    | 31.1682     | 0.7306  | 0          
+ PCT_CAPITULOS     | 3.984       | 12.1521     | 0.743   | 53.7315    
+ (intercepto)      | 1.9777      | 1.8822      | 0.2934  | 7.2258     
+ QUIZ_ENTREGUES    | -0.9298     | 1.3454      | 0.4895  | 0.3946     
+ SHARE_NOITE       | 0.7955      | 3.6114      | 0.8257  | 2.2156     
+ DIAS_ATIVOS       | -0.5737     | 0.5889      | 0.33    | 0.5634     
+ TENDENCIA         | 0.3081      | 6.2071      | 0.9604  | 1.3608     
+ CAPITULO_MAX      | -0.2142     | 1.1345      | 0.8502  | 0.8072     
+ ENTREGAS_TAREFA   | -0.1899     | 2.3811      | 0.9364  | 0.8271     
+ QUIZ_INICIADOS    | -0.1183     | 0.5728      | 0.8364  | 0.8884     
+ SPAN_DIAS         | -0.0281     | 0.0296      | 0.3422  | 0.9723     
+ RECENCIA_FIM_FASE | 0.0082      | 0.0128      | 0.5217  | 1.0082     
+ EVENTOS_PROGRESSO | -0.0003     | 0.0064      | 0.9575  | 0.9997     
+ TOTAL_EVENTOS     | 0.0003      | 0.0057      | 0.9535  | 1.0003     
+-------------------+-------------+-------------+---------+------------
+14 linha(s)

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Retena - Evidencias Oracle</title><style>
+@font-face { font-family: 'Sora'; src: url('../../03_Marca/fontes/Sora-Variable.ttf') format('truetype'); font-weight: 100 900; }
+:root { --bg:#F6F7F9; --navy:#0B2545; --teal:#2EC4B6; --ink:#1F2937; --muted:#5B6B7F; --term:#0E1726; --line:#E3E7EE; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:'Sora', 'Segoe UI', system-ui, sans-serif; }
+.pagina { width:1600px; margin:0 auto; padding:36px 56px 48px; }
+header { display:flex; align-items:center; justify-content:space-between; border-bottom:3px solid var(--teal); padding-bottom:18px; margin-bottom:28px; }
+header img { height:54px; }
+header .meta { text-align:right; color:var(--muted); font-size:14px; line-height:1.5; }
+header .meta b { color:var(--navy); }
+h1 { color:var(--navy); font-size:30px; margin:0 0 6px; font-weight:700; letter-spacing:-0.01em; }
+h2 { color:var(--navy); font-size:24px; margin:0 0 14px; font-weight:700; }
+h2 .num { display:inline-block; background:var(--teal); color:#fff; border-radius:8px; padding:2px 12px; margin-right:12px; font-size:18px; vertical-align:middle; }
+h3 { color:var(--navy); font-size:16px; margin:22px 0 8px; font-weight:600; }
+p, li { font-size:15px; line-height:1.55; }
+.sub { color:var(--muted); font-size:15px; margin:0 0 22px; }
+section { background:#fff; border:1px solid var(--line); border-radius:14px; padding:26px 30px; margin-bottom:26px; box-shadow:0 1px 2px rgba(11,37,69,.04); }
+pre.term { background:var(--term); color:#D8E3F0; border-radius:10px; padding:16px 18px; font:12.5px/1.45 Consolas, 'Cascadia Mono', monospace; overflow:hidden; white-space:pre; margin:8px 0 0; border-left:5px solid var(--teal); }
+pre.term .cmd { color:var(--teal); }
+table.dados { border-collapse:collapse; width:100%; font-size:13px; margin-top:8px; }
+table.dados th { background:var(--navy); color:#fff; text-align:left; padding:8px 10px; font-weight:600; white-space:nowrap; }
+table.dados td { padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+table.dados tr:nth-child(even) td { background:#F9FAFC; }
+.kpis { display:flex; gap:16px; margin:6px 0 10px; flex-wrap:wrap; }
+.kpi { flex:1 1 160px; background:#F0FAF9; border:1px solid #CBEFEA; border-radius:12px; padding:14px 16px; }
+.kpi .v { color:var(--navy); font-size:26px; font-weight:700; }
+.kpi .l { color:var(--muted); font-size:13px; margin-top:2px; }
+.faixa-Alto { color:#B42318; font-weight:700; } .faixa-Médio { color:#B54708; font-weight:700; } .faixa-Baixo { color:#067647; font-weight:700; }
+footer { color:var(--muted); font-size:13px; margin-top:8px; text-align:right; }
+</style></head>
+<body><div class="pagina">
+<header>
+  <img src="../../03_Marca/logo/retena_horizontal_escuro_sobre_claro.svg" alt="Retena">
+  <div class="meta"><b>Evidencias tecnicas - integracao Oracle</b><br>Oracle AI Database 26ai Free Release 23.26.3.0.0 - Develop, Learn, and Run for Free<br>Gerado em 2026-09-08 22:02:28 (local) | 2026-09-09 01:02:28 +00:00 (banco, UTC)</div>
+</header>
+<h1>Previsao de evasao com Oracle Machine Learning in-database</h1><p class="sub">Relatorio gerado automaticamente por scripts/gerar_evidencias.py a partir de consultas reais ao banco. Cada secao corresponde a uma imagem evidencia_NN.png.</p>
+<section id="s1"><h2><span class="num">01</span>Ambiente: Oracle AI Database 26ai Free em Docker</h2>
+      <p class="sub">Banco real rodando localmente no container <b>oracle-free</b> (imagem gvenzl/oracle-free:slim-faststart), acessado por python-oracledb (modo thin) como usuario de aplicacao STARTUP.</p>
+      <pre class="term"><span class="cmd">$ SELECT banner_full FROM v$version</span>
+Oracle AI Database 26ai Free Release 23.26.3.0.0 - Develop, Learn, and Run for Free
+Version 23.26.3.0.0</pre>
+      <table class="dados"><thead><tr><th>INSTANCIA</th><th>HOST</th><th>PDB</th><th>SYSTIMESTAMP</th></tr></thead><tbody><tr><td>FREE</td><td>c5e7ee510d1a</td><td>FREEPDB1</td><td>2026-09-09 01:02:28 +00:00</td></tr></tbody></table>
+      <h3>Container</h3>
+      <pre class="term">$ docker ps --filter name=oracle-free --format table {{.ID}}	{{.Image}}	{{.Status}}	{{.Ports}}	{{.Names}}
+CONTAINER ID   IMAGE                               STATUS        PORTS                    NAMES
+c5e7ee510d1a   gvenzl/oracle-free:slim-faststart   Up 10 hours   0.0.0.0:1521-&gt;1521/tcp   oracle-free
+
+
+$ docker inspect (imagem, criacao, saude)
+Image=gvenzl/oracle-free:slim-faststart | Created=2026-09-08T14:50:05.867982491Z | Status=running | Health=n/a | StartedAt=2026-09-08T14:50:17.200771836Z</pre>
+      <pre class="term">$ docker logs --tail 40 oracle-free
+2026-09-09T00:45:59.711121+00:00
+Thread 1 advanced to log sequence 106 (LGWR switch),  current SCN: 2368261
+  Current log# 2 seq# 106 mem# 0: /opt/oracle/oradata/FREE/redo02.log
+2026-09-09T00:46:26.106466+00:00
+Thread 1 advanced to log sequence 107 (LGWR switch),  current SCN: 2371977
+  Current log# 1 seq# 107 mem# 0: /opt/oracle/oradata/FREE/redo01.log
+2026-09-09T00:46:33.934639+00:00
+Resize operation completed for file# 18, fname /opt/oracle/oradata/FREE/undotbs01.dbf, old size 11264K, new size 21504K
+2026-09-09T00:46:52.865004+00:00
+Thread 1 advanced to log sequence 108 (LGWR switch),  current SCN: 2374779
+  Current log# 2 seq# 108 mem# 0: /opt/oracle/oradata/FREE/redo02.log
+2026-09-09T00:47:21.185039+00:00
+Thread 1 advanced to log sequence 109 (LGWR switch),  current SCN: 2381411
+  Current log# 1 seq# 109 mem# 0: /opt/oracle/oradata/FREE/redo01.log
+2026-09-09T00:47:25.403761+00:00
+Resize operation completed for file# 18, fname /opt/oracle/oradata/FREE/undotbs01.dbf, old size 21504K, new size 31744K
+2026-09-09T00:47:39.389143+00:00
+Thread 1 advanced to log sequence 110 (LGWR switch),  current SCN: 2386142
+  Current log# 2 seq# 110 mem# 0: /opt/oracle/oradata/FREE/redo02.log
+2026-09-09T00:48:02.672513+00:00
+Thread 1 advanced to log sequence 111 (LGWR switch),  current SCN: 2390381
+  Current log# 1 seq# 111 mem# 0: /opt/oracle/oradata/FREE/redo01.log
+2026-09-09T00:48:30.631413+00:00
+Resize operation completed for file# 18, fname /opt/oracle/oradata/FREE/undotbs01.dbf, old size 31744K, new size 41984K
+2026-09-09T00:48:36.252896+00:00
+Thread 1 advanced to log sequence 112 (LGWR switch),  current SCN: 2395135
+  Current log# 2 seq# 112 mem# 0: /opt/oracle/oradata/FREE/redo02.log
+2026-09-09T00:49:07.969184+00:00
+Thread 1 advanced to log sequence 113 (LGWR switch),  current SCN: 2400854
+  Current log# 1 seq# 113 mem# 0: /opt/oracle/oradata/FREE/redo01.log
+2026-09-09T00:49:59.260010+00:00
+Begin automatic SQL Tuning Advisor run for special tuning task &quot;SYS_AUTO_SQL_TUNING_TASK&quot;.
+2026-09-09T00:50:00.905783+00:00
+End automatic SQL Tuning Advisor run for special tuning task &quot;SYS_AUTO_SQL_TUNING_TASK&quot;.
+2026-09-09T00:52:17.260420+00:00
+Thread 1 advanced to log sequence 114 (LGWR switch),  current SCN: 2410036
+  Current log# 2 seq# 114 mem# 0: /opt/oracle/oradata/FREE/redo02.log
+2026-09-09T01:00:24.449105+00:00
+FREEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P759 (46273) VALUES LESS THAN (TO_DATE(&#x27; 2026-09-10 00:00:00&#x27;, &#x27;SYYYY-MM-DD HH24:MI:SS&#x27;, &#x27;NLS_CALENDAR=GREGORIAN&#x27;))
+FREEPDB1(3):TABLE SYS.WRI$</pre>
+    </section><section id="s2"><h2><span class="num">02</span>Dados carregados: logs do LMS em EVENTOS_LMS</h2>
+      <div class="kpis">
+        <div class="kpi"><div class="v">684.723</div><div class="l">eventos do LMS carregados</div></div>
+        <div class="kpi"><div class="v">679.892</div><div class="l">eventos de alunos (FLG_ALUNO = 1)</div></div>
+        <div class="kpi"><div class="v">203</div><div class="l">alunos distintos</div></div>
+        <div class="kpi"><div class="v">2026-01-15 a 2026-08-26</div><div class="l">periodo observado</div></div>
+      </div>
+      <h3>Eventos por fase (colunas virtuais NUM_FASE / CAPITULO / FLG_ALUNO calculadas no banco)</h3>
+      <table class="dados"><thead><tr><th>FASE</th><th>NOME_FASE</th><th>CAPITULOS</th><th>EVENTOS</th><th>ALUNOS</th><th>CAP_MAX_OBSERVADO</th><th>PRIMEIRO</th><th>ULTIMO</th></tr></thead><tbody><tr><td>1</td><td>Fase 1</td><td>10</td><td>69615</td><td>175</td><td>10</td><td>2026-01-15</td><td>2026-08-26</td></tr><tr><td>2</td><td>Fase 2</td><td>12</td><td>178369</td><td>174</td><td>12</td><td>2026-02-04</td><td>2026-08-26</td></tr><tr><td>3</td><td>Fase 3</td><td>10</td><td>175013</td><td>179</td><td>10</td><td>2026-02-04</td><td>2026-08-26</td></tr><tr><td>4</td><td>Fase 4</td><td>11</td><td>149141</td><td>166</td><td>11</td><td>2026-02-04</td><td>2026-08-26</td></tr><tr><td>5</td><td>Fase 5</td><td>8</td><td>112585</td><td>161</td><td>8</td><td>2026-07-17</td><td>2026-08-26</td></tr></tbody></table>
+      <h3>Tabelas do projeto (USER_TABLES)</h3>
+      <table class="dados"><thead><tr><th>TABLE_NAME</th><th>NUM_ROWS</th><th>LAST_ANALYZED</th></tr></thead><tbody><tr><td>AVALIACAO_MODELOS</td><td></td><td></td></tr><tr><td>BASE_RISCO_SEMANAL</td><td>4337</td><td>2026-09-08 18:56</td></tr><tr><td>DIM_FASE</td><td></td><td></td></tr><tr><td>DIM_TIPO_EVENTO</td><td></td><td></td></tr><tr><td>EVENTOS_LMS</td><td>684723</td><td>2026-09-08 15:12</td></tr><tr><td>FEATURES_TRANSICAO_FASE</td><td>855</td><td>2026-09-08 15:17</td></tr><tr><td>RISCO_ALUNO_SNAPSHOT</td><td></td><td></td></tr><tr><td>SCORES_TESTE</td><td>3476</td><td>2026-09-09 00:56</td></tr></tbody></table>
+    </section><section id="s3"><h2><span class="num">03</span>Feature engineering in-database (views + SQL Macro)</h2>
+      <p class="sub">Duas unidades de analise. <b>Transicao de fase</b> (aluno x fase k: evadiu = 0 eventos na fase k+1) e <b>risco semanal</b> (aluno x corte t, domingos de 2026-02-01 a 2026-08-02: inativo_21d = 0 eventos em (t, t+21d]). Features usam apenas eventos &le; t; a mesma SQL Macro FN_FEATURES_SEMANAIS serve treino e scoring (sem training/serving skew).</p>
+      <h3>FEATURES_TRANSICAO_FASE - rotulos por fase</h3><table class="dados"><thead><tr><th>FASE</th><th>NOME_FASE</th><th>CONJUNTO</th><th>ALUNOS</th><th>EVADIRAM</th><th>TAXA_EVASAO</th></tr></thead><tbody><tr><td>1</td><td>Fase 1</td><td>TREINO</td><td>175</td><td>10</td><td>0.0571</td></tr><tr><td>2</td><td>Fase 2</td><td>TREINO</td><td>174</td><td>6</td><td>0.0345</td></tr><tr><td>3</td><td>Fase 3</td><td>TREINO</td><td>179</td><td>16</td><td>0.0894</td></tr><tr><td>4</td><td>Fase 4</td><td>TESTE</td><td>166</td><td>13</td><td>0.0783</td></tr><tr><td>5</td><td>Fase 5</td><td>SEM_ROTULO</td><td>161</td><td></td><td></td></tr></tbody></table>
+      <h3>BASE_RISCO_SEMANAL - treino (cortes &lt; 2026-06-01) e teste (&ge; 2026-06-01)</h3><table class="dados"><thead><tr><th>CONJUNTO</th><th>CORTES</th><th>CASOS</th><th>POSITIVOS</th><th>TAXA</th><th>PRIMEIRO_CORTE</th><th>ULTIMO_CORTE</th></tr></thead><tbody><tr><td>TREINO</td><td>18</td><td>2682</td><td>311</td><td>0.116</td><td>2026-02-01</td><td>2026-05-31</td></tr><tr><td>TESTE</td><td>9</td><td>1655</td><td>387</td><td>0.2338</td><td>2026-06-07</td><td>2026-08-02</td></tr></tbody></table>
+      <h3>Cortes semanais</h3><table class="dados"><thead><tr><th>CORTE</th><th>CONJUNTO</th><th>ALUNOS</th><th>INATIVOS_21D</th><th>TAXA</th><th>MEDIA_EV_28D</th><th>MEDIA_RECENCIA</th></tr></thead><tbody><tr><td>2026-02-01</td><td>TREINO</td><td>2</td><td>0</td><td>0</td><td>176.5</td><td>11</td></tr><tr><td>2026-02-08</td><td>TREINO</td><td>121</td><td>0</td><td>0</td><td>6.5</td><td>1.7</td></tr><tr><td>2026-02-15</td><td>TREINO</td><td>136</td><td>12</td><td>0.088</td><td>61.8</td><td>3.2</td></tr><tr><td>2026-02-22</td><td>TREINO</td><td>138</td><td>7</td><td>0.051</td><td>108.6</td><td>5.4</td></tr><tr><td>2026-03-01</td><td>TREINO</td><td>142</td><td>7</td><td>0.049</td><td>154.2</td><td>5.1</td></tr><tr><td>2026-03-08</td><td>TREINO</td><td>147</td><td>11</td><td>0.075</td><td>174.5</td><td>5.3</td></tr><tr><td>2026-03-15</td><td>TREINO</td><td>150</td><td>12</td><td>0.08</td><td>163</td><td>4.5</td></tr><tr><td>2026-03-22</td><td>TREINO</td><td>157</td><td>17</td><td>0.108</td><td>177</td><td>5.5</td></tr><tr><td>2026-03-29</td><td>TREINO</td><td>162</td><td>16</td><td>0.099</td><td>251.1</td><td>7.1</td></tr><tr><td>2026-04-05</td><td>TREINO</td><td>163</td><td>15</td><td>0.092</td><td>413.3</td><td>8.2</td></tr><tr><td>2026-04-12</td><td>TREINO</td><td>164</td><td>18</td><td>0.11</td><td>571.3</td><td>7.1</td></tr><tr><td>2026-04-19</td><td>TREINO</td><td>165</td><td>20</td><td>0.121</td><td>806</td><td>6.2</td></tr><tr><td>2026-04-26</td><td>TREINO</td><td>168</td><td>33</td><td>0.196</td><td>914.3</td><td>7.3</td></tr><tr><td>2026-05-03</td><td>TREINO</td><td>169</td><td>27</td><td>0.16</td><td>869.1</td><td>10</td></tr><tr><td>2026-05-10</td><td>TREINO</td><td>171</td><td>27</td><td>0.158</td><td>825.9</td><td>11.3</td></tr><tr><td>2026-05-17</td><td>TREINO</td><td>171</td><td>26</td><td>0.152</td><td>753.6</td><td>11.9</td></tr><tr><td>2026-05-24</td><td>TREINO</td><td>178</td><td>29</td><td>0.163</td><td>704.1</td><td>11.1</td></tr><tr><td>2026-05-31</td><td>TREINO</td><td>178</td><td>34</td><td>0.191</td><td>823.5</td><td>12.5</td></tr><tr><td>2026-06-07</td><td>TESTE</td><td>178</td><td>32</td><td>0.18</td><td>798.2</td><td>13.7</td></tr><tr><td>2026-06-14</td><td>TESTE</td><td>183</td><td>41</td><td>0.224</td><td>678.9</td><td>14.4</td></tr><tr><td>2026-06-21</td><td>TESTE</td><td>183</td><td>43</td><td>0.235</td><td>618.6</td><td>15.5</td></tr><tr><td>2026-06-28</td><td>TESTE</td><td>183</td><td>35</td><td>0.191</td><td>693.2</td><td>16.2</td></tr><tr><td>2026-07-05</td><td>TESTE</td><td>184</td><td>37</td><td>0.201</td><td>623.4</td><td>19.4</td></tr><tr><td>2026-07-12</td><td>TESTE</td><td>184</td><td>37</td><td>0.201</td><td>550</td><td>23.1</td></tr><tr><td>2026-07-19</td><td>TESTE</td><td>184</td><td>57</td><td>0.31</td><td>434.3</td><td>18.7</td></tr><tr><td>2026-07-26</td><td>TESTE</td><td>187</td><td>53</td><td>0.283</td><td>168.9</td><td>23</td></tr><tr><td>2026-08-02</td><td>TESTE</td><td>189</td><td>52</td><td>0.275</td><td>133.1</td><td>25.7</td></tr></tbody></table>
+    </section><section id="s4"><h2><span class="num">04</span>Modelos Oracle Machine Learning treinados no banco</h2>
+      <p class="sub">DBMS_DATA_MINING.CREATE_MODEL2 com PREP_AUTO = ON: o modelo carrega a preparacao (normalizacao, tratamento de nulos). Nenhum dado saiu do banco; o treino le as views VW_TREINO_*.</p>
+      <h3>USER_MINING_MODELS</h3><table class="dados"><thead><tr><th>MODEL_NAME</th><th>MINING_FUNCTION</th><th>ALGORITHM</th><th>CRIADO_EM_UTC</th><th>SEG_TREINO</th><th>BYTES</th></tr></thead><tbody><tr><td>RETENA_INATIVO21_GLM</td><td>CLASSIFICATION</td><td>GENERALIZED_LINEAR_MODEL</td><td>2026-09-08 19:03:27</td><td>1</td><td>1505</td></tr><tr><td>RETENA_INATIVO21_RF</td><td>CLASSIFICATION</td><td>RANDOM_FOREST</td><td>2026-09-08 19:03:26</td><td>1</td><td>802134</td></tr><tr><td>RETENA_TRANSICAO_GLM</td><td>CLASSIFICATION</td><td>GENERALIZED_LINEAR_MODEL</td><td>2026-09-08 19:03:25</td><td>1</td><td>2087</td></tr></tbody></table>
+      <h3>USER_MINING_MODEL_SETTINGS (configuracoes informadas)</h3><table class="dados"><thead><tr><th>MODEL_NAME</th><th>SETTING_NAME</th><th>SETTING_VALUE</th><th>SETTING_TYPE</th></tr></thead><tbody><tr><td>RETENA_INATIVO21_GLM</td><td>ALGO_NAME</td><td>ALGO_GENERALIZED_LINEAR_MODEL</td><td>INPUT</td></tr><tr><td>RETENA_INATIVO21_GLM</td><td>CLAS_WEIGHTS_BALANCED</td><td>ON</td><td>INPUT</td></tr><tr><td>RETENA_INATIVO21_GLM</td><td>GLMS_RIDGE_REGRESSION</td><td>GLMS_RIDGE_REG_ENABLE</td><td>INPUT</td></tr><tr><td>RETENA_INATIVO21_GLM</td><td>ODMS_DETAILS</td><td>ODMS_ENABLE</td><td>INPUT</td></tr><tr><td>RETENA_INATIVO21_GLM</td><td>ODMS_MISSING_VALUE_TREATMENT</td><td>ODMS_MISSING_VALUE_AUTO</td><td>DEFAULT</td></tr><tr><td>RETENA_INATIVO21_GLM</td><td>PREP_AUTO</td><td>ON</td><td>INPUT</td></tr><tr><td>RETENA_INATIVO21_RF</td><td>ALGO_NAME</td><td>ALGO_RANDOM_FOREST</td><td>INPUT</td></tr><tr><td>RETENA_INATIVO21_RF</td><td>ODMS_DETAILS</td><td>ODMS_ENABLE</td><td>INPUT</td></tr><tr><td>RETENA_INATIVO21_RF</td><td>ODMS_MISSING_VALUE_TREATMENT</td><td>ODMS_MISSING_VALUE_AUTO</td><td>DEFAULT</td></tr><tr><td>RETENA_INATIVO21_RF</td><td>ODMS_RANDOM_SEED</td><td>42</td><td>INPUT</td></tr><tr><td>RETENA_INATIVO21_RF</td><td>PREP_AUTO</td><td>ON</td><td>INPUT</td></tr><tr><td>RETENA_INATIVO21_RF</td><td>RFOR_NUM_TREES</td><td>200</td><td>INPUT</td></tr><tr><td>RETENA_INATIVO21_RF</td><td>RFOR_SAMPLING_RATIO</td><td>0.6</td><td>INPUT</td></tr><tr><td>RETENA_TRANSICAO_GLM</td><td>ALGO_NAME</td><td>ALGO_GENERALIZED_LINEAR_MODEL</td><td>INPUT</td></tr><tr><td>RETENA_TRANSICAO_GLM</td><td>CLAS_WEIGHTS_BALANCED</td><td>ON</td><td>INPUT</td></tr><tr><td>RETENA_TRANSICAO_GLM</td><td>GLMS_RIDGE_REGRESSION</td><td>GLMS_RIDGE_REG_ENABLE</td><td>INPUT</td></tr><tr><td>RETENA_TRANSICAO_GLM</td><td>ODMS_DETAILS</td><td>ODMS_ENABLE</td><td>INPUT</td></tr><tr><td>RETENA_TRANSICAO_GLM</td><td>ODMS_MISSING_VALUE_TREATMENT</td><td>ODMS_MISSING_VALUE_AUTO</td><td>DEFAULT</td></tr><tr><td>RETENA_TRANSICAO_GLM</td><td>PREP_AUTO</td><td>ON</td><td>INPUT</td></tr></tbody></table>
+      <h3>Atributos (USER_MINING_MODEL_ATTRIBUTES)</h3><table class="dados"><thead><tr><th>MODEL_NAME</th><th>ATRIBUTOS</th></tr></thead><tbody><tr><td>RETENA_INATIVO21_GLM</td><td>CAPITULOS_DISTINTOS_28D, DIAS_ATIVOS_28D, ENTREGAS_28D, EVENTOS_14D, EVENTOS_28D, EVENTOS_7D, PROGRESSO_28D, QUIZ_28D, RECENCIA_DIAS, TENDENCIA</td></tr><tr><td>RETENA_INATIVO21_RF</td><td>CAPITULOS_DISTINTOS_28D, DIAS_ATIVOS_28D, ENTREGAS_28D, EVENTOS_14D, EVENTOS_28D, EVENTOS_7D, PROGRESSO_28D, QUIZ_28D, RECENCIA_DIAS, TENDENCIA</td></tr><tr><td>RETENA_TRANSICAO_GLM</td><td>CAPITULO_MAX, DIAS_ATIVOS, ENTREGAS_TAREFA, EVENTOS_PROGRESSO, PCT_CAPITULOS, QUIZ_ENTREGUES, QUIZ_INICIADOS, RECENCIA_FIM_FASE, SHARE_FIM_SEMANA, SHARE_NOITE, SPAN_DIAS, TENDENCIA, TOTAL_EVENTOS</td></tr></tbody></table>
+    </section><section id="s5"><h2><span class="num">05</span>Avaliacao no conjunto de teste (validacao temporal)</h2>
+      <div class="kpis">
+          <div class="kpi"><div class="v">0.949</div><div class="l">AUC - RETENA_INATIVO21_RF (COMPUTE_ROC)</div></div>
+          <div class="kpi"><div class="v">0.8062</div><div class="l">recall no limiar 0,5</div></div>
+          <div class="kpi"><div class="v">0.8387</div><div class="l">precisao no limiar 0,5</div></div>
+          <div class="kpi"><div class="v">0.8761</div><div class="l">precisao no top-20% de risco</div></div>
+          <div class="kpi"><div class="v">1655</div><div class="l">casos de teste (cortes &ge; 2026-06-01)</div></div>
+        </div>
+      <h3>Metricas por modelo (AUC via DBMS_DATA_MINING.COMPUTE_ROC e contraprova em SQL; limiar 0,5)</h3><table class="dados"><thead><tr><th>MODELO</th><th>N_TESTE</th><th>PREVALENCIA</th><th>AUC_COMPUTE_ROC</th><th>AUC_SQL</th><th>ACUR_BALANCEADA</th><th>PRECISAO</th><th>RECALL</th><th>F1</th><th>TP</th><th>FP</th><th>FN</th><th>TN</th></tr></thead><tbody><tr><td>RETENA_INATIVO21_GLM</td><td>1655</td><td>0.2338</td><td>0.9451</td><td>0.9451</td><td>0.8757</td><td>0.6434</td><td>0.9044</td><td>0.7519</td><td>350</td><td>194</td><td>37</td><td>1074</td></tr><tr><td>RETENA_INATIVO21_RF</td><td>1655</td><td>0.2338</td><td>0.949</td><td>0.949</td><td>0.8794</td><td>0.8387</td><td>0.8062</td><td>0.8221</td><td>312</td><td>60</td><td>75</td><td>1208</td></tr><tr><td>RETENA_TRANSICAO_GLM</td><td>166</td><td>0.0783</td><td>0.9718</td><td>0.9718</td><td>0.8617</td><td>0.5882</td><td>0.7692</td><td>0.6667</td><td>10</td><td>7</td><td>3</td><td>146</td></tr></tbody></table>
+      <h3>Precisao, captura e lift no top-20% de risco (fila operacional: contatar 1 em cada 5 alunos)</h3><table class="dados"><thead><tr><th>MODELO</th><th>PRECISAO_TOP20</th><th>CAPTURA_TOP20</th><th>LIFT_TOP20</th><th>DETALHE</th></tr></thead><tbody><tr><td>RETENA_INATIVO21_GLM</td><td>0.8852</td><td>0.7571</td><td>3.786</td><td>331 casos no top-20% (293 positivos de 387); prevalencia .2338</td></tr><tr><td>RETENA_INATIVO21_RF</td><td>0.8761</td><td>0.7494</td><td>3.747</td><td>331 casos no top-20% (290 positivos de 387); prevalencia .2338</td></tr><tr><td>RETENA_TRANSICAO_GLM</td><td>0.3636</td><td>0.9231</td><td>4.644</td><td>33 casos no top-20% (12 positivos de 13); prevalencia .0783</td></tr></tbody></table>
+      <h3>Taxa observada por faixa de risco</h3><table class="dados"><thead><tr><th>MODELO</th><th>FAIXA</th><th>CASOS</th><th>POSITIVOS</th><th>TAXA_OBSERVADA</th><th>PROB_MEDIA</th><th>CAPTURA_DOS_POSITIVOS</th></tr></thead><tbody><tr><td>RETENA_INATIVO21_GLM</td><td class="faixa-Alto">Alto</td><td>477</td><td>340</td><td>0.7128</td><td>0.8956</td><td>0.8786</td></tr><tr><td>RETENA_INATIVO21_GLM</td><td class="faixa-Médio">Médio</td><td>239</td><td>23</td><td>0.0962</td><td>0.4431</td><td>0.0594</td></tr><tr><td>RETENA_INATIVO21_GLM</td><td class="faixa-Baixo">Baixo</td><td>939</td><td>24</td><td>0.0256</td><td>0.0528</td><td>0.062</td></tr><tr><td>RETENA_INATIVO21_RF</td><td class="faixa-Alto">Alto</td><td>347</td><td>296</td><td>0.853</td><td>0.8429</td><td>0.7649</td></tr><tr><td>RETENA_INATIVO21_RF</td><td class="faixa-Médio">Médio</td><td>53</td><td>27</td><td>0.5094</td><td>0.4688</td><td>0.0698</td></tr><tr><td>RETENA_INATIVO21_RF</td><td class="faixa-Baixo">Baixo</td><td>1255</td><td>64</td><td>0.051</td><td>0.044</td><td>0.1654</td></tr><tr><td>RETENA_TRANSICAO_GLM</td><td class="faixa-Alto">Alto</td><td>17</td><td>10</td><td>0.5882</td><td>0.906</td><td>0.7692</td></tr><tr><td>RETENA_TRANSICAO_GLM</td><td class="faixa-Médio">Médio</td><td>1</td><td>1</td><td>1</td><td>0.3453</td><td>0.0769</td></tr><tr><td>RETENA_TRANSICAO_GLM</td><td class="faixa-Baixo">Baixo</td><td>148</td><td>2</td><td>0.0135</td><td>0.0012</td><td>0.1538</td></tr></tbody></table>
+      <h3>Lift por decil - RETENA_INATIVO21_RF (COMPUTE_LIFT)</h3><table class="dados"><thead><tr><th>DECIL</th><th>LIMIAR_PROB</th><th>POSITIVOS_ACUM</th><th>LIFT_ACUM</th><th>CAPTURA_ACUM</th><th>PCT_CASOS_ACUM</th></tr></thead><tbody><tr><td>1</td><td>0.9237</td><td>162.9541</td><td>4.198</td><td>0.4211</td><td>0.1003</td></tr><tr><td>2</td><td>0.6457</td><td>290</td><td>3.735</td><td>0.7494</td><td>0.2006</td></tr><tr><td>3</td><td>0.1702</td><td>340</td><td>2.92</td><td>0.8786</td><td>0.3009</td></tr><tr><td>4</td><td>0.0773</td><td>361</td><td>2.325</td><td>0.9328</td><td>0.4012</td></tr><tr><td>5</td><td>0.0288</td><td>374</td><td>1.927</td><td>0.9664</td><td>0.5015</td></tr><tr><td>6</td><td>0.0145</td><td>379</td><td>1.629</td><td>0.9793</td><td>0.6012</td></tr><tr><td>7</td><td>0.0071</td><td>382</td><td>1.408</td><td>0.9871</td><td>0.7009</td></tr><tr><td>8</td><td>0.0025</td><td>387</td><td>1.249</td><td>1</td><td>0.8006</td></tr><tr><td>9</td><td>0.0004</td><td>387</td><td>1.111</td><td>1</td><td>0.9003</td></tr><tr><td>10</td><td>0</td><td>387</td><td>1</td><td>1</td><td>1</td></tr></tbody></table>
+      <h3>Importancia de atributos (Random Forest, DM$VA)</h3><table class="dados"><thead><tr><th>ATRIBUTO</th><th>IMPORTANCIA</th><th>PARTICIPACAO</th></tr></thead><tbody><tr><td>DIAS_ATIVOS_28D</td><td>1.8264</td><td>0.2895</td></tr><tr><td>RECENCIA_DIAS</td><td>1.1399</td><td>0.1807</td></tr><tr><td>EVENTOS_28D</td><td>0.8367</td><td>0.1326</td></tr><tr><td>EVENTOS_14D</td><td>0.5551</td><td>0.088</td></tr><tr><td>QUIZ_28D</td><td>0.5427</td><td>0.086</td></tr><tr><td>TENDENCIA</td><td>0.5126</td><td>0.0813</td></tr><tr><td>EVENTOS_7D</td><td>0.4011</td><td>0.0636</td></tr><tr><td>CAPITULOS_DISTINTOS_28D</td><td>0.2758</td><td>0.0437</td></tr><tr><td>PROGRESSO_28D</td><td>0.1678</td><td>0.0266</td></tr><tr><td>ENTREGAS_28D</td><td>0.0499</td><td>0.0079</td></tr></tbody></table>
+      <h3>Coeficientes do GLM de transicao (DM$VD)</h3><table class="dados"><thead><tr><th>ATRIBUTO</th><th>COEFICIENTE</th><th>P_VALOR</th><th>ODDS_RATIO</th></tr></thead><tbody><tr><td>SHARE_FIM_SEMANA</td><td>-10.7317</td><td>0.7306</td><td>0</td></tr><tr><td>PCT_CAPITULOS</td><td>3.984</td><td>0.743</td><td>53.7315</td></tr><tr><td>(intercepto)</td><td>1.9777</td><td>0.2934</td><td>7.2258</td></tr><tr><td>QUIZ_ENTREGUES</td><td>-0.9298</td><td>0.4895</td><td>0.3946</td></tr><tr><td>SHARE_NOITE</td><td>0.7955</td><td>0.8257</td><td>2.2156</td></tr><tr><td>DIAS_ATIVOS</td><td>-0.5737</td><td>0.33</td><td>0.5634</td></tr><tr><td>TENDENCIA</td><td>0.3081</td><td>0.9604</td><td>1.3608</td></tr><tr><td>CAPITULO_MAX</td><td>-0.2142</td><td>0.8502</td><td>0.8072</td></tr><tr><td>ENTREGAS_TAREFA</td><td>-0.1899</td><td>0.9364</td><td>0.8271</td></tr><tr><td>QUIZ_INICIADOS</td><td>-0.1183</td><td>0.8364</td><td>0.8884</td></tr><tr><td>SPAN_DIAS</td><td>-0.0281</td><td>0.3422</td><td>0.9723</td></tr><tr><td>RECENCIA_FIM_FASE</td><td>0.0082</td><td>0.5217</td><td>1.0082</td></tr><tr><td>EVENTOS_PROGRESSO</td><td>-0.0003</td><td>0.9575</td><td>0.9997</td></tr><tr><td>TOTAL_EVENTOS</td><td>0.0003</td><td>0.9535</td><td>1.0003</td></tr></tbody></table>
+    </section><section id="s6"><h2><span class="num">06</span>Scoring por SQL: PREDICTION_PROBABILITY + PREDICTION_DETAILS</h2>
+      <p class="sub">VW_RISCO_ALUNO_ATUAL pontua o ultimo corte (ultimo dia com eventos) com os modelos OML; PRC_ATUALIZAR_RISCO persiste em RISCO_ALUNO_SNAPSHOT (agendado por DBMS_SCHEDULER). Faixas: Alto &ge; 0,60 | Medio 0,30-0,60 | Baixo.</p>
+      <h3>Distribuicao por faixa</h3><table class="dados"><thead><tr><th>FAIXA_RISCO</th><th>ALUNOS</th><th>PROB_MEDIA</th><th>RECENCIA_MEDIA</th><th>EVENTOS_28D_MEDIA</th></tr></thead><tbody><tr><td class="faixa-Alto">Alto</td><td>59</td><td>0.8444</td><td>86.4</td><td>0.4</td></tr><tr><td class="faixa-Médio">Médio</td><td>15</td><td>0.4719</td><td>13.9</td><td>50.7</td></tr><tr><td class="faixa-Baixo">Baixo</td><td>129</td><td>0.0539</td><td>4.8</td><td>1020.5</td></tr></tbody></table>
+      <h3>20 alunos de maior risco (fatores = PREDICTION_DETAILS top 3, XML convertido em texto)</h3><table class="dados"><thead><tr><th>NOME</th><th>NUM_FASE_ATUAL</th><th>RECENCIA_DIAS</th><th>EVENTOS_28D</th><th>DIAS_ATIVOS_28D</th><th>PROB_INATIVO_21D</th><th>PROB_INATIVO_21D_GLM</th><th>FAIXA_RISCO</th><th>PROB_EVASAO_FASE</th><th>FATORES_TOP3</th><th>ACAO_SUGERIDA</th></tr></thead><tbody><tr><td>Aluno 0178</td><td>1</td><td>198</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9571</td><td>RECENCIA_DIAS=198 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0176</td><td>4</td><td>197</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9572</td><td>RECENCIA_DIAS=197 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0177</td><td>1</td><td>197</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9566</td><td>RECENCIA_DIAS=197 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0174</td><td>1</td><td>195</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.956</td><td>RECENCIA_DIAS=195 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0175</td><td>4</td><td>195</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9561</td><td>RECENCIA_DIAS=195 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0173</td><td>1</td><td>174</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9484</td><td>RECENCIA_DIAS=174 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0171</td><td>1</td><td>163</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9436</td><td>RECENCIA_DIAS=163 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0170</td><td>1</td><td>162</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9524</td><td>RECENCIA_DIAS=162 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0218</td><td>2</td><td>160</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9423</td><td>RECENCIA_DIAS=160 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0167</td><td>2</td><td>155</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9463</td><td>RECENCIA_DIAS=155 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0217</td><td>2</td><td>155</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.94</td><td>RECENCIA_DIAS=155 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0154</td><td>4</td><td>154</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9397</td><td>RECENCIA_DIAS=154 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0215</td><td>2</td><td>141</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9332</td><td>RECENCIA_DIAS=141 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0216</td><td>2</td><td>141</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9334</td><td>RECENCIA_DIAS=141 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0193</td><td>3</td><td>134</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9296</td><td>RECENCIA_DIAS=134 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0165</td><td>4</td><td>125</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9572</td><td>RECENCIA_DIAS=125 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0227</td><td>3</td><td>125</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9366</td><td>RECENCIA_DIAS=125 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0213</td><td>2</td><td>124</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9721</td><td>RECENCIA_DIAS=124 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0121</td><td>4</td><td>120</td><td>0</td><td>0</td><td>0.9237</td><td>1</td><td class="faixa-Alto">Alto</td><td>0.9561</td><td>RECENCIA_DIAS=120 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr><tr><td>Aluno 0225</td><td>3</td><td>110</td><td>0</td><td>0</td><td>0.9237</td><td>0.9999</td><td class="faixa-Alto">Alto</td><td>0.9156</td><td>RECENCIA_DIAS=110 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td></tr></tbody></table>
+      <h3>Agendamento (USER_SCHEDULER_JOBS)</h3><table class="dados"><thead><tr><th>JOB_NAME</th><th>JOB_ACTION</th><th>REPEAT_INTERVAL</th><th>ENABLED</th><th>STATE</th><th>PROXIMA_EXECUCAO</th></tr></thead><tbody><tr><td>JOB_RETENA_SCORING_SEMANAL</td><td>PRC_ATUALIZAR_RISCO</td><td>FREQ=WEEKLY; BYDAY=MON; BYHOUR=6; BYMINUTE=0</td><td>TRUE</td><td>SCHEDULED</td><td>2026-09-14 06:00 +00:00</td></tr></tbody></table>
+    </section><section id="s7"><h2><span class="num">07</span>JSON pronto para API e JSON Relational Duality View</h2>
+      <p class="sub">VW_RISCO_JSON monta o payload completo com JSON_OBJECT / JSON_ARRAYAGG (pronto para ORDS ou API Gateway). RISCO_ALUNO_DV e uma <b>JSON Relational Duality View</b> (26ai): documento por aluno com leitura e escrita - o coordenador atualiza o status pelo app e a tabela relacional continua a fonte unica.</p>
+      <pre class="term"><span class="cmd">$ SELECT PAYLOAD FROM VW_RISCO_JSON</span>
+{
+  &quot;produto&quot;: &quot;Retena&quot;,
+  &quot;gerado_em&quot;: &quot;2026-09-09T01:02:20.848+00:00&quot;,
+  &quot;dt_corte&quot;: &quot;2026-08-26&quot;,
+  &quot;dt_scoring&quot;: &quot;2026-09-08T19:26:31&quot;,
+  &quot;modelo&quot;: &quot;RETENA_INATIVO21_RF (Oracle Machine Learning, Random Forest, in-database)&quot;,
+  &quot;horizonte_dias&quot;: 21,
+  &quot;total_alunos&quot;: 203,
+  &quot;resumo&quot;: {
+    &quot;alto&quot;: 59,
+    &quot;medio&quot;: 15,
+    &quot;baixo&quot;: 129,
+    &quot;prob_media&quot;: 0.3145
+  },
+  &quot;alunos&quot;: [
+    {
+      &quot;aluno&quot;: &quot;Aluno 0045&quot;,
+      &quot;fase&quot;: 4,
+      &quot;prob_inativo_21d&quot;: 0.9237,
+      &quot;faixa&quot;: &quot;Alto&quot;,
+      &quot;recencia_dias&quot;: 76,
+      &quot;eventos_28d&quot;: 0,
+      &quot;progresso_fase&quot;: 0.3636,
+      &quot;prob_evasao_fase&quot;: 0.9296,
+      &quot;fatores&quot;: [
+        {
+          &quot;atributo&quot;: &quot;RECENCIA_DIAS&quot;,
+          &quot;valor&quot;: &quot;76&quot;,
+          &quot;peso&quot;: 82.1,
+          &quot;rank&quot;: 1
+        },
+        {
+          &quot;atributo&quot;: &quot;DIAS_ATIVOS_28D&quot;,
+          &quot;valor&quot;: &quot;0&quot;,
+          &quot;peso&quot;: 36.51,
+          &quot;rank&quot;: 2
+        },
+        {
+          &quot;atributo&quot;: &quot;EVENTOS_28D&quot;,
+          &quot;valor&quot;: &quot;0&quot;,
+          &quot;peso&quot;: 21.55,
+          &quot;rank&quot;: 3
+        }
+      ],
+      &quot;acao_sugerida&quot;: &quot;Contato ativo do tutor (telefone/WhatsApp) em 48h&quot;,
+      &quot;status_atendimento&quot;: &quot;PENDENTE&quot;
+    },
+    {
+      &quot;aluno&quot;: &quot;Aluno 0046&quot;,
+      &quot;fase&quot;: 3,
+      &quot;prob_inativo_21d&quot;: 0.9237,
+      &quot;faixa&quot;: &quot;Alto&quot;,
+      &quot;recencia_dias&quot;: 76,
+      &quot;eventos_28d&quot;: 0,
+      &quot;progresso_fase&quot;: 0,
+      &quot;prob_evasao_fase&quot;: 0.8915,
+      &quot;fatores&quot;: [
+        {
+          &quot;atributo&quot;: &quot;RECENCIA_DIAS&quot;,
+          &quot;valor&quot;: &quot;76&quot;,
+          &quot;peso&quot;: 82.1,
+          &quot;rank&quot;: 1
+        },
+        {
+          &quot;atributo&quot;: &quot;DIAS_ATIVOS_28D&quot;,
+          &quot;valor&quot;: &quot;0&quot;,
+          &quot;peso&quot;: 36.51,
+          &quot;rank&quot;: 2
+        },
+        {
+          &quot;atributo&quot;: &quot;EVENTOS_28D&quot;,
+          &quot;valor&quot;: &quot;0&quot;,
+          &quot;peso&quot;: 21.55,
+          &quot;rank&quot;: 3
+        }
+      ],
+      &quot;acao_sugerida&quot;: &quot;Contato ativo do tutor (telefone/WhatsApp) em 48h&quot;,
+      &quot;status_atendimento&quot;: &quot;PENDENTE&quot;
+    },
+    {
+      &quot;aluno&quot;: &quot;Aluno 0047&quot;,
+      &quot;fase&quot;: 1,
+      &quot;prob_inativo_21d&quot;: 0.9237,
+      &quot;faixa&quot;: &quot;Alto&quot;,
+      &quot;recencia_dias&quot;: 76,
+      &quot;eventos_28d&quot;: 0,
+      &quot;progresso_fase&quot;: 1,
+      &quot;prob_evasao_fase&quot;: 0.7227,
+      &quot;fatores&quot;: [
+        {
+          &quot;atributo&quot;: &quot;RECENCIA_DIAS&quot;,
+          &quot;valor&quot;: &quot;76&quot;,
+          &quot;peso&quot;: 82.1,
+          &quot;rank&quot;: 1
+        },
+        {
+          &quot;atributo&quot;: &quot;DIAS_ATIVOS_28D&quot;,
+          &quot;valor&quot;: &quot;0&quot;,
+          &quot;peso&quot;: 36.51,
+          &quot;rank&quot;: 2
+        },
+        {
+          &quot;atributo&quot;: &quot;EVENTOS_28D&quot;,
+          &quot;valor&quot;: &quot;0&quot;,
+          &quot;peso&quot;: 21.55,
+          &quot;rank&quot;: 3
+        }
+      ],
+      &quot;acao_sugerida&quot;: &quot;Contato ativo do tutor (telefone/WhatsApp) em 48h&quot;,
+      &quot;status_atendimento&quot;: &quot;PENDENTE&quot;
+    },
+    &quot;... (203 alunos no payload completo)&quot;
+  ]
+}</pre>
+      <pre class="term"><span class="cmd">$ SELECT JSON_SERIALIZE(dv.DATA) FROM RISCO_ALUNO_DV dv ORDER BY dv.DATA.probInativo21d.number() DESC FETCH FIRST 1 ROWS ONLY</span>
+[
+  {
+    &quot;_id&quot;: &quot;Aluno 0045&quot;,
+    &quot;_metadata&quot;: {
+      &quot;etag&quot;: &quot;EE8E2EC488242FF9EA2BE0B6ABBD2616&quot;,
+      &quot;asof&quot;: &quot;000000000024D497&quot;
+    },
+    &quot;fatoresTop3&quot;: &quot;RECENCIA_DIAS=76 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 (peso 21.55)&quot;,
+    &quot;recenciaDias&quot;: 76,
+    &quot;nomeFase&quot;: &quot;Fase 4&quot;,
+    &quot;atendimento&quot;: {
+      &quot;status&quot;: &quot;PENDENTE&quot;,
+      &quot;observacao&quot;: null
+    },
+    &quot;probInativo21d&quot;: 0.9237,
+    &quot;eventos28d&quot;: 0,
+    &quot;dtCorte&quot;: &quot;2026-08-26T00:00:00&quot;,
+    &quot;faixa&quot;: &quot;Alto&quot;,
+    &quot;acaoSugerida&quot;: &quot;Contato ativo do tutor (telefone/WhatsApp) em 48h&quot;,
+    &quot;fase&quot;: 4,
+    &quot;dtScoring&quot;: &quot;2026-09-08T19:26:31.193284&quot;
+  }
+]</pre>
+    </section><section id="s8"><h2><span class="num">08</span>Consultas prontas para APEX (07_apex_ready.sql) - resultados reais</h2>
+      <p class="sub">As cinco consultas abaixo foram executadas neste momento contra o banco. No APEX, os literais da CTE "parametros" viram itens de pagina (:P1_TICKET_MENSAL etc.).</p>
+      <h3>1) FILA DE SEGUNDA-FEIRA - quem contatar, por que e o que fazer (pagina inicial do coordenador) <span style='color:#5B6B7F;font-weight:400'>- 25 linha(s) em 0.01 s</span></h3><table class="dados"><thead><tr><th>POSICAO</th><th>ALUNO</th><th>FASE</th><th>CAP_ATUAL</th><th>PCT_FASE</th><th>DIAS_SEM_ACESSO</th><th>EVENTOS_28D</th><th>RISCO_PCT</th><th>FAIXA</th><th>POR_QUE</th><th>O_QUE_FAZER</th><th>STATUS</th><th>PONTUADO_EM</th></tr></thead><tbody><tr><td>1</td><td>Aluno 0178</td><td>Fase 1</td><td>0</td><td>0</td><td>198</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=198 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>2</td><td>Aluno 0177</td><td>Fase 1</td><td>0</td><td>0</td><td>197</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=197 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>3</td><td>Aluno 0176</td><td>Fase 4</td><td>0</td><td>0</td><td>197</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=197 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>4</td><td>Aluno 0175</td><td>Fase 4</td><td>0</td><td>0</td><td>195</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=195 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>5</td><td>Aluno 0174</td><td>Fase 1</td><td>0</td><td>0</td><td>195</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=195 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>6</td><td>Aluno 0173</td><td>Fase 1</td><td>0</td><td>0</td><td>174</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=174 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>7</td><td>Aluno 0171</td><td>Fase 1</td><td>0</td><td>0</td><td>163</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=163 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>8</td><td>Aluno 0170</td><td>Fase 1</td><td>1</td><td>10</td><td>162</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=162 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>9</td><td>Aluno 0218</td><td>Fase 2</td><td>0</td><td>0</td><td>160</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=160 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>10</td><td>Aluno 0167</td><td>Fase 2</td><td>2</td><td>17</td><td>155</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=155 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>11</td><td>Aluno 0217</td><td>Fase 2</td><td>0</td><td>0</td><td>155</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=155 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>12</td><td>Aluno 0154</td><td>Fase 4</td><td>0</td><td>0</td><td>154</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=154 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>13</td><td>Aluno 0216</td><td>Fase 2</td><td>0</td><td>0</td><td>141</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=141 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>14</td><td>Aluno 0215</td><td>Fase 2</td><td>10</td><td>83</td><td>141</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=141 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>15</td><td>Aluno 0193</td><td>Fase 3</td><td>0</td><td>0</td><td>134</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=134 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>16</td><td>Aluno 0165</td><td>Fase 4</td><td>0</td><td>0</td><td>125</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=125 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>17</td><td>Aluno 0227</td><td>Fase 3</td><td>1</td><td>10</td><td>125</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=125 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>18</td><td>Aluno 0213</td><td>Fase 2</td><td>12</td><td>100</td><td>124</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=124 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>19</td><td>Aluno 0121</td><td>Fase 4</td><td>0</td><td>0</td><td>120</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=120 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>20</td><td>Aluno 0226</td><td>Fase 3</td><td>1</td><td>10</td><td>110</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=110 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>21</td><td>Aluno 0225</td><td>Fase 3</td><td>0</td><td>0</td><td>110</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=110 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>22</td><td>Aluno 0076</td><td>Fase 4</td><td>0</td><td>0</td><td>106</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=106 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>23</td><td>Aluno 0199</td><td>Fase 3</td><td>0</td><td>0</td><td>97</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=97 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 ...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>24</td><td>Aluno 0224</td><td>Fase 3</td><td>0</td><td>0</td><td>96</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=96 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 ...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr><tr><td>25</td><td>Aluno 0194</td><td>Fase 4</td><td>11</td><td>100</td><td>96</td><td>0</td><td>92.4</td><td class="faixa-Alto">Alto</td><td>RECENCIA_DIAS=96 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTOS_28D=0 ...</td><td>Contato ativo do tutor (telefone/WhatsApp) em 48h</td><td>PENDENTE</td><td>08/09 19:26</td></tr></tbody></table><h3>2) FUNIL POR FASE - quantos iniciaram cada fase, quantos avancaram e onde a coorte se perde <span style='color:#5B6B7F;font-weight:400'>- 5 linha(s) em 0.01 s</span></h3><table class="dados"><thead><tr><th>NUM_FASE</th><th>NOME_FASE</th><th>TOTAL_CAPITULOS</th><th>INICIARAM</th><th>AVANCARAM</th><th>EVADIRAM</th><th>TAXA_EVASAO_PCT</th><th>PCT_DA_COORTE_F1</th><th>PROGRESSO_MEDIO_PCT</th><th>DIAS_ATIVOS_MEDIO</th><th>OBS</th></tr></thead><tbody><tr><td>1</td><td>Fase 1</td><td>10</td><td>175</td><td>165</td><td>10</td><td>5.7</td><td>100</td><td>81.8</td><td>14.3</td><td></td></tr><tr><td>2</td><td>Fase 2</td><td>12</td><td>174</td><td>168</td><td>6</td><td>3.4</td><td>99.4</td><td>80.7</td><td>13.6</td><td></td></tr><tr><td>3</td><td>Fase 3</td><td>10</td><td>179</td><td>163</td><td>16</td><td>8.9</td><td>102.3</td><td>76.1</td><td>12.6</td><td></td></tr><tr><td>4</td><td>Fase 4</td><td>11</td><td>166</td><td>153</td><td>13</td><td>7.8</td><td>94.9</td><td>78.3</td><td>15</td><td></td></tr><tr><td>5</td><td>Fase 5</td><td>8</td><td>161</td><td>161</td><td>0</td><td>0</td><td>92</td><td>39</td><td>6.3</td><td>fase em andamento (sem rótulo)</td></tr></tbody></table><h3>3) MAPA DE ATRITO POR CAPITULO - em qual capitulo os alunos &quot;travam&quot; antes de evadir <span style='color:#5B6B7F;font-weight:400'>- 43 linha(s) em 5.38 s</span></h3><table class="dados"><thead><tr><th>FASE</th><th>CAP</th><th>CHEGARAM</th><th>PARARAM_E_EVADIRAM</th><th>ATRITO_PCT</th><th>EVENTOS_POR_ALUNO</th><th>RECOMENDACAO</th></tr></thead><tbody><tr><td>Fase 1</td><td>1</td><td>152</td><td>1</td><td>0.7</td><td>5</td><td></td></tr><tr><td>Fase 1</td><td>2</td><td>151</td><td>1</td><td>0.7</td><td>23.4</td><td></td></tr><tr><td>Fase 1</td><td>3</td><td>147</td><td>0</td><td>0</td><td>7.5</td><td></td></tr><tr><td>Fase 1</td><td>4</td><td>145</td><td>0</td><td>0</td><td>8.5</td><td></td></tr><tr><td>Fase 1</td><td>5</td><td>143</td><td>0</td><td>0</td><td>9.5</td><td></td></tr><tr><td>Fase 1</td><td>6</td><td>141</td><td>0</td><td>0</td><td>8</td><td></td></tr><tr><td>Fase 1</td><td>7</td><td>140</td><td>0</td><td>0</td><td>6.8</td><td></td></tr><tr><td>Fase 1</td><td>8</td><td>139</td><td>0</td><td>0</td><td>6.8</td><td></td></tr><tr><td>Fase 1</td><td>9</td><td>137</td><td>0</td><td>0</td><td>6.2</td><td></td></tr><tr><td>Fase 1</td><td>10</td><td>136</td><td>2</td><td>1.5</td><td>9.3</td><td></td></tr><tr><td>Fase 2</td><td>1</td><td>152</td><td>0</td><td>0</td><td>2.9</td><td></td></tr><tr><td>Fase 2</td><td>2</td><td>148</td><td>1</td><td>0.7</td><td>8</td><td></td></tr><tr><td>Fase 2</td><td>3</td><td>145</td><td>0</td><td>0</td><td>8.9</td><td></td></tr><tr><td>Fase 2</td><td>4</td><td>144</td><td>0</td><td>0</td><td>18.7</td><td></td></tr><tr><td>Fase 2</td><td>5</td><td>144</td><td>0</td><td>0</td><td>9.2</td><td></td></tr><tr><td>Fase 2</td><td>6</td><td>140</td><td>0</td><td>0</td><td>6.9</td><td></td></tr><tr><td>Fase 2</td><td>7</td><td>140</td><td>0</td><td>0</td><td>6.4</td><td></td></tr><tr><td>Fase 2</td><td>8</td><td>140</td><td>0</td><td>0</td><td>6.2</td><td></td></tr><tr><td>Fase 2</td><td>9</td><td>138</td><td>0</td><td>0</td><td>14.6</td><td></td></tr><tr><td>Fase 2</td><td>10</td><td>136</td><td>1</td><td>0.7</td><td>18.1</td><td></td></tr><tr><td>Fase 2</td><td>11</td><td>132</td><td>0</td><td>0</td><td>11.8</td><td></td></tr><tr><td>Fase 2</td><td>12</td><td>127</td><td>1</td><td>0.8</td><td>6.9</td><td></td></tr><tr><td>Fase 3</td><td>1</td><td>149</td><td>3</td><td>2</td><td>102.2</td><td>revisar capítulo (dividir / vídeo curto / checkpoint)</td></tr><tr><td>Fase 3</td><td>2</td><td>146</td><td>1</td><td>0.7</td><td>72.4</td><td></td></tr><tr><td>Fase 3</td><td>3</td><td>138</td><td>0</td><td>0</td><td>58.8</td><td></td></tr><tr><td>Fase 3</td><td>4</td><td>137</td><td>0</td><td>0</td><td>56.7</td><td></td></tr><tr><td>Fase 3</td><td>5</td><td>135</td><td>0</td><td>0</td><td>76.8</td><td></td></tr><tr><td>Fase 3</td><td>6</td><td>134</td><td>0</td><td>0</td><td>25.9</td><td></td></tr><tr><td>Fase 3</td><td>7</td><td>133</td><td>0</td><td>0</td><td>41.3</td><td></td></tr><tr><td>Fase 3</td><td>8</td><td>131</td><td>0</td><td>0</td><td>27</td><td></td></tr><tr><td>Fase 3</td><td>9</td><td>130</td><td>0</td><td>0</td><td>49.7</td><td></td></tr><tr><td>Fase 3</td><td>10</td><td>129</td><td>1</td><td>0.8</td><td>97.5</td><td></td></tr><tr><td>Fase 4</td><td>1</td><td>138</td><td>0</td><td>0</td><td>207.5</td><td></td></tr><tr><td>Fase 4</td><td>2</td><td>138</td><td>0</td><td>0</td><td>146.4</td><td></td></tr><tr><td>Fase 4</td><td>3</td><td>135</td><td>0</td><td>0</td><td>115.5</td><td></td></tr><tr><td>Fase 4</td><td>4</td><td>133</td><td>1</td><td>0.8</td><td>104.8</td><td></td></tr><tr><td>Fase 4</td><td>5</td><td>129</td><td>0</td><td>0</td><td>93.2</td><td></td></tr><tr><td>Fase 4</td><td>6</td><td>127</td><td>0</td><td>0</td><td>52.3</td><td></td></tr><tr><td>Fase 4</td><td>7</td><td>127</td><td>0</td><td>0</td><td>93.3</td><td></td></tr><tr><td>Fase 4</td><td>8</td><td>127</td><td>0</td><td>0</td><td>60.9</td><td></td></tr><tr><td>Fase 4</td><td>9</td><td>127</td><td>0</td><td>0</td><td>64.7</td><td></td></tr><tr><td>Fase 4</td><td>10</td><td>125</td><td>0</td><td>0</td><td>67.3</td><td></td></tr><tr><td>Fase 4</td><td>11</td><td>123</td><td>2</td><td>1.6</td><td>119.3</td><td></td></tr></tbody></table><h3>4) RECEITA EM RISCO - por faixa e total, parametrizada pelo ticket medio da IES <span style='color:#5B6B7F;font-weight:400'>- 4 linha(s) em 0.00 s</span></h3><table class="dados"><thead><tr><th>FAIXA</th><th>ALUNOS</th><th>PROB_MEDIA</th><th>TICKET</th><th>RECEITA_MENSAL_BRUTA</th><th>RECEITA_MENSAL_EM_RISCO</th><th>RECEITA_CICLO_EM_RISCO</th><th>PCT_RECEITA_EM_RISCO</th></tr></thead><tbody><tr><td class="faixa-Alto">Alto</td><td>59</td><td>0.844</td><td>350</td><td>20650</td><td>17436.2</td><td>104617.17</td><td>84.4</td></tr><tr><td class="faixa-Médio">Médio</td><td>15</td><td>0.472</td><td>350</td><td>5250</td><td>2477.55</td><td>14865.27</td><td>47.2</td></tr><tr><td class="faixa-Baixo">Baixo</td><td>129</td><td>0.054</td><td>350</td><td>45150</td><td>2434.08</td><td>14604.45</td><td>5.4</td></tr><tr><td class="faixa-TOTAL">TOTAL</td><td>203</td><td>0.315</td><td>350</td><td>71050</td><td>22347.82</td><td>134086.89</td><td>31.5</td></tr></tbody></table><h3>5) REATIVACOES - alunos ja inativos (&gt; 21 dias sem acesso no corte) que voltaram nos 21 dias seguintes <span style='color:#5B6B7F;font-weight:400'>- 6 linha(s) em 0.01 s</span></h3><table class="dados"><thead><tr><th>MES_CORTE</th><th>CORTES</th><th>CASOS_INATIVOS_21D</th><th>REATIVADOS_21D</th><th>TAXA_REATIVACAO_PCT</th><th>DIAS_INATIVO_MEDIO_REATIVADOS</th><th>ALUNOS_DISTINTOS_REATIVADOS</th><th>RECEITA_MENSAL_PRESERVADA</th></tr></thead><tbody><tr><td>2026-03</td><td>4</td><td>37</td><td>14</td><td>37.8</td><td>28.5</td><td>11</td><td>3850</td></tr><tr><td>2026-04</td><td>4</td><td>59</td><td>17</td><td>28.8</td><td>29.9</td><td>11</td><td>3850</td></tr><tr><td>2026-05</td><td>5</td><td>124</td><td>31</td><td>25</td><td>32.5</td><td>19</td><td>6650</td></tr><tr><td>2026-06</td><td>4</td><td>121</td><td>12</td><td>9.9</td><td>40.7</td><td>10</td><td>3500</td></tr><tr><td>2026-07</td><td>4</td><td>155</td><td>14</td><td>9</td><td>34</td><td>9</td><td>3150</td></tr><tr><td>2026-08</td><td>1</td><td>37</td><td>1</td><td>2.7</td><td>34</td><td>1</td><td>350</td></tr></tbody></table>
+    </section>
+<footer>Retena - Startup One / Enterprise Challenge Oracle - 2026-09-08 22:02:28</footer>
+</div></body></html>

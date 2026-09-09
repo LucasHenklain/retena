@@ -1,0 +1,34 @@
+# Oracle AI Database 26ai Free (imagem comunitária gvenzl) - equivalente ao container "oracle-free"
+# usado nas evidencias deste projeto. Uso:
+#   copy .env.example .env   (ajuste as senhas)
+#   docker compose up -d
+#   docker compose ps        (aguarde "healthy")
+services:
+  oracle-free:
+    image: gvenzl/oracle-free:slim-faststart
+    container_name: oracle-free
+    ports:
+      - "${ORACLE_PORT:-1521}:1521"
+    environment:
+      # senha de SYS / SYSTEM
+      ORACLE_PASSWORD: ${ORACLE_PASSWORD:-Startup2026}
+      # usuario de aplicacao criado automaticamente no PDB FREEPDB1
+      # (recebe DB_DEVELOPER_ROLE, que inclui CREATE MINING MODEL -> OML in-database)
+      APP_USER: ${APP_USER:-STARTUP}
+      APP_USER_PASSWORD: ${APP_USER_PASSWORD:-Startup2026}
+      NLS_LANG: .AL32UTF8
+    volumes:
+      # persistencia dos datafiles entre recriacoes do container
+      - oracle-data:/opt/oracle/oradata
+    healthcheck:
+      # script oficial da imagem: retorna 0 quando o listener e o PDB estao abertos
+      test: ["CMD", "healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
+    restart: unless-stopped
+    shm_size: 1g
+
+volumes:
+  oracle-data:

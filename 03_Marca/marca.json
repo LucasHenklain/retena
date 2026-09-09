@@ -1,0 +1,37 @@
+{
+  "nome": "Retena",
+  "tagline": "Ninguém desiste de repente. A Retena percebe antes.",
+  "tagline_apoio": "Toda segunda, quem está a duas semanas de sumir. E o que fazer.",
+  "categoria": "Retenção preditiva in-database para o ensino superior EAD",
+  "cores": {
+    "primaria": "#0B2545",
+    "secundaria": "#13315C",
+    "acento": "#2EC4B6",
+    "alerta": "#FFB703",
+    "critico": "#FF6B4A",
+    "fundo": "#F6F7F9",
+    "texto": "#0B2545",
+    "texto_corrido": "#3A4A5C",
+    "neutra": "#94A3B8",
+    "branco": "#FFFFFF"
+  },
+  "nomes_cores": {
+    "#0B2545": "Azul-profundo",
+    "#13315C": "Azul-médio",
+    "#2EC4B6": "Verde-sinal",
+    "#FFB703": "Âmbar-alerta",
+    "#FF6B4A": "Coral-urgência",
+    "#F6F7F9": "Off-white",
+    "#3A4A5C": "Grafite"
+  },
+  "fontes": { "titulo": "Sora", "texto": "Inter" },
+  "arquivos_fonte": [
+    { "familia": "Sora", "arquivo": "../../03_Marca/fontes/Sora-Variable.ttf", "peso": "100 800" },
+    { "familia": "Inter", "arquivo": "../../03_Marca/fontes/Inter-Variable.ttf", "peso": "100 900" }
+  ],
+  "logo_arquivo": "../../03_Marca/logo/retena_horizontal_claro_sobre_escuro.svg",
+  "logo_escuro_sobre_claro": "../../03_Marca/logo/retena_horizontal_escuro_sobre_claro.svg",
+  "simbolo": "../../03_Marca/logo/retena_simbolo.svg",
+  "rodape_direita": "Startup One · Enterprise Challenge Oracle · FIAP 2026",
+  "tom_de_voz": "Humano, direto, sem alarmismo. Fala de perceber antes e chamar de volta, nunca de cobrar ou vigiar."
+}

@@ -1,0 +1,51 @@
+[2026-09-08 12:17:12] Script: C:\Users\lmhsilva\Projetos\StartupOne\entrega\06_Oracle\sql\02_features_transicao.sql
+[2026-09-08 12:17:12] Conexao: STARTUP@localhost:1521/FREEPDB1 | 9 statement(s)
+[12:17:12] #01 CREATE  CREATE OR REPLACE VIEW VW_JANELA_FASE AS SELECT e.NUM_FASE, f.NOME_FASE, f.TOTAL_CAPITU...
+      OK em 0.04s
+[12:17:12] #02 CREATE  CREATE OR REPLACE VIEW VW_FEATURES_TRANSICAO_FASE AS WITH ev AS ( SELECT e.NOME, e.NUM_...
+      OK em 0.03s
+[12:17:12] #03 PLSQL   BEGIN EXECUTE IMMEDIATE 'DROP TABLE FEATURES_TRANSICAO_FASE PURGE'; EXCEPTION WHEN OTHE...
+      OK em 0.11s
+[12:17:13] #04 CREATE  CREATE TABLE FEATURES_TRANSICAO_FASE AS SELECT * FROM VW_FEATURES_TRANSICAO_FASE
+      OK em 4.70s
+[12:17:17] #05 ALTER   ALTER TABLE FEATURES_TRANSICAO_FASE ADD CONSTRAINT PK_FEATURES_TRANSICAO PRIMARY KEY (I...
+      OK em 0.05s
+[12:17:17] #06 PLSQL   BEGIN DBMS_STATS.GATHER_TABLE_STATS(USER, 'FEATURES_TRANSICAO_FASE'); END;
+      OK em 0.07s
+[12:17:17] #07 SELECT  SELECT NUM_FASE, NOME_FASE, TOTAL_CAPITULOS, ALUNOS, EVENTOS, TO_CHAR(DT_PRIMEIRO_EVENT...
+      ----------+-----------+-----------------+--------+---------+-------------+------------+------------
+       NUM_FASE | NOME_FASE | TOTAL_CAPITULOS | ALUNOS | EVENTOS | DT_PRIMEIRO | DT_MEDIANA | DT_ULTIMO  
+      ----------+-----------+-----------------+--------+---------+-------------+------------+------------
+       1        | Fase 1    | 10              | 175    | 68440   | 2026-01-15  | 2026-03-16 | 2026-08-26 
+       2        | Fase 2    | 12              | 174    | 176993  | 2026-02-04  | 2026-04-16 | 2026-08-26 
+       3        | Fase 3    | 10              | 179    | 174065  | 2026-02-04  | 2026-05-20 | 2026-08-26 
+       4        | Fase 4    | 11              | 166    | 148045  | 2026-02-04  | 2026-06-25 | 2026-08-26 
+       5        | Fase 5    | 8               | 161    | 112349  | 2026-07-17  | 2026-08-17 | 2026-08-26 
+      ----------+-----------+-----------------+--------+---------+-------------+------------+------------
+      5 linha(s) exibida(s) em 0.96s
+[12:17:18] #08 SELECT  SELECT NUM_FASE, CONJUNTO, COUNT(*) ALUNOS, SUM(EVADIU_PROXIMA_FASE) EVADIRAM, ROUND(AV...
+      ----------+------------+--------+----------+-------------+---------------+---------------+----------------
+       NUM_FASE | CONJUNTO   | ALUNOS | EVADIRAM | TAXA_EVASAO | MEDIA_EVENTOS | MEDIA_PCT_CAP | MEDIA_RECENCIA 
+      ----------+------------+--------+----------+-------------+---------------+---------------+----------------
+       1        | TREINO     | 175    | 10       | 0.0571      | 391.1         | 0.818         | 111            
+       2        | TREINO     | 174    | 6        | 0.0345      | 1017.2        | 0.807         | 95.2           
+       3        | TREINO     | 179    | 16       | 0.0894      | 972.4         | 0.761         | 75.8           
+       4        | TESTE      | 166    | 13       | 0.0783      | 891.8         | 0.783         | 37.9           
+       5        | SEM_ROTULO | 161    | NULL     | NULL        | 697.8         | 0.39          | 8.1            
+      ----------+------------+--------+----------+-------------+---------------+---------------+----------------
+      5 linha(s) exibida(s) em 0.01s
+[12:17:18] #09 SELECT  SELECT * FROM FEATURES_TRANSICAO_FASE WHERE CONJUNTO = 'TREINO' ORDER BY EVADIU_PROXIMA...
+      ---------------+------------+----------+-----------+---------------+-------------+-----------+-------------------+--------------+---------------+----------------+----------------+-----------------+-------------------+-----------+-------------+------------------+---------------------+---------------------+----------
+       ID_CASO       | NOME       | NUM_FASE | NOME_FASE | TOTAL_EVENTOS | DIAS_ATIVOS | SPAN_DIAS | EVENTOS_PROGRESSO | CAPITULO_MAX | PCT_CAPITULOS | QUIZ_INICIADOS | QUIZ_ENTREGUES | ENTREGAS_TAREFA | RECENCIA_FIM_FASE | TENDENCIA | SHARE_NOITE | SHARE_FIM_SEMANA | EVADIU_PROXIMA_FASE | DT_MEDIANA_FASE     | CONJUNTO 
+      ---------------+------------+----------+-----------+---------------+-------------+-----------+-------------------+--------------+---------------+----------------+----------------+-----------------+-------------------+-----------+-------------+------------------+---------------------+---------------------+----------
+       Aluno 0016_F3 | Aluno 0016 | 3        | Fase 3    | 79            | 1           | 0.01      | 34                | 10           | 1             | 9              | 1              | 0               | 18.51             | 0         | 1           | 0                | 1                   | 2026-05-20 20:23:00 | TREINO   
+       Aluno 0020_F3 | Aluno 0020 | 3        | Fase 3    | 9             | 1           | 0.01      | 0                 | 0            | 0             | 0              | 0              | 0               | 18.96             | 0         | 0           | 0                | 1                   | 2026-05-20 20:23:00 | TREINO   
+       Aluno 0025_F3 | Aluno 0025 | 3        | Fase 3    | 1             | 1           | 0         | 0                 | 0            | 0             | 0              | 0              | 0               | 35.8              | NULL      | 0           | 0                | 1                   | 2026-05-20 20:23:00 | TREINO   
+       Aluno 0046_F1 | Aluno 0046 | 1        | Fase 1    | 1             | 1           | 0         | 0                 | 0            | 0             | 0              | 0              | 0               | 75.71             | NULL      | 0           | 0                | 1                   | 2026-03-16 21:13:59 | TREINO   
+       Aluno 0046_F3 | Aluno 0046 | 3        | Fase 3    | 1             | 1           | 0         | 0                 | 0            | 0             | 0              | 0              | 0               | 75.71             | NULL      | 0           | 0                | 1                   | 2026-05-20 20:23:00 | TREINO   
+       Aluno 0047_F1 | Aluno 0047 | 1        | Fase 1    | 23            | 2           | 86.3      | 0                 | 10           | 1             | 0              | 0              | 0               | 75.74             | NULL      | 0           | 0                | 1                   | 2026-03-16 21:13:59 | TREINO   
+       Aluno 0048_F1 | Aluno 0048 | 1        | Fase 1    | 27            | 1           | 0.21      | 0                 | 10           | 1             | 0              | 0              | 0               | 76.73             | NULL      | 0           | 0                | 1                   | 2026-03-16 21:13:59 | TREINO   
+       Aluno 0052_F1 | Aluno 0052 | 1        | Fase 1    | 2             | 1           | 0         | 1                 | 2            | 0.2           | 0              | 0              | 0               | 76.94             | NULL      | 0           | 0                | 1                   | 2026-03-16 21:13:59 | TREINO   
+      ---------------+------------+----------+-----------+---------------+-------------+-----------+-------------------+--------------+---------------+----------------+----------------+-----------------+-------------------+-----------+-------------+------------------+---------------------+---------------------+----------
+      8 linha(s) exibida(s) em 0.01s
+[2026-09-08 12:17:18] Fim: 9 ok, 0 erro(s), 6.0s

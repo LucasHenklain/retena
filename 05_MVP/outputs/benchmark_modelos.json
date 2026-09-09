@@ -1,0 +1,371 @@
+{
+  "gerado_em": "2026-09-09 09:37",
+  "credito": "Configurações (c), (d), (e) adaptadas do EduRetain (equipe Retena).",
+  "ambiente": {
+    "python": "3.13.1",
+    "scikit_learn": "1.9.0",
+    "xgboost": "3.4.1"
+  },
+  "features": [
+    "eventos_7d",
+    "eventos_14d",
+    "eventos_28d",
+    "dias_ativos_7d",
+    "dias_ativos_14d",
+    "dias_ativos_28d",
+    "recencia_dias",
+    "progresso_28d",
+    "capitulos_distintos_28d",
+    "capitulo_max_fase_atual",
+    "pct_capitulos_fase_atual",
+    "quiz_iniciados_28d",
+    "quiz_entregues_28d",
+    "entregas_28d",
+    "tendencia",
+    "share_noite_28d",
+    "share_fim_semana_28d",
+    "semanas_ativas_ultimas_8",
+    "eventos_acumulados",
+    "dias_ativos_acumulados",
+    "fase_atual",
+    "semanas_desde_primeiro_evento"
+  ],
+  "hiperparametros_hgb": {
+    "learning_rate": 0.05,
+    "max_iter": 300,
+    "max_leaf_nodes": 8,
+    "min_samples_leaf": 40,
+    "l2_regularization": 2.0
+  },
+  "split": {
+    "criterio": "treino: cortes < 2026-06-01 (com embargo de 21 dias); teste: cortes ≥ 2026-06-01",
+    "cortes_treino": [
+      "2026-02-01",
+      "2026-02-08",
+      "2026-02-15",
+      "2026-02-22",
+      "2026-03-01",
+      "2026-03-08",
+      "2026-03-15",
+      "2026-03-22",
+      "2026-03-29",
+      "2026-04-05",
+      "2026-04-12",
+      "2026-04-19",
+      "2026-04-26",
+      "2026-05-03",
+      "2026-05-10",
+      "2026-05-17"
+    ],
+    "cortes_embargo": [
+      "2026-05-24",
+      "2026-05-31"
+    ],
+    "cortes_teste": [
+      "2026-06-07",
+      "2026-06-14",
+      "2026-06-21",
+      "2026-06-28",
+      "2026-07-05",
+      "2026-07-12",
+      "2026-07-19",
+      "2026-07-26",
+      "2026-08-02"
+    ],
+    "n_treino": 2126,
+    "n_teste": 1609,
+    "alunos_treino": 167,
+    "alunos_teste": 183,
+    "taxa_positivos_treino": 0.10112888052681092,
+    "taxa_positivos_teste": 0.28837787445618396
+  },
+  "acionavel": {
+    "definicao": "eventos_28d > 0 no corte",
+    "n": 1298,
+    "positivos": 191
+  },
+  "reproducao_hgb": {
+    "auc_roc_obtida": 0.8818852582442404,
+    "auc_roc_referencia": 0.882,
+    "tolerancia": 0.005,
+    "ok": true
+  },
+  "modelos": {
+    "HGB (referência entregue)": {
+      "descricao": "HistGradientBoostingClassifier com os hiperparâmetros de model/metadados.json; sem reamostragem/pesos.",
+      "completo": {
+        "n": 1609,
+        "positivos": 464,
+        "taxa_positivos": 0.28837787445618396,
+        "auc_roc": 0.8818852582442404,
+        "auc_pr": 0.8390818330692464,
+        "precisao_top20": 0.8819875776397516,
+        "k_top20": 322,
+        "lift_top20": 3.0584439922895696,
+        "recall_05": 0.5797413793103449,
+        "precisao_05": 0.9243986254295533,
+        "f1": 0.7125827814569536,
+        "f2": 0.6264555193292967,
+        "brier": 0.12015767331610594,
+        "n_previstos_positivos_05": 291,
+        "recall_03": 0.6012931034482759,
+        "f2_03": 0.643450184501845
+      },
+      "acionavel": {
+        "n": 1298,
+        "positivos": 191,
+        "taxa_positivos": 0.14714946070878274,
+        "auc_roc": 0.7427082298746198,
+        "auc_pr": 0.4596085264954577,
+        "precisao_top20": 0.3769230769230769,
+        "k_top20": 260,
+        "lift_top20": 2.5614981876761984,
+        "recall_05": 0.17801047120418848,
+        "precisao_05": 0.6938775510204082,
+        "f1": 0.2833333333333333,
+        "f2": 0.2091020910209102,
+        "brier": 0.11976397772770782,
+        "n_previstos_positivos_05": 49,
+        "recall_03": 0.20418848167539266,
+        "f2_03": 0.23579201934703747
+      }
+    },
+    "LR baseline atual (03)": {
+      "descricao": "StandardScaler + LogisticRegression(C=1, lbfgs), exatamente como novo_lr() do 03 — sem class_weight.",
+      "completo": {
+        "n": 1609,
+        "positivos": 464,
+        "taxa_positivos": 0.28837787445618396,
+        "auc_roc": 0.8925651257340762,
+        "auc_pr": 0.8586094051452657,
+        "precisao_top20": 0.9192546583850931,
+        "k_top20": 322,
+        "lift_top20": 3.187674020132791,
+        "recall_05": 0.6594827586206896,
+        "precisao_05": 0.8947368421052632,
+        "f1": 0.7593052109181141,
+        "f2": 0.6960873521383075,
+        "brier": 0.10122187828725909,
+        "n_previstos_positivos_05": 342,
+        "recall_03": 0.7004310344827587,
+        "f2_03": 0.727069351230425
+      },
+      "acionavel": {
+        "n": 1298,
+        "positivos": 191,
+        "taxa_positivos": 0.14714946070878274,
+        "auc_roc": 0.771686128728652,
+        "auc_pr": 0.4939066121551615,
+        "precisao_top20": 0.39615384615384613,
+        "k_top20": 260,
+        "lift_top20": 2.692186870720902,
+        "recall_05": 0.19895287958115182,
+        "precisao_05": 0.7037037037037037,
+        "f1": 0.31020408163265306,
+        "f2": 0.23227383863080683,
+        "brier": 0.11030828456346004,
+        "n_previstos_positivos_05": 54,
+        "recall_03": 0.2879581151832461,
+        "f2_03": 0.3227699530516432
+      }
+    },
+    "LR baseline + balanced": {
+      "descricao": "Variante extra: mesmo baseline com class_weight='balanced' (isola o efeito do balanceamento).",
+      "completo": {
+        "n": 1609,
+        "positivos": 464,
+        "taxa_positivos": 0.28837787445618396,
+        "auc_roc": 0.8893483662099082,
+        "auc_pr": 0.8551049672135365,
+        "precisao_top20": 0.9037267080745341,
+        "k_top20": 322,
+        "lift_top20": 3.1338281751981154,
+        "recall_05": 0.7844827586206896,
+        "precisao_05": 0.6986564299424184,
+        "f1": 0.7390862944162436,
+        "f2": 0.7656710138830458,
+        "brier": 0.1255094165127045,
+        "n_previstos_positivos_05": 521,
+        "recall_03": 0.8081896551724138,
+        "f2_03": 0.7700205338809035
+      },
+      "acionavel": {
+        "n": 1298,
+        "positivos": 191,
+        "taxa_positivos": 0.14714946070878274,
+        "auc_roc": 0.764752621348203,
+        "auc_pr": 0.4752684304015673,
+        "precisao_top20": 0.38846153846153847,
+        "k_top20": 260,
+        "lift_top20": 2.639911397503021,
+        "recall_05": 0.49214659685863876,
+        "precisao_05": 0.4177777777777778,
+        "f1": 0.4519230769230769,
+        "f2": 0.4752275025278059,
+        "brier": 0.13454442521641785,
+        "n_previstos_positivos_05": 225,
+        "recall_03": 0.5497382198952879,
+        "f2_03": 0.5028735632183908
+      }
+    },
+    "LR EduRetain (L1 liblinear balanced)": {
+      "descricao": "SimpleImputer(mediana) + StandardScaler + LR liblinear L1 balanced C=1 — adaptado do EduRetain (equipe Retena). A base não tem NaN, então o imputer é no-op.",
+      "completo": {
+        "n": 1609,
+        "positivos": 464,
+        "taxa_positivos": 0.28837787445618396,
+        "auc_roc": 0.881768558951965,
+        "auc_pr": 0.8498657931604644,
+        "precisao_top20": 0.9037267080745341,
+        "k_top20": 322,
+        "lift_top20": 3.1338281751981154,
+        "recall_05": 0.7672413793103449,
+        "precisao_05": 0.726530612244898,
+        "f1": 0.7463312368972747,
+        "f2": 0.7587382779198636,
+        "brier": 0.12302895835900975,
+        "n_previstos_positivos_05": 490,
+        "recall_03": 0.7844827586206896,
+        "f2_03": 0.7624633431085044
+      },
+      "acionavel": {
+        "n": 1298,
+        "positivos": 191,
+        "taxa_positivos": 0.14714946070878274,
+        "auc_roc": 0.7453473138570827,
+        "auc_pr": 0.4607374892534754,
+        "precisao_top20": 0.3730769230769231,
+        "k_top20": 260,
+        "lift_top20": 2.5353604510672576,
+        "recall_05": 0.45549738219895286,
+        "precisao_05": 0.4371859296482412,
+        "f1": 0.4461538461538462,
+        "f2": 0.4517133956386293,
+        "brier": 0.1353797303584642,
+        "n_previstos_positivos_05": 199,
+        "recall_03": 0.49214659685863876,
+        "f2_03": 0.46859421734795614
+      }
+    },
+    "XGBoost (config EduRetain)": {
+      "descricao": "XGBClassifier com scale_pos_weight=8.888 (neg/pos do treino), subsample 0.8, 200 árvores, depth 6, lr 0.01, colsample 0.7 — adaptado do EduRetain (equipe Retena).",
+      "completo": {
+        "n": 1609,
+        "positivos": 464,
+        "taxa_positivos": 0.28837787445618396,
+        "auc_roc": 0.8738198313507002,
+        "auc_pr": 0.8178114891056525,
+        "precisao_top20": 0.8664596273291926,
+        "k_top20": 322,
+        "lift_top20": 3.004598147354894,
+        "recall_05": 0.5387931034482759,
+        "precisao_05": 0.8992805755395683,
+        "f1": 0.6738544474393531,
+        "f2": 0.5857544517338332,
+        "brier": 0.108998428194386,
+        "n_previstos_positivos_05": 278,
+        "recall_03": 0.6918103448275862,
+        "f2_03": 0.7123834886817576
+      },
+      "acionavel": {
+        "n": 1298,
+        "positivos": 191,
+        "taxa_positivos": 0.14714946070878274,
+        "auc_roc": 0.7369547430203798,
+        "auc_pr": 0.4417175435675692,
+        "precisao_top20": 0.35,
+        "k_top20": 260,
+        "lift_top20": 2.3785340314136123,
+        "recall_05": 0.2198952879581152,
+        "precisao_05": 0.6666666666666666,
+        "f1": 0.33070866141732286,
+        "f2": 0.2539298669891173,
+        "brier": 0.10644246497030842,
+        "n_previstos_positivos_05": 63,
+        "recall_03": 0.3612565445026178,
+        "f2_03": 0.38290788013318533
+      }
+    },
+    "GradientBoosting (padrão sklearn)": {
+      "descricao": "GradientBoostingClassifier(random_state=42) com defaults (100 árvores, depth 3, lr 0.1) — adaptado do EduRetain (equipe Retena).",
+      "completo": {
+        "n": 1609,
+        "positivos": 464,
+        "taxa_positivos": 0.28837787445618396,
+        "auc_roc": 0.8108125658786327,
+        "auc_pr": 0.7391850313420111,
+        "precisao_top20": 0.7639751552795031,
+        "k_top20": 322,
+        "lift_top20": 2.6492155707860356,
+        "recall_05": 0.4978448275862069,
+        "precisao_05": 0.8555555555555555,
+        "f1": 0.6294277929155313,
+        "f2": 0.5432737535277516,
+        "brier": 0.14687497791903706,
+        "n_previstos_positivos_05": 270,
+        "recall_03": 0.5366379310344828,
+        "f2_03": 0.5664240218380345
+      },
+      "acionavel": {
+        "n": 1298,
+        "positivos": 191,
+        "taxa_positivos": 0.14714946070878274,
+        "auc_roc": 0.681023188940441,
+        "auc_pr": 0.28742857886599404,
+        "precisao_top20": 0.2846153846153846,
+        "k_top20": 260,
+        "lift_top20": 1.934192509061619,
+        "recall_05": 0.14659685863874344,
+        "precisao_05": 0.45161290322580644,
+        "f1": 0.22134387351778656,
+        "f2": 0.1694915254237288,
+        "brier": 0.13293740659695966,
+        "n_previstos_positivos_05": 62,
+        "recall_03": 0.18848167539267016,
+        "f2_03": 0.20270270270270271
+      }
+    }
+  },
+  "vencedores": {
+    "completo/auc_pr": {
+      "modelo": "LR baseline atual (03)",
+      "valor": 0.8586094051452657
+    },
+    "completo/f2": {
+      "modelo": "LR baseline + balanced",
+      "valor": 0.7656710138830458
+    },
+    "completo/auc_roc": {
+      "modelo": "LR baseline atual (03)",
+      "valor": 0.8925651257340762
+    },
+    "completo/precisao_top20": {
+      "modelo": "LR baseline atual (03)",
+      "valor": 0.9192546583850931
+    },
+    "completo/brier": {
+      "modelo": "LR baseline atual (03)",
+      "valor": 0.10122187828725909
+    },
+    "acionavel/auc_pr": {
+      "modelo": "LR baseline atual (03)",
+      "valor": 0.4939066121551615
+    },
+    "acionavel/f2": {
+      "modelo": "LR baseline + balanced",
+      "valor": 0.4752275025278059
+    },
+    "acionavel/auc_roc": {
+      "modelo": "LR baseline atual (03)",
+      "valor": 0.771686128728652
+    },
+    "acionavel/precisao_top20": {
+      "modelo": "LR baseline atual (03)",
+      "valor": 0.39615384615384613
+    },
+    "acionavel/brier": {
+      "modelo": "XGBoost (config EduRetain)",
+      "valor": 0.10644246497030842
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# MVP analítico Retena — dependências do pipeline (Python >= 3.11; validado em 3.13)
+pandas>=2.2
+numpy>=1.26
+scikit-learn>=1.5
+pyarrow>=15.0
+matplotlib>=3.8
+joblib>=1.3

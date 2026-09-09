@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" font-family="Sora, Inter, 'Segoe UI', sans-serif">
+<defs><marker id="m3a4a5c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3A4A5C"/></marker><marker id="mff6b4a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF6B4A"/></marker></defs>
+<rect width="1600" height="1000" fill="#F6F7F9"/>
+<rect width="1600" height="6" fill="#2EC4B6"/>
+<text x="56.0" y="58.0" font-size="28" fill="#0B2545" text-anchor="start" font-weight="600">Mapa de stakeholders — poder × interesse</text>
+<text x="56.0" y="86.0" font-size="15" fill="#3A4A5C" text-anchor="start">Quem decide, quem usa e quem precisa ser convencido; as setas mostram como a validação (Fase 5) mudou a posição de três atores</text>
+<rect x="1353.6480000000001" y="36" width="190.4" height="28" rx="14" fill="#0B2545"/>
+<text x="1448.8" y="55.0" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">Diagrama 02 · Stakeholders</text>
+<text x="1544.0" y="90.0" font-size="13" fill="#0B2545" text-anchor="end" font-weight="600">Retena</text>
+<rect x="120.0" y="150.0" width="470.0" height="345.0" rx="0" fill="#FFF3D6" stroke="#FFF3D6" stroke-width="0"/>
+<text x="136.0" y="174.0" font-size="12.5" fill="#B07A00" text-anchor="start" font-weight="600">MANTER SATISFEITO</text>
+<text x="136.0" y="192.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">alto poder, baixo interesse: mostrar que LGPD, TI e caixa estão cobertos</text>
+<rect x="590.0" y="150.0" width="470.0" height="345.0" rx="0" fill="#E3F8F5" stroke="#E3F8F5" stroke-width="0"/>
+<text x="606.0" y="174.0" font-size="12.5" fill="#1C8C82" text-anchor="start" font-weight="600">GERENCIAR DE PERTO</text>
+<text x="606.0" y="192.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">alto poder, alto interesse: envolver na decisão e no piloto de 90 dias</text>
+<rect x="120.0" y="495.0" width="470.0" height="345.0" rx="0" fill="#EEF1F5" stroke="#EEF1F5" stroke-width="0"/>
+<text x="136.0" y="519.0" font-size="12.5" fill="#3A4A5C" text-anchor="start" font-weight="600">MONITORAR</text>
+<text x="136.0" y="537.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">baixo poder, baixo interesse: acompanhar; comunicação mínima</text>
+<rect x="590.0" y="495.0" width="470.0" height="345.0" rx="0" fill="#E6ECF5" stroke="#E6ECF5" stroke-width="0"/>
+<text x="606.0" y="519.0" font-size="12.5" fill="#13315C" text-anchor="start" font-weight="600">MANTER INFORMADO</text>
+<text x="606.0" y="537.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">baixo poder, alto interesse: treinar, ouvir e devolver resultado</text>
+<rect x="120.0" y="150.0" width="940.0" height="690.0" rx="0" fill="none" stroke="#94A3B8" stroke-width="1.2"/>
+<line x1="590.0" y1="150" x2="590.0" y2="840" stroke="#FFFFFF" stroke-width="3"/>
+<line x1="120" y1="495.0" x2="1060" y2="495.0" stroke="#FFFFFF" stroke-width="3"/>
+<path d="M120.0,854.0 L1060.0,854.0" fill="none" stroke="#3A4A5C" stroke-width="1.5" marker-end="url(#m3a4a5c)" stroke-linejoin="round"/>
+<text x="590.0" y="880.0" font-size="12" fill="#3A4A5C" text-anchor="middle" font-weight="600">INTERESSE no problema da evasão (quanto a dor pesa no dia a dia)  →</text>
+<path d="M106.0,840.0 L106.0,150.0" fill="none" stroke="#3A4A5C" stroke-width="1.5" marker-end="url(#m3a4a5c)" stroke-linejoin="round"/>
+<text x="92.0" y="495.0" font-size="12" fill="#3A4A5C" text-anchor="middle" font-weight="600" transform="rotate(-90 92.0 495.0)">PODER / influência na decisão de compra  →</text>
+<circle cx="242.2" cy="246.6" r="10" fill="#0B2545" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="260.2" y="244.6" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Reitoria / mantenedora</text>
+<text x="260.2" y="260.6" font-size="10.5" fill="#3A4A5C" text-anchor="start">aprova o contrato</text>
+<circle cx="533.6" cy="412.2" r="10" fill="#0B2545" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="551.6" y="410.2" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Financeiro</text>
+<text x="551.6" y="426.2" font-size="10.5" fill="#3A4A5C" text-anchor="start">quer ver R$ preservado ×</text>
+<text x="551.6" y="439.2" font-size="10.5" fill="#3A4A5C" text-anchor="start">assinatura</text>
+<circle cx="383.2" cy="453.6" r="10" fill="#3A4A5C" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="401.2" y="451.6" font-size="12.5" fill="#3A4A5C" text-anchor="start" font-weight="600">TI da IES</text>
+<text x="401.2" y="467.6" font-size="10.5" fill="#3A4A5C" text-anchor="start">integração leve: CSV do Moodle</text>
+<circle cx="966.0" cy="315.6" r="13" fill="#0B2545" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="945.0" y="313.6" font-size="12.5" fill="#0B2545" text-anchor="end" font-weight="600">Renata — diretora de</text>
+<text x="945.0" y="328.6" font-size="12.5" fill="#0B2545" text-anchor="end" font-weight="600">operações</text>
+<text x="945.0" y="344.6" font-size="10.5" fill="#3A4A5C" text-anchor="end">SPONSOR: compra proteção de</text>
+<text x="945.0" y="357.6" font-size="10.5" fill="#3A4A5C" text-anchor="end">receita</text>
+<circle cx="740.4" cy="274.2" r="10" fill="#FFB703" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="722.4" y="272.2" font-size="12.5" fill="#FFB703" text-anchor="end" font-weight="600">FIAP / banca</text>
+<text x="722.4" y="288.2" font-size="10.5" fill="#3A4A5C" text-anchor="end">avalia solução, pitch e uso</text>
+<text x="722.4" y="301.2" font-size="10.5" fill="#3A4A5C" text-anchor="end">Oracle</text>
+<circle cx="834.4" cy="384.6" r="10" fill="#FFB703" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="852.4" y="382.6" font-size="12.5" fill="#FFB703" text-anchor="start" font-weight="600">Oracle / parceiro</text>
+<text x="852.4" y="398.6" font-size="10.5" fill="#3A4A5C" text-anchor="start">canal e crédito; caso OML + APEX</text>
+<circle cx="702.8" cy="329.4" r="10" fill="#3A4A5C" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="702.8" y="355.4" font-size="12.5" fill="#3A4A5C" text-anchor="middle" font-weight="600">Jurídico / LGPD</text>
+<text x="702.8" y="371.4" font-size="10.5" fill="#3A4A5C" text-anchor="middle">veto se o dado sair da IES; aprova</text>
+<text x="702.8" y="384.4" font-size="10.5" fill="#3A4A5C" text-anchor="middle">in-database</text>
+<circle cx="984.8" cy="426.0" r="13" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="963.8" y="424.0" font-size="12.5" fill="#2EC4B6" text-anchor="end" font-weight="600">Mariana — coordenadora de</text>
+<text x="963.8" y="439.0" font-size="12.5" fill="#2EC4B6" text-anchor="end" font-weight="600">permanência</text>
+<text x="963.8" y="455.0" font-size="10.5" fill="#3A4A5C" text-anchor="end">USUÁRIA e campeã interna; usa a fila toda</text>
+<text x="963.8" y="468.0" font-size="10.5" fill="#3A4A5C" text-anchor="end">segunda</text>
+<circle cx="740.4" cy="564.0" r="10" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="758.4" y="562.0" font-size="12.5" fill="#2EC4B6" text-anchor="start" font-weight="600">Coordenação pedagógica</text>
+<text x="758.4" y="578.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">recebe o mapa de atrito por capítulo</text>
+<circle cx="853.2" cy="674.4" r="10" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="871.2" y="672.4" font-size="12.5" fill="#2EC4B6" text-anchor="start" font-weight="600">Tutores</text>
+<text x="871.2" y="688.4" font-size="10.5" fill="#3A4A5C" text-anchor="start">executam o contato 19h–22h;</text>
+<text x="871.2" y="701.4" font-size="10.5" fill="#3A4A5C" text-anchor="start">registram resultado</text>
+<circle cx="637.0" cy="771.0" r="10" fill="#2EC4B6" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="655.0" y="769.0" font-size="12.5" fill="#2EC4B6" text-anchor="start" font-weight="600">Alunos EAD trabalhadores</text>
+<text x="655.0" y="785.0" font-size="10.5" fill="#3A4A5C" text-anchor="start">beneficiários; tom de apoio, não cobrança</text>
+<circle cx="430.2" cy="288.0" r="10" fill="#FFFFFF" stroke="#0B2545" stroke-width="2" stroke-dasharray="3 3" opacity="0.9"/>
+<text x="430.2" y="314.0" font-size="12.5" fill="#94A3B8" text-anchor="middle" font-weight="600">Diretora (antes)</text>
+<text x="430.2" y="330.0" font-size="10.5" fill="#94A3B8" text-anchor="middle">só via a evasão na receita</text>
+<circle cx="232.8" cy="384.6" r="10" fill="#FFFFFF" stroke="#3A4A5C" stroke-width="2" stroke-dasharray="3 3" opacity="0.9"/>
+<text x="232.8" y="410.6" font-size="12.5" fill="#94A3B8" text-anchor="middle" font-weight="600">Jurídico (antes)</text>
+<text x="232.8" y="426.6" font-size="10.5" fill="#94A3B8" text-anchor="middle">fora do radar da venda</text>
+<circle cx="326.8" cy="591.6" r="10" fill="#FFFFFF" stroke="#2EC4B6" stroke-width="2" stroke-dasharray="3 3" opacity="0.9"/>
+<text x="308.8" y="589.6" font-size="12.5" fill="#94A3B8" text-anchor="end" font-weight="600">Coord. pedagógica (antes)</text>
+<text x="308.8" y="605.6" font-size="10.5" fill="#94A3B8" text-anchor="end">sem dado sobre onde o aluno</text>
+<text x="308.8" y="618.6" font-size="10.5" fill="#94A3B8" text-anchor="end">trava</text>
+<path d="M442.2,284.0 L702.8,219.0 L962.0,299.6" fill="none" stroke="#FF6B4A" stroke-width="2.4" marker-end="url(#mff6b4a)" stroke-linejoin="round"/>
+<rect x="603.7" y="199.0" width="198.3" height="16.5" rx="4" fill="#F6F7F9" opacity="0.92"/>
+<text x="702.8" y="209.0" font-size="10.5" fill="#FF6B4A" text-anchor="middle">vira sponsor: dashboard de R$ em risco</text>
+<path d="M244.8,381.6 L458.4,343.2 L688.8,330.4" fill="none" stroke="#FF6B4A" stroke-width="2.4" marker-end="url(#mff6b4a)" stroke-linejoin="round"/>
+<rect x="341.0" y="355.2" width="214.9" height="16.5" rx="4" fill="#F6F7F9" opacity="0.92"/>
+<text x="448.4" y="365.2" font-size="10.5" fill="#FF6B4A" text-anchor="middle">entra na decisão: &quot;o dado não sai da IES&quot;</text>
+<path d="M338.8,593.6 L543.0,619.2 L726.4,566.0" fill="none" stroke="#FF6B4A" stroke-width="2.4" marker-end="url(#mff6b4a)" stroke-linejoin="round"/>
+<rect x="463.1" y="631.2" width="159.7" height="16.5" rx="4" fill="#F6F7F9" opacity="0.92"/>
+<text x="543.0" y="641.2" font-size="10.5" fill="#FF6B4A" text-anchor="middle">ganha interesse: mapa de atrito</text>
+<rect x="1100.0" y="150.0" width="444.0" height="690.0" rx="12" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.2"/>
+<text x="1118.0" y="180.0" font-size="15" fill="#0B2545" text-anchor="start" font-weight="600">O que a validação mudou no mapa</text>
+<path d="M1118.0,210.0 L1146.0,210.0" fill="none" stroke="#FF6B4A" stroke-width="2.4" marker-end="url(#mff6b4a)" stroke-linejoin="round"/>
+<text x="1154.0" y="214.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Diretora de operações vira sponsor</text>
+<text x="1154.0" y="230.0" font-size="11" fill="#3A4A5C" text-anchor="start">Tinha poder, mas via a evasão só na queda de receita. O dashboard de</text>
+<text x="1154.0" y="244.0" font-size="11" fill="#3A4A5C" text-anchor="start">R$ em risco e o relatório mensal a transformam em compradora e</text>
+<text x="1154.0" y="258.0" font-size="11" fill="#3A4A5C" text-anchor="start">patrocinadora do piloto.</text>
+<path d="M1118.0,290.0 L1146.0,290.0" fill="none" stroke="#FF6B4A" stroke-width="2.4" marker-end="url(#mff6b4a)" stroke-linejoin="round"/>
+<text x="1154.0" y="294.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Jurídico / LGPD entra na decisão</text>
+<text x="1154.0" y="310.0" font-size="11" fill="#3A4A5C" text-anchor="start">Antes ausente da conversa; &quot;o dado não sai da IES&quot; virou condição de</text>
+<text x="1154.0" y="324.0" font-size="11" fill="#3A4A5C" text-anchor="start">compra e levou o ML para dentro do Oracle da IES (Diagrama 06).</text>
+<path d="M1118.0,356.0 L1146.0,356.0" fill="none" stroke="#FF6B4A" stroke-width="2.4" marker-end="url(#mff6b4a)" stroke-linejoin="round"/>
+<text x="1154.0" y="360.0" font-size="12.5" fill="#0B2545" text-anchor="start" font-weight="600">Coordenação pedagógica ganha interesse</text>
+<text x="1154.0" y="376.0" font-size="11" fill="#3A4A5C" text-anchor="start">O mapa de atrito por fase × capítulo dá a ela um dado que nunca teve:</text>
+<text x="1154.0" y="390.0" font-size="11" fill="#3A4A5C" text-anchor="start">onde o aluno trava, antes da reclamação.</text>
+<line x1="1118" y1="416" x2="1526" y2="416" stroke="#EEF1F5" stroke-width="2"/>
+<text x="1118.0" y="442.0" font-size="15" fill="#0B2545" text-anchor="start" font-weight="600">Mensagem e canal por stakeholder</text>
+<text x="1118.0" y="472.0" font-size="10.5" fill="#94A3B8" text-anchor="start" font-weight="600">Quem</text>
+<text x="1236.0" y="472.0" font-size="10.5" fill="#94A3B8" text-anchor="start" font-weight="600">Mensagem-chave</text>
+<text x="1414.0" y="472.0" font-size="10.5" fill="#94A3B8" text-anchor="start" font-weight="600">Canal</text>
+<line x1="1118" y1="480" x2="1526" y2="480" stroke="#EEF1F5" stroke-width="1"/>
+<text x="1118.0" y="495.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Diretora / financeiro</text>
+<text x="1236.0" y="495.0" font-size="11" fill="#3A4A5C" text-anchor="start">receita preservada em R$ vs.</text>
+<text x="1236.0" y="508.0" font-size="11" fill="#3A4A5C" text-anchor="start">assinatura</text>
+<text x="1414.0" y="495.0" font-size="11" fill="#3A4A5C" text-anchor="start">relatório mensal</text>
+<text x="1414.0" y="508.0" font-size="11" fill="#3A4A5C" text-anchor="start">APEX</text>
+<line x1="1118" y1="518" x2="1526" y2="518" stroke="#EEF1F5" stroke-width="1"/>
+<text x="1118.0" y="533.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Coordenadora</text>
+<text x="1236.0" y="533.0" font-size="11" fill="#3A4A5C" text-anchor="start">fila priorizada com motivo</text>
+<text x="1236.0" y="546.0" font-size="11" fill="#3A4A5C" text-anchor="start">explicável</text>
+<text x="1414.0" y="533.0" font-size="11" fill="#3A4A5C" text-anchor="start">painel APEX,</text>
+<text x="1414.0" y="546.0" font-size="11" fill="#3A4A5C" text-anchor="start">segunda 8h</text>
+<line x1="1118" y1="556" x2="1526" y2="556" stroke="#EEF1F5" stroke-width="1"/>
+<text x="1118.0" y="571.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Tutores</text>
+<text x="1236.0" y="571.0" font-size="11" fill="#3A4A5C" text-anchor="start">quem ligar, quando (19h–22h) e o</text>
+<text x="1236.0" y="584.0" font-size="11" fill="#3A4A5C" text-anchor="start">que dizer</text>
+<text x="1414.0" y="571.0" font-size="11" fill="#3A4A5C" text-anchor="start">e-mail-resumo +</text>
+<text x="1414.0" y="584.0" font-size="11" fill="#3A4A5C" text-anchor="start">painel</text>
+<line x1="1118" y1="594" x2="1526" y2="594" stroke="#EEF1F5" stroke-width="1"/>
+<text x="1118.0" y="609.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Jurídico e TI</text>
+<text x="1236.0" y="609.0" font-size="11" fill="#3A4A5C" text-anchor="start">in-database, CSV do Moodle,</text>
+<text x="1236.0" y="622.0" font-size="11" fill="#3A4A5C" text-anchor="start">pseudonimização</text>
+<text x="1414.0" y="609.0" font-size="11" fill="#3A4A5C" text-anchor="start">reunião de</text>
+<text x="1414.0" y="622.0" font-size="11" fill="#3A4A5C" text-anchor="start">arquitetura</text>
+<line x1="1118" y1="632" x2="1526" y2="632" stroke="#EEF1F5" stroke-width="1"/>
+<text x="1118.0" y="647.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Coord. pedagógica</text>
+<text x="1236.0" y="647.0" font-size="11" fill="#3A4A5C" text-anchor="start">capítulos que travam a turma</text>
+<text x="1414.0" y="647.0" font-size="11" fill="#3A4A5C" text-anchor="start">ticket na quinta</text>
+<line x1="1118" y1="657" x2="1526" y2="657" stroke="#EEF1F5" stroke-width="1"/>
+<text x="1118.0" y="672.0" font-size="11" fill="#0B2545" text-anchor="start" font-weight="600">Oracle / parceiro</text>
+<text x="1236.0" y="672.0" font-size="11" fill="#3A4A5C" text-anchor="start">caso de uso OML + APEX +</text>
+<text x="1236.0" y="685.0" font-size="11" fill="#3A4A5C" text-anchor="start">Select AI</text>
+<text x="1414.0" y="672.0" font-size="11" fill="#3A4A5C" text-anchor="start">programa de</text>
+<text x="1414.0" y="685.0" font-size="11" fill="#3A4A5C" text-anchor="start">parceria</text>
+<rect x="120.0" y="900.0" width="1424.0" height="38.0" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+<circle cx="147" cy="921" r="7" fill="#0B2545"/>
+<text x="170.0" y="926.0" font-size="11.5" fill="#3A4A5C" text-anchor="start">Decisores e compradores</text>
+<circle cx="383" cy="921" r="7" fill="#2EC4B6"/>
+<text x="406.0" y="926.0" font-size="11.5" fill="#3A4A5C" text-anchor="start">Usuários e beneficiários</text>
+<circle cx="619" cy="921" r="7" fill="#3A4A5C"/>
+<text x="642.0" y="926.0" font-size="11.5" fill="#3A4A5C" text-anchor="start">Controle e tecnologia (TI, jurídico)</text>
+<circle cx="855" cy="921" r="7" fill="#FFB703"/>
+<text x="878.0" y="926.0" font-size="11.5" fill="#3A4A5C" text-anchor="start">Externos: Oracle, FIAP/banca</text>
+<rect x="1078.0" y="914.0" width="26.0" height="14.0" rx="3" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2" stroke-dasharray="3 3"/>
+<text x="1114.0" y="926.0" font-size="11.5" fill="#3A4A5C" text-anchor="start">Posição antes da validação</text>
+<line x1="1314" y1="921" x2="1340" y2="921" stroke="#FF6B4A" stroke-width="2.5" marker-end="url(#mff6b4a)"/>
+<text x="1350.0" y="926.0" font-size="11.5" fill="#3A4A5C" text-anchor="start">Movimento após a validação (Fase 5)</text>
+<line x1="56" y1="956" x2="1544" y2="956" stroke="#94A3B8" stroke-width="1"/>
+<text x="56.0" y="974.0" font-size="12" fill="#3A4A5C" text-anchor="start">Retena · Startup One / Enterprise Challenge Oracle · FIAP 2026</text>
+<text x="1544.0" y="974.0" font-size="12" fill="#3A4A5C" text-anchor="end">Fonte: análise da base real + brief Enterprise Challenge Oracle · posições a confirmar nas entrevistas (Anexo A)</text>
+</svg>
