@@ -1,0 +1,77 @@
+01 - Versao do banco de dados
+=============================
+Gerado em (maquina local): 2026-09-08 22:02:12
+Conexao: STARTUP@localhost:1521/FREEPDB1 (python-oracledb thin)
+Script: C:\Users\lmhsilva\Projetos\StartupOne\entrega\06_Oracle\scripts\gerar_evidencias.py
+
+== v$version ==
+---------------------------------------------------------------------------------------------------------
+ BANNER_FULL                                                                                             
+---------------------------------------------------------------------------------------------------------
+ Oracle AI Database 26ai Free Release 23.26.3.0.0 - Develop, Learn, and Run for Free Version 23.26.3.0.0 
+---------------------------------------------------------------------------------------------------------
+1 linha(s)
+
+== Instancia / host / container ==
+---------------+--------------+----------+----------+--------------+---------
+ INSTANCE_NAME | HOST_NAME    | DB_NAME  | PDB      | SERVICE_NAME | USUARIO 
+---------------+--------------+----------+----------+--------------+---------
+ FREE          | c5e7ee510d1a | FREEPDB1 | FREEPDB1 | freepdb1     | STARTUP 
+---------------+--------------+----------+----------+--------------+---------
+1 linha(s)
+
+== Data/hora do banco (fuso do container = UTC) x sessao ==
+---------------------+--------------------------------+----------------------------+------------+-----------------
+ SYSDATE_            | SYSTIMESTAMP_                  | CURRENT_TIMESTAMP_SESSAO   | DBTIMEZONE | SESSIONTIMEZONE 
+---------------------+--------------------------------+----------------------------+------------+-----------------
+ 2026-09-09 01:02:12 | 2026-09-09 01:02:12.751 +00:00 | 2026-09-08 22:02:12 -03:00 | +00:00     | -03:00          
+---------------------+--------------------------------+----------------------------+------------+-----------------
+1 linha(s)
+
+== Parametros relevantes ==
+----------------------+-----------
+ NAME                 | VALUE     
+----------------------+-----------
+ compatible           | 23.6.0    
+ cpu_count            | 2         
+ max_string_size      | STANDARD  
+ memory_target        | 0         
+ pga_aggregate_target | 536870912 
+ sga_target           | 0         
+----------------------+-----------
+6 linha(s)
+
+== Opcoes habilitadas (v$option) usadas pelo projeto ==
+--------------------------+-------
+ PARAMETER                | VALUE 
+--------------------------+-------
+ Advanced Analytics       | TRUE  
+ Advanced Compression     | TRUE  
+ Oracle Database Vault    | FALSE 
+ Partitioning             | TRUE  
+ Real Application Testing | FALSE 
+--------------------------+-------
+5 linha(s)
+
+== Charset ==
+------------------------+------------
+ PARAMETER              | VALUE      
+------------------------+------------
+ NLS_CHARACTERSET       | AL32UTF8   
+ NLS_NCHAR_CHARACTERSET | AL16UTF16  
+ NLS_RDBMS_VERSION      | 23.0.0.0.0 
+------------------------+------------
+3 linha(s)
+
+== Privilegios do usuario de aplicacao (role DB_DEVELOPER_ROLE) ==
+-------------------------------
+ GRANTED_ROLE                  
+-------------------------------
+ DB_DEVELOPER_ROLE             
+ SYS PRIV: CREATE JOB          
+ SYS PRIV: CREATE MINING MODEL 
+ SYS PRIV: CREATE PROCEDURE    
+ SYS PRIV: CREATE TABLE        
+ SYS PRIV: CREATE VIEW         
+-------------------------------
+6 linha(s)

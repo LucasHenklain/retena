@@ -1,0 +1,204 @@
+03 - Modelos Oracle Machine Learning (in-database)
+==================================================
+Gerado em (maquina local): 2026-09-08 22:02:20
+Conexao: STARTUP@localhost:1521/FREEPDB1 (python-oracledb thin)
+Script: C:\Users\lmhsilva\Projetos\StartupOne\entrega\06_Oracle\scripts\gerar_evidencias.py
+
+== USER_MINING_MODELS ==
+----------------------+-----------------+--------------------------+---------------------+------------+--------+----------
+ MODEL_NAME           | MINING_FUNCTION | ALGORITHM                | CREATION_DATE_UTC   | SEG_TREINO | BYTES  | COMMENTS 
+----------------------+-----------------+--------------------------+---------------------+------------+--------+----------
+ RETENA_INATIVO21_GLM | CLASSIFICATION  | GENERALIZED_LINEAR_MODEL | 2026-09-08 19:03:27 | 1          | 1505   | NULL     
+ RETENA_INATIVO21_RF  | CLASSIFICATION  | RANDOM_FOREST            | 2026-09-08 19:03:26 | 1          | 802134 | NULL     
+ RETENA_TRANSICAO_GLM | CLASSIFICATION  | GENERALIZED_LINEAR_MODEL | 2026-09-08 19:03:25 | 1          | 2087   | NULL     
+----------------------+-----------------+--------------------------+---------------------+------------+--------+----------
+3 linha(s)
+
+== USER_MINING_MODEL_SETTINGS (todas as configuracoes, incluindo defaults) ==
+----------------------+------------------------------+-------------------------------+--------------
+ MODEL_NAME           | SETTING_NAME                 | SETTING_VALUE                 | SETTING_TYPE 
+----------------------+------------------------------+-------------------------------+--------------
+ RETENA_INATIVO21_GLM | GLMS_CONF_LEVEL              | .95                           | DEFAULT      
+ RETENA_INATIVO21_GLM | GLMS_FTR_GENERATION          | GLMS_FTR_GENERATION_DISABLE   | DEFAULT      
+ RETENA_INATIVO21_GLM | GLMS_FTR_SELECTION           | GLMS_FTR_SELECTION_DISABLE    | DEFAULT      
+ RETENA_INATIVO21_GLM | GLMS_LINK_FUNCTION           | GLMS_LOGIT_LINK               | DEFAULT      
+ RETENA_INATIVO21_GLM | GLMS_RIDGE_VALUE             | .01                           | DEFAULT      
+ RETENA_INATIVO21_GLM | GLMS_VIF_FOR_RIDGE           | GLMS_VIF_RIDGE_DISABLE        | DEFAULT      
+ RETENA_INATIVO21_GLM | ODMS_MISSING_VALUE_TREATMENT | ODMS_MISSING_VALUE_AUTO       | DEFAULT      
+ RETENA_INATIVO21_GLM | ODMS_SAMPLING                | ODMS_SAMPLING_DISABLE         | DEFAULT      
+ RETENA_INATIVO21_GLM | ALGO_NAME                    | ALGO_GENERALIZED_LINEAR_MODEL | INPUT        
+ RETENA_INATIVO21_GLM | CLAS_WEIGHTS_BALANCED        | ON                            | INPUT        
+ RETENA_INATIVO21_GLM | GLMS_RIDGE_REGRESSION        | GLMS_RIDGE_REG_ENABLE         | INPUT        
+ RETENA_INATIVO21_GLM | ODMS_DETAILS                 | ODMS_ENABLE                   | INPUT        
+ RETENA_INATIVO21_GLM | PREP_AUTO                    | ON                            | INPUT        
+ RETENA_INATIVO21_RF  | CLAS_MAX_SUP_BINS            | 32                            | DEFAULT      
+ RETENA_INATIVO21_RF  | CLAS_WEIGHTS_BALANCED        | OFF                           | DEFAULT      
+ RETENA_INATIVO21_RF  | ODMS_DEEPTREE                | ODMS_DEEPTREE_DISABLE         | DEFAULT      
+ RETENA_INATIVO21_RF  | ODMS_MISSING_VALUE_TREATMENT | ODMS_MISSING_VALUE_AUTO       | DEFAULT      
+ RETENA_INATIVO21_RF  | ODMS_SAMPLING                | ODMS_SAMPLING_DISABLE         | DEFAULT      
+ RETENA_INATIVO21_RF  | TREE_IMPURITY_METRIC         | TREE_IMPURITY_GINI            | DEFAULT      
+ RETENA_INATIVO21_RF  | TREE_TERM_MAX_DEPTH          | 16                            | DEFAULT      
+ RETENA_INATIVO21_RF  | TREE_TERM_MINPCT_NODE        | .05                           | DEFAULT      
+ RETENA_INATIVO21_RF  | TREE_TERM_MINPCT_SPLIT       | .1                            | DEFAULT      
+ RETENA_INATIVO21_RF  | TREE_TERM_MINREC_NODE        | 10                            | DEFAULT      
+ RETENA_INATIVO21_RF  | TREE_TERM_MINREC_SPLIT       | 20                            | DEFAULT      
+ RETENA_INATIVO21_RF  | ALGO_NAME                    | ALGO_RANDOM_FOREST            | INPUT        
+ RETENA_INATIVO21_RF  | ODMS_DETAILS                 | ODMS_ENABLE                   | INPUT        
+ RETENA_INATIVO21_RF  | ODMS_RANDOM_SEED             | 42                            | INPUT        
+ RETENA_INATIVO21_RF  | PREP_AUTO                    | ON                            | INPUT        
+ RETENA_INATIVO21_RF  | RFOR_NUM_TREES               | 200                           | INPUT        
+ RETENA_INATIVO21_RF  | RFOR_SAMPLING_RATIO          | 0.6                           | INPUT        
+ RETENA_TRANSICAO_GLM | GLMS_CONF_LEVEL              | .95                           | DEFAULT      
+ RETENA_TRANSICAO_GLM | GLMS_FTR_GENERATION          | GLMS_FTR_GENERATION_DISABLE   | DEFAULT      
+ RETENA_TRANSICAO_GLM | GLMS_FTR_SELECTION           | GLMS_FTR_SELECTION_DISABLE    | DEFAULT      
+ RETENA_TRANSICAO_GLM | GLMS_LINK_FUNCTION           | GLMS_LOGIT_LINK               | DEFAULT      
+ RETENA_TRANSICAO_GLM | GLMS_RIDGE_VALUE             | .01                           | DEFAULT      
+ RETENA_TRANSICAO_GLM | GLMS_VIF_FOR_RIDGE           | GLMS_VIF_RIDGE_DISABLE        | DEFAULT      
+ RETENA_TRANSICAO_GLM | ODMS_MISSING_VALUE_TREATMENT | ODMS_MISSING_VALUE_AUTO       | DEFAULT      
+ RETENA_TRANSICAO_GLM | ODMS_SAMPLING                | ODMS_SAMPLING_DISABLE         | DEFAULT      
+ RETENA_TRANSICAO_GLM | ALGO_NAME                    | ALGO_GENERALIZED_LINEAR_MODEL | INPUT        
+ RETENA_TRANSICAO_GLM | CLAS_WEIGHTS_BALANCED        | ON                            | INPUT        
+ RETENA_TRANSICAO_GLM | GLMS_RIDGE_REGRESSION        | GLMS_RIDGE_REG_ENABLE         | INPUT        
+ RETENA_TRANSICAO_GLM | ODMS_DETAILS                 | ODMS_ENABLE                   | INPUT        
+ RETENA_TRANSICAO_GLM | PREP_AUTO                    | ON                            | INPUT        
+----------------------+------------------------------+-------------------------------+--------------
+43 linha(s)
+
+== USER_MINING_MODEL_ATTRIBUTES ==
+----------------------+-------------------------+----------------+-----------+------------+--------
+ MODEL_NAME           | ATTRIBUTE_NAME          | ATTRIBUTE_TYPE | DATA_TYPE | USAGE_TYPE | TARGET 
+----------------------+-------------------------+----------------+-----------+------------+--------
+ RETENA_INATIVO21_GLM | INATIVO_21D             | CATEGORICAL    | NUMBER    | ACTIVE     | YES    
+ RETENA_INATIVO21_GLM | CAPITULOS_DISTINTOS_28D | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_GLM | DIAS_ATIVOS_28D         | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_GLM | ENTREGAS_28D            | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_GLM | EVENTOS_14D             | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_GLM | EVENTOS_28D             | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_GLM | EVENTOS_7D              | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_GLM | PROGRESSO_28D           | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_GLM | QUIZ_28D                | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_GLM | RECENCIA_DIAS           | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_GLM | TENDENCIA               | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_RF  | INATIVO_21D             | CATEGORICAL    | NUMBER    | ACTIVE     | YES    
+ RETENA_INATIVO21_RF  | CAPITULOS_DISTINTOS_28D | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_RF  | DIAS_ATIVOS_28D         | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_RF  | ENTREGAS_28D            | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_RF  | EVENTOS_14D             | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_RF  | EVENTOS_28D             | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_RF  | EVENTOS_7D              | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_RF  | PROGRESSO_28D           | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_RF  | QUIZ_28D                | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_RF  | RECENCIA_DIAS           | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_INATIVO21_RF  | TENDENCIA               | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_TRANSICAO_GLM | EVADIU_PROXIMA_FASE     | CATEGORICAL    | NUMBER    | ACTIVE     | YES    
+ RETENA_TRANSICAO_GLM | CAPITULO_MAX            | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_TRANSICAO_GLM | DIAS_ATIVOS             | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_TRANSICAO_GLM | ENTREGAS_TAREFA         | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_TRANSICAO_GLM | EVENTOS_PROGRESSO       | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_TRANSICAO_GLM | PCT_CAPITULOS           | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_TRANSICAO_GLM | QUIZ_ENTREGUES          | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_TRANSICAO_GLM | QUIZ_INICIADOS          | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_TRANSICAO_GLM | RECENCIA_FIM_FASE       | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_TRANSICAO_GLM | SHARE_FIM_SEMANA        | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_TRANSICAO_GLM | SHARE_NOITE             | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_TRANSICAO_GLM | SPAN_DIAS               | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_TRANSICAO_GLM | TENDENCIA               | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+ RETENA_TRANSICAO_GLM | TOTAL_EVENTOS           | NUMERICAL      | NUMBER    | ACTIVE     | NO     
+----------------------+-------------------------+----------------+-----------+------------+--------
+36 linha(s)
+
+== USER_MINING_MODEL_VIEWS (detalhes gerados pelo OML) ==
+----------------------+---------------------------+------------------------------------------
+ MODEL_NAME           | VIEW_NAME                 | VIEW_TYPE                                
+----------------------+---------------------------+------------------------------------------
+ RETENA_INATIVO21_GLM | DM$VARETENA_INATIVO21_GLM | GLM Classification Row Diagnostics       
+ RETENA_INATIVO21_GLM | DM$VCRETENA_INATIVO21_GLM | Scoring Cost Matrix                      
+ RETENA_INATIVO21_GLM | DM$VDRETENA_INATIVO21_GLM | GLM Classification Attribute Diagnostics 
+ RETENA_INATIVO21_GLM | DM$VGRETENA_INATIVO21_GLM | Global Name-Value Pairs                  
+ RETENA_INATIVO21_GLM | DM$VNRETENA_INATIVO21_GLM | Normalization and Missing Value Handling 
+ RETENA_INATIVO21_GLM | DM$VSRETENA_INATIVO21_GLM | Computed Settings                        
+ RETENA_INATIVO21_GLM | DM$VTRETENA_INATIVO21_GLM | Classification Targets                   
+ RETENA_INATIVO21_GLM | DM$VWRETENA_INATIVO21_GLM | Model Build Alerts                       
+ RETENA_INATIVO21_RF  | DM$VARETENA_INATIVO21_RF  | Variable Importance                      
+ RETENA_INATIVO21_RF  | DM$VCRETENA_INATIVO21_RF  | Scoring Cost Matrix                      
+ RETENA_INATIVO21_RF  | DM$VGRETENA_INATIVO21_RF  | Global Name-Value Pairs                  
+ RETENA_INATIVO21_RF  | DM$VSRETENA_INATIVO21_RF  | Computed Settings                        
+ RETENA_INATIVO21_RF  | DM$VTRETENA_INATIVO21_RF  | Classification Targets                   
+ RETENA_INATIVO21_RF  | DM$VWRETENA_INATIVO21_RF  | Model Build Alerts                       
+ RETENA_TRANSICAO_GLM | DM$VARETENA_TRANSICAO_GLM | GLM Classification Row Diagnostics       
+ RETENA_TRANSICAO_GLM | DM$VCRETENA_TRANSICAO_GLM | Scoring Cost Matrix                      
+ RETENA_TRANSICAO_GLM | DM$VDRETENA_TRANSICAO_GLM | GLM Classification Attribute Diagnostics 
+ RETENA_TRANSICAO_GLM | DM$VGRETENA_TRANSICAO_GLM | Global Name-Value Pairs                  
+ RETENA_TRANSICAO_GLM | DM$VNRETENA_TRANSICAO_GLM | Normalization and Missing Value Handling 
+ RETENA_TRANSICAO_GLM | DM$VSRETENA_TRANSICAO_GLM | Computed Settings                        
+ RETENA_TRANSICAO_GLM | DM$VTRETENA_TRANSICAO_GLM | Classification Targets                   
+ RETENA_TRANSICAO_GLM | DM$VWRETENA_TRANSICAO_GLM | Model Build Alerts                       
+----------------------+---------------------------+------------------------------------------
+22 linha(s)
+
+== Diagnosticos globais de treino (DM$VG*) ==
+----------------------+-------------------------+---------------+--------------
+ MODELO               | NAME                    | NUMERIC_VALUE | STRING_VALUE 
+----------------------+-------------------------+---------------+--------------
+ RETENA_INATIVO21_GLM | AIC_INTERCEPT           | 764.2872      | NULL         
+ RETENA_INATIVO21_GLM | AIC_MODEL               | 364.0051      | NULL         
+ RETENA_INATIVO21_GLM | CONVERGED               | NULL          | YES          
+ RETENA_INATIVO21_GLM | DEPENDENT_MEAN          | 0.5           | NULL         
+ RETENA_INATIVO21_GLM | ITERATIONS              | 10            | NULL         
+ RETENA_INATIVO21_GLM | LR_CHI_SQ               | 420.2821      | NULL         
+ RETENA_INATIVO21_GLM | LR_CHI_SQ_P_VALUE       | 0             | NULL         
+ RETENA_INATIVO21_GLM | LR_DF                   | 10            | NULL         
+ RETENA_INATIVO21_GLM | NEG2_LL_INTERCEPT       | 762.2872      | NULL         
+ RETENA_INATIVO21_GLM | NEG2_LL_MODEL           | 342.0051      | NULL         
+ RETENA_INATIVO21_GLM | NUM_PARAMS              | 11            | NULL         
+ RETENA_INATIVO21_GLM | NUM_ROWS                | 2682          | NULL         
+ RETENA_INATIVO21_GLM | PCT_CORRECT             | 0.8359        | NULL         
+ RETENA_INATIVO21_GLM | PCT_INCORRECT           | 0.1641        | NULL         
+ RETENA_INATIVO21_GLM | PCT_TIED                | 0             | NULL         
+ RETENA_INATIVO21_GLM | PSEUDO_R_SQ_CS          | 0.145         | NULL         
+ RETENA_INATIVO21_GLM | PSEUDO_R_SQ_N           | 0.5863        | NULL         
+ RETENA_INATIVO21_GLM | RANK_DEFICIENCY         | 0             | NULL         
+ RETENA_INATIVO21_GLM | SC_INTERCEPT            | 770.1815      | NULL         
+ RETENA_INATIVO21_GLM | SC_MODEL                | 428.8426      | NULL         
+ RETENA_INATIVO21_GLM | VALID_COVARIANCE_MATRIX | NULL          | YES          
+ RETENA_INATIVO21_RF  | AVG_DEPTH               | 11.17         | NULL         
+ RETENA_INATIVO21_RF  | AVG_NODECOUNT           | 82.05         | NULL         
+ RETENA_INATIVO21_RF  | MAX_DEPTH               | 15            | NULL         
+ RETENA_INATIVO21_RF  | MAX_NODECOUNT           | 107           | NULL         
+ RETENA_INATIVO21_RF  | MIN_DEPTH               | 14            | NULL         
+ RETENA_INATIVO21_RF  | MIN_NODECOUNT           | 65            | NULL         
+ RETENA_INATIVO21_RF  | NUM_ROWS                | 2682          | NULL         
+ RETENA_TRANSICAO_GLM | AIC_INTERCEPT           | 85.3457       | NULL         
+ RETENA_TRANSICAO_GLM | AIC_MODEL               | 47.0501       | NULL         
+ RETENA_TRANSICAO_GLM | CONVERGED               | NULL          | YES          
+ RETENA_TRANSICAO_GLM | DEPENDENT_MEAN          | 0.5           | NULL         
+ RETENA_TRANSICAO_GLM | ITERATIONS              | 12            | NULL         
+ RETENA_TRANSICAO_GLM | LR_CHI_SQ               | 64.2956       | NULL         
+ RETENA_TRANSICAO_GLM | LR_CHI_SQ_P_VALUE       | 0             | NULL         
+ RETENA_TRANSICAO_GLM | LR_DF                   | 13            | NULL         
+ RETENA_TRANSICAO_GLM | NEG2_LL_INTERCEPT       | 83.3457       | NULL         
+ RETENA_TRANSICAO_GLM | NEG2_LL_MODEL           | 19.0501       | NULL         
+ RETENA_TRANSICAO_GLM | NUM_PARAMS              | 14            | NULL         
+ RETENA_TRANSICAO_GLM | NUM_ROWS                | 528           | NULL         
+ RETENA_TRANSICAO_GLM | PCT_CORRECT             | 0.911         | NULL         
+ RETENA_TRANSICAO_GLM | PCT_INCORRECT           | 0.089         | NULL         
+ RETENA_TRANSICAO_GLM | PCT_TIED                | 0             | NULL         
+ RETENA_TRANSICAO_GLM | PSEUDO_R_SQ_CS          | 0.1146        | NULL         
+ RETENA_TRANSICAO_GLM | PSEUDO_R_SQ_N           | 0.7851        | NULL         
+ RETENA_TRANSICAO_GLM | RANK_DEFICIENCY         | 0             | NULL         
+ RETENA_TRANSICAO_GLM | SC_INTERCEPT            | 89.6148       | NULL         
+ RETENA_TRANSICAO_GLM | SC_MODEL                | 106.8174      | NULL         
+ RETENA_TRANSICAO_GLM | VALID_COVARIANCE_MATRIX | NULL          | YES          
+----------------------+-------------------------+---------------+--------------
+49 linha(s)
+
+== Views de treino/teste usadas no CREATE_MODEL2 ==
+-----------------------+--------+-----------
+ VIEW_TREINO           | LINHAS | POSITIVOS 
+-----------------------+--------+-----------
+ VW_TREINO_TRANSICAO   | 528    | 32        
+ VW_TESTE_TRANSICAO    | 166    | 13        
+ VW_TREINO_INATIVIDADE | 2682   | 311       
+ VW_TESTE_INATIVIDADE  | 1655   | 387       
+-----------------------+--------+-----------
+4 linha(s)

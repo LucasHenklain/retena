@@ -1,0 +1,4 @@
+$ docker ps --filter name=oracle-free --format table {{.ID}}	{{.Image}}	{{.Status}}	{{.Ports}}	{{.Names}}
+# executado em 2026-09-08 22:02:21
+CONTAINER ID   IMAGE                               STATUS        PORTS                    NAMES
+c5e7ee510d1a   gvenzl/oracle-free:slim-faststart   Up 10 hours   0.0.0.0:1521->1521/tcp   oracle-free

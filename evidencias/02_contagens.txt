@@ -1,0 +1,122 @@
+02 - Contagens dos dados carregados e derivados
+===============================================
+Gerado em (maquina local): 2026-09-08 22:02:20
+Conexao: STARTUP@localhost:1521/FREEPDB1 (python-oracledb thin)
+Script: C:\Users\lmhsilva\Projetos\StartupOne\entrega\06_Oracle\scripts\gerar_evidencias.py
+
+== EVENTOS_LMS - totais ==
+---------------+-------------------+------------------+------------------+------------------
+ TOTAL_EVENTOS | EVENTOS_DE_ALUNOS | ALUNOS_DISTINTOS | PRIMEIRO_EVENTO  | ULTIMO_EVENTO    
+---------------+-------------------+------------------+------------------+------------------
+ 684723        | 679892            | 203              | 2026-01-15 11:14 | 2026-08-26 09:34 
+---------------+-------------------+------------------+------------------+------------------
+1 linha(s)
+
+== EVENTOS_LMS - por fase ==
+----------+-----------+-----------------+---------+--------+------------------------+----------------------+------------+------------
+ NUM_FASE | NOME_FASE | TOTAL_CAPITULOS | EVENTOS | ALUNOS | CAPITULO_MAX_OBSERVADO | EVENTOS_COM_CAPITULO | PRIMEIRO   | ULTIMO     
+----------+-----------+-----------------+---------+--------+------------------------+----------------------+------------+------------
+ 1        | Fase 1    | 10              | 69615   | 175    | 10                     | 12762                | 2026-01-15 | 2026-08-26 
+ 2        | Fase 2    | 12              | 178369  | 174    | 12                     | 16112                | 2026-02-04 | 2026-08-26 
+ 3        | Fase 3    | 10              | 175013  | 179    | 10                     | 78827                | 2026-02-04 | 2026-08-26 
+ 4        | Fase 4    | 11              | 149141  | 166    | 11                     | 132726               | 2026-02-04 | 2026-08-26 
+ 5        | Fase 5    | 8               | 112585  | 161    | 8                      | 109648               | 2026-07-17 | 2026-08-26 
+----------+-----------+-----------------+---------+--------+------------------------+----------------------+------------+------------
+5 linha(s)
+
+== EVENTOS_LMS - eventos de alunos por classe (DIM_TIPO_EVENTO) ==
+---------------+---------+--------
+ CLASSE_EVENTO | EVENTOS | ALUNOS 
+---------------+---------+--------
+ PROGRESSO     | 501334  | 164    
+ VISUALIZACAO  | 131644  | 189    
+ NOTA          | 19822   | 153    
+ OUTRO         | 13281   | 177    
+ QUIZ_INICIO   | 6304    | 157    
+ QUIZ_ENTREGA  | 5835    | 147    
+ ENTREGA       | 1672    | 86     
+---------------+---------+--------
+7 linha(s)
+
+== FEATURES_TRANSICAO_FASE - rotulos por fase (evadiu_proxima_fase) ==
+----------+-----------+------------+--------+----------+-------------
+ NUM_FASE | NOME_FASE | CONJUNTO   | ALUNOS | EVADIRAM | TAXA_EVASAO 
+----------+-----------+------------+--------+----------+-------------
+ 1        | Fase 1    | TREINO     | 175    | 10       | 0.0571      
+ 2        | Fase 2    | TREINO     | 174    | 6        | 0.0345      
+ 3        | Fase 3    | TREINO     | 179    | 16       | 0.0894      
+ 4        | Fase 4    | TESTE      | 166    | 13       | 0.0783      
+ 5        | Fase 5    | SEM_ROTULO | 161    | NULL     | NULL        
+----------+-----------+------------+--------+----------+-------------
+5 linha(s)
+
+== BASE_RISCO_SEMANAL - cortes semanais rotulados (inativo_21d) ==
+----------+--------+--------+-----------+------------------+----------------+--------------
+ CONJUNTO | CORTES | LINHAS | POSITIVOS | TAXA_INATIVIDADE | PRIMEIRO_CORTE | ULTIMO_CORTE 
+----------+--------+--------+-----------+------------------+----------------+--------------
+ TREINO   | 18     | 2682   | 311       | 0.116            | 2026-02-01     | 2026-05-31   
+ TESTE    | 9      | 1655   | 387       | 0.2338           | 2026-06-07     | 2026-08-02   
+----------+--------+--------+-----------+------------------+----------------+--------------
+2 linha(s)
+
+== RISCO_ALUNO_SNAPSHOT - scoring do corte atual por faixa ==
+------------+-------------+--------+------------+----------------+---------------------
+ DT_CORTE   | FAIXA_RISCO | ALUNOS | PROB_MEDIA | RECENCIA_MEDIA | DT_SCORING          
+------------+-------------+--------+------------+----------------+---------------------
+ 2026-08-26 | Alto        | 59     | 0.8444     | 86.4           | 2026-09-08 19:26:31 
+ 2026-08-26 | Médio       | 15     | 0.4719     | 13.9           | 2026-09-08 19:26:31 
+ 2026-08-26 | Baixo       | 129    | 0.0539     | 4.8            | 2026-09-08 19:26:31 
+------------+-------------+--------+------------+----------------+---------------------
+3 linha(s)
+
+== Catalogo - tabelas do projeto (USER_TABLES, num_rows das estatisticas) ==
+-------------------------+----------+------------------+---------
+ TABLE_NAME              | NUM_ROWS | LAST_ANALYZED    | COLUNAS 
+-------------------------+----------+------------------+---------
+ ALVO_TESTE_INATIVO21    | 1655     | 2026-09-09 00:56 | 2       
+ ALVO_TESTE_TRANSICAO    | 166      | 2026-09-09 00:56 | 2       
+ APPLY_INATIVO21_GLM     | 3310     | 2026-09-09 00:56 | 3       
+ APPLY_INATIVO21_RF      | 3310     | 2026-09-09 00:56 | 3       
+ APPLY_TRANSICAO_GLM     | 332      | 2026-09-09 00:56 | 3       
+ AVALIACAO_MODELOS       | NULL     | NULL             | 5       
+ BASE_RISCO_SEMANAL      | 4337     | 2026-09-08 18:56 | 19      
+ DIM_FASE                | NULL     | NULL             | 3       
+ DIM_TIPO_EVENTO         | NULL     | NULL             | 3       
+ EVENTOS_LMS             | 684723   | 2026-09-08 15:12 | 13      
+ FEATURES_TRANSICAO_FASE | 855      | 2026-09-08 15:17 | 20      
+ LIFT_INATIVO21_GLM      | 10       | 2026-09-09 00:56 | 12      
+ LIFT_INATIVO21_RF       | 10       | 2026-09-09 00:56 | 12      
+ LIFT_TRANSICAO_GLM      | 10       | 2026-09-09 00:56 | 12      
+ RISCO_ALUNO_SNAPSHOT    | NULL     | NULL             | 27      
+ ROC_INATIVO21_GLM       | 80       | 2026-09-09 00:56 | 7       
+ ROC_INATIVO21_RF        | 77       | 2026-09-09 00:56 | 7       
+ ROC_TRANSICAO_GLM       | 8        | 2026-09-09 00:56 | 7       
+ SCORES_TESTE            | 3476     | 2026-09-09 00:56 | 4       
+-------------------------+----------+------------------+---------
+19 linha(s)
+
+== Catalogo - views, funcoes e procedimentos do projeto ==
+-------------+----------------------------+--------+------------------
+ OBJECT_TYPE | OBJECT_NAME                | STATUS | LAST_DDL         
+-------------+----------------------------+--------+------------------
+ FUNCTION    | FN_FEATURES_SEMANAIS       | VALID  | 2026-09-08 18:55 
+ JOB         | JOB_RETENA_SCORING_SEMANAL | VALID  | 2026-09-08 19:28 
+ PROCEDURE   | PRC_ATUALIZAR_RISCO        | VALID  | 2026-09-08 19:26 
+ VIEW        | RISCO_ALUNO_DV             | VALID  | 2026-09-08 19:28 
+ VIEW        | VW_ATIVIDADE_DIARIA        | VALID  | 2026-09-08 18:55 
+ VIEW        | VW_AVALIACAO_FAIXAS        | VALID  | 2026-09-09 00:56 
+ VIEW        | VW_CAPITULOS_DIARIOS       | VALID  | 2026-09-08 18:55 
+ VIEW        | VW_CORTES_SEMANAIS         | VALID  | 2026-09-08 18:55 
+ VIEW        | VW_FEATURES_ATUAIS         | VALID  | 2026-09-08 18:55 
+ VIEW        | VW_FEATURES_SEMANAIS       | VALID  | 2026-09-08 18:55 
+ VIEW        | VW_FEATURES_TRANSICAO_FASE | VALID  | 2026-09-08 15:17 
+ VIEW        | VW_JANELA_FASE             | VALID  | 2026-09-08 15:17 
+ VIEW        | VW_RISCO_ALUNO_ATUAL       | VALID  | 2026-09-08 19:26 
+ VIEW        | VW_RISCO_JSON              | VALID  | 2026-09-08 19:28 
+ VIEW        | VW_RISCO_TRANSICAO_ATUAL   | VALID  | 2026-09-08 19:26 
+ VIEW        | VW_TESTE_INATIVIDADE       | VALID  | 2026-09-08 19:03 
+ VIEW        | VW_TESTE_TRANSICAO         | VALID  | 2026-09-08 19:03 
+ VIEW        | VW_TREINO_INATIVIDADE      | VALID  | 2026-09-08 19:03 
+ VIEW        | VW_TREINO_TRANSICAO        | VALID  | 2026-09-08 19:03 
+-------------+----------------------------+--------+------------------
+19 linha(s)
