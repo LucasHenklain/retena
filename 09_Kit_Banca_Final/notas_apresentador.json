@@ -1,0 +1,147 @@
+[
+ {
+  "slide": 1,
+  "titulo": "Capa",
+  "notas": "Abertura (30 s). Toda noite, milhões de brasileiros abrem o notebook depois do trabalho para estudar a distância. Todo ano, quatro em cada dez desistem. Ninguém desiste de repente — mas a instituição só percebe quando a mensalidade para. Nós somos a Retena."
+ },
+ {
+  "slide": 2,
+  "titulo": "Agenda",
+  "notas": "Não gastar tempo aqui: uma frase. 'Em oito minutos: para quem, qual dor, qual solução, por que dentro do Oracle e quem paga. Com uma demonstração ao vivo.'"
+ },
+ {
+  "slide": 3,
+  "titulo": "Problema",
+  "notas": "Problema (1 min). 41,6% de desistência anual no EAD em 2024, recorde da série; o EAD virou maioria das matrículas. Cada aluno que evade leva R$ 3 a 5 mil de receita anual e um custo de captação que passa de R$ 1.000. E a instituição descobre semanas depois, no financeiro. BI mostra o passado, CRM cobra tarde; a Retena age no meio."
+ },
+ {
+  "slide": 4,
+  "titulo": "Para quem",
+  "notas": "Público (40 s). Nosso cliente é a IES privada com EAD. Quem compra é a diretora de operações acadêmicas, que responde pela receita. Quem usa todo dia é a coordenadora de permanência e seus tutores, que hoje agem no escuro sobre 30% de alunos inativos. O beneficiário é o aluno trabalhador que estuda à noite."
+ },
+ {
+  "slide": 5,
+  "titulo": "Evidência na base real",
+  "notas": "Evidência (1 min). Analisamos 685 mil eventos de 203 alunos em cinco fases. Em um único dia, 61 alunos — 30% — estavam há mais de duas semanas sem acessar. 12% dos ingressantes se perderam em sete meses. Os travamentos se repetem nos mesmos capítulos. O LMS já sabia."
+ },
+ {
+  "slide": 6,
+  "titulo": "Onde os alunos travam",
+  "notas": "Atrito (40 s). O mapa mostra, por fase e capítulo, onde os alunos param. Fecha o ciclo aluno–conteúdo: além de chamar o aluno, a coordenação pedagógica sabe o que ajustar."
+ },
+ {
+  "slide": 7,
+  "titulo": "A solução",
+  "notas": "Solução (1 min). A Retena transforma os logs em três coisas: score de risco por aluno, diagnóstico de atrito de conteúdo e fila semanal de intervenção com motivo, ação e horário. Toda segunda a coordenação sabe quem chamar; toda sexta, quem voltou."
+ },
+ {
+  "slide": 8,
+  "titulo": "Demonstração",
+  "notas": "Demonstração (1 min). Abrir o dashboard publicado (deixar aberto antes de começar). Mostrar os KPIs; na fila de segunda, buscar 'Aluno 0227' e clicar para abrir fatores e ação sugerida; depois o mapa de atrito. Tudo com a base real anonimizada."
+ },
+ {
+  "slide": 9,
+  "titulo": "Demonstração · detalhe",
+  "notas": "Se a internet falhar, usar estes dois prints. Reforçar: motivo em linguagem simples ao lado de cada score, e o resultado do contato é registrado em um clique."
+ },
+ {
+  "slide": 10,
+  "titulo": "Por que dentro do Oracle",
+  "notas": "Oracle (1 min). Por que ninguém fez assim antes? BI mostra o passado, CRM cobra tarde e analytics exige cientistas de dados. A Retena roda onde o dado já está: features em SQL, treino e scoring com Oracle Machine Learning, sem o dado sair do banco. Em produção: Autonomous AI Database, APEX e Select AI."
+ },
+ {
+  "slide": 11,
+  "titulo": "Integração executada",
+  "notas": "Evidência Oracle (40 s). Isto não é um desenho: carregamos os 685 mil eventos no Oracle AI Database 26ai Free, calculamos as features em SQL, treinamos três modelos dentro do banco com DBMS_DATA_MINING e expusemos o risco por SQL e JSON. Random Forest com AUC 0,949 no teste temporal. Se perguntarem por que não é o modelo entregue: são duas implementações independentes do mesmo problema — o pipeline Python é a referência metodológica (mais features, embargo de 21 dias); o modelo Oracle prova a arquitetura in-database com features em SQL e protocolo próprio. Ambos usam teste temporal a partir de junho; os números não são comparáveis um a um. Na v2, o caminho para o Autonomous na OCI está documentado e o MERGE semanal executado."
+ },
+ {
+  "slide": 12,
+  "titulo": "Resultados",
+  "notas": "Resultados (50 s). Treinamos nos primeiros meses e testamos nos seguintes, sem olhar o futuro. AUC 0,88; entre os 20% apontados como maior risco, 88% de fato ficaram inativos; na faixa Alto, 95 em cada 100. E dizemos as limitações: amostra de um curso, rótulo comportamental, AUC 0,74 no subconjunto acionável."
+ },
+ {
+  "slide": 13,
+  "titulo": "Validação do método",
+  "notas": "Validação do método (40 s). Depois da entrega, incorporamos o pipeline de um integrante como benchmark: nenhuma configuração alternativa supera o baseline, e a vantagem em F2 dos modelos balanceados é efeito de limiar. Rodamos o método no OULAD, dataset público da Open University: AUC 0,92 e lift 3,5× em 14 mil alunos, mesmas features dominantes. Responde à pergunta '203 alunos é pouco'."
+ },
+ {
+  "slide": 14,
+  "titulo": "Diferencial",
+  "notas": "Diferencial (40 s). Só a Retena junta quem, onde e resultado — risco por aluno, atrito por capítulo e reativação medida em R$ — sem tirar o dado da instituição, e cada intervenção retreina o modelo. Ficou viável agora: ML in-database maduro e EAD como maioria."
+ },
+ {
+  "slide": 15,
+  "titulo": "Validação estruturada",
+  "notas": "Validação (40 s). Três frentes: dados reais, INEP e Semesp, e um instrumento de 12 perguntas. Se perguntarem sobre as entrevistas: foram simuladas com personas sintéticas para calibrar o roteiro e antecipar objeções; estão rotuladas assim no documento e serão confirmadas em campo antes do piloto. Responder exatamente isso."
+ },
+ {
+  "slide": 16,
+  "titulo": "Monetização",
+  "notas": "Monetização (50 s). SaaS por aluno ativo por mês, de três a seis reais conforme o porte, com piloto de 90 dias e meta de rematrícula. Uma IES de 12 mil alunos paga cerca de R$ 576 mil por ano; reter 1,1% da base já paga o contrato, e cada ponto de desistência evitado vale meio milhão por ano."
+ },
+ {
+  "slide": 17,
+  "titulo": "Mercado",
+  "notas": "Mercado (40 s). 2.244 IES privadas e 5,2 milhões de alunos EAD. Alvo inicial: IES de médio porte fora dos megagrupos. O método é portátil para qualquer LMS Moodle-like — provado no OULAD — o que abre caminho para o ensino técnico e corporativo; megagrupos entram na fase 2 via ecossistema Oracle."
+ },
+ {
+  "slide": 18,
+  "titulo": "Próximos passos",
+  "notas": "Próximos passos (30 s). Vídeo e formulário enviados; hoje a banca; NEXT em 24/10 com Autonomous e APEX; piloto de 90 dias com meta de rematrícula. Pedimos apoio para o Autonomous Always Free, uma IES parceira e mentoria comercial."
+ },
+ {
+  "slide": 19,
+  "titulo": "Equipe",
+  "notas": "Equipe (20 s). Cinco engenheiros de software do 4º ano; Lucas Dalmas lidera. Reforçar: tudo o que foi mostrado está publicado e reproduzível."
+ },
+ {
+  "slide": 20,
+  "titulo": "Fechamento",
+  "notas": "Fechamento (30 s). A evasão não é um evento, é um processo silencioso que dura semanas. A Retena escuta esse silêncio e devolve tempo para quem pode agir. Ninguém desiste de repente. A Retena percebe antes. Obrigado. (QR codes: vídeo, site e repositório.)"
+ },
+ {
+  "slide": 21,
+  "titulo": "Apêndice",
+  "notas": "Não apresentar; usar sob demanda nas perguntas."
+ },
+ {
+  "slide": 22,
+  "titulo": "A1 Métricas",
+  "notas": "Apoio para perguntas sobre desempenho. Destacar: a logística é ligeiramente melhor por margem dentro do ruído; o HGB foi mantido por precisão a 0,5 e rastreabilidade."
+ },
+ {
+  "slide": 23,
+  "titulo": "A2 Fluxo",
+  "notas": "Apoio para perguntas de arquitetura de dados e features."
+ },
+ {
+  "slide": 24,
+  "titulo": "A3 OULAD",
+  "notas": "Apoio para 'a amostra é pequena' e 'funciona em outra IES?'."
+ },
+ {
+  "slide": 25,
+  "titulo": "A4 Split temporal",
+  "notas": "Apoio para perguntas metodológicas e para o debate com abordagens de split aleatório."
+ },
+ {
+  "slide": 26,
+  "titulo": "A5 LGPD e OCI",
+  "notas": "Apoio para perguntas de LGPD, segurança e 'quando vai para a nuvem'."
+ },
+ {
+  "slide": 27,
+  "titulo": "A6 Jornada",
+  "notas": "Apoio para perguntas de produto e experiência de uso."
+ },
+ {
+  "slide": 28,
+  "titulo": "A7 Riscos",
+  "notas": "Apoio para perguntas sobre riscos do negócio."
+ },
+ {
+  "slide": 29,
+  "titulo": "A8 Rich picture",
+  "notas": "Apoio para perguntas sobre a Parte 2 (validação e stakeholders)."
+ }
+]

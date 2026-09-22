@@ -17,6 +17,7 @@ Este pacote contém toda a evolução do projeto. Tudo abre localmente (duplo cl
 | `06_Oracle/` | Integração com Oracle AI Database 26ai + Oracle Machine Learning: DDL, features em SQL, modelos in-database, scoring, views JSON, consultas APEX e evidências reais (logs, prints) | `evidencias/evidencias.html` · `README.md` |
 | `07_Video_Pitch/` | Roteiro do pitch, link do YouTube e material de produção (Higgsfield MCP + ffmpeg). O MP4 (4 min 48 s) fica na pasta local e vai ao YouTube; por regra da atividade não entra no ZIP | `LINK_YOUTUBE.txt` · `roteiro_pitch.md` |
 | `08_Dados/` | Base anonimizada de logs do LMS em Parquet (684.723 eventos, 203 alunos; fonte: `Base-Anônima.xlsx`) | — |
+| `09_Kit_Banca_Final/` | Kit oficial da Banca Final (23/09/2026): deck de 29 slides (PPTX + PDF), guia do apresentador, one-pager com QR codes | `Retena_Banca_Final.pptx` · `README.md` |
 
 ## Dois modelos, duas evidências
 
