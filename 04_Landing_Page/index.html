@@ -220,6 +220,23 @@ ul,ol{margin:0;padding:0;list-style:none}
 .step-ic{width:36px;height:36px;border-radius:10px;background:rgba(46,196,182,.12);display:grid;place-items:center;color:var(--teal);margin-bottom:12px}
 .step-ic svg{width:18px;height:18px}
 
+/* ---------- Em 4 passos ---------- */
+.journey{margin-top:64px}
+.journey-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:24px;flex-wrap:wrap}
+.journey-head .eyebrow{margin-bottom:10px}
+.journey-head h3{font-size:1.35rem}
+.journey-head p{color:var(--muted);font-size:.95rem;max-width:480px}
+.journey-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.jcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px 22px 22px;box-shadow:var(--shadow-sm);position:relative;transition:transform .25s,box-shadow .25s}
+.jcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.jcard .n{width:44px;height:44px;border-radius:50%;background:var(--teal);color:var(--navy);font-family:var(--font-h);font-weight:700;font-size:.95rem;letter-spacing:.02em;display:grid;place-items:center;margin-bottom:16px;box-shadow:0 6px 16px rgba(46,196,182,.35)}
+.jcard h4{font-size:1.02rem;font-weight:600;line-height:1.3;margin-bottom:8px}
+.jcard p{font-size:.9rem;color:var(--muted);line-height:1.5}
+.jcard p b{color:var(--navy);font-weight:600}
+.jcard code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.8rem;color:var(--teal-dark);background:var(--teal-soft);padding:1px 6px;border-radius:5px}
+.jcard::after{content:"";position:absolute;right:-16px;top:46px;width:16px;height:2px;background:rgba(46,196,182,.5)}
+.jcard:last-child::after{display:none}
+
 /* ---------- Resultados ---------- */
 .results{position:relative;overflow:hidden}
 .results::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 10% 10%,rgba(46,196,182,.14),transparent 60%),radial-gradient(40% 50% at 100% 100%,rgba(28,68,121,.8),transparent 60%)}
@@ -342,6 +359,45 @@ ul,ol{margin:0;padding:0;list-style:none}
 .roi b{color:var(--navy);font-weight:600}
 .roi small{display:block;color:var(--muted);font-size:.8rem;margin-top:4px}
 
+/* ---------- Calculadora de ROI ---------- */
+.calc{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr);gap:22px;align-items:stretch}
+.calc-in{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 30px 26px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:28px}
+.calc-in h3{font-size:1.05rem}
+.calc-in .sub{font-size:.88rem;color:var(--muted);margin-top:4px}
+.calc-field{display:grid;gap:8px}
+.calc-field .top{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.calc-field label{font-size:.9rem;font-weight:600;color:var(--navy)}
+.calc-field input[type=number]{font:inherit;font-size:.96rem;padding:10px 12px;border:1.5px solid rgba(11,37,69,.14);border-radius:12px;background:#FBFCFD;color:var(--navy);width:132px;text-align:right;transition:border-color .2s,box-shadow .2s}
+.calc-field input[type=number]:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(46,196,182,.2);background:#fff}
+.calc-field input[type=range]{width:100%;margin:0;height:28px;accent-color:var(--teal);cursor:pointer;background:transparent}
+.calc-field .minmax{display:flex;justify-content:space-between;gap:12px;font-size:.76rem;color:var(--muted);margin-top:-4px}
+.calc-how{margin-top:auto;padding:14px 16px;background:var(--bg);border:1px dashed rgba(11,37,69,.15);border-radius:12px;font-size:.82rem;color:var(--muted);line-height:1.5}
+.calc-how b{display:block;color:var(--navy);font-weight:600;font-size:.84rem;margin-bottom:6px}
+.calc-how li{position:relative;padding-left:12px}
+.calc-how li::before{content:"";position:absolute;left:0;top:.6em;width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.calc-out{background:var(--navy);color:#C9D4E3;border-radius:var(--r);padding:30px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;display:flex;flex-direction:column;gap:18px}
+.calc-out::before{content:"";position:absolute;inset:0;background:radial-gradient(45% 70% at 100% 0%,rgba(46,196,182,.18),transparent 60%);pointer-events:none}
+.calc-out>*{position:relative}
+.calc-hero{padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.12)}
+.calc-hero .l{font-family:var(--font-h);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.calc-hero .v{font-family:var(--font-h);font-size:clamp(2rem,3.4vw,2.8rem);font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1.05;margin-top:8px}
+.calc-hero .d{font-size:.86rem;color:#AFC0D6;margin-top:8px;line-height:1.45}
+.calc-kpis{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ckpi{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:18px 18px 16px}
+.ckpi .l{font-size:.8rem;color:#AFC0D6;font-weight:500;line-height:1.35}
+.ckpi .v{font-family:var(--font-h);font-size:1.6rem;font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1.1;margin-top:6px}
+.ckpi .v small{font-family:var(--font-b);font-size:.85rem;font-weight:500;color:#AFC0D6;letter-spacing:0}
+.ckpi .v.teal{color:var(--teal)}
+.ckpi .d{font-size:.8rem;color:#93A6BF;margin-top:6px;line-height:1.4}
+.ckpi.wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;background:rgba(46,196,182,.1);border-color:rgba(46,196,182,.3)}
+.ckpi.wide .v{font-size:1.9rem}
+.ckpi.wide .ret{text-align:right}
+.ckpi.wide .ret .v{color:var(--teal)}
+.calc-note{font-size:.78rem;color:#8FA2BA;line-height:1.5}
+.calc-foot{margin-top:26px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.calc-foot p{font-size:.9rem;color:var(--muted);max-width:680px;display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+.calc-foot svg{width:18px;height:18px;flex:none;color:var(--teal-dark);margin-top:3px}
+
 /* ---------- Piloto ---------- */
 .pilot{position:relative;color:#fff;overflow:hidden}
 .pilot .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
@@ -422,7 +478,20 @@ ul,ol{margin:0;padding:0;list-style:none}
 html.shot .nav{position:absolute}
 
 /* ---------- Responsivo ---------- */
+@media (max-width:1240px){
+  .nav-links{gap:2px}
+  .nav-links a{padding:8px 9px;font-size:.9rem}
+}
 @media (max-width:1100px){
+  .nav-links{display:none}
+  .nav-toggle{display:flex}
+  .nav.open .nav-links{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:#fff;color:var(--navy);padding:14px 20px 20px;box-shadow:0 20px 40px rgba(11,37,69,.15);border-top:1px solid var(--line);gap:2px}
+  .nav.open .nav-links a{padding:12px 10px;font-size:1rem}
+  .nav.open .nav-links a:hover{background:rgba(11,37,69,.05)}
+  .nav.open{background:#fff;color:var(--navy)}
+  .nav.open .logo .logo-light{display:none}
+  .nav.open .logo .logo-dark{display:block}
+  .nav.open .nav-toggle{border-color:rgba(11,37,69,.2)}
   .metrics{grid-template-columns:repeat(3,1fr)}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(2,1fr)}
@@ -445,17 +514,11 @@ html.shot .nav{position:absolute}
   .also .txt{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .results-bottom{grid-template-columns:1fr}
+  .journey-grid{grid-template-columns:repeat(2,1fr)}
+  .jcard::after{display:none}
+  .calc{grid-template-columns:1fr}
 }
 @media (max-width:900px){
-  .nav-links{display:none}
-  .nav-toggle{display:flex}
-  .nav.open .nav-links{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:#fff;color:var(--navy);padding:14px 20px 20px;box-shadow:0 20px 40px rgba(11,37,69,.15);border-top:1px solid var(--line);gap:2px}
-  .nav.open .nav-links a{padding:12px 10px;font-size:1rem}
-  .nav.open .nav-links a:hover{background:rgba(11,37,69,.05)}
-  .nav.open{background:#fff;color:var(--navy)}
-  .nav.open .logo .logo-light{display:none}
-  .nav.open .logo .logo-dark{display:block}
-  .nav.open .nav-toggle{border-color:rgba(11,37,69,.2)}
   .nav-cta .btn{display:none}
 }
 @media (max-width:640px){
@@ -489,6 +552,12 @@ html.shot .nav{position:absolute}
   .bar{grid-template-columns:70px 1fr 48px;font-size:.85rem}
   .code{font-size:.76rem;padding:18px}
   .also .txt{padding:24px}
+  .journey-grid{grid-template-columns:1fr}
+  .calc-in,.calc-out{padding:24px 20px}
+  .calc-kpis{grid-template-columns:1fr}
+  .ckpi.wide{grid-template-columns:1fr}
+  .ckpi.wide .ret{text-align:left}
+  .calc-foot .btn{width:100%}
 }
 </style>
 </head>
@@ -509,6 +578,7 @@ html.shot .nav{position:absolute}
       <a href="#resultados">Resultados</a>
       <a href="#oracle">Oracle</a>
       <a href="#planos">Planos</a>
+      <a href="#roi">ROI</a>
       <a href="#piloto">Piloto</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -680,11 +750,43 @@ html.shot .nav{position:absolute}
       </article>
     </div>
 
+    <div class="journey">
+      <div class="journey-head reveal">
+        <div>
+          <span class="eyebrow">Em 4 passos</span>
+          <h3>Do primeiro CSV ao resultado em R$, sem projeto de TI</h3>
+        </div>
+        <p>O que a instituição faz, o que a Retena faz e o que volta para a coordenação a cada semana.</p>
+      </div>
+      <ol class="journey-grid" aria-label="Como a Retena funciona em quatro passos">
+        <li class="jcard reveal">
+          <div class="n" aria-hidden="true">01</div>
+          <h4>Conecte o LMS</h4>
+          <p>Exportação CSV padrão ou API para o <b>Oracle Autonomous AI Database</b>. Sem projeto de TI: a integração começa com o que o LMS já exporta.</p>
+        </li>
+        <li class="jcard reveal d1">
+          <div class="n" aria-hidden="true">02</div>
+          <h4>O risco é calculado dentro do banco</h4>
+          <p>Oracle Machine Learning (<code>DBMS_DATA_MINING</code>) pontua cada aluno toda semana. <b>O dado não sai da instituição.</b></p>
+        </li>
+        <li class="jcard reveal d2">
+          <div class="n" aria-hidden="true">03</div>
+          <h4>A fila de segunda chega à coordenação</h4>
+          <p>Quem contatar, por quê, quando (<b>19h–22h</b>) e o que dizer, em um painel APEX pronto para o tutor.</p>
+        </li>
+        <li class="jcard reveal d3">
+          <div class="n" aria-hidden="true">04</div>
+          <h4>O resultado volta em R$</h4>
+          <p>Contato registrado em um clique, <b>receita preservada medida</b> no relatório mensal e modelo retreinado com o que funcionou.</p>
+        </li>
+      </ol>
+    </div>
+
     <div class="flow reveal">
       <div class="flow-head">
         <div>
           <h3>Do log à fila de segunda, sem sair do banco</h3>
-          <p>Quatro passos, todos dentro do Oracle AI Database. Nenhum dado de aluno em nuvem de terceiros; nenhum servidor de ML para operar.</p>
+          <p>Os mesmos quatro passos, vistos de dentro do Oracle AI Database. Nenhum dado de aluno em nuvem de terceiros; nenhum servidor de ML para operar.</p>
         </div>
       </div>
       <ol class="steps">
@@ -966,6 +1068,89 @@ html.shot .nav{position:absolute}
   </div>
 </section>
 
+<!-- ================= ROI ================= -->
+<section class="section" id="roi">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Calculadora de retorno</span>
+      <h2>Quanto a evasão custa hoje, e quanto custa a Retena.</h2>
+      <p class="lead">Três parâmetros da sua instituição e a tabela do plano Pro publicada acima. Nenhuma premissa escondida: os valores recalculam enquanto você ajusta.</p>
+    </div>
+    <div class="calc">
+      <div class="calc-in reveal">
+        <div>
+          <h3>Parâmetros da instituição</h3>
+          <p class="sub">Comece pelos valores de referência e ajuste para a sua base.</p>
+        </div>
+        <div class="calc-field">
+          <div class="top"><label for="roi-alunos">Alunos EAD ativos</label><input class="tnum" type="number" id="roi-alunos" min="1000" max="100000" step="500" value="12000" inputmode="numeric"></div>
+          <input type="range" id="roi-alunos-r" min="1000" max="100000" step="500" value="12000" aria-label="Alunos EAD ativos (controle deslizante)">
+          <div class="minmax"><span>1 mil</span><span>100 mil</span></div>
+        </div>
+        <div class="calc-field">
+          <div class="top"><label for="roi-ticket">Ticket mensal médio (R$)</label><input class="tnum" type="number" id="roi-ticket" min="100" max="2000" step="10" value="350" inputmode="numeric"></div>
+          <input type="range" id="roi-ticket-r" min="100" max="2000" step="10" value="350" aria-label="Ticket mensal médio (controle deslizante)">
+          <div class="minmax"><span>R$ 100</span><span>R$ 2.000</span></div>
+        </div>
+        <div class="calc-field">
+          <div class="top"><label for="roi-evasao">Desistência anual (%)</label><input class="tnum" type="number" id="roi-evasao" min="5" max="70" step="0.1" value="41.6" inputmode="decimal"></div>
+          <input type="range" id="roi-evasao-r" min="5" max="70" step="0.1" value="41.6" aria-label="Desistência anual (controle deslizante)">
+          <div class="minmax"><span>5%</span><span>70% · média do EAD em 2024: 41,6%</span></div>
+        </div>
+        <div class="calc-how">
+          <b>Como calculamos</b>
+          <ul>
+            <li>Receita perdida = alunos × desistência × ticket × 12 meses</li>
+            <li>Custo da Retena = alunos × preço da faixa × 12, mínimo de R$ 5 mil/mês</li>
+            <li>Alunos a reter = custo ÷ (ticket × 12); 1 p.p. = 1% da base × ticket × 12</li>
+          </ul>
+        </div>
+      </div>
+      <div class="calc-out reveal d1">
+        <div class="calc-hero">
+          <div class="l">Receita anual perdida com a evasão</div>
+          <div class="v tnum" id="roi-perda" aria-live="polite">R$ 20,97 mi</div>
+          <div class="d" id="roi-perda-d">4.992 alunos desistindo por ano × R$ 350 × 12 meses</div>
+        </div>
+        <div class="calc-kpis">
+          <div class="ckpi">
+            <div class="l">Custo anual da Retena</div>
+            <div class="v tnum" id="roi-custo">R$ 576.000</div>
+            <div class="d" id="roi-custo-d">R$ 48.000/mês · faixa de R$ 4 por aluno ativo</div>
+          </div>
+          <div class="ckpi">
+            <div class="l">Alunos a reter para pagar a Retena</div>
+            <div class="v tnum"><span id="roi-breakeven">137</span> <small>alunos</small></div>
+            <div class="d" id="roi-breakeven-d">1,1% da base · cada aluno retido por 12 meses vale R$ 4.200</div>
+          </div>
+          <div class="ckpi">
+            <div class="l">1 ponto percentual de desistência evitado vale</div>
+            <div class="v teal tnum" id="roi-ponto">R$ 504.000</div>
+            <div class="d" id="roi-ponto-d">120 alunos a mais continuando o ano</div>
+          </div>
+          <div class="ckpi wide">
+            <div>
+              <div class="l">Cenário conservador: evitar 2 p.p. de desistência</div>
+              <div class="v tnum" id="roi-preservada">R$ 1,01 mi</div>
+              <div class="d">de receita preservada no ano</div>
+            </div>
+            <div class="ret">
+              <div class="l">Retorno sobre o custo</div>
+              <div class="v tnum" id="roi-retorno">1,75×</div>
+            </div>
+          </div>
+        </div>
+        <p class="calc-note">Setup de R$ 10–25 mil à parte; valores de referência do plano Pro (R$ 6, R$ 4 ou R$ 3 por aluno ativo/mês conforme a faixa, mínimo de R$ 5 mil/mês).</p>
+      </div>
+    </div>
+    <div class="calc-foot reveal">
+      <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span>Estimativas com os parâmetros informados; no piloto de 90 dias a meta de rematrícula é medida na base real da instituição.</span></p>
+      <a class="btn btn-navy" href="#contato">Validar esta conta no piloto
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
 <!-- ================= PILOTO ================= -->
 <section class="section dark pilot" id="piloto">
   <img class="bgimg" src="img/campus.jpg" alt="" aria-hidden="true" loading="lazy" width="1600" height="900">
@@ -1132,6 +1317,54 @@ html.shot .nav{position:absolute}
   /* Formulário demonstrativo */
   var form=document.getElementById('form'),note=document.getElementById('formnote');
   form.addEventListener('submit',function(e){e.preventDefault();note.classList.add('show');note.scrollIntoView({block:'nearest',behavior:noAnim?'auto':'smooth'});});
+
+  /* Calculadora de ROI (#roi) — isolada; se algo faltar, a página segue com os valores estáticos */
+  function initRoiCalc(){
+    var $=function(id){return document.getElementById(id);};
+    var out={perda:$('roi-perda'),perdaD:$('roi-perda-d'),custo:$('roi-custo'),custoD:$('roi-custo-d'),be:$('roi-breakeven'),beD:$('roi-breakeven-d'),ponto:$('roi-ponto'),pontoD:$('roi-ponto-d'),pres:$('roi-preservada'),ret:$('roi-retorno')};
+    for(var k in out){if(!out[k])return;}
+    var pairs=[['roi-alunos','roi-alunos-r'],['roi-ticket','roi-ticket-r'],['roi-evasao','roi-evasao-r']];
+    var brl=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:0,maximumFractionDigits:0});
+    var n0=new Intl.NumberFormat('pt-BR',{maximumFractionDigits:0});
+    var n1=new Intl.NumberFormat('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1});
+    var n2=new Intl.NumberFormat('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+    function money(v){return v>=1e6?'R$ '+n2.format(v/1e6)+' mi':brl.format(Math.round(v));}
+    function toNum(s){var v=parseFloat(String(s).replace(',','.'));return isNaN(v)?NaN:v;}
+    function clamp(v,el){var min=parseFloat(el.min),max=parseFloat(el.max);if(isNaN(v))v=parseFloat(el.defaultValue);if(isNaN(v))v=min;return Math.min(max,Math.max(min,v));}
+    function read(id){var el=$(id),rng=$(id+'-r'),v=toNum(el.value);if(isNaN(v)&&rng)v=toNum(rng.value);return clamp(v,el);}
+    function precoFaixa(alunos){return alunos>50000?3:(alunos>10000?4:6);}
+    function calc(){
+      var alunos=read('roi-alunos'),ticket=read('roi-ticket'),taxa=read('roi-evasao')/100;
+      var anualAluno=ticket*12;
+      var perdidos=alunos*taxa;
+      var perda=perdidos*anualAluno;
+      var preco=precoFaixa(alunos);
+      var mensal=Math.max(5000,alunos*preco);
+      var custo=mensal*12;
+      var be=Math.round(custo/anualAluno);
+      var ponto=alunos*0.01*anualAluno;
+      var preservada=2*ponto;
+      var retorno=preservada/custo;
+      out.perda.textContent=money(perda);
+      out.perdaD.textContent=n0.format(Math.round(perdidos))+' alunos desistindo por ano × '+brl.format(ticket)+' × 12 meses';
+      out.custo.textContent=money(custo);
+      out.custoD.textContent=brl.format(mensal)+'/mês · '+(alunos*preco<5000?'mínimo contratual de R$ 5 mil':'faixa de '+brl.format(preco)+' por aluno ativo');
+      out.be.textContent=n0.format(be);
+      out.beD.textContent=n1.format(be/alunos*100)+'% da base · cada aluno retido por 12 meses vale '+brl.format(anualAluno);
+      out.ponto.textContent=money(ponto);
+      out.pontoD.textContent=n0.format(Math.round(alunos*0.01))+' alunos a mais continuando o ano';
+      out.pres.textContent=money(preservada);
+      out.ret.textContent=n2.format(retorno)+'×';
+    }
+    pairs.forEach(function(p){
+      var num=$(p[0]),rng=$(p[1]);if(!num||!rng)return;
+      rng.addEventListener('input',function(){num.value=rng.value;calc();});
+      num.addEventListener('input',function(){var v=toNum(num.value);if(!isNaN(v))rng.value=clamp(v,rng);calc();});
+      num.addEventListener('change',function(){var v=clamp(toNum(num.value),num);num.value=v;rng.value=v;calc();});
+    });
+    calc();
+  }
+  try{initRoiCalc();}catch(e){}
 })();
 </script>
 </body>

@@ -67,6 +67,12 @@ Dica: quem apresenta a demonstração deve abrir o dashboard antes de começar e
 
 12. **"O nome pode ser confundido com 'retina'."** Sabemos; por isso a marca nunca aparece sem a tagline e a linha do batimento, e os domínios retena.com.br/.app ficam limpos. Temos nomes reserva para módulos (Pulso, Alento, Maré).
 
+13. **"Quais ferramentas Oracle vocês usaram de fato, e quais são só plano?"** Executados e evidenciados com timestamps: Oracle AI Database 26ai Free (Docker) com 684.723 eventos e features em SQL; Oracle Machine Learning via DBMS_DATA_MINING (Random Forest e GLM treinados no banco, PREDICTION_PROBABILITY e PREDICTION_DETAILS); views de scoring e JSON Duality View; job semanal com DBMS_SCHEDULER; carga e MERGE idempotente via python-oracledb. Com runbook pronto (60 minutos, números esperados documentados): Autonomous AI Database Serverless e Object Storage com DBMS_CLOUD.COPY_DATA. APEX vai ao NEXT em 24/10; Select AI está no roadmap. Cinco de nove componentes já rodam; reexecutamos tudo do zero em 22/09 sem erros.
+
+14. **"Como o marketing digital traz clientes de forma rentável?"** Funil em quatro etapas, com ativos já publicados: landing page com vídeo de vendas, calculadora de ROI e agendamento; conteúdo com dados do INEP e da Semesp e prospecção direta (LinkedIn/ABM) de diretores de operações, além de eventos Semesp e ABED. A isca é o diagnóstico gratuito: a IES envia o export do LMS e em 7 dias recebe o painel de receita em risco em R$ (a mesma carga que fizemos em 72 s, custo quase zero). O piloto de 90 dias é pago (R$ 5 mil) e cobre o custo do diagnóstico; o contrato anual do cliente-referência vale R$ 576 mil. Metas do ano 1, medidas no funil: 30 diagnósticos, 6 pilotos, 2–3 contratos e CAC pago em menos de um trimestre de assinatura. São metas, não promessas.
+
+15. **"Por que a Oracle deveria apostar nisso?"** Porque é consumo recorrente de Autonomous AI Database, Oracle Machine Learning e APEX por instituição (um schema por cliente), em um setor que já roda Oracle nos ERPs acadêmicos e nos megagrupos; porque a prova é executada, não desenhada; e porque o caso é replicável para ensino técnico e corporativo com o mesmo método. O que pedimos: apoio ao Always Free (ou Oracle for Startups), uma IES parceira para o piloto e mentoria comercial.
+
 ## 5. O que foi entregue (para citar se perguntarem sobre o pacote)
 
 - Documento estruturado de 58 páginas com as Partes 1–4, próximos passos e anexos (instrumento de validação, entrevistas, respostas do formulário, roteiro do pitch, referências).

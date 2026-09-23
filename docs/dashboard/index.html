@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Retena · IES Demo — Risco de evasão</title>
-<meta name="description" content="Painel Retena: quem chamar hoje, atrito de conteúdo e desempenho do modelo de risco de evasão (IES Demo).">
+<title>Retena · IES parceira · dados anonimizados — Risco de evasão</title>
+<meta name="description" content="Painel Retena: o que a diretoria precisa saber, quem chamar hoje, atrito de conteúdo e desempenho do modelo de risco de evasão (IES parceira · dados anonimizados).">
 <style>
 :root{
   --cor-primaria:#0B2545; --cor-secundaria:#13315C; --cor-acento:#2EC4B6; --cor-alerta:#FFB703;
@@ -38,6 +38,22 @@ a{color:inherit}
 .topo nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
 .topo nav a{color:rgba(255,255,255,.82);text-decoration:none;font-size:13px;padding:7px 12px;border-radius:8px}
 .topo nav a:hover{background:rgba(255,255,255,.1);color:#fff}
+
+/* Seletor de visão (Diretoria / Coordenação / Time técnico / Tudo) */
+.modos-wrap{margin-left:auto;display:flex;align-items:center;gap:8px}
+.modos-rotulo{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.58);font-weight:600}
+.modos{display:inline-flex;gap:2px;padding:3px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:10px}
+.modos button{font:inherit;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:7px;border:none;background:transparent;color:rgba(255,255,255,.8);cursor:pointer;white-space:nowrap}
+.modos button:hover{color:#fff;background:rgba(255,255,255,.1)}
+.modos button[aria-pressed="true"]{background:var(--cor-acento);color:var(--cor-primaria)}
+.modos button:focus-visible{outline:2px solid var(--cor-acento);outline-offset:1px}
+/* O que cada visão mostra. "tudo" (padrão) não oculta nada. */
+body[data-modo="diretoria"] #fila,body[data-modo="diretoria"] #atrito,body[data-modo="diretoria"] #modelo,
+body[data-modo="coordenacao"] #executivo,body[data-modo="coordenacao"] #visao,body[data-modo="coordenacao"] #modelo,
+body[data-modo="tecnico"] #executivo,body[data-modo="tecnico"] #visao,body[data-modo="tecnico"] #fila,body[data-modo="tecnico"] #atrito{display:none}
+body[data-modo="diretoria"] nav a[href="#fila"],body[data-modo="diretoria"] nav a[href="#atrito"],body[data-modo="diretoria"] nav a[href="#modelo"],
+body[data-modo="coordenacao"] nav a[href="#executivo"],body[data-modo="coordenacao"] nav a[href="#visao"],body[data-modo="coordenacao"] nav a[href="#modelo"],
+body[data-modo="tecnico"] nav a[href="#executivo"],body[data-modo="tecnico"] nav a[href="#visao"],body[data-modo="tecnico"] nav a[href="#fila"],body[data-modo="tecnico"] nav a[href="#atrito"]{display:none}
 
 main{max-width:1440px;margin:0 auto;padding:26px 28px 40px}
 section{margin-bottom:34px}
@@ -73,6 +89,30 @@ section{margin-bottom:34px}
 .kpi-rotulo{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--cor-neutra);font-weight:600}
 .kpi-valor{font-size:34px;font-weight:600;line-height:1.1;margin:6px 0 4px}
 .kpi-sub{font-size:12.5px;color:var(--cor-texto-corrido)}
+
+/* Resumo executivo (diretoria) */
+section{scroll-margin-top:96px}
+.hero h2{font-size:26px}
+.exec-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:16px}
+@media (max-width:1250px){.exec-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.exec-grid{grid-template-columns:minmax(0,1fr)}}
+.exec{background:var(--cor-cartao);border:1px solid var(--cor-grade);border-radius:var(--raio);box-shadow:var(--sombra);padding:20px 22px 18px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:6px;min-width:0}
+.exec::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--cor-neutra)}
+.exec-critico::before{background:var(--cor-critico)}
+.exec-alerta::before{background:var(--cor-alerta)}
+.exec-ok::before{background:var(--cor-acento)}
+.exec-rotulo{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--cor-neutra);font-weight:600;line-height:1.3}
+.exec-valor{font-family:var(--fonte-titulo);font-size:40px;font-weight:600;line-height:1.05;color:var(--cor-texto);letter-spacing:-.02em;margin:4px 0 2px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.exec-sub{font-size:13px;color:var(--cor-texto-corrido)}
+.exec-dica,.exec-input{font-size:12.5px;color:var(--cor-texto);margin-top:auto;padding-top:10px;border-top:1px dashed var(--cor-grade)}
+.exec-input{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:var(--cor-texto-corrido)}
+.exec-input input{font:inherit;font-size:13px;font-weight:600;width:96px;padding:6px 8px;border:1px solid #CBD3DE;border-radius:8px;color:var(--cor-texto);background:#fff}
+.exec-input input:focus{outline:2px solid rgba(46,196,182,.45);border-color:var(--cor-acento)}
+.agir{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.agir-rotulo{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--cor-neutra);font-weight:600}
+.agir-chip{display:inline-block;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid var(--cor-grade);color:var(--cor-primaria);text-decoration:none;box-shadow:var(--sombra)}
+.agir-chip:hover{border-color:var(--cor-acento);background:#E3F8F5;color:#0F6F68}
+.agir-chip:focus-visible{outline:2px solid var(--cor-acento);outline-offset:1px}
 
 /* SVG */
 .grafico{width:100%;max-width:100%;height:auto;display:block;font-family:var(--fonte-texto)}
@@ -188,29 +228,84 @@ footer h3{font-size:13px;margin-bottom:8px}
 footer ul{margin:0;padding-left:18px}
 footer li{margin-bottom:5px}
 .assinatura{color:var(--cor-neutra);margin-top:10px}
-@media print{.topo{position:static}.painel,.veu{display:none}}
+@media print{.topo{position:static}.painel,.veu,.modos-wrap{display:none}}
 </style>
 </head>
-<body>
+<body data-modo="tudo">
 <header class="topo">
   <div class="topo-inner">
     <img class="logo" src="../img/retena_horizontal_claro_sobre_escuro.svg" alt="Retena">
     <div class="topo-sep"></div>
     <div class="topo-meta">
-      <div class="ies">IES Demo</div>
+      <div class="ies">IES parceira · dados anonimizados</div>
       <div class="ref">Dados até 26/08/2026 · corte de scoring 23/08/2026 (domingo) · logs de 15/01/2026 a 26/08/2026</div>
     </div>
     <nav aria-label="Seções">
-      <a href="#visao">Visão geral</a><a href="#fila">Fila de segunda</a><a href="#atrito">Atrito de conteúdo</a><a href="#modelo">Modelo</a>
+      <a href="#executivo">Resumo executivo</a><a href="#visao">Visão geral</a><a href="#fila">Fila de segunda</a><a href="#atrito">Atrito de conteúdo</a><a href="#modelo">Modelo</a>
     </nav>
+    <div class="modos-wrap">
+      <span class="modos-rotulo" id="modos-rotulo">Visão</span>
+      <div class="modos" role="group" aria-labelledby="modos-rotulo">
+        <button type="button" data-modo="diretoria" aria-pressed="false">Diretoria</button>
+        <button type="button" data-modo="coordenacao" aria-pressed="false">Coordenação</button>
+        <button type="button" data-modo="tecnico" aria-pressed="false">Time técnico</button>
+        <button type="button" data-modo="tudo" aria-pressed="true">Tudo</button>
+      </div>
+    </div>
   </div>
 </header>
 
 <main>
+<section id="executivo">
+  <div class="hero">
+    <div>
+      <h1>O que a diretoria precisa saber esta semana</h1>
+      <p>Quatro números em linguagem de gestão, calculados a partir dos logs reais do LMS: quantos alunos chamar, quanto está em jogo e quanto dá para recuperar.
+      Ajuste o ticket mensal para ver o impacto na sua instituição.</p>
+    </div>
+    <div class="quando">Semana de referência: 26/08/2026<br>203 matriculados · 196 com atividade avaliados</div>
+  </div>
+  <div class="exec-grid">
+    <div class="exec exec-critico">
+      <div class="exec-rotulo">Alunos para chamar esta semana</div>
+      <div class="exec-valor">61</div>
+      <div class="exec-sub">55 em alto risco + 6 em risco médio</div>
+      <div class="exec-dica"><strong>11 de alto risco ainda ativos</strong> nos últimos 28 dias: comece por eles.</div>
+    </div>
+    <div class="exec exec-alerta">
+      <div class="exec-rotulo">Receita anual em risco</div>
+      <div class="exec-valor" id="exec-risco" data-n="55" aria-live="polite">…</div>
+      <div class="exec-sub">estimativa: alto risco × ticket × 12 meses; informe o ticket da sua instituição</div>
+      <label class="exec-input" for="ticket">Ticket mensal médio (R$)
+        <input id="ticket" type="number" value="350" min="100" max="2000" step="10" inputmode="numeric" aria-describedby="exec-risco">
+      </label>
+    </div>
+    <div class="exec exec-ok">
+      <div class="exec-rotulo">Receita preservada se reativarmos 1 em cada 3</div>
+      <div class="exec-valor" id="exec-preservada" data-n="18" aria-live="polite">…</div>
+      <div class="exec-sub">cenário conservador de reativação</div>
+      <div class="exec-dica">18 dos 55 alunos de alto risco × <span id="exec-ticket-eco">R$ 350</span> × 12 meses</div>
+    </div>
+    <div class="exec exec-atencao">
+      <div class="exec-rotulo">Já silenciaram sem nenhum alerta</div>
+      <div class="exec-valor">62</div>
+      <div class="exec-sub">alunos sem acesso há mais de 14 dias (31,6%)</div>
+      <div class="exec-dica"><strong>45 há mais de 30 dias</strong>: hoje ninguém é avisado quando isso acontece.</div>
+    </div>
+  </div>
+  <div class="agir">
+    <span class="agir-rotulo">Como agir</span>
+    <a class="agir-chip" href="#fila">Ver a fila de segunda →</a>
+    <a class="agir-chip" href="#atrito">Ver onde os alunos travam →</a>
+    <a class="agir-chip" href="#modelo">Ver como o modelo foi validado →</a>
+  </div>
+  <p class="nota">Números calculados dentro do Oracle AI Database com Oracle Machine Learning sobre a base real anonimizada (corte 23/08/2026).</p>
+</section>
+
 <section id="visao">
   <div class="hero">
     <div>
-      <h1>Quem chamar hoje</h1>
+      <h2>Quem chamar hoje</h2>
       <p>Risco de o aluno passar <strong>21 dias sem nenhuma ação no LMS</strong>, calculado toda semana a partir dos logs de navegação.
       Não é cobrança: é uma lista para o tutor começar a segunda-feira sabendo com quem conversar primeiro.</p>
     </div>
@@ -474,7 +569,8 @@ footer li{margin-bottom:5px}
   <div class="sec-cab">
     <div>
       <h2>Mapa de atrito de conteúdo</h2>
-      <p>Onde os alunos travam: para cada capítulo, a fração dos que chegaram nele e não avançaram ao seguinte, ponderada pelo esforço (eventos) que o capítulo exige em relação à fase.
+      <p><strong>Onde os alunos travam, capítulo a capítulo, para a coordenação pedagógica ajustar o conteúdo.</strong></p>
+      <p>Para cada capítulo, a fração dos que chegaram nele e não avançaram ao seguinte, ponderada pelo esforço (eventos) que o capítulo exige em relação à fase.
       Passe o mouse sobre a célula para ver os detalhes.</p>
     </div>
   </div>
@@ -801,7 +897,7 @@ Alunos com eventos no capítulo: 37</title></g>
 <section id="modelo">
   <div class="sec-cab">
     <div>
-      <h2>Modelo</h2>
+      <h2>Modelo · para o time técnico</h2>
       <p>HistGradientBoosting (scikit-learn) com 22 features de comportamento, rótulo <code>inativo_21d</code>. Avaliação com <strong>split temporal</strong>:
       treino em 16 cortes (fev–mai/2026, embargo de 21 dias), teste em 9 cortes (jun–ago/2026), 1.609 linhas aluno-semana de 183 alunos.
       Baseline: regressão logística. Detalhes e discussão em <code>outputs/RESULTADOS.md</code>.</p>
@@ -1134,6 +1230,42 @@ Queda média de AUC-ROC: 0,0009 ± 0,0004</title></rect>
     painel.classList.add('aberto'); veu.classList.add('aberto');
     document.getElementById('fechar').focus();
   }
+
+  // ---- Resumo executivo: receita em risco / preservada a partir do ticket ----
+  const BRL = new Intl.NumberFormat('pt-BR', {style:'currency', currency:'BRL', minimumFractionDigits:0, maximumFractionDigits:0});
+  const TICKET_PADRAO = 350;
+  const ticketEl = document.getElementById('ticket');
+  const execRisco = document.getElementById('exec-risco'), execPreservada = document.getElementById('exec-preservada'), execEco = document.getElementById('exec-ticket-eco');
+  function recalcularExec() {
+    let t = Number(ticketEl.value);
+    if (!Number.isFinite(t) || t <= 0) t = TICKET_PADRAO;           // campo vazio/inválido: usa o padrão sem travar
+    const nAlto = Number(execRisco.dataset.n), nReativar = Number(execPreservada.dataset.n);
+    execRisco.textContent = BRL.format(nAlto * t * 12);
+    execPreservada.textContent = BRL.format(nReativar * t * 12);
+    if (execEco) execEco.textContent = BRL.format(t);
+  }
+  ticketEl.addEventListener('input', recalcularExec);
+  recalcularExec();
+
+  // ---- Seletor de visão (Diretoria / Coordenação / Time técnico / Tudo) ----
+  const MODOS = ['diretoria', 'coordenacao', 'tecnico', 'tudo'];
+  const CHAVE_MODO = 'retena.dashboard.modo';
+  const botoesModo = document.querySelectorAll('.modos button[data-modo]');
+  function aplicarModo(m, salvar) {
+    if (!MODOS.includes(m)) m = 'tudo';
+    document.body.dataset.modo = m;
+    botoesModo.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.modo === m)));
+    if (salvar) { try { localStorage.setItem(CHAVE_MODO, m); } catch (e) { /* armazenamento indisponível: segue sem persistir */ } }
+  }
+  botoesModo.forEach(b => b.addEventListener('click', () => aplicarModo(b.dataset.modo, true)));
+  let modoInicial = 'tudo';
+  try { modoInicial = localStorage.getItem(CHAVE_MODO) || 'tudo'; } catch (e) { modoInicial = 'tudo'; }
+  aplicarModo(modoInicial, false);
+  // Link interno para uma seção oculta na visão atual: volta para "Tudo" antes de rolar até ela.
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', () => {
+    const alvo = document.getElementById(a.getAttribute('href').slice(1));
+    if (alvo && alvo.tagName === 'SECTION' && getComputedStyle(alvo).display === 'none') aplicarModo('tudo', true);
+  }));
 
   render();
 })();

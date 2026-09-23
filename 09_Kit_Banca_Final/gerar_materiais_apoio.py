@@ -68,40 +68,41 @@ riscos_md = secao(resumo_md, "## 6. Riscos", "## 7.")
 fechamento_md = secao(resumo_md, "## 7. Frase de fechamento")
 md2html = lambda t: markdown.markdown(t, extensions=["tables"])
 
-tempos = {1: "0:30", 2: "0:15", 3: "1:00", 4: "0:40", 5: "1:00", 6: "0:40", 7: "1:00", 8: "1:00", 9: "(reserva)", 10: "1:00", 11: "0:40", 12: "0:50", 13: "0:40", 14: "0:40", 15: "0:40", 16: "0:50", 17: "0:40", 18: "0:30", 19: "0:20", 20: "0:30"}
+PRINCIPAIS = 18
+tempos = {1: "0:20", 2: "0:15", 3: "0:30", 4: "0:25", 5: "0:20", 6: "0:30", 7: "0:35", 8: "1:00", 9: "0:40", 10: "0:30", 11: "0:30", 12: "0:25", 13: "0:40", 14: "0:35", 15: "0:15", 16: "0:25", 17: "0:10", 18: "0:20"}
 linhas = ""
 for n in notas:
-    if n["slide"] > 20: break
+    if n["slide"] > PRINCIPAIS: break
     linhas += f"<tr><td style='white-space:nowrap'><b>{n['slide']:02d}</b></td><td><b>{html.escape(n['titulo'])}</b></td><td style='white-space:nowrap'>{tempos.get(n['slide'], '')}</td><td>{html.escape(n['notas'])}</td></tr>"
-apend = "".join(f"<li><b>{html.escape(n['titulo'])}</b> — {html.escape(n['notas'])}</li>" for n in notas if n["slide"] > 20)
+apend = "".join(f"<li><b>{html.escape(n['titulo'])}</b> — {html.escape(n['notas'])}</li>" for n in notas if n["slide"] > PRINCIPAIS + 1)
 
 p1 = f"""<div class="eyebrow">Guia do apresentador</div><h1>Retena na Banca Final: roteiro, notas e respostas.</h1>
-<p>Deck: <b>Retena_Banca_Final.pptx / .pdf</b> (20 slides principais + apêndice A1–A8). Tempo-alvo de apresentação: <b>8 minutos</b> (slides 1–20, com a demonstração ao vivo no slide 8). O slide 9 é reserva caso a internet falhe. Perguntas: usar o apêndice sob demanda.</p>
+<p>Deck: <b>Retena_Banca_Final.pptx / .pdf</b> (18 slides principais, um argumento por slide, + apêndice técnico A1–A15). Tempo-alvo: <b>8 minutos</b> (slides 1–18, com a demonstração ao vivo no slide 8). O apêndice A1 é a reserva caso a internet falhe. Perguntas: usar o apêndice sob demanda — a banca é do time Oracle, então os slides 10–12 e A6/A15 são os mais prováveis de voltar.</p>
 <div class="grid3">
-<div class="stat"><div class="n">8 min</div><div class="l">apresentação</div><div class="s">20 slides · demonstração ao vivo no slide 8</div></div>
-<div class="stat"><div class="n">8 slides</div><div class="l">de apêndice</div><div class="s">métricas, OULAD, split temporal, LGPD/OCI, jornada, riscos, rich picture</div></div>
-<div class="stat"><div class="n">3 QR</div><div class="l">no fechamento</div><div class="s">vídeo · site e dashboard · repositório</div></div>
+<div class="stat"><div class="n">8 min</div><div class="l">apresentação</div><div class="s">18 slides · demonstração ao vivo no slide 8</div></div>
+<div class="stat"><div class="n">15 slides</div><div class="l">de apêndice técnico</div><div class="s">prints de reserva, métricas, OULAD, split temporal, LGPD/OCI, benchmark, diferencial, validação, arquitetura</div></div>
+<div class="stat"><div class="n">3 QR</div><div class="l">no fechamento</div><div class="s">vídeo · site com calculadora de ROI e dashboard · repositório</div></div>
 </div>
 <h2>Checklist antes de entrar</h2>
 <div class="grid2"><div class="card"><h3>Tecnologia</h3><ul>
-<li>Abrir <b>https://lucashenklain.github.io/retena/dashboard/</b> em uma aba (deixar a busca em “Aluno 0227” pronta) e a landing em outra.</li>
+<li>Abrir <b>https://lucashenklain.github.io/retena/dashboard/</b> em uma aba, já na visão <b>Diretoria</b> (seletor no topo); deixar a busca da fila em “Aluno 0227” pronta. Abrir a landing (seção <b>ROI</b>) em outra aba.</li>
 <li>Abrir o PDF do deck como plano B (fontes embutidas); o PPTX usa Segoe UI e abre em qualquer Windows.</li>
 <li>Testar o link do vídeo em janela anônima: https://youtu.be/HZrcLvIJCC4.</li>
 <li>Modo apresentador com notas ligado; transições em <i>fade</i> já configuradas.</li></ul></div>
 <div class="card"><h3>Papéis sugeridos</h3><ul>
-<li><b>Abertura, problema e público</b> (slides 1–4): 1 pessoa.</li>
-<li><b>Evidência, solução e demonstração</b> (5–9): 1 pessoa, com o dashboard aberto.</li>
-<li><b>Oracle e resultados</b> (10–13): 1 pessoa.</li>
-<li><b>Negócio, mercado e fechamento</b> (14–20): 1 pessoa. Todos respondem às perguntas; quem lidera decide quem responde.</li></ul></div></div>
+<li><b>História: gancho, antes/depois, tarde demais, público</b> (slides 1–5): 1 pessoa.</li>
+<li><b>Solução, como funciona, demonstração e resultados</b> (6–9): 1 pessoa, com o dashboard aberto.</li>
+<li><b>Oracle: por quê, evidência e mapa da stack</b> (10–12): 1 pessoa.</li>
+<li><b>Negócio, marketing, mercado, impacto e fechamento</b> (13–18): 1 pessoa. Todos respondem às perguntas; quem lidera decide quem responde.</li></ul></div></div>
 <h2>Ordem e mensagem central</h2>
 <table><tr><th>#</th><th>Bloco</th><th>Tempo</th><th>O que dizer</th></tr>{linhas}</table>"""
 
 p2 = f"""<div class="eyebrow">Perguntas prováveis</div><h1>O que a banca deve perguntar, e a resposta curta.</h1>{md2html(perguntas_md.replace('## 4. Perguntas prováveis da banca e respostas curtas', ''))}"""
 p3 = f"""<div class="eyebrow">Riscos, apêndice e fechamento</div><h1>Riscos reconhecidos, apêndice e a frase final.</h1>
 {md2html(riscos_md.replace('## 6. Riscos que a própria equipe reconhece', '<h2>Riscos que a própria equipe reconhece</h2>'))}
-<h2>Apêndice (slides 21–29) — quando usar</h2><ul>{apend}</ul>
+<h2>Apêndice técnico (slides 20–34) — quando usar</h2><ul>{apend}</ul>
 {md2html(fechamento_md.replace('## 7. Frase de fechamento', '<h2>Frase de fechamento</h2>'))}
-<div class="nota"><b>Regra de honestidade:</b> se perguntarem sobre as entrevistas, responder que foram simuladas com personas sintéticas para calibrar o instrumento (6 institucionais entram na contagem x/6; 2 com alunos calibraram H4 e H5), rotuladas assim no documento, e que serão confirmadas em campo antes do piloto. Se perguntarem sobre a diferença entre AUC 0,88 (Python) e 0,95 (Oracle), explicar que são duas implementações independentes do mesmo problema, ambas com teste temporal; o ponto é que o sinal existe e roda dentro do banco. Sobre o funil do slide 5 (175 → 165 → 165 → 161 → 154): são os alunos ativos na Fase 1 que seguem ativos em cada fase seguinte (definição do brief); o dashboard usa outra definição (alunos com ação própria por fase: 165 → 163 → 165 → 153 → 143), por isso os números diferem.</div>"""
+<div class="nota"><b>Regra de honestidade:</b> se perguntarem sobre as entrevistas, responder que foram simuladas com personas sintéticas para calibrar o instrumento (6 institucionais entram na contagem x/6; 2 com alunos calibraram H4 e H5), rotuladas assim no documento, e que serão confirmadas em campo antes do piloto. Se perguntarem sobre a diferença entre AUC 0,88 (Python) e 0,95 (Oracle), explicar que são duas implementações independentes do mesmo problema, ambas com teste temporal; o ponto é que o sinal existe e roda dentro do banco. Sobre o funil do apêndice A14 (175 → 165 → 165 → 161 → 154): são os alunos ativos na Fase 1 que seguem ativos em cada fase seguinte (definição do brief); o dashboard usa outra definição (alunos com ação própria por fase: 165 → 163 → 165 → 153 → 143), por isso os números diferem.</div>"""
 
 guia_html = f"<!doctype html><html lang='pt-BR'><head><meta charset='utf-8'><title>Retena · Guia do Apresentador</title><style>{CSS}</style></head><body>" + pagina(p1, "Guia do Apresentador", 1, 3) + pagina(p2, "Guia do Apresentador", 2, 3) + pagina(p3, "Guia do Apresentador", 3, 3) + "</body></html>"
 gpath = os.path.join(AQUI, "Retena_Guia_do_Apresentador.html"); open(gpath, "w", encoding="utf-8").write(guia_html)
@@ -138,10 +139,10 @@ one = f"""<div class="eyebrow">One-pager · Banca Final · Startup One / Enterpr
 <p style="font-size:9.5pt"><b>Cliente-referência (12 mil alunos):</b> R$ 576 mil/ano; reter 137 alunos (1,1% da base) paga o contrato; cada ponto de desistência evitado vale ~R$ 500 mil/ano (estimativa, ticket R$ 350/mês).</p>
 <p style="font-size:9.5pt;margin:0"><b>Mercado:</b> TAM R$ 249 mi/ano · SAM R$ 126 mi/ano · SOM R$ 2,5–4,3 mi ARR em 3 anos.</p></div>
 <div class="card"><h3>Diferencial</h3><p style="font-size:9.5pt">BI mostra o passado e CRM cobra tarde. A Retena antecipa (recência, tendência, capítulo travado), prioriza (quem, por quê, quando, o que dizer) e fecha o ciclo (resultado registrado, receita preservada em R$, retreino). Ficou viável agora: ML in-database maduro e EAD como maioria desde 2024.</p>
-<h3 style="margin-top:3mm">Próximos passos</h3><p style="font-size:9.5pt;margin:0">NEXT 24/10 com Autonomous AI Database + APEX; piloto de 90 dias em uma fase de um curso com meta de rematrícula. Pedimos: apoio ao Always Free, uma IES parceira e mentoria comercial.</p></div></div>
+<h3 style="margin-top:3mm">Aquisição e próximos passos</h3><p style="font-size:9.5pt;margin:0">Funil digital: landing page + vídeo de vendas → diagnóstico gratuito da base em 7 dias → piloto de 90 dias → contrato anual (metas ano 1: 30 diagnósticos, 6 pilotos, 2–3 contratos). NEXT 24/10 com Autonomous AI Database + APEX. Pedimos: apoio ao Always Free, uma IES parceira e mentoria comercial.</p></div></div>
 <div class="grid3" style="margin-top:3mm;align-items:center">
 <div class="qr"><img src="{QR('video')}"/><div class="t"><b>Vídeo pitch (4:48)</b>youtu.be/HZrcLvIJCC4</div></div>
-<div class="qr"><img src="{QR('site')}"/><div class="t"><b>Site, dashboard e evidências</b>lucashenklain.github.io/retena</div></div>
+<div class="qr"><img src="{QR('site')}"/><div class="t"><b>Site, calculadora de ROI e dashboard</b>lucashenklain.github.io/retena</div></div>
 <div class="qr"><img src="{QR('repo')}"/><div class="t"><b>Repositório completo</b>github.com/LucasHenklain/retena</div></div></div>
 <p style="margin-top:2.5mm;font-size:8.3pt"><b>Equipe:</b> Lucas Dalmas (RM551178, líder) · Lucas Emanuel (RM97881) · Kayque Moraes (RM97592) · Lucas Henklain (RM99350) · Vinicius Pinheiro (RM99198) — Engenharia de Software, FIAP 4ESOA.</p>"""
 one_html = f"<!doctype html><html lang='pt-BR'><head><meta charset='utf-8'><title>Retena · One-pager</title><style>{CSS}\n@page{{margin:0}}</style></head><body>" + pagina(one, "One-pager para a banca", 1, 1, classe="onepage") + "</body></html>"
