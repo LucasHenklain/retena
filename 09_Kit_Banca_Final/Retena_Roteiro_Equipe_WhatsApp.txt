@@ -1,0 +1,21 @@
+*Banca Final Retena — amanhã (23/09) · roteiro e divisão*
+
+Sorteio feito (22/09/2026 22:04). Ordem de fala:
+▶️ *Lucas Emanuel* — Abertura e problema (slides 1–4, 1:30)
+▶️ *Lucas Dalmas* — Para quem, solução e como funciona (slides 5–7, 1:25)
+💻 *Lucas Henklain* — Demonstração do MVP e resultados (slides 8–9, 1:40) — demonstração ao vivo
+▶️ *Vinicius Pinheiro* — Oracle e modelo de negócio (slides 10–13, 2:05)
+▶️ *Kayque Moraes* — Marketing, mercado, impacto, equipe e fechamento (slides 14–18, 1:45)
+
+Total: 8:25. Em anexo:
+• Retena_Roteiro_Equipe.pdf — a fala de cada slide, palavra por palavra, com a passagem de bastão e quem responde o quê nas perguntas
+• Retena_Banca_Final.pdf — o deck (18 slides + apêndice técnico)
+• Retena_Guia_do_Apresentador.pdf e Retena_OnePager_Banca.pdf
+
+Pedidos para hoje:
+1. Cada um decora a primeira e a última frase dos seus slides e os números (não arredondar).
+2. Ensaio cronometrado hoje à noite: uma passada completa + passagens de bastão.
+3. Lucas Emanuel coordena as perguntas e distribui; ninguém inventa número.
+4. Regra de honestidade: entrevistas foram simuladas (está no documento); metas de marketing são metas.
+
+Links: dashboard https://lucashenklain.github.io/retena/dashboard/ (visão Diretoria) · site https://lucashenklain.github.io/retena/ · vídeo https://youtu.be/HZrcLvIJCC4

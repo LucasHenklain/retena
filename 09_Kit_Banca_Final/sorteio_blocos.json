@@ -1,0 +1,11 @@
+{
+ "quando": "22/09/2026 22:04",
+ "metodo": "random.SystemRandom().shuffle",
+ "mvp": "Lucas Henklain",
+ "atribuicao": {
+  "B1": "Lucas Emanuel",
+  "B2": "Lucas Dalmas",
+  "B3": "Vinicius Pinheiro",
+  "B4": "Kayque Moraes"
+ }
+}

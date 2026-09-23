@@ -10,6 +10,7 @@ Esta versão funde a narrativa de venda (gancho → antes/depois → "tarde dema
 | `Retena_Banca_Final.pdf` | Mesmo deck em PDF (fontes embutidas) — plano B para qualquer máquina ou projetor. |
 | `Retena_Guia_do_Apresentador.pdf` | Roteiro cronometrado (8 min), notas por slide, perguntas prováveis com respostas curtas (incluindo as do time Oracle: ferramentas usadas, marketing rentável, por que apostar), riscos, checklist do dia e regra de honestidade. |
 | `Retena_OnePager_Banca.pdf` | Folha A4 para entregar à banca: problema, solução, números, Oracle, negócio, aquisição, equipe e QR codes (vídeo, site, repositório). Imprimir 5 cópias. |
+| `Retena_Roteiro_Equipe.pdf` | Roteiro por pessoa: fala de cada slide palavra por palavra, tempos, passagens de bastão e quem responde o quê. Blocos B1–B4 sorteados (`sorteio_blocos.json`, `random.SystemRandom`); o MVP é apresentado por Lucas Henklain. `Retena_Roteiro_Equipe_WhatsApp.txt` é a mensagem pronta para o grupo. Gerador: `gerar_roteiro_equipe.py`. |
 | `qr/` | QR codes em PNG (vídeo, site, repositório) na cor da marca. |
 | `notas_apresentador.json` | Notas por slide em formato reutilizável. |
 | `versao_anterior_tecnica/` | Deck v2 (20 + 8 slides, mais denso) em PPTX/PDF, com seu gerador e notas — para consulta ou se a banca pedir mais detalhe técnico. |
