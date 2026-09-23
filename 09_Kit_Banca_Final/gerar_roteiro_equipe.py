@@ -129,7 +129,7 @@ p1 = f"""{cab()}<div class="eyebrow">Roteiro da apresentação · 8 minutos · 5
 <li><b>Tempo:</b> 8:25 no roteiro; ensaiar duas vezes cronometrando cada bloco. Se estourar, cortar primeiro os parênteses das falas, nunca os números.</li>
 <li><b>Números:</b> falar como está escrito (95 em 100, 3 vezes, 576 mil). Nunca arredondar 41,6% para "quase metade" — a banca vai conferir.</li>
 <li><b>Perguntas:</b> {html.escape(primeiro(P['B1']))} coordena e passa a palavra a quem tem a resposta (tabela na última página). Resposta curta, com o slide do apêndice na tela quando houver.</li></ul></div>
-<div class="nota"><b>Regra de honestidade (todos):</b> as 8 entrevistas foram simuladas com personas sintéticas para calibrar o instrumento, estão rotuladas assim no documento e serão confirmadas em campo antes do piloto. As metas de marketing são metas. Os dois AUC (0,88 Python e 0,949 Oracle) vêm de implementações independentes, ambas com teste temporal. Ninguém improvisa número.</div>"""
+"""
 
 # ---- páginas 2+: falas por bloco
 blocos_html = ""
@@ -143,7 +143,7 @@ for cod, nome, sl, t in BLOCOS:
             corpo, bast = f.rsplit(" — ", 1); f = f"{corpo} <span class='bast'>→ {bast}</span>"
         blocos_html += f'<div class="slide"><div class="num">{n:02d}<small>{tt}</small></div><div><div class="tit">{html.escape(tit)}</div><div class="tela">Na tela: {html.escape(tela)}</div><div class="fala">{f}</div></div></div>'
     blocos_html += "</div>"
-p2 = f'<div class="pb"></div>{cab()}<div class="eyebrow">Falas por bloco</div><h1>O roteiro, slide a slide.</h1><p>Texto para falar, não para ler: decorar a primeira e a última frase de cada slide e os números; o meio pode ser dito com as próprias palavras.</p>{blocos_html}'
+p2 = f'<div class="pb"></div>{cab()}<div class="eyebrow">Falas por bloco</div><h1>O roteiro, slide a slide.</h1><p>Texto para falar, não para ler: decorar a primeira e a última frase de cada slide e os números; o meio pode ser dito com as próprias palavras.</p><div class="nota"><b>Regra de honestidade (todos):</b> as 8 entrevistas foram simuladas com personas sintéticas para calibrar o instrumento, estão rotuladas assim no documento e serão confirmadas em campo antes do piloto. As metas de marketing são metas. Os dois AUC (0,88 Python e 0,949 Oracle) vêm de implementações independentes, ambas com teste temporal. Ninguém improvisa número.</div>{blocos_html}'
 
 # ---- última página: perguntas e ensaio
 perg = ""
