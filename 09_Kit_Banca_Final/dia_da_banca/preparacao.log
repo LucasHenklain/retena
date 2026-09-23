@@ -1,0 +1,27 @@
+﻿===== 23/09/2026 09:40:23 =====
+AVISO nÃ£o consegui ativar o keep-awake: Não é possível converter o valor "-2147483645" para o tipo "System.UInt32". Erro: "Valor era muito grande ou muito pequeno para UInt32.". Desative a suspensÃ£o manualmente.
+[09:40:24] 1/6 Docker
+[09:40:43] Docker ok.
+[09:40:43] 2/6 Oracle AI Database 26ai Free (container oracle-free)
+[09:40:43] Subindo o container (leva ~1 min)...
+[09:40:57] Oracle healthy (STARTUP @ localhost:1521/FREEPDB1).
+[09:40:57] 3/6 Rodando JOB_RETENA_SCORING_SEMANAL (DBMS_SCHEDULER.RUN_JOB, ~25 s)...
+[09:41:19] Scoring concluÃ­do; resultado salvo em ultimo_scoring.txt (plano B para print).
+[09:41:19] 4/6 Servidor local de reserva
+[09:41:21] Reserva offline: http://localhost:8765/05_MVP/dashboard/index.html?modo=diretoria
+[09:41:21] 5/6 Verificando o site publicado
+[09:41:22] Site publicado acessÃ­vel: usando as URLs online.
+[09:41:22] Edge aberto: dashboard (visÃ£o Diretoria) Â· site (ROI) Â· vÃ­deo.
+[09:41:25] 6/6 Deck aberto no PowerPoint (F5 para apresentar; Alt+F5 para o modo apresentador com notas).
+===== 23/09/2026 09:43:51 =====
+[09:43:52] 0/6 Notebook não vai dormir nem apagar a tela enquanto esta janela estiver aberta.
+[09:43:52] 1/6 Docker
+[09:44:11] Docker ok.
+[09:44:11] 2/6 Oracle AI Database 26ai Free (container oracle-free)
+[09:44:11] Oracle healthy (STARTUP @ localhost:1521/FREEPDB1).
+[09:44:11] 3/6 Job de scoring pulado (-SemJob).
+[09:44:11] 4/6 Servidor local de reserva
+[09:44:12] Reserva offline: http://localhost:8765/05_MVP/dashboard/index.html?modo=diretoria
+[09:44:12] 5/6 Verificando o site publicado
+[09:44:13] Site publicado acessível: usando as URLs online.
+[09:44:13] 6/6 Abertura de janelas pulada (-SemAbrir).

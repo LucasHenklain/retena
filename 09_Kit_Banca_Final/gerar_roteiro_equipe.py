@@ -125,6 +125,7 @@ p1 = f"""{cab()}<div class="eyebrow">Roteiro da apresentação · 8 minutos · 5
 <table><tr><th>Bloco</th><th>Apresentador(a)</th><th>Conteúdo</th><th>Slides</th><th>Tempo</th></tr>{tab}<tr><td colspan="4"><b>Total</b></td><td><b>8:25</b></td></tr></table>
 <div class="card"><h3>Regras do palco</h3><ul>
 <li><b>Um notebook, {html.escape(primeiro(MVP))} opera</b> (a demonstração precisa do navegador). Quem fala diz "próximo" ou faz um gesto; o operador acompanha o roteiro. Dashboard já aberto na visão <b>Diretoria</b>, fila com "Aluno 0227" digitado; landing na seção ROI em outra aba; PDF do deck como plano B.</li>
+<li><b>Antes de entrar (Lucas Henklain):</b> rodar <code>dia_da_banca/1_Preparar.cmd</code> — sobe o Oracle local, roda o job de scoring com carimbo de hoje e abre as abas e o deck. Na pergunta "isso roda mesmo?", <code>2_Scoring_ao_vivo.cmd</code> (25 s), com Vinicius explicando: os logs vão até 26/08 (export da IES parceira); o scoring rodou hoje, dentro do banco.</li>
 <li><b>Bastão:</b> a última frase de cada bloco chama a próxima pessoa pelo nome. Quem recebe não agradece nem se apresenta — vai direto ao conteúdo.</li>
 <li><b>Tempo:</b> 8:25 no roteiro; ensaiar duas vezes cronometrando cada bloco. Se estourar, cortar primeiro os parênteses das falas, nunca os números.</li>
 <li><b>Números:</b> falar como está escrito (95 em 100, 3 vezes, 576 mil). Nunca arredondar 41,6% para "quase metade" — a banca vai conferir.</li>

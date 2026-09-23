@@ -1260,6 +1260,8 @@ Queda média de AUC-ROC: 0,0009 ± 0,0004</title></rect>
   botoesModo.forEach(b => b.addEventListener('click', () => aplicarModo(b.dataset.modo, true)));
   let modoInicial = 'tudo';
   try { modoInicial = localStorage.getItem(CHAVE_MODO) || 'tudo'; } catch (e) { modoInicial = 'tudo'; }
+  // ?modo=diretoria|coordenacao|tecnico|tudo na URL tem prioridade (útil para abrir o painel já na visão certa)
+  try { const q = new URLSearchParams(location.search).get('modo'); if (q && MODOS.includes(q)) modoInicial = q; } catch (e) { /* sem query string */ }
   aplicarModo(modoInicial, false);
   // Link interno para uma seção oculta na visão atual: volta para "Tudo" antes de rolar até ela.
   document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', () => {

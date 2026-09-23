@@ -1,0 +1,39 @@
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  RETENA · scoring de risco de evasão IN-DATABASE · Oracle AI Database 26ai Free · Oracle Machine Learning
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  Oracle AI Database 26ai Free Release 23.26.3.0.0 - Develop, Learn, and Run for Free
+Version 23.26.3.0.0
+  Agora (America/Sao_Paulo): 23/09/2026 09:40:59   · relógio do banco em UTC
+
+▶ Executando o job semanal de scoring: DBMS_SCHEDULER.RUN_JOB('JOB_RETENA_SCORING_SEMANAL') → PRC_ATUALIZAR_RISCO
+  (recalcula as features em SQL e re-pontua os 203 alunos com PREDICTION_PROBABILITY dos modelos OML; MERGE idempotente)
+  ✔ concluído em 20 s
+
+  Alunos pontuados: 203    · eventos do LMS até: 26/08/2026 (export da IES parceira)    · último scoring: 23/09/2026 09:40:59
+
+  Faixas de risco (probabilidade de 21 dias sem acesso):
+    Alto     59 alunos  prob. média 0.844  ███████████████████
+    Médio    15 alunos  prob. média 0.472  █████
+    Baixo   129 alunos  prob. média 0.054  ███████████████████████████████████████████
+
+  Quem chamar primeiro (top 5 por probabilidade):
+    Aluno       Faixa  Prob.  Recência  Fase          Fatores
+    Aluno 0178  Alto   0.924  198 d     Fase 1        RECENCIA_DIAS=198 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTO
+    Aluno 0177  Alto   0.924  197 d     Fase 1        RECENCIA_DIAS=197 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTO
+    Aluno 0176  Alto   0.924  197 d     Fase 4        RECENCIA_DIAS=197 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTO
+    Aluno 0175  Alto   0.924  195 d     Fase 4        RECENCIA_DIAS=195 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTO
+    Aluno 0174  Alto   0.924  195 d     Fase 1        RECENCIA_DIAS=195 (peso 82.10); DIAS_ATIVOS_28D=0 (peso 36.51); EVENTO
+
+  Modelos treinados dentro do banco (DBMS_DATA_MINING):
+    RETENA_INATIVO21_GLM      GENERALIZED_LINEAR_MODEL  CLASSIFICATION  criado em 22/09/2026 23:50
+    RETENA_INATIVO21_RF       RANDOM_FOREST             CLASSIFICATION  criado em 22/09/2026 23:50
+    RETENA_TRANSICAO_GLM      GENERALIZED_LINEAR_MODEL  CLASSIFICATION  criado em 22/09/2026 23:50
+
+  Histórico do job (DBMS_SCHEDULER):
+    SUCCEEDED  início 23/09/2026 09:40:59   duração +000 00:00:20
+    SUCCEEDED  início 23/09/2026 09:39:48   duração +000 00:00:23
+    SUCCEEDED  início 22/09/2026 22:19:39   duração +000 00:00:24
+    agendamento: FREQ=WEEKLY; BYDAY=MON; BYHOUR=6; BYMINUTE=0  · habilitado: TRUE  · estado: SCHEDULED
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  O dado do aluno não saiu do banco: features em SQL, treino e scoring com Oracle Machine Learning, exposição por SQL/JSON.
+════════════════════════════════════════════════════════════════════════════════════════════════════

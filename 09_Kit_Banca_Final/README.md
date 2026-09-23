@@ -32,6 +32,12 @@ Esta versão funde a narrativa de venda (gancho → antes/depois → "tarde dema
 
 Apêndice: A1 prints da demonstração (reserva) · A2 métricas · A3 fluxo de dados · A4 OULAD · A5 split temporal · A6 LGPD/OCI · A7 jornada · A8 riscos · A9 rich picture · A10 benchmark · A11 diferencial · A12 validação H1–H6 · A13 mapa de atrito · A14 evidência na base · A15 arquitetura Oracle.
 
+## Dia da banca neste notebook (`dia_da_banca/`)
+
+- `1_Preparar.cmd` (ou `Retena_Banca.cmd` na Área de Trabalho): sobe Docker + Oracle local, roda o job de scoring in-database (carimbo de hoje), inicia o servidor local de reserva, abre dashboard (visão Diretoria), site (ROI) e vídeo no Edge e o deck no PowerPoint; mantém o notebook acordado enquanto a janela estiver aberta.
+- `2_Scoring_ao_vivo.cmd`: executa `JOB_RETENA_SCORING_SEMANAL` dentro do Oracle (~25 s) e mostra carimbo, faixas, top 5, modelos OML e histórico do job — para a pergunta "isso roda mesmo?".
+- Detalhes e plano B em `dia_da_banca/LEIA-ME.md`.
+
 ## Checklist do dia
 
 1. Abrir o dashboard publicado (`https://lucashenklain.github.io/retena/dashboard/`), escolher a visão **Diretoria** no seletor do topo e deixar a busca da fila em "Aluno 0227"; abrir a landing (`https://lucashenklain.github.io/retena/`, seção **ROI**) em outra aba.
