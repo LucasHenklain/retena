@@ -220,6 +220,22 @@ section{scroll-margin-top:96px}
 .feat span{color:var(--cor-texto-corrido)}
 .feat b{color:var(--cor-texto);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
 
+/* Registro do resultado do contato (protótipo: fica salvo neste navegador) */
+.registro{margin-top:18px;background:var(--cor-fundo);border-radius:10px;padding:12px 14px}
+.registro h3{margin-top:0}
+.registro .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.btn-res{font:inherit;font-size:12.5px;font-weight:600;padding:7px 11px;border-radius:8px;border:1px solid #CBD3DE;background:#fff;color:var(--cor-texto);cursor:pointer}
+.btn-res:hover{border-color:var(--cor-acento)}
+.btn-res[aria-pressed="true"]{background:var(--cor-primaria);color:#fff;border-color:var(--cor-primaria)}
+.registro textarea{width:100%;font:inherit;font-size:12.5px;padding:8px 10px;border:1px solid #CBD3DE;border-radius:8px;margin-top:8px;resize:vertical;min-height:54px}
+.registro .salvo{font-size:12px;color:var(--cor-texto-corrido);margin-top:6px}
+.registro .salvo.ok{color:#0F6F68}
+.res-chip{display:inline-block;font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:999px;margin-left:6px;vertical-align:1px;background:#EEF2F7;color:var(--cor-secundaria);white-space:nowrap}
+.res-reativado{background:#E3F8F5;color:#0F6F68}.res-plano{background:#E6EEF7;color:var(--cor-secundaria)}.res-sem_resposta{background:#FFF4D6;color:#7A5300}.res-cancelou{background:#FFEDE7;color:#A33A1C}
+.exec-registros{margin-top:12px;font-size:13px;color:var(--cor-texto);background:#fff;border:1px solid var(--cor-grade);border-radius:10px;padding:10px 14px}
+.exec-registros b{font-family:var(--fonte-titulo)}
+.exec-registros .mudo{color:var(--cor-neutra)}
+
 /* Rodapé */
 footer{border-top:1px solid var(--cor-grade);background:#fff}
 .rodape-inner{max-width:1440px;margin:0 auto;padding:24px 28px 30px;display:grid;grid-template-columns:1.4fr 1fr;gap:26px;font-size:12.5px;color:var(--cor-texto-corrido)}
@@ -299,6 +315,7 @@ footer li{margin-bottom:5px}
     <a class="agir-chip" href="#atrito">Ver onde os alunos travam →</a>
     <a class="agir-chip" href="#modelo">Ver como o modelo foi validado →</a>
   </div>
+  <div class="exec-registros" id="exec-registros" aria-live="polite"></div>
   <p class="nota">Números calculados dentro do Oracle AI Database com Oracle Machine Learning sobre a base real anonimizada (corte 23/08/2026).</p>
 </section>
 
@@ -1149,7 +1166,7 @@ Queda média de AUC-ROC: 0,0009 ± 0,0004</title></rect>
     if (!lista.length) { tbody.innerHTML = '<tr><td colspan="9" class="vazio">Nenhum aluno com esses filtros.</td></tr>'; }
     else tbody.innerHTML = lista.map(a => `
       <tr data-id="${esc(a.aluno_id)}" tabindex="0">
-        <td class="aluno">${esc(a.aluno_id)}</td>
+        <td class="aluno">${esc(a.aluno_id)}${resChip(a.aluno_id)}</td>
         <td class="num">F${a.fase_atual}</td>
         <td>${sit(a.situacao)}</td>
         <td class="num">${fmtInt(a.recencia_dias)}</td>
@@ -1226,7 +1243,14 @@ Queda média de AUC-ROC: 0,0009 ± 0,0004</title></rect>
         ${feat('Semanas desde o 1º acesso', fmtInt(a.semanas_desde_primeiro_evento))}${feat('Primeiro acesso', dataBR(a.primeiro_evento))}
         ${feat('% eventos à noite (28 d)', fmt(a.share_noite_28d*100,0)+'%')}${feat('% eventos no fim de semana (28 d)', fmt(a.share_fim_semana_28d*100,0)+'%')}
       </div>
-      <p class="nota">Corte de scoring: ${dataBR(a.corte)}. Features calculadas só com eventos até o corte; a probabilidade é do modelo de gradient boosting retreinado em toda a base rotulada.</p>`;
+      <p class="nota">Corte de scoring: ${dataBR(a.corte)}. Features calculadas só com eventos até o corte; a probabilidade é do modelo de gradient boosting retreinado em toda a base rotulada.</p>
+      <div class="registro" id="registro">
+        <h3>Registrar resultado do contato</h3>
+        <div class="btns">${Object.entries(RES_ROTULO).map(([k, v]) => `<button type="button" class="btn-res" data-res="${k}" aria-pressed="false">${v}</button>`).join('')}</div>
+        <textarea id="reg-obs" placeholder="Observação (opcional): o que foi combinado, quando volta, melhor horário…"></textarea>
+        <div class="salvo" id="reg-salvo"></div>
+      </div>`;
+    montarRegistro(a.aluno_id);
     painel.classList.add('aberto'); veu.classList.add('aberto');
     document.getElementById('fechar').focus();
   }
@@ -1246,6 +1270,41 @@ Queda média de AUC-ROC: 0,0009 ± 0,0004</title></rect>
   }
   ticketEl.addEventListener('input', recalcularExec);
   recalcularExec();
+
+  // ---- Registro do resultado do contato (protótipo do fluxo crítico; persiste só neste navegador) ----
+  const RES_ROTULO = {reativado: 'Reativado', plano: 'Plano combinado', sem_resposta: 'Sem resposta', cancelou: 'Vai cancelar'};
+  const CHAVE_REG = 'retena.dashboard.registros';
+  let REGISTROS = {};
+  try { REGISTROS = JSON.parse(localStorage.getItem(CHAVE_REG) || '{}') || {}; } catch (e) { REGISTROS = {}; }
+  function salvarRegistros() { try { localStorage.setItem(CHAVE_REG, JSON.stringify(REGISTROS)); } catch (e) { /* sem armazenamento: segue em memória */ } }
+  function resChip(id) { const r = REGISTROS[id]; return r && r.res ? `<span class="res-chip res-${r.res}">${RES_ROTULO[r.res] || r.res}</span>` : ''; }
+  function atualizarRegistrosExec() {
+    const el = document.getElementById('exec-registros'); if (!el) return;
+    const vals = Object.values(REGISTROS).filter(r => r && r.res);
+    if (!vals.length) { el.innerHTML = '<span class="mudo">Nenhum resultado de contato registrado ainda. Abra um aluno na fila e registre o que aconteceu: a receita preservada passa a ser medida aqui.</span>'; return; }
+    const c = k => vals.filter(r => r.res === k).length;
+    let t = Number(ticketEl.value); if (!Number.isFinite(t) || t <= 0) t = TICKET_PADRAO;
+    el.innerHTML = `Resultados registrados esta semana: <b>${vals.length}</b> · reativados <b>${c('reativado')}</b> · plano combinado <b>${c('plano')}</b> · sem resposta <b>${c('sem_resposta')}</b> · vai cancelar <b>${c('cancelou')}</b> · receita preservada estimada <b>${BRL.format(c('reativado') * t * 12)}</b> <span class="mudo">(reativados × ticket × 12)</span>`;
+  }
+  function montarRegistro(id) {
+    const caixa = document.getElementById('registro'); if (!caixa) return;
+    const atual = REGISTROS[id] || {};
+    const obs = caixa.querySelector('#reg-obs'), salvo = caixa.querySelector('#reg-salvo');
+    obs.value = atual.obs || '';
+    const pintar = () => {
+      caixa.querySelectorAll('.btn-res').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.res === atual.res)));
+      salvo.className = 'salvo' + (atual.res ? ' ok' : '');
+      salvo.textContent = atual.res ? `Registrado: ${RES_ROTULO[atual.res]} em ${new Date(atual.quando).toLocaleString('pt-BR')}.` : 'Nenhum resultado registrado ainda.';
+    };
+    caixa.querySelectorAll('.btn-res').forEach(b => b.addEventListener('click', () => {
+      atual.res = b.dataset.res; atual.obs = obs.value.trim(); atual.quando = new Date().toISOString();
+      REGISTROS[id] = atual; salvarRegistros(); pintar(); atualizarRegistrosExec(); render();
+    }));
+    obs.addEventListener('change', () => { if (atual.res) { atual.obs = obs.value.trim(); REGISTROS[id] = atual; salvarRegistros(); } });
+    pintar();
+  }
+  ticketEl.addEventListener('input', atualizarRegistrosExec);
+  atualizarRegistrosExec();
 
   // ---- Seletor de visão (Diretoria / Coordenação / Time técnico / Tudo) ----
   const MODOS = ['diretoria', 'coordenacao', 'tecnico', 'tudo'];
@@ -1270,6 +1329,14 @@ Queda média de AUC-ROC: 0,0009 ± 0,0004</title></rect>
   }));
 
   render();
+  // ?aluno=Aluno%200227 abre o painel do aluno ao carregar (link direto para a coordenação e para capturas do protótipo)
+  // ?so=fila|atrito|modelo|executivo|visao mostra apenas aquela seção (capturas e links de apoio)
+  try {
+    const qs = new URLSearchParams(location.search);
+    const so = qs.get('so');
+    if (so && document.getElementById(so)) document.querySelectorAll('main > section').forEach(sec => { if (sec.id !== so) sec.style.display = 'none'; else sec.style.display = ''; });
+    const q = qs.get('aluno'); if (q && alunos.some(a => a.aluno_id === q)) abrir(q);
+  } catch (e) { /* sem query string */ }
 })();
 </script>
 </body>

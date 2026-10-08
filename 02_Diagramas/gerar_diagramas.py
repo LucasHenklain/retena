@@ -451,6 +451,125 @@ def d06_arquitetura_oracle():
     footer(s, "Mesmo dialeto SQL do dev ao Autonomous: migração por Data Pump / scripts, zero reescrita")
     return s, "06_arquitetura_oracle"
 
+# =====================================================================
+# 08 — Arquitetura executada (Prototipação e PoC, out/2026)
+# =====================================================================
+def d08_arquitetura_executada():
+    W, H = 1800, 1130
+    s = SVG(W, H)
+    header(s, "Arquitetura executada da Retena — o que roda hoje e o que vem na Fase 7",
+           "Oracle AI Database 26ai Free (Docker) com OML, scoring materializado por job semanal, views JSON e protótipo do painel; Autonomous, APEX e Object Storage com runbook",
+           "Diagrama 08 · Prototipação e PoC · 07/10/2026")
+    top = 150
+    cols = [("Entrada", 56, 250), ("Carga", 340, 230), ("Oracle AI Database 26ai (executado em Docker; Autonomous: runbook)", 610, 620),
+            ("Consumo", 1270, 250), ("Pessoas", 1560, 190)]
+    for nome, x, w in cols:
+        s.text(x + w / 2, top - 14, nome.upper(), 11.5, CINZA, True, "middle")
+        s.add(f'<line x1="{x}" y1="{top-4}" x2="{x+w}" y2="{top-4}" stroke="{CINZA}" stroke-width="1" stroke-dasharray="3 4"/>')
+    EXEC = dict(stroke=VERDE, sw=2.4)           # executado e evidenciado
+    PROTO = dict(stroke=AMBAR, sw=2.2)          # protótipo (funciona, mas não é a forma final)
+    RUNB = dict(stroke=CINZA, sw=1.6, dash="6 5")  # runbook / Fase 7
+
+    # ---- Entrada ----
+    monitor(s, 86, 215, 190, 130, label="LMS da IES parceira", sub="export de logs: 684.723 eventos · 203 alunos · 15/01–26/08/2026", stroke=AZUL)
+    box(s, 70, 400, 222, 92, "Contrato de entrada (Fase 7)", ["aluno, data-hora, tipo de evento, fase, capítulo; validação e quarentena na carga"],
+        align="left", title_size=13, text_size=10.5, pad=10, title_color=GRAFITE, **RUNB)
+    cylinder(s, 100, 540, 160, 110, label="ERP acadêmico", sub="ticket médio e matrícula (hoje: parâmetro)", stroke=CINZA, dash="6 5", text_size=10.5)
+
+    # ---- Carga ----
+    box(s, 350, 215, 210, 100, "python-oracledb (thin)", ["carregar_eventos.py em lotes", "72 s (08/09) · 146 s (22/09)"],
+        fill=BRANCO, align="left", title_size=13, text_size=10.5, pad=10, **EXEC)
+    cloud(s, 455, 420, 210, 120, label="OCI Object Storage", sub="CSV gzip + DBMS_CLOUD.COPY_DATA (export testado em dry-run)", stroke=CINZA, dash="6 5")
+    box(s, 350, 560, 210, 90, "Pipeline Python (05_MVP)", ["modelo de referência, validação temporal, OULAD; gera o dashboard HTML"],
+        fill=BRANCO, align="left", title_size=13, text_size=10.5, pad=10, **EXEC)
+
+    # ---- Oracle ----
+    ox, oy, ow, oh = 610, 175, 620, 700
+    rect(s, ox, oy, ow, oh, AZUL_CLARO, AZUL, 2.5, 18)
+    s.text(ox + 20, oy + 32, "Oracle AI Database 26ai Free · usuário STARTUP · FREEPDB1", 16, AZUL, True)
+    s.text(ox + 20, oy + 51, "executado: carga, features, 3 modelos OML, scoring, views JSON, job semanal (reexecução completa 22/09/2026, 0 erros)", 10.5, GRAFITE)
+    s.text(ox + 20, oy + 65, "Fase 7: mesmo SQL no Autonomous AI Database Serverless, um schema por IES (runbook de 60 min pronto)", 10.5, GRAFITE)
+    s.add(f'<path d="M{ox},{oy+oh-40} h{ow} v22 a18,18 0 0 1 -18,18 h-{ow-36} a18,18 0 0 1 -18,-18 z" fill="{VERDE}"/>')
+    s.text(ox + ow / 2, oy + oh - 15, "O DADO NÃO SAI DO BANCO: features, treino, scoring e explicação acontecem onde o dado mora", 12.5, AZUL, True, "middle")
+    r1, h1 = oy + 82, 104
+    cylinder(s, ox + 28, r1, 150, h1, fill=BRANCO, label="EVENTOS_LMS", sub="684.723 linhas; Fase 7: partição por semana", text_size=10.5, **EXEC)
+    box(s, ox + 205, r1, 190, h1, "Features em SQL", ["02 transição (16 s) · 03 aluno-semana (89 s): recência, dias ativos, eventos 7/14/28 d, progresso, tendência"],
+        fill=BRANCO, align="left", title_size=13, text_size=10.3, pad=10, **EXEC)
+    box(s, ox + 420, r1, 175, h1, "Rótulos", ["inativo 21 d · não iniciou a fase seguinte (teste temporal ≥ jun/2026)"], fill=BRANCO, align="left", title_size=13, text_size=10.3, pad=10, **EXEC)
+    r2, h2 = r1 + h1 + 28, 118
+    box(s, ox + 28, r2, 367, h2, "Oracle Machine Learning — DBMS_DATA_MINING", ["RETENA_INATIVO21_RF (AUC 0,949) · RETENA_INATIVO21_GLM (0,945) · RETENA_TRANSICAO_GLM (0,972)", "PREDICTION_PROBABILITY → score · PREDICTION_DETAILS → motivo em linguagem simples"],
+        fill=BRANCO, align="left", title_size=13, text_size=10.3, pad=10, **EXEC)
+    box(s, ox + 420, r2, 175, h2, "RISCO_ALUNO_SNAPSHOT", ["203 alunos: 59 Alto · 15 Médio · 129 Baixo", "DT_CORTE, DT_SCORING, fatores, ação sugerida"], fill=BRANCO, align="left", title_size=12.5, text_size=10.3, pad=10, **EXEC)
+    r3, h3 = r2 + h2 + 28, 96
+    box(s, ox + 28, r3, 260, h3, "DBMS_SCHEDULER", ["JOB_RETENA_SCORING_SEMANAL: segunda 06:00", "PRC_ATUALIZAR_RISCO (MERGE idempotente) em 23–24 s"],
+        fill=BRANCO, align="left", title_size=13, text_size=10.3, pad=10, **EXEC)
+    box(s, ox + 315, r3, 280, h3, "CONTATO_RESULTADO + ORDS (Fase 7)", ["registro do contato persistido; realimenta o retreino mensal; hoje: protótipo no navegador"],
+        fill=BRANCO, align="left", title_size=13, text_size=10.3, pad=10, title_color=GRAFITE, **RUNB)
+    r4, h4 = r3 + h3 + 28, 90
+    box(s, ox + 28, r4, 567, h4, "Views JSON · Duality View · consultas APEX (07_apex_ready.sql)", ["VW_RISCO_JSON, RISCO_ALUNO_DV: risco por aluno pronto para APEX, ORDS, Select AI e para o painel — sem cópia de dados"],
+        fill=BRANCO, align="left", title_size=13, text_size=10.3, pad=10, **EXEC)
+    arrow(s, ox + 178, r1 + 50, ox + 205, r1 + 50, VERDE, 2)
+    arrow(s, ox + 395, r1 + 50, ox + 420, r1 + 50, VERDE, 2)
+    arrow(s, ox + 300, r1 + h1, ox + 300, r2, VERDE, 2)
+    arrow(s, ox + 395, r2 + 60, ox + 420, r2 + 60, VERDE, 2)
+    arrow(s, ox + 507, r2 + h2, ox + 507, r4, VERDE, 2, via=[(ox + 507, r2 + h2 + 12), (ox + 608, r2 + h2 + 12), (ox + 608, r4 - 12), (ox + 507, r4 - 12)])
+    arrow(s, ox + 158, r2 + h2, ox + 158, r3, VERDE, 2, label="semanal", label_size=10.5)
+    arrow(s, ox + 455, r3 + h3, ox + 455, r4, CINZA, 1.6, dash="5 4")
+    arrow(s, ox + 315, r3 + 48, ox + 288, r3 + 48, CINZA, 1.6, dash="5 4")
+
+    # ---- Consumo ----
+    ex, ew = 1290, 210
+    monitor(s, ex, 200, ew, 150, label="Dashboard HTML (protótipo)", sub="Diretoria · Coordenação · Técnico; fila, aluno, atrito e registro", stroke=AMBAR, screen=AMBAR_CLARO, label_color=GRAFITE)
+    box(s, ex, 395, ew, 86, "Oracle APEX (Fase 7)", ["6 telas do protótipo sobre as views JSON; registro via ORDS"], title_size=13, text_size=10.5, title_color=GRAFITE, **RUNB)
+    box(s, ex, 510, ew, 78, "Select AI (roadmap)", ["perguntas em português sobre a base"], title_size=13, text_size=10.5, title_color=GRAFITE, **RUNB)
+    box(s, ex, 620, ew, 96, "Landing + calculadora de ROI", ["publicadas (GitHub Pages); vídeo de vendas; agendamento do piloto"], title_size=13, text_size=10.5, **EXEC)
+    box(s, ex, 745, ew, 86, "Operação (dia_da_banca)", ["preparação em 1 min · scoring ao vivo em 25 s · servidor local de reserva"], title_size=13, text_size=10.5, **EXEC)
+
+    # ---- Pessoas ----
+    ux = 1655
+    person(s, ux, 205, AZUL, "Mariana — coordenação", "fila toda segunda; registra o contato", max_w=170)
+    person(s, ux, 380, AZUL2, "Tutores", "contato 19h–22h", max_w=170)
+    person(s, ux, 540, VERDE, "Aluno EAD", "chamado antes de desistir", max_w=170)
+    person(s, ux, 700, AZUL, "Renata — diretoria", "receita em risco e preservada", max_w=170)
+
+    # ---- setas entre camadas ----
+    arrow(s, 276, 280, 350, 265, VERDE, 2.2, label="export CSV", label_dy=-8)
+    arrow(s, 292, 446, 455, 470, CINZA, 1.6, dash="5 4")
+    arrow(s, 276, 300, 350, 600, VERDE, 2.2, via=[(316, 300), (316, 600)])
+    arrow(s, 560, 265, ox, 265, VERDE, 2.2, label="INSERT em lotes", label_dy=16, label_size=10.5)
+    arrow(s, 560, 480, ox, 480, CINZA, 1.6, dash="5 4", label="DBMS_CLOUD", label_dy=16, label_size=10.5)
+    arrow(s, 455, 560, 455, 540, CINZA, 1.6, dash="5 4")
+    bus = 1258
+    arrow(s, ox + ow, r4 + 30, ex, 275, VERDE, 2.2, via=[(bus, r4 + 30), (bus, 275)])
+    s.text(bus - 6, r4 + 24, "JSON / SQL", 10.5, VERDE, False, "end")
+    arrow(s, bus, 438, ex, 438, CINZA, 1.6, dash="5 4")
+    arrow(s, bus, 549, ex, 549, CINZA, 1.6, dash="5 4")
+    arrow(s, 560, 605, ex, 668, VERDE, 2.2, via=[(590, 605), (590, 892), (1250, 892), (1250, 668)], label="HTML gerado pelo pipeline", label_pos=(920, 886), label_size=10.5, halo=True)
+    fb = 1272
+    arrow(s, ex, 330, ox + ow, r3 + 48, AMBAR, 1.8, dash="5 4", via=[(fb, 330), (fb, r3 + 48)])
+    s.text(ox + ow - 10, r3 + h3 + 16, "← registro do contato volta ao banco (Fase 7)", 10, GRAFITE, False, "end")
+    arrow(s, ex + ew, 250, ux - 32, 250, VERDE, 2.2, label="fila + motivo")
+    arrow(s, ex + ew, 300, ux - 32, 410, VERDE, 2.2, via=[(1532, 300), (1532, 410)])
+    arrow(s, ex + ew, 330, ux - 32, 730, AZUL2, 2, via=[(1514, 330), (1514, 730)], label="visão em R$", label_pos=(1575, 722), label_size=10.5)
+    arrow(s, ux, 470, ux, 535, VERDE, 2.2)
+    s.text(ux - 14, 508, "liga 19h–22h", 10.5, VERDE, False, "end")
+
+    legend(s, 56, 905, [
+        ("stroke", VERDE, "Executado e evidenciado (logs com timestamps em 06_Oracle/evidencias; reexecução completa em 22/09/2026; scoring ao vivo em 23/09/2026)"),
+        ("stroke", AMBAR, "Protótipo funcional que será substituído na Fase 7 (dashboard HTML; registro do contato no navegador)"),
+        ("stroke", CINZA, "Runbook / Fase 7: Autonomous Serverless, Object Storage + DBMS_CLOUD, APEX + ORDS, Select AI, contrato de entrada, partição e features incrementais", "6 5"),
+        ("line", VERDE, "Fluxo executado"),
+        ("fill", VERDE, "Faixa LGPD: nenhum dado de aluno em ETL externo, servidor de ML ou nuvem de terceiros"),
+    ], title="Legenda", cols=1, col_w=900, row_h=22)
+    box(s, 1010, 905, 734, 150, "Ajustes de desenho decididos na prática", [
+        "1. Scoring materializado em tabela por job (a view ao vivo levava > 60 s); o painel lê o snapshot.",
+        "2. Features incrementais por janela de 28 dias e partição semanal: o cálculo semanal (89 s por curso) cresce linearmente com o volume.",
+        "3. Registro do contato persistido no banco (CONTATO_RESULTADO + ORDS) para medir receita preservada e retreinar.",
+        "4. Um schema por IES no Autonomous; APEX substitui o HTML estático; features só em SQL (o Python vira avaliação).",
+    ], fill=BRANCO, stroke=AZUL, title_size=14, text_size=11.3, pad=14)
+    footer(s, "Mesmo SQL do Docker local ao Autonomous: migração por scripts, zero reescrita")
+    return s, "08_arquitetura_executada"
+
 def badge(svg, cx, cy, num, fill=AMBAR, color=AZUL, r=11):
     svg.add(f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{fill}" stroke="{BRANCO}" stroke-width="2"/>')
     svg.text(cx, cy + 4.5, str(num), 12, color, True, "middle")
@@ -1064,6 +1183,7 @@ INDICE = [
     ("05_arquitetura_inicial", "Arquitetura inicial — pipeline de ML fora da IES", "Primeira proposta (Fases 1–4) e as seis limitações apontadas na validação."),
     ("06_arquitetura_oracle", "Arquitetura Oracle — ML dentro do banco da IES", "Autonomous AI Database com OML, APEX e Select AI: o dado não sai da IES."),
     ("07_fluxo_dados_ml", "Fluxo de dados e ML — de 684.723 eventos à fila semanal", "Normalização, base aluno-semana, split temporal, modelos, métricas, faixas e saídas."),
+    ("08_arquitetura_executada", "Arquitetura executada — o que roda hoje e o que vem na Fase 7", "Oracle AI Database 26ai Free com OML, scoring materializado por job semanal, views JSON e protótipo do painel; Autonomous, APEX e Object Storage com runbook (Prototipação e PoC, 07/10/2026)."),
 ]
 
 def gerar_indice():
@@ -1094,8 +1214,8 @@ h2{{font-family:Sora,Inter,sans-serif;font-size:17px;color:{AZUL};margin:6px 0 8
 .links a{{color:{AZUL2};font-weight:600;text-decoration:none}} .links a:hover{{text-decoration:underline}}
 footer{{padding:16px 48px 28px;font-size:12.5px;color:{GRAFITE};border-top:1px solid #DDE3EA;margin:0 48px}}
 </style></head><body>
-<header><img src="../03_Marca/logo/retena_horizontal_escuro_sobre_claro.svg" alt="Retena"><div><h1>Diagramas — Fase 6</h1><p>Sete diagramas do conceito, da jornada e da arquitetura da Retena, em SVG e PNG (2x).</p></div></header>
-<div class="nota">Diagramas atualizados na Fase 6 após a validação e a integração Oracle.</div>
+<header><img src="../03_Marca/logo/retena_horizontal_escuro_sobre_claro.svg" alt="Retena"><div><h1>Diagramas</h1><p>Oito diagramas do conceito, da jornada e da arquitetura da Retena, em SVG e PNG (2x).</p></div></header>
+<div class="nota">Diagramas 01–07 atualizados na Fase 6 após a validação e a integração Oracle; diagrama 08 acrescentado na fase de Prototipação e PoC (07/10/2026) com a arquitetura executada.</div>
 <main>{cards}
 </main>
 <footer>{esc(RODAPE)}</footer>
@@ -1112,6 +1232,7 @@ DIAGRAMAS = {
     "05_arquitetura_inicial": d05_arquitetura_inicial,
     "06_arquitetura_oracle": d06_arquitetura_oracle,
     "07_fluxo_dados_ml": d07_fluxo_dados_ml,
+    "08_arquitetura_executada": d08_arquitetura_executada,
 }
 
 if __name__ == "__main__":

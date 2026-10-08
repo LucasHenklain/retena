@@ -3,13 +3,13 @@
 ════════════════════════════════════════════════════════════════════════════════════════════════════
   Oracle AI Database 26ai Free Release 23.26.3.0.0 - Develop, Learn, and Run for Free
 Version 23.26.3.0.0
-  Agora (America/Sao_Paulo): 23/09/2026 09:40:59   · relógio do banco em UTC
+  Agora (America/Sao_Paulo): 23/09/2026 18:00:42   · relógio do banco em UTC
 
 ▶ Executando o job semanal de scoring: DBMS_SCHEDULER.RUN_JOB('JOB_RETENA_SCORING_SEMANAL') → PRC_ATUALIZAR_RISCO
   (recalcula as features em SQL e re-pontua os 203 alunos com PREDICTION_PROBABILITY dos modelos OML; MERGE idempotente)
-  ✔ concluído em 20 s
+  ✔ concluído em 36 s
 
-  Alunos pontuados: 203    · eventos do LMS até: 26/08/2026 (export da IES parceira)    · último scoring: 23/09/2026 09:40:59
+  Alunos pontuados: 203    · eventos do LMS até: 26/08/2026 (export da IES parceira)    · último scoring: 23/09/2026 18:00:43
 
   Faixas de risco (probabilidade de 21 dias sem acesso):
     Alto     59 alunos  prob. média 0.844  ███████████████████
@@ -30,9 +30,9 @@ Version 23.26.3.0.0
     RETENA_TRANSICAO_GLM      GENERALIZED_LINEAR_MODEL  CLASSIFICATION  criado em 22/09/2026 23:50
 
   Histórico do job (DBMS_SCHEDULER):
+    SUCCEEDED  início 23/09/2026 18:00:42   duração +000 00:00:36
     SUCCEEDED  início 23/09/2026 09:40:59   duração +000 00:00:20
     SUCCEEDED  início 23/09/2026 09:39:48   duração +000 00:00:23
-    SUCCEEDED  início 22/09/2026 22:19:39   duração +000 00:00:24
     agendamento: FREQ=WEEKLY; BYDAY=MON; BYHOUR=6; BYMINUTE=0  · habilitado: TRUE  · estado: SCHEDULED
 ════════════════════════════════════════════════════════════════════════════════════════════════════
   O dado do aluno não saiu do banco: features em SQL, treino e scoring com Oracle Machine Learning, exposição por SQL/JSON.
