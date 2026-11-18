@@ -7,9 +7,9 @@
 
 | Tempo aprox. | Conteúdo |
 |---|---|
-| 0:00–0:52 | Abertura, problema e solução (slides do pitch) |
-| 0:52–3:13 | **Demonstração real do MVP**, gravada da tela com o sistema rodando nesta máquina (Oracle AI Database 26ai Free em Docker + API): fila de segunda, painel do aluno com predição ao vivo e "e se", registro do contato gravado no Oracle, prova em SQL (último contato, status da fila, Duality View), job de scoring `DBMS_SCHEDULER` (trecho acelerado e identificado na tela) e visão da diretoria recalculada |
-| 3:13–5:24 | Por que Oracle, mercado, modelo de negócio, diferencial, lançamento, projeções, validação e time |
+| 0:00–0:50 | Abertura, problema e solução (slides do pitch) |
+| 0:50–3:03 | **Demonstração real do MVP**, gravada da tela com o sistema rodando nesta máquina (Oracle AI Database 26ai Free em Docker + API): fila de segunda, painel do aluno com predição ao vivo e "e se", registro do contato gravado no Oracle, prova em SQL (último contato, status da fila, Duality View), job de scoring `DBMS_SCHEDULER` (trecho acelerado e identificado na tela) e visão da diretoria recalculada |
+| 3:03–5:24 | Por que Oracle, mercado, modelo de negócio, diferencial, lançamento, projeções, validação e time |
 
 O contato registrado no vídeo é de **demonstração** (responsável "Mariana (demonstração)"); nenhum aluno real foi contatado. Depois da gravação o contato foi apagado e o ticket voltou a R$ 350.
 

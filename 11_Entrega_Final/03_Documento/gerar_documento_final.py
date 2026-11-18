@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 gerar_documento_final.py - Retena_Documento_Final.md -> .html (marca) -> .pdf (Edge headless) + .docx (python-docx).
-Uso: python gerar_documento_final.py [--sem-pdf] [--sem-docx]
+Uso: python gerar_documento_final.py [--sem-pdf] [--sem-docx] [--fonte outro.md --saida C:/pasta/base]
 """
 import argparse, base64, os, re, subprocess, tempfile
 from pathlib import Path
@@ -155,6 +155,8 @@ def docx(corpo_md, meta, caminho):
     primeiro_h1 = True
     while i < len(linhas):
         l = linhas[i]
+        if l.lstrip().startswith("<!--"):  # marcadores (ex.: TESTES:INICIO) não aparecem no DOCX
+            i += 1; continue
         if l.startswith("|") and i + 1 < len(linhas) and re.match(r"^\|[-| :]+\|$", linhas[i + 1].strip()):
             cab = [c.strip() for c in l.strip().strip("|").split("|")]
             i += 2; dados = []
@@ -231,7 +233,12 @@ def docx(corpo_md, meta, caminho):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("--sem-pdf", action="store_true"); ap.add_argument("--sem-docx", action="store_true")
+    ap.add_argument("--fonte", help="outro .md (ex.: ensaio fora da entrega)"); ap.add_argument("--saida", help="caminho base de saída, sem extensão")
     a = ap.parse_args()
+    if a.fonte:
+        FONTE_MD = Path(a.fonte).resolve()
+    if a.saida:
+        SAIDA = Path(a.saida).resolve()
     meta, corpo = ler_md()
     html = montar_html(meta, corpo)
     hp = SAIDA.with_suffix(".html"); hp.write_text(html, encoding="utf-8")

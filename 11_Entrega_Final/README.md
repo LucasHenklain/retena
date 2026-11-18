@@ -37,4 +37,4 @@ Pré-requisitos: Docker Desktop em execução e Python 3.10+. Dê dois cliques e
 
 - **Testes com pelo menos 3 usuários reais** do público-alvo: protocolo, ficha e planilha prontos; a seção 2.3 do documento está marcada como pendente e não contém resultados inventados.
 - **Link público do vídeo** (upload no YouTube).
-- Papéis individuais do time no documento (hoje marcados "a confirmar").
+- Papéis individuais do time no documento (faltam: RM97881, RM97592, RM99350, RM99198; hoje marcados "a confirmar").

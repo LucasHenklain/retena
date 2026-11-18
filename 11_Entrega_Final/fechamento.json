@@ -1,0 +1,12 @@
+{
+ "_como_usar": "Preencha com o que a equipe confirmar e rode: python fechar_entrega.py (sem --executar só mostra o que vai fazer). Campo vazio continua como pendência; nada é inventado.",
+ "youtube": "",
+ "papeis": {
+  "RM551178": "Líder da equipe",
+  "RM97881": "",
+  "RM97592": "",
+  "RM99350": "",
+  "RM99198": ""
+ },
+ "quem_envia_fiap": ""
+}

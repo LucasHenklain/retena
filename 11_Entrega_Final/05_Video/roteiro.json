@@ -1,50 +1,162 @@
 {
-  "fps": 30, "largura": 1920, "altura": 1080,
-  "fonte_legenda": "Segoe UI", "tamanho_legenda": 40,
-  "cenas": [
-    {"id": "01", "tipo": "imagem", "imagem": "img/slide_01.png", "audio": "audio/01.mp3", "movimento": "zoom_in", "ajuste": "conter",
-     "narracao": "Ninguém desiste de repente. A Retena percebe antes. Este é o MVP final da Retena, rodando de ponta a ponta dentro do Oracle."},
-    {"id": "02", "tipo": "imagem", "imagem": "img/slide_02.png", "audio": "audio/02.mp3", "movimento": "zoom_in", "ajuste": "conter",
-     "narracao": "No ensino a distância, quatro em cada dez alunos desistem por ano, segundo o Semesp. E a instituição só descobre quando a mensalidade para. Na base real que analisamos, com quase setecentos mil eventos de uma instituição parceira, trinta por cento da turma estava há mais de catorze dias sem acessar o curso. Sem nenhum alerta.",
-     "legenda": "No ensino a distância, 4 em cada 10 alunos desistem por ano, segundo o Semesp. E a instituição só descobre quando a mensalidade para. Na base real que analisamos, com quase 700 mil eventos de uma instituição parceira, 30% da turma estava há mais de 14 dias sem acessar o curso. Sem nenhum alerta."},
-    {"id": "03", "tipo": "imagem", "imagem": "img/slide_03.png", "audio": "audio/03.mp3", "movimento": "zoom_in", "ajuste": "conter",
-     "narracao": "A Retena lê os logs do ambiente de aprendizagem, prevê o risco de cada aluno com Oracle Machine Learning, monta a fila de segunda-feira com quem chamar e por quê, e fecha o ciclo: o resultado de cada contato é gravado no banco e vira receita preservada para a diretoria."},
-    {"id": "04", "tipo": "video", "video": "demo/04_fila.mp4", "audio": "audio/04.mp3",
-     "narracao": "Agora, o sistema funcionando de verdade. O banco é o Oracle AI Database vinte e seis ai, em Docker, nesta máquina. Esta é a visão da coordenação: setenta e quatro alunos na fila, lidos do snapshot que o job semanal pontuou com o Random Forest treinado dentro do banco. Primeiro vem o grupo Agir agora: risco alto, mas o aluno ainda acessou nos últimos trinta dias.",
-     "legenda": "Agora, o sistema funcionando de verdade. O banco é o Oracle AI Database 26ai, em Docker, nesta máquina. Esta é a visão da coordenação: 74 alunos na fila, lidos do snapshot que o job semanal pontuou com o Random Forest treinado dentro do banco. Primeiro vem o grupo \"Agir agora\": risco alto, mas o aluno ainda acessou nos últimos 30 dias."},
-    {"id": "05", "tipo": "video", "video": "demo/05_aluno.mp4", "audio": "audio/05.mp3",
-     "narracao": "Ao abrir um aluno, a coordenadora vê o risco, uma segunda opinião do modelo linear, e os motivos em linguagem simples, explicados pelo próprio modelo. Este botão recalcula a predição no Oracle agora, em milissegundos. E este simula: se o aluno voltar esta semana, o risco cai de sessenta e sete para cerca de onze por cento. Abaixo, a ação sugerida e a mensagem pronta, no horário em que a turma estuda.",
-     "legenda": "Ao abrir um aluno, a coordenadora vê o risco, uma segunda opinião do modelo linear (GLM) e os motivos em linguagem simples, explicados pelo próprio modelo (PREDICTION_DETAILS). Este botão recalcula a predição no Oracle agora, em milissegundos. E este simula: se o aluno voltar esta semana, o risco cai de 67% para cerca de 11%. Abaixo, a ação sugerida e a mensagem pronta, no horário em que a turma estuda."},
-    {"id": "06", "tipo": "video", "video": "demo/06_registro.mp4", "audio": "audio/06.mp3",
-     "narracao": "Feito o contato, ela registra o resultado. Aqui é uma demonstração: nenhum aluno real foi contatado. Reativado, pelo WhatsApp, com uma observação. Ao gravar, uma procedure PL/SQL insere o contato na tabela de resultados e atualiza a fila na mesma transação. O aluno sai da fila, e o histórico aparece aqui.",
-     "legenda": "Feito o contato, ela registra o resultado. Aqui é uma demonstração: nenhum aluno real foi contatado. Reativado, pelo WhatsApp, com uma observação. Ao gravar, uma procedure PL/SQL insere o contato em CONTATO_RESULTADO e atualiza a fila na mesma transação. O aluno sai da fila, e o histórico aparece aqui."},
-    {"id": "07", "tipo": "video", "video": "demo/07_sql.mp4", "audio": "audio/07.mp3",
-     "narracao": "Na visão do time técnico, consultas fixas rodam ao vivo no banco. A primeira mostra o contato que acabamos de gravar, com o risco no momento do contato. Depois, o status da fila no snapshot, e o mesmo aluno como documento JSON, pela Duality View."},
-    {"id": "08", "tipo": "video", "video": "demo/08_scoring.mp4", "audio": "audio/08.mp3",
-     "narracao": "Este botão dispara o job semanal do DBMS Scheduler, que pontua de novo todos os alunos dentro do banco. O trecho está acelerado. E o MERGE preserva os atendimentos já registrados.",
-     "legenda": "Este botão dispara o job semanal do DBMS_SCHEDULER, que pontua de novo todos os alunos dentro do banco. O trecho está acelerado. E o MERGE preserva os atendimentos já registrados."},
-    {"id": "09", "tipo": "video", "video": "demo/09_diretoria.mp4", "audio": "audio/09.mp3",
-     "narracao": "Por fim, a diretoria. Tudo é recalculado por uma view: alunos para chamar, receita anual em risco, e a receita preservada, que já soma quatro mil e duzentos reais pelo aluno reativado, com um ticket estimado de trezentos e cinquenta reais. Se a instituição informar outro ticket, o valor é gravado no banco e os números mudam na hora.",
-     "legenda": "Por fim, a diretoria. Tudo é recalculado por uma view: alunos para chamar, receita anual em risco, e a receita preservada, que já soma R$ 4.200 pelo aluno reativado, com um ticket estimado de R$ 350. Se a instituição informar outro ticket, o valor é gravado no banco e os números mudam na hora."},
-    {"id": "10", "tipo": "imagem", "imagem": "img/slide_06.png", "audio": "audio/10.mp3", "movimento": "zoom_in", "ajuste": "conter",
-     "narracao": "Por que Oracle? Porque o dado do aluno não sai do banco da instituição, e isso responde à primeira objeção de qualquer diretoria: a LGPD. Treino, pontuação, agendamento e regra de negócio rodam no mesmo lugar, sem servidor de machine learning. Cinco componentes já estão executados; o Autonomous AI Database tem runbook pronto; APEX e Select AI estão no roadmap."},
-    {"id": "11", "tipo": "imagem", "imagem": "img/slide_08.png", "audio": "audio/11.mp3", "movimento": "zoom_in", "ajuste": "conter",
-     "narracao": "O mercado: duzentos e quarenta e nove milhões de reais por ano só no EAD brasileiro, cento e vinte e seis milhões nas instituições privadas fora dos megagrupos, e a meta de dois e meio a quatro vírgula três milhões de receita recorrente em três anos.",
-     "legenda": "O mercado: R$ 249 milhões por ano só no EAD brasileiro, R$ 126 milhões nas instituições privadas fora dos megagrupos, e a meta de R$ 2,5 a 4,3 milhões de receita recorrente em três anos."},
-    {"id": "12", "tipo": "imagem", "imagem": "img/slide_09.png", "audio": "audio/12.mp3", "movimento": "zoom_in", "ajuste": "conter",
-     "narracao": "O modelo é SaaS por aluno ativo: de três a seis reais por mês no plano Pro, dois reais no Essencial, com piloto de noventa dias por cinco mil reais e meta medida no próprio painel. Uma instituição de doze mil alunos paga quinhentos e setenta e seis mil reais por ano, e o contrato se paga retendo cento e trinta e sete alunos: um vírgula um por cento da base.",
-     "legenda": "O modelo é SaaS por aluno ativo: de R$ 3 a R$ 6 por mês no plano Pro, R$ 2 no Essencial, com piloto de 90 dias por R$ 5 mil e meta medida no próprio painel. Uma instituição de 12 mil alunos paga R$ 576 mil por ano, e o contrato se paga retendo 137 alunos: 1,1% da base."},
-    {"id": "13", "tipo": "imagem", "imagem": "img/slide_10.png", "audio": "audio/13.mp3", "movimento": "zoom_in", "ajuste": "conter",
-     "narracao": "BI mostra o passado, e o CRM de cobrança age tarde. A Retena age semanas antes, diz quem chamar e por quê, e mede o resultado em reais, sem tirar o dado da instituição."},
-    {"id": "14", "tipo": "imagem", "imagem": "img/slide_11.png", "audio": "audio/14.mp3", "movimento": "zoom_in", "ajuste": "conter",
-     "narracao": "Começamos pelas instituições médias com EAD, de três a quinze mil alunos. A isca é um diagnóstico gratuito em sete dias, a partir do export do LMS. A meta do primeiro ano: trinta diagnósticos, seis pilotos e dois contratos.",
-     "legenda": "Começamos pelas instituições médias com EAD, de 3 a 15 mil alunos. A isca é um diagnóstico gratuito em 7 dias, a partir do export do LMS. A meta do primeiro ano: 30 diagnósticos, 6 pilotos e 2 contratos."},
-    {"id": "15", "tipo": "imagem", "imagem": "img/slide_12.png", "audio": "audio/15.mp3", "movimento": "zoom_in", "ajuste": "conter",
-     "narracao": "Nas nossas estimativas, a receita recorrente vai de quatrocentos e oitenta mil reais no primeiro ano a dois e meio milhões no terceiro. O equilíbrio vem na virada do terceiro para o quarto ano; por isso buscamos uma rodada pré-seed de seiscentos mil reais.",
-     "legenda": "Nas nossas estimativas, a receita recorrente vai de R$ 480 mil no primeiro ano a R$ 2,5 milhões no terceiro. O equilíbrio vem na virada do terceiro para o quarto ano; por isso buscamos uma rodada pré-seed de R$ 600 mil."},
-    {"id": "16", "tipo": "imagem", "imagem": "img/slide_13.png", "audio": "audio/16.mp3", "movimento": "zoom_in", "ajuste": "conter",
-     "narracao": "Sendo honestos: o sinal e o fluxo estão provados com dados reais. Os testes com pelo menos três usuários do público-alvo têm protocolo pronto e são o nosso próximo passo, sem resultados inventados."},
-    {"id": "17", "tipo": "imagem", "imagem": "img/slide_14.png", "audio": "audio/17.mp3", "movimento": "zoom_in", "ajuste": "conter", "pausa_fim": 1.5,
-     "narracao": "Somos Lucas Dalmas, Lucas Emanuel, Kayque Moraes, Lucas Henklain e Vinicius Pinheiro. Ninguém desiste de repente. A Retena percebe antes."}
-  ]
+ "fps": 30,
+ "largura": 1920,
+ "altura": 1080,
+ "fonte_legenda": "Segoe UI",
+ "tamanho_legenda": 40,
+ "cenas": [
+  {
+   "id": "01",
+   "tipo": "imagem",
+   "imagem": "img/slide_01.png",
+   "audio": "audio/01.mp3",
+   "movimento": "zoom_in",
+   "ajuste": "conter",
+   "narracao": "Ninguém desiste de repente. A Retena percebe antes. Este é o MVP final da Retena, rodando de ponta a ponta dentro do Oracle."
+  },
+  {
+   "id": "02",
+   "tipo": "imagem",
+   "imagem": "img/slide_02.png",
+   "audio": "audio/02.mp3",
+   "movimento": "zoom_in",
+   "ajuste": "conter",
+   "narracao": "No ensino a distância, quatro em cada dez alunos desistem por ano, segundo o Semesp. E a instituição só descobre quando a mensalidade para. Na base real que analisamos, com quase setecentos mil eventos de uma instituição parceira, trinta por cento da turma estava há mais de catorze dias sem acessar o curso. Sem nenhum alerta.",
+   "legenda": "No ensino a distância, 4 em cada 10 alunos desistem por ano, segundo o Semesp. E a instituição só descobre quando a mensalidade para. Na base real que analisamos, com quase 700 mil eventos de uma instituição parceira, 30% da turma estava há mais de 14 dias sem acessar o curso. Sem nenhum alerta."
+  },
+  {
+   "id": "03",
+   "tipo": "imagem",
+   "imagem": "img/slide_03.png",
+   "audio": "audio/03.mp3",
+   "movimento": "zoom_in",
+   "ajuste": "conter",
+   "narracao": "A Retena lê os logs do ambiente de aprendizagem, prevê o risco de cada aluno com Oracle Machine Learning, monta a fila de segunda-feira com quem chamar e por quê, e fecha o ciclo: o resultado de cada contato é gravado no banco e vira receita preservada para a diretoria."
+  },
+  {
+   "id": "04",
+   "tipo": "video",
+   "video": "demo/04_fila.mp4",
+   "audio": "audio/04.mp3",
+   "narracao": "Agora, o sistema funcionando de verdade. O banco é o Oracle AI Database vinte e seis ai, em Docker, nesta máquina. Esta é a visão da coordenação: setenta e quatro alunos na fila, lidos do snapshot que o job semanal pontuou com o Random Forest treinado dentro do banco. Primeiro vem o grupo Agir agora: risco alto, mas o aluno ainda acessou nos últimos trinta dias.",
+   "legenda": "Agora, o sistema funcionando de verdade. O banco é o Oracle AI Database 26ai, em Docker, nesta máquina. Esta é a visão da coordenação: 74 alunos na fila, lidos do snapshot que o job semanal pontuou com o Random Forest treinado dentro do banco. Primeiro vem o grupo \"Agir agora\": risco alto, mas o aluno ainda acessou nos últimos 30 dias."
+  },
+  {
+   "id": "05",
+   "tipo": "video",
+   "video": "demo/05_aluno.mp4",
+   "audio": "audio/05.mp3",
+   "narracao": "Ao abrir um aluno, a coordenadora vê o risco, uma segunda opinião do modelo linear, e os motivos em linguagem simples, explicados pelo próprio modelo. Este botão recalcula a predição no Oracle agora, em milissegundos. E este simula: se o aluno voltar esta semana, o risco cai de sessenta e sete para cerca de onze por cento. Abaixo, a ação sugerida e a mensagem pronta, no horário em que a turma estuda.",
+   "legenda": "Ao abrir um aluno, a coordenadora vê o risco, uma segunda opinião do modelo linear (GLM) e os motivos em linguagem simples, explicados pelo próprio modelo (PREDICTION_DETAILS). Este botão recalcula a predição no Oracle agora, em milissegundos. E este simula: se o aluno voltar esta semana, o risco cai de 67% para cerca de 11%. Abaixo, a ação sugerida e a mensagem pronta, no horário em que a turma estuda."
+  },
+  {
+   "id": "06",
+   "tipo": "video",
+   "video": "demo/06_registro.mp4",
+   "audio": "audio/06.mp3",
+   "narracao": "Feito o contato, ela registra o resultado. Aqui é uma demonstração: nenhum aluno real foi contatado. Reativado, pelo WhatsApp, com uma observação. Ao gravar, uma procedure PL/SQL insere o contato na tabela de resultados e atualiza a fila na mesma transação. O aluno sai da fila, e o histórico aparece aqui.",
+   "legenda": "Feito o contato, ela registra o resultado. Aqui é uma demonstração: nenhum aluno real foi contatado. Reativado, pelo WhatsApp, com uma observação. Ao gravar, uma procedure PL/SQL insere o contato em CONTATO_RESULTADO e atualiza a fila na mesma transação. O aluno sai da fila, e o histórico aparece aqui."
+  },
+  {
+   "id": "07",
+   "tipo": "video",
+   "video": "demo/07_sql.mp4",
+   "audio": "audio/07.mp3",
+   "narracao": "Na visão do time técnico, consultas fixas rodam ao vivo no banco. A primeira mostra o contato que acabamos de gravar, com o risco no momento do contato. Depois, o status da fila no snapshot, e o mesmo aluno como documento JSON, pela Duality View."
+  },
+  {
+   "id": "08",
+   "tipo": "video",
+   "video": "demo/08_scoring.mp4",
+   "audio": "audio/08.mp3",
+   "narracao": "Este botão dispara o job semanal do DBMS Scheduler, que pontua de novo todos os alunos dentro do banco. O trecho está acelerado. E o MERGE preserva os atendimentos já registrados.",
+   "legenda": "Este botão dispara o job semanal do DBMS_SCHEDULER, que pontua de novo todos os alunos dentro do banco. O trecho está acelerado. E o MERGE preserva os atendimentos já registrados."
+  },
+  {
+   "id": "09",
+   "tipo": "video",
+   "video": "demo/09_diretoria.mp4",
+   "audio": "audio/09.mp3",
+   "narracao": "Por fim, a diretoria. Tudo é recalculado por uma view: alunos para chamar, receita anual em risco, e a receita preservada, que já soma quatro mil e duzentos reais pelo aluno reativado, com um ticket estimado de trezentos e cinquenta reais. Se a instituição informar outro ticket, o valor é gravado no banco e os números mudam na hora.",
+   "legenda": "Por fim, a diretoria. Tudo é recalculado por uma view: alunos para chamar, receita anual em risco, e a receita preservada, que já soma R$ 4.200 pelo aluno reativado, com um ticket estimado de R$ 350. Se a instituição informar outro ticket, o valor é gravado no banco e os números mudam na hora."
+  },
+  {
+   "id": "10",
+   "tipo": "imagem",
+   "imagem": "img/slide_06.png",
+   "audio": "audio/10.mp3",
+   "movimento": "zoom_in",
+   "ajuste": "conter",
+   "narracao": "Por que Oracle? Porque o dado do aluno não sai do banco da instituição, e isso responde à primeira objeção de qualquer diretoria: a LGPD. Treino, pontuação, agendamento e regra de negócio rodam no mesmo lugar, sem servidor de machine learning. Cinco componentes já estão executados; o Autonomous AI Database tem runbook pronto; APEX e Select AI estão no roadmap."
+  },
+  {
+   "id": "11",
+   "tipo": "imagem",
+   "imagem": "img/slide_08.png",
+   "audio": "audio/11.mp3",
+   "movimento": "zoom_in",
+   "ajuste": "conter",
+   "narracao": "O mercado: duzentos e quarenta e nove milhões de reais por ano só no EAD brasileiro, cento e vinte e seis milhões nas instituições privadas fora dos megagrupos, e a meta de dois e meio a quatro vírgula três milhões de receita recorrente em três anos.",
+   "legenda": "O mercado: R$ 249 milhões por ano só no EAD brasileiro, R$ 126 milhões nas instituições privadas fora dos megagrupos, e a meta de R$ 2,5 a 4,3 milhões de receita recorrente em três anos."
+  },
+  {
+   "id": "12",
+   "tipo": "imagem",
+   "imagem": "img/slide_09.png",
+   "audio": "audio/12.mp3",
+   "movimento": "zoom_in",
+   "ajuste": "conter",
+   "narracao": "O modelo é SaaS por aluno ativo: de três a seis reais por mês no plano Pro, dois reais no Essencial, com piloto de noventa dias por cinco mil reais e meta medida no próprio painel. Uma instituição de doze mil alunos paga quinhentos e setenta e seis mil reais por ano, e o contrato se paga retendo cento e trinta e sete alunos: um vírgula um por cento da base.",
+   "legenda": "O modelo é SaaS por aluno ativo: de R$ 3 a R$ 6 por mês no plano Pro, R$ 2 no Essencial, com piloto de 90 dias por R$ 5 mil e meta medida no próprio painel. Uma instituição de 12 mil alunos paga R$ 576 mil por ano, e o contrato se paga retendo 137 alunos: 1,1% da base."
+  },
+  {
+   "id": "13",
+   "tipo": "imagem",
+   "imagem": "img/slide_10.png",
+   "audio": "audio/13.mp3",
+   "movimento": "zoom_in",
+   "ajuste": "conter",
+   "narracao": "BI mostra o passado, e o CRM de cobrança age tarde. A Retena age semanas antes, diz quem chamar e por quê, e mede o resultado em reais, sem tirar o dado da instituição."
+  },
+  {
+   "id": "14",
+   "tipo": "imagem",
+   "imagem": "img/slide_11.png",
+   "audio": "audio/14.mp3",
+   "movimento": "zoom_in",
+   "ajuste": "conter",
+   "narracao": "Começamos pelas instituições médias com EAD, de três a quinze mil alunos. A isca é um diagnóstico gratuito em sete dias, a partir do export do LMS. A meta do primeiro ano: trinta diagnósticos, seis pilotos e dois contratos.",
+   "legenda": "Começamos pelas instituições médias com EAD, de 3 a 15 mil alunos. A isca é um diagnóstico gratuito em 7 dias, a partir do export do LMS. A meta do primeiro ano: 30 diagnósticos, 6 pilotos e 2 contratos."
+  },
+  {
+   "id": "15",
+   "tipo": "imagem",
+   "imagem": "img/slide_12.png",
+   "audio": "audio/15.mp3",
+   "movimento": "zoom_in",
+   "ajuste": "conter",
+   "narracao": "Nas nossas estimativas, a receita recorrente vai de quatrocentos e oitenta mil reais no primeiro ano a dois e meio milhões no terceiro. O equilíbrio vem na virada do terceiro para o quarto ano; por isso buscamos uma rodada pré-seed de seiscentos mil reais.",
+   "legenda": "Nas nossas estimativas, a receita recorrente vai de R$ 480 mil no primeiro ano a R$ 2,5 milhões no terceiro. O equilíbrio vem na virada do terceiro para o quarto ano; por isso buscamos uma rodada pré-seed de R$ 600 mil."
+  },
+  {
+   "id": "16",
+   "tipo": "imagem",
+   "imagem": "img/slide_13.png",
+   "audio": "audio/16.mp3",
+   "movimento": "zoom_in",
+   "ajuste": "conter",
+   "narracao": "Sendo honestos: o sinal e o fluxo estão provados com dados reais. Os testes com pelo menos três usuários do público-alvo têm protocolo pronto e são o nosso próximo passo, sem resultados inventados.",
+   "narracao_pendente": "Sendo honestos: o sinal e o fluxo estão provados com dados reais. Os testes com pelo menos três usuários do público-alvo têm protocolo pronto e são o nosso próximo passo, sem resultados inventados."
+  },
+  {
+   "id": "17",
+   "tipo": "imagem",
+   "imagem": "img/slide_14.png",
+   "audio": "audio/17.mp3",
+   "movimento": "zoom_in",
+   "ajuste": "conter",
+   "pausa_fim": 1.5,
+   "narracao": "Somos Lucas Dalmas, Lucas Emanuel, Kayque Moraes, Lucas Henklain e Vinicius Pinheiro. Ninguém desiste de repente. A Retena percebe antes."
+  }
+ ]
 }

@@ -9,7 +9,9 @@ O enunciado exige teste do MVP com **pelo menos 3 usuários do público-alvo**, 
 | `protocolo_teste_mvp.md` | Objetivo, recrutamento, consentimento/LGPD, preparação, roteiro com 6 tarefas, SUS, métricas, critérios de decisão, formato remoto |
 | `formulario_participante.md` | Ficha em branco: uma cópia por sessão (`P1_ficha.md`, `P2_ficha.md`…) |
 | `consolidacao_testes.xlsx` | Lançamento dos dados; calcula sucesso, tempos, SUS, NPS e problemas por severidade |
-| `consolidacao_testes.md` | Modelo da seção "Teste com usuários" do documento final |
+| `consolidacao_testes.md` | Modelo (em branco) da seção "Teste com usuários" |
+| `consolidar_testes.py` | Lê as fichas e a planilha, recalcula tudo e escreve as seções 2.3/2.4 do documento + `resultados_testes.md`/`.json` |
+| `conclusao_equipe.md` | (criar depois dos testes) conclusão qualitativa em texto livre, que entra na seção 2.4 |
 
 ## Passo a passo da equipe
 
@@ -18,8 +20,13 @@ O enunciado exige teste do MVP com **pelo menos 3 usuários do público-alvo**, 
 3. **Rodar** a sessão (protocolo §5–7): termo de consentimento, contexto, T1–T6 cronometradas sem ajudar, perguntas, SUS e valor. Moderador conduz; observador preenche a ficha. Responsável no registro: `TESTE-Pn`.
 4. **Preencher** no mesmo dia: completar a ficha, salvar como `Pn_ficha.md` nesta pasta, lançar os números em `consolidacao_testes.xlsx` (abas Participantes, Tarefas, SUS, Problemas). A aba Resumo calcula tudo.
 5. **Ajustar**: problemas de severidade 3–4 viram ajuste no MVP (registrar status e evidência — commit, print ou nota — na aba Problemas). Se der tempo, validar o ajuste com P4/P5.
-6. **Devolver**: copiar os indicadores da aba Resumo e as falas literais para `consolidacao_testes.md`, escrever a análise "o MVP resolve o problema?" com base nos critérios do protocolo §9 e trocar o status deste README para "CONCLUÍDO (n sessões, datas)".
+6. **Devolver**: deixar nesta pasta as fichas `Pn_ficha.md` e a planilha preenchida e escrever em `conclusao_equipe.md` a resposta honesta para "o MVP resolve o problema?" (critérios do protocolo §9). Basta a ficha **ou** a planilha; com as duas, vale a planilha e o script avisa as divergências.
 
-## Como entra no documento final
+## Como entra no documento final (automático)
 
-`consolidacao_testes.md` é a seção pronta para colar no documento da entrega final (seção "Teste com usuários do MVP"): método, participantes, resultado por tarefa, SUS/valor, falas, dificuldades e ajustes, conclusão e próximos passos. Enquanto pendente, ela traz o aviso no topo; **remover o aviso só depois de preenchida com ≥ 3 sessões reais**. Se só houver menos de 3 sessões até 27/11, entregar o que foi feito com o número real e declarar a limitação — nunca completar com dados inventados.
+```
+python consolidar_testes.py            # confere: quantas sessões válidas, taxas, SUS, avisos
+python consolidar_testes.py --aplicar  # grava resultados_testes.md/.json e reescreve as seções 2.3 e 2.4 do documento
+```
+
+Depois, `python ..\fechar_entrega.py --executar` regera o pitch (slide 13 com os números reais), a cena 16 do vídeo, o documento em PDF e os ZIPs. Só conta sessão com data e consentimento "sim". Com menos de 3 sessões, o documento declara a limitação e o veredito fica "inconclusivo": **nunca completar com dados inventados**. O script foi testado com dados fictícios fora desta pasta; nenhum dado de exemplo entra na entrega.

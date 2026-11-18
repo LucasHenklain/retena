@@ -23,8 +23,23 @@ prefixo = src.split("# =========================================================
 ns = {"__file__": str(KIT), "__name__": "kit_utils"}
 exec(compile(prefixo, str(KIT), "exec"), ns)
 globals().update({k: v for k, v in ns.items() if not k.startswith("__") and k not in ("AQUI", "ROOT", "OUT", "N")})
-OUT = str(AQUI / "Retena_Pitch_Final.pptx")
+def _arg(nome):
+    return sys.argv[sys.argv.index(nome) + 1] if nome in sys.argv else None
+
+
+OUT = str(Path(_arg("--saida")).resolve()) if _arg("--saida") else str(AQUI / "Retena_Pitch_Final.pptx")
 FIN = json.loads((DOC / "modelo_financeiro.json").read_text(encoding="utf-8"))
+
+# Fechamento (preenchido pela equipe em 11_Entrega_Final/fechamento.json): papéis do time e link do vídeo.
+_fech = Path(_arg("--fechamento")) if _arg("--fechamento") else AQUI.parent / "fechamento.json"
+FECH = json.loads(_fech.read_text(encoding="utf-8-sig")) if _fech.exists() else {}
+_papeis = {k: v.strip() for k, v in FECH.get("papeis", {}).items() if isinstance(v, str) and v.strip()}
+EQUIPE = [(nome, rm, _papeis.get(rm, papel)) for nome, rm, papel in EQUIPE]
+# Resultados REAIS dos testes (gerados por 02_Testes_Usuarios/consolidar_testes.py --aplicar); --testes só para ensaio.
+_tj = Path(_arg("--testes")) if _arg("--testes") else AQUI.parent / "02_Testes_Usuarios" / "resultados_testes.json"
+TESTES = json.loads(_tj.read_text(encoding="utf-8")) if _tj.exists() else None
+if TESTES and TESTES.get("exemplo") and not _arg("--testes"):
+    sys.exit("resultados_testes.json da entrega está marcado como EXEMPLO: apague-o ou rode a consolidação com os dados reais")
 TELA = lambda n: str(DOC / "img" / n)
 
 
@@ -220,20 +235,41 @@ notes(s, ns["N"], "Projeções", "Todas as premissas estão em modelo_financeiro
 
 # ================================================================= 13 VALIDAÇÃO
 s = novo(False)
-titulo(s, "Validação", "O que está provado e o que ainda falta provar")
+titulo(s, "Validação", "O que está provado e o que ainda falta provar" if not TESTES else "O que está provado: nos dados e com usuários")
 card(s, 0.6, 2.0, 5.9, 4.6); kicker(s, 0.85, 2.2, 5.5, "Provado (real)", cor=VERDE_ESC)
 bullets(s, 0.85, 2.65, 5.4, ["Sinal forte em teste temporal (AUC 0,95) na base real da IES parceira",
                              "Método portátil: OULAD, AUC 0,922",
                              "Fluxo completo no banco: 15/15 checagens automatizadas",
                              "Dor e mercado: INEP e Semesp"], size=12.5)
-card(s, 6.85, 2.0, 5.9, 4.6); rect(s, 6.85, 2.0, 0.08, 4.6, AMBAR)
-kicker(s, 7.1, 2.2, 5.5, "Pendente (com protocolo pronto)", cor=RGBColor(0x8A, 0x5A, 0x00))
-bullets(s, 7.1, 2.65, 5.4, ["Testes do MVP com 3+ usuários reais do público-alvo: 6 tarefas, SUS e perguntas de valor",
-                            "Critério: ≥ 80% de sucesso nas tarefas centrais e SUS ≥ 68",
-                            "Entrevistas da Fase 6 foram simuladas e seguem rotuladas assim",
-                            "Piloto de 90 dias com a IES parceira"], size=12.5, dot=AMBAR)
-rodape(s, False, ns["N"])
-notes(s, ns["N"], "Validação", "Sem resultados inventados: a seção de testes com usuários do documento está marcada como pendente até a equipe trazer as fichas.")
+if not TESTES:
+    card(s, 6.85, 2.0, 5.9, 4.6); rect(s, 6.85, 2.0, 0.08, 4.6, AMBAR)
+    kicker(s, 7.1, 2.2, 5.5, "Pendente (com protocolo pronto)", cor=RGBColor(0x8A, 0x5A, 0x00))
+    bullets(s, 7.1, 2.65, 5.4, ["Testes do MVP com 3+ usuários reais do público-alvo: 6 tarefas, SUS e perguntas de valor",
+                                "Critério: ≥ 80% de sucesso nas tarefas centrais e SUS ≥ 68",
+                                "Entrevistas da Fase 6 foram simuladas e seguem rotuladas assim",
+                                "Piloto de 90 dias com a IES parceira"], size=12.5, dot=AMBAR)
+    rodape(s, False, ns["N"])
+    notes(s, ns["N"], "Validação", "Sem resultados inventados: a seção de testes com usuários do documento está marcada como pendente até a equipe trazer as fichas.")
+else:
+    n = TESTES["n"]; tt = TESTES["tarefas"]; ok = n >= 3
+    v1 = TESTES["v1"].get("Sim", 0) + TESTES["v1"].get("Em parte", 0)
+    sus = TESTES["sus_medio"]
+    cor_t = VERDE_ESC if ok else RGBColor(0x8A, 0x5A, 0x00)
+    card(s, 6.85, 2.0, 5.9, 4.6); rect(s, 6.85, 2.0, 0.08, 4.6, VERDE if ok else AMBAR)
+    kicker(s, 7.1, 2.2, 5.5, (f"Testado com {n} usuários reais ({TESTES['datas']})" if ok else
+                              f"Testado com {n} usuário(s) real(is): abaixo da meta de 3"), cor=cor_t)
+    itens = [f"{tt['T1']['sucesso']}/{tt['T1']['n']} acharam quem chamar primeiro; {tt['T3']['sucesso']}/{tt['T3']['n']} registraram o contato no Oracle",
+             (f"SUS médio {sus:.1f} (referência: 68)".replace(".", ",") if sus is not None else "SUS: sem respostas completas"),
+             f"{v1} de {sum(TESTES['v1'].values())} disseram que resolveria o problema (sim ou em parte)",
+             f"{TESTES['problemas']} dificuldade(s) registrada(s); {TESTES['ajustes_feitos']} já ajustada(s) no MVP",
+             "Entrevistas da Fase 6 seguem rotuladas como simuladas",
+             "Próximo: piloto de 90 dias com a IES parceira"]
+    bullets(s, 7.1, 2.65, 5.4, itens, size=12, dot=VERDE if ok else AMBAR, gap=0.06)
+    if TESTES.get("exemplo"):
+        pill(s, 7.1, 6.15, 3.6, "EXEMPLO — dados fictícios, não entregar", bg=AMBAR, fg=AZUL, size=10, h=0.34)
+    rodape(s, False, ns["N"])
+    notes(s, ns["N"], "Validação", f"Testes reais com {n} pessoa(s) do público-alvo; leitura dos critérios: {TESTES['veredito']}. "
+                                   "Detalhes e falas na seção 2.3 do documento e em 02_Testes_Usuarios/resultados_testes.md.")
 
 # ================================================================= 14 TIME + FECHAMENTO
 s = novo(True)
@@ -242,13 +278,19 @@ for i, (nome, rm, papel) in enumerate(EQUIPE):
     x = 0.6 + i * 2.45
     card(s, x, 2.05, 2.25, 1.35, escuro=True)
     text(s, x + 0.2, 2.2, 2.0, 0.4, nome, size=13, cor=BRANCO, bold=True)
-    text(s, x + 0.2, 2.6, 2.0, 0.6, rm + (" · " + papel if papel else ""), size=11, cor=DIM)
+    text(s, x + 0.2, 2.58, 2.0, 0.3, rm, size=11, cor=DIM)
+    if papel:
+        text(s, x + 0.2, 2.86, 2.0, 0.5, papel, size=10, cor=VERDE, spacing=1.05)
 text(s, 0.6, 3.75, 8.0, 1.6, [[("O que pedimos: ", True, VERDE), ("uma IES para o piloto de 90 dias, Oracle for Startups (Autonomous AI Database) e mentoria comercial.", False, BRANCO)]], size=15, spacing=1.3)
 text(s, 0.6, 5.25, 8.0, 1.2, [[("Ninguém desiste de repente.", True, BRANCO)], [("A Retena percebe antes.", True, VERDE)]], size=26, spacing=1.05)
-for i, (nome, url, rot) in enumerate([("site", LINKS["site"], "Site"), ("repo", LINKS["repo"], "Repositório")]):
+_qrs = [("site", LINKS["site"], "Site"), ("repo", LINKS["repo"], "Repositório")]
+if FECH.get("youtube", "").startswith("http"):
+    _qrs.append(("video", FECH["youtube"], "Vídeo"))
+_lado, _passo = (1.5, 1.75) if len(_qrs) == 2 else (1.2, 1.4)
+for i, (nome, url, rot) in enumerate(_qrs):
     p = qr(f"final_{nome}", url)
-    s.shapes.add_picture(p, P(9.3 + i * 1.75), P(3.85), height=P(1.5))
-    text(s, 9.3 + i * 1.75, 5.4, 1.5, 0.3, rot, size=10, cor=DIM, align=PP_ALIGN.CENTER)
+    s.shapes.add_picture(p, P(9.3 - (len(_qrs) - 2) * 0.55 + i * _passo), P(3.85), height=P(_lado))
+    text(s, 9.3 - (len(_qrs) - 2) * 0.55 + i * _passo, 3.9 + _lado, _lado, 0.3, rot, size=10, cor=DIM, align=PP_ALIGN.CENTER)
 rodape(s, True, ns["N"])
 notes(s, ns["N"], "Fechamento", "A evasão não é um evento, é um silêncio. A Retena escuta esse silêncio dentro do banco que a instituição já usa.")
 

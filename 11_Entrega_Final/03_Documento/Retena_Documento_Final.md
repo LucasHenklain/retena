@@ -153,6 +153,7 @@ O kit completo está em `02_Testes_Usuarios/`: protocolo (`protocolo_teste_mvp.m
 - **Medidas:** sucesso por tarefa, tempo, erros, SUS (10 itens) e três perguntas de valor ("isso resolveria seu problema?", "pagaria?", "o que falta?").
 - **Critério de decisão (proposto):** o MVP resolve o problema para o público-alvo se as tarefas centrais (encontrar quem chamar e registrar o resultado) tiverem sucesso de pelo menos 80%, o SUS médio for de pelo menos 68 e a maioria dos participantes disser que usaria a fila na rotina semanal.
 
+<!-- TESTES:INICIO (seções 2.3 e 2.4 são regeradas por 02_Testes_Usuarios/consolidar_testes.py --aplicar) -->
 ## 2.3 Resultados dos testes com usuários — PENDENTE
 
 <div class="pendente"><b>Seção pendente.</b> Os testes com pelo menos 3 usuários reais do público-alvo ainda não foram realizados. Nada abaixo foi inventado: quando a equipe trouxer as fichas preenchidas, a planilha `consolidacao_testes.xlsx` calcula os indicadores e esta seção é preenchida (participantes anonimizados P1–P3, dificuldades, feedback, ajustes feitos e análise).</div>
@@ -174,6 +175,7 @@ O kit completo está em `02_Testes_Usuarios/`: protocolo (`protocolo_teste_mvp.m
 **O que ainda precisa ser provado com usuários reais:** se a coordenação entende os motivos sem ajuda, se o registro cabe na rotina (meta: menos de 30 segundos por contato) e se a diretoria confia no número de receita preservada. Esta resposta será fechada com os testes da seção 2.3; não a antecipamos.
 
 **Ajustes já feitos nesta fase a partir da revisão interna (não de usuários):** fila priorizada por recuperabilidade; botão "e se ele voltar"; mensagem sugerida que usa o nome do responsável; ticket da IES persistido no banco; separação entre "reativado" e "plano combinado" para não inflar a receita preservada.
+<!-- TESTES:FIM -->
 
 ---
 
@@ -373,16 +375,16 @@ O pitch final está em `04_Pitch/Retena_Pitch_Final.pdf` e o vídeo com demonstr
 
 | Ponto do enunciado | Onde no pitch | Onde no vídeo |
 |---|---|---|
-| Problema | Slides 2–3 | 0:00 |
-| Solução | Slide 4 | ~0:40 |
-| Demonstração do MVP | Slides 5–6 (prints) | ~1:10 (gravação real da tela) |
-| Mercado | Slide 9 | após a demonstração |
-| Modelo de negócio | Slide 10 | idem |
-| Tecnologia e integração Oracle | Slides 7–8 | durante a demonstração e logo depois |
-| Diferencial | Slide 11 | idem |
-| Crescimento e projeções | Slides 12–13 | idem |
-| Validação | Slide 14 | idem |
-| Time | Slide 15 | fechamento |
+| Problema | Slide 2 | ~0:11 |
+| Solução | Slide 3 | ~0:34 |
+| Demonstração do MVP | Slides 4–5 (prints) | ~0:50–3:03 (gravação real da tela) |
+| Tecnologia e integração Oracle | Slides 6–7 | durante a demonstração e ~3:03 |
+| Mercado | Slide 8 | ~3:31 |
+| Modelo de negócio | Slide 9 | ~3:46 |
+| Diferencial | Slide 10 | ~4:09 |
+| Crescimento (lançamento) e projeções | Slides 11–12 | ~4:22 e ~4:40 |
+| Validação | Slide 13 | ~4:57 |
+| Time | Slide 14 | ~5:11 (fechamento) |
 
 ---
 
