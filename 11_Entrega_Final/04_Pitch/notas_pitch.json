@@ -1,0 +1,72 @@
+[
+ {
+  "slide": 1,
+  "titulo": "Capa",
+  "notas": "Ninguém desiste de repente. Nós somos a Retena, e hoje mostramos o MVP rodando de ponta a ponta dentro do Oracle."
+ },
+ {
+  "slide": 2,
+  "titulo": "Problema",
+  "notas": "41,6% de desistência no EAD. Na nossa base real, 30% da turma estava há mais de 14 dias sem acesso, e ninguém tinha um alerta."
+ },
+ {
+  "slide": 3,
+  "titulo": "Solução",
+  "notas": "Quatro passos, todos dentro do banco. A novidade desta entrega é o quarto: o ciclo fecha com o resultado do contato gravado e a receita recalculada."
+ },
+ {
+  "slide": 4,
+  "titulo": "Demo 1",
+  "notas": "Prints reais do MVP rodando localmente. A fila vem do snapshot pontuado pelo Random Forest no banco; o botão recalcula a predição no Oracle naquele instante."
+ },
+ {
+  "slide": 5,
+  "titulo": "Demo 2",
+  "notas": "Registro de demonstração feito pela equipe (nenhum aluno real foi contatado). A diretoria muda na hora porque o cálculo está numa view."
+ },
+ {
+  "slide": 6,
+  "titulo": "Oracle",
+  "notas": "Cinco componentes executados e evidenciados; Autonomous com runbook; APEX e Select AI no roadmap. Escolhemos API Python fina porque ORDS/APEX local não é reproduzível para quem abrir o ZIP; as regras estão em PL/SQL e migram direto."
+ },
+ {
+  "slide": 7,
+  "titulo": "Prova",
+  "notas": "Números do banco: AVALIACAO_MODELOS. O teste automatizado registra um contato, confere a linha em SQL, confere a receita preservada e limpa."
+ },
+ {
+  "slide": 8,
+  "titulo": "Mercado",
+  "notas": "Contas conferidas nesta entrega; o preço usado no SAM/SOM é o preço efetivo médio de R$ 4 por aluno/mês."
+ },
+ {
+  "slide": 9,
+  "titulo": "Negócio",
+  "notas": "Tabela consolidada nesta entrega: Essencial R$ 2; Enterprise é Pro + 30%. Regra de faixa evita salto em 10 mil alunos."
+ },
+ {
+  "slide": 10,
+  "titulo": "Diferencial",
+  "notas": "Risco honesto: um LMS grande pode embutir algo parecido. A defesa é ROI medido e o dado de resultados de contato."
+ },
+ {
+  "slide": 11,
+  "titulo": "Lançamento",
+  "notas": "Crescimento sustentável: expandir dentro da conta (de uma fase para todos os cursos), contratar CS e vendas só no ano 2, fase 2 com megagrupos via Oracle."
+ },
+ {
+  "slide": 12,
+  "titulo": "Projeções",
+  "notas": "Todas as premissas estão em modelo_financeiro.xlsx; preços publicados, custos estimados pela equipe, Oracle a preço de lista."
+ },
+ {
+  "slide": 13,
+  "titulo": "Validação",
+  "notas": "Sem resultados inventados: a seção de testes com usuários do documento está marcada como pendente até a equipe trazer as fichas."
+ },
+ {
+  "slide": 14,
+  "titulo": "Fechamento",
+  "notas": "A evasão não é um evento, é um silêncio. A Retena escuta esse silêncio dentro do banco que a instituição já usa."
+ }
+]

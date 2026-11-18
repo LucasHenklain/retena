@@ -1,0 +1,7 @@
+# Retena MVP - API + carga do pipeline Oracle
+fastapi>=0.110
+uvicorn>=0.29
+oracledb>=2.0        # python-oracledb modo thin (sem Instant Client)
+pydantic>=2.5
+pandas>=2.0          # carga do parquet de eventos (06_Oracle/scripts/carregar_eventos.py)
+pyarrow>=14

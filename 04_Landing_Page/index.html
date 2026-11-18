@@ -994,8 +994,8 @@ html.shot .nav{position:absolute}
         <div class="name">Essencial</div>
         <h3>Perceber antes</h3>
         <p class="for">Para a IES que quer sair do escuro: score, motivo e a fila de segunda.</p>
-        <div class="price">−25% <small>sobre a tabela Pro</small></div>
-        <p class="pnote">Mínimo mensal R$ 5 mil · setup a partir de R$ 10 mil</p>
+        <div class="price">R$ 2,00 <small>por aluno ativo/mês, até 5 mil alunos</small></div>
+        <p class="pnote">Mínimo mensal R$ 2,5 mil · setup a partir de R$ 10 mil</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Score de risco semanal in-database</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Motivo explicável por aluno</li>
@@ -1047,7 +1047,7 @@ html.shot .nav{position:absolute}
             <tr><td>Acima de 50 mil (grupos, fase 2)</td><td><b>R$ 3,00</b></td></tr>
           </tbody>
         </table>
-        <p class="fine">Mínimo mensal de R$ 5 mil. Setup e integração com o LMS cobrados uma vez: R$ 10 mil a R$ 25 mil, conforme LMS e número de cursos. Essencial −25% e Enterprise +30% sobre esta tabela.</p>
+        <p class="fine">Mínimo mensal de R$ 5 mil. Setup e integração com o LMS cobrados uma vez: R$ 10 mil a R$ 25 mil, conforme LMS e número de cursos. Essencial: R$ 2,00 por aluno ativo/mês (até 5 mil alunos, mínimo R$ 2,5 mil). Enterprise: +30% sobre esta tabela. A fatura nunca cai quando a IES cresce de faixa: vale o menor valor entre alunos × preço da faixa e o piso da faixa seguinte × o preço dela.</p>
       </div>
       <div class="pilot-offer reveal d1">
         <h3>Porta de entrada: piloto de 90 dias</h3>
@@ -1101,7 +1101,7 @@ html.shot .nav{position:absolute}
           <b>Como calculamos</b>
           <ul>
             <li>Receita perdida = alunos × desistência × ticket × 12 meses</li>
-            <li>Custo da Retena = alunos × preço da faixa × 12, mínimo de R$ 5 mil/mês</li>
+            <li>Custo da Retena = alunos × preço da faixa × 12, mínimo de R$ 5 mil/mês e teto no piso da faixa seguinte</li>
             <li>Alunos a reter = custo ÷ (ticket × 12); 1 p.p. = 1% da base × ticket × 12</li>
           </ul>
         </div>
@@ -1333,13 +1333,15 @@ html.shot .nav{position:absolute}
     function clamp(v,el){var min=parseFloat(el.min),max=parseFloat(el.max);if(isNaN(v))v=parseFloat(el.defaultValue);if(isNaN(v))v=min;return Math.min(max,Math.max(min,v));}
     function read(id){var el=$(id),rng=$(id+'-r'),v=toNum(el.value);if(isNaN(v)&&rng)v=toNum(rng.value);return clamp(v,el);}
     function precoFaixa(alunos){return alunos>50000?3:(alunos>10000?4:6);}
+    function tetoFaixa(alunos){return alunos>50000?Infinity:(alunos>10000?50000*3:10000*4);}
     function calc(){
       var alunos=read('roi-alunos'),ticket=read('roi-ticket'),taxa=read('roi-evasao')/100;
       var anualAluno=ticket*12;
       var perdidos=alunos*taxa;
       var perda=perdidos*anualAluno;
       var preco=precoFaixa(alunos);
-      var mensal=Math.max(5000,alunos*preco);
+      var teto=tetoFaixa(alunos),capado=alunos*preco>teto;
+      var mensal=Math.max(5000,Math.min(alunos*preco,teto));
       var custo=mensal*12;
       var be=Math.round(custo/anualAluno);
       var ponto=alunos*0.01*anualAluno;
@@ -1348,7 +1350,7 @@ html.shot .nav{position:absolute}
       out.perda.textContent=money(perda);
       out.perdaD.textContent=n0.format(Math.round(perdidos))+' alunos desistindo por ano × '+brl.format(ticket)+' × 12 meses';
       out.custo.textContent=money(custo);
-      out.custoD.textContent=brl.format(mensal)+'/mês · '+(alunos*preco<5000?'mínimo contratual de R$ 5 mil':'faixa de '+brl.format(preco)+' por aluno ativo');
+      out.custoD.textContent=brl.format(mensal)+'/mês · '+(alunos*preco<5000?'mínimo contratual de R$ 5 mil':(capado?'teto da faixa (piso da faixa seguinte)':'faixa de '+brl.format(preco)+' por aluno ativo'));
       out.be.textContent=n0.format(be);
       out.beD.textContent=n1.format(be/alunos*100)+'% da base · cada aluno retido por 12 meses vale '+brl.format(anualAluno);
       out.ponto.textContent=money(ponto);

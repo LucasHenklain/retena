@@ -1,0 +1,126 @@
+
+[18:23:37] 1/5 Pre-requisitos (Docker e Python)
+  Docker ok; Python 3.13.1 ok
+
+[18:24:06] 2/5 Oracle AI Database 26ai Free (container 'retena-teste', porta 1522)
+  criando container (1a vez: download da imagem gvenzl/oracle-free, alguns minutos)...
+  aguardando o banco ficar pronto (health = starting)...
+  aguardando o banco ficar pronto (health = starting)...
+  aguardando o banco ficar pronto (health = starting)...
+  aguardando o banco ficar pronto (health = starting)...
+  aguardando o banco ficar pronto (health = starting)...
+  banco pronto: localhost:1522/FREEPDB1
+
+[18:29:51] 3/5 Dados, modelos OML e scoring
+  banco sem o snapshot de risco: executando o pipeline Oracle completo (6-10 min)...
+[2026-11-17 18:29:58] Inicio da carga | parquet: C:\Users\lmhsilva\AppData\Local\Temp\claude\8b7ccdaf42e0d968\3845c7e4-65e4-4a3e-a6e1-2df70d3ec419\scratchpad\teste_zip\Retena_Entrega_Final\08_Dados\logs_lms.parquet
+[2026-11-17 18:29:58] Script: C:\Users\lmhsilva\AppData\Local\Temp\claude\8b7ccdaf42e0d968\3845c7e4-65e4-4a3e-a6e1-2df70d3ec419\scratchpad\teste_zip\Retena_Entrega_Final\06_Oracle\sql\01_ddl.sql
+[2026-11-17 18:29:58] Conexao: STARTUP@localhost:1522/FREEPDB1 | 14 statement(s)
+[18:29:58] #01 PLSQL   DECLARE PROCEDURE drop_se_existe(p_tipo VARCHAR2, p_nome VARCHAR2) IS v_qtd NUMBER; BEG...
+      OK em 0.13s
+[18:29:59] #02 CREATE  CREATE TABLE DIM_FASE ( NUM_FASE NUMBER(1) NOT NULL, NOME_FASE VARCHAR2(20 CHAR) NOT NU...
+      OK em 0.30s
+[18:29:59] #03 INSERT  INSERT INTO DIM_FASE (NUM_FASE, NOME_FASE, TOTAL_CAPITULOS) SELECT 1, 'Fase 1', 10 FROM...
+      OK - 5 linha(s) afetada(s) em 4.17s
+[18:30:03] #04 CREATE  CREATE TABLE DIM_TIPO_EVENTO ( EVENTO VARCHAR2(120 CHAR) NOT NULL, CLASSE_EVENTO VARCHA...
+      OK em 0.05s
+[18:30:03] #05 INSERT  INSERT INTO DIM_TIPO_EVENTO (EVENTO, CLASSE_EVENTO, OBSERVACAO) SELECT 'Progresso de co...
+      OK - 12 linha(s) afetada(s) em 0.03s
+[18:30:03] #06 CREATE  CREATE TABLE EVENTOS_LMS ( ID_EVENTO NUMBER GENERATED ALWAYS AS IDENTITY, FASE VARCHAR2...
+      OK em 0.09s
+[18:30:03] #07 COMMENT COMMENT ON TABLE EVENTOS_LMS IS 'Eventos brutos do LMS (export FIAP ON / Moodle-like). ...
+      OK em 0.02s
+[18:30:03] #08 COMMENT COMMENT ON COLUMN EVENTOS_LMS.TS_EVENTO IS 'Data/hora do evento (origem "dd/mm/yyyy HH2...
+      OK em 0.01s
+[18:30:03] #09 COMMENT COMMENT ON COLUMN EVENTOS_LMS.NOME IS 'Aluno anonimizado ("Aluno NNNN") ou "-" para eve...
+      OK em 0.01s
+[18:30:03] #10 COMMENT COMMENT ON COLUMN EVENTOS_LMS.CAPITULO IS 'Capitulo extraido do contexto via regex "Cap...
+      OK em 0.01s
+[18:30:03] #11 CREATE  CREATE INDEX IX_EVENTOS_ALUNO_FASE_TS ON EVENTOS_LMS (NOME, NUM_FASE, TS_EVENTO)
+      OK em 0.04s
+[18:30:03] #12 CREATE  CREATE INDEX IX_EVENTOS_TS ON EVENTOS_LMS (TS_EVENTO)
+      OK em 0.01s
+[18:30:03] #13 CREATE  CREATE INDEX IX_EVENTOS_EVENTO ON EVENTOS_LMS (EVENTO)
+      OK em 0.01s
+[18:30:03] #14 COMMIT  COMMIT
+      OK em 0.00s
+[2026-11-17 18:30:03] Fim: 14 ok, 0 erro(s), 4.9s
+
+Parquet lido: 684.723 linhas x 9 colunas
+[18:30:33] lote   1:   10.000 / 684.723 linhas (  1.5%) -    1.9s
+[18:30:43] lote  11:  110.000 / 684.723 linhas ( 16.1%) -   12.1s
+[18:30:55] lote  21:  210.000 / 684.723 linhas ( 30.7%) -   23.7s
+[18:31:07] lote  31:  310.000 / 684.723 linhas ( 45.3%) -   36.2s
+[18:31:21] lote  41:  410.000 / 684.723 linhas ( 59.9%) -   50.5s
+[18:31:37] lote  51:  510.000 / 684.723 linhas ( 74.5%) -   65.8s
+[18:31:51] lote  61:  610.000 / 684.723 linhas ( 89.1%) -   80.3s
+[18:32:01] lote  69:  684.723 / 684.723 linhas (100.0%) -   89.9s
+COMMIT - 684.723 linhas inseridas em 89.9s
+DBMS_STATS.GATHER_TABLE_STATS(EVENTOS_LMS) - ok
+
+== EVENTOS_LMS - totais ==
+---------------+-------------------+------------------+------------------+------------------
+ TOTAL_EVENTOS | EVENTOS_DE_ALUNOS | ALUNOS_DISTINTOS | PRIMEIRO_EVENTO  | ULTIMO_EVENTO    
+---------------+-------------------+------------------+------------------+------------------
+ 684723        | 679892            | 203              | 2026-01-15 11:14 | 2026-08-26 09:34 
+---------------+-------------------+------------------+------------------+------------------
+
+== Eventos por fase ==
+----------+-----------+-----------------+---------+--------+------------------------+----------------------
+ NUM_FASE | NOME_FASE | TOTAL_CAPITULOS | EVENTOS | ALUNOS | CAPITULO_MAX_OBSERVADO | EVENTOS_COM_CAPITULO 
+----------+-----------+-----------------+---------+--------+------------------------+----------------------
+ 1        | Fase 1    | 10              | 69615   | 175    | 10                     | 12762                
+ 2        | Fase 2    | 12              | 178369  | 174    | 12                     | 16112                
+ 3        | Fase 3    | 10              | 175013  | 179    | 10                     | 78827                
+ 4        | Fase 4    | 11              | 149141  | 166    | 11                     | 132726               
+ 5        | Fase 5    | 8               | 112585  | 161    | 8                      | 109648               
+----------+-----------+-----------------+---------+--------+------------------------+----------------------
+
+== Eventos de alunos por classe (DIM_TIPO_EVENTO) ==
+---------------+---------
+ CLASSE_EVENTO | EVENTOS 
+---------------+---------
+ PROGRESSO     | 501334  
+ VISUALIZACAO  | 131644  
+ NOTA          | 19822   
+ OUTRO         | 13281   
+ QUIZ_INICIO   | 6304    
+ QUIZ_ENTREGA  | 5835    
+ ENTREGA       | 1672    
+---------------+---------
+
+== Indices ==
+--------------------------+------------+--------
+ INDEX_NAME               | UNIQUENESS | STATUS 
+--------------------------+------------+--------
+ IX_EVENTOS_ALUNO_FASE_TS | NONUNIQUE  | VALID  
+ IX_EVENTOS_EVENTO        | NONUNIQUE  | VALID  
+ IX_EVENTOS_TS            | NONUNIQUE  | VALID  
+ PK_EVENTOS_LMS           | UNIQUE     | VALID  
+--------------------------+------------+--------
+
+[2026-11-17 18:32:35] Carga concluida em 157.2s
+  executando 02_features_transicao.sql ...
+
+[2026-11-17 18:32:54] Fim: 9 ok, 0 erro(s), 15.6s
+  executando 03_features_semanais.sql ...
+[2026-11-17 18:34:18] Fim: 14 ok, 0 erro(s), 82.1s
+  executando 04_oml_modelos.sql ...
+[2026-11-17 18:34:27] Fim: 15 ok, 0 erro(s), 6.7s
+  executando 05_scoring_views.sql ...
+[2026-11-17 18:35:26] Fim: 20 ok, 0 erro(s), 57.5s
+  executando 06_avaliacao.sql ...
+[2026-11-17 18:35:33] Fim: 29 ok, 0 erro(s), 4.9s
+
+[18:35:33] 4/5 Tabelas e regras do MVP (CONTATO_RESULTADO, PARAMETRO_IES, PRC_REGISTRAR_CONTATO, views)
+[2026-11-17 18:35:35] Fim: 17 ok, 0 erro(s), 0.6s
+
+[18:35:35] 5/5 API e painel em http://127.0.0.1:8091
+
+Retena MVP no ar em 12:04: http://127.0.0.1:8091
+  Banco: Oracle AI Database 26ai Free Release 23.26.3.0.0 - Develop, Learn, and Run for Free
+  203 alunos pontuados | 0 contatos registrados | ultimo scoring 2026-11-17T21:34:30.933458
+  Teste ponta a ponta: python verificar_mvp.py --url http://127.0.0.1:8091
+  Parar: .\parar.ps1   (API)   |   docker stop retena-teste   (banco)
+
+

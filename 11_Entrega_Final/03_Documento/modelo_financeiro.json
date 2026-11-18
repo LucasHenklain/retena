@@ -1,0 +1,247 @@
+{
+ "anos": [
+  "Ano 1 (2027)",
+  "Ano 2 (2028)",
+  "Ano 3 (2029)"
+ ],
+ "arr_fim": [
+  480000.0,
+  1440000.0,
+  2496000.0
+ ],
+ "alunos_fim": [
+  10000,
+  30000,
+  52000
+ ],
+ "ies_fim": [
+  2,
+  6,
+  11
+ ],
+ "assinatura": [
+  240000.0,
+  960000.0,
+  1968000.0
+ ],
+ "setup": [
+  30000,
+  60000,
+  75000
+ ],
+ "pilotos": [
+  30000,
+  40000,
+  50000
+ ],
+ "receita_bruta": [
+  300000.0,
+  1060000.0,
+  2093000.0
+ ],
+ "impostos": [
+  30000.0,
+  106000.0,
+  209300.0
+ ],
+ "receita_liquida": [
+  270000.0,
+  954000.0,
+  1883700.0
+ ],
+ "oracle_mes": [
+  2761.66,
+  5586.9,
+  11300.96
+ ],
+ "oracle_ano": [
+  16569.96,
+  67042.79999999999,
+  135611.52
+ ],
+ "outros_cogs": [
+  9600,
+  24000,
+  48000
+ ],
+ "cs_implantacao": [
+  0,
+  163200,
+  326400
+ ],
+ "cogs": [
+  26169.96,
+  254242.8,
+  510011.52
+ ],
+ "lucro_bruto": [
+  243830.04,
+  699757.2,
+  1373688.48
+ ],
+ "margem_bruta": [
+  0.9030742222222222,
+  0.7334981132075471,
+  0.7292501353718744
+ ],
+ "equipe": {
+  "Socios (5) - pro-labore": [
+   180000,
+   480000,
+   660000
+  ],
+  "Vendas (SDR/executivo)": [
+   0,
+   122400,
+   244800
+  ],
+  "Engenharia (dev pleno)": [
+   0,
+   0,
+   204000
+  ]
+ },
+ "equipe_total": [
+  180000,
+  602400,
+  1108800
+ ],
+ "marketing": [
+  36000,
+  120000,
+  200000
+ ],
+ "comercial": [
+  24000,
+  60000,
+  90000
+ ],
+ "ga": [
+  36000,
+  60000,
+  84000
+ ],
+ "comissoes": [
+  38400.0,
+  76800.0,
+  84480.0
+ ],
+ "opex": [
+  314400.0,
+  919200.0,
+  1567280.0
+ ],
+ "ebitda": [
+  -70569.95999999999,
+  -219442.80000000005,
+  -193591.52000000002
+ ],
+ "caixa_acumulado": [
+  -70569.95999999999,
+  -290012.76,
+  -483604.28
+ ],
+ "necessidade_caixa": 483604.28,
+ "mega_receita_ano3": 900000.0,
+ "mega_arr": 1800000.0,
+ "arr_ano3_otimista": 4296000.0,
+ "ebitda_ano3_otimista": 440031.52,
+ "arr_por_ies": 240000.0,
+ "cac_por_ies": 94800.0,
+ "ltv_por_ies": 960000.0,
+ "ltv_cac": 10.126582278481013,
+ "payback_meses": 5.925,
+ "custo_oracle_por_aluno_mes": [
+  0.27616599999999997,
+  0.18622999999999998,
+  0.21732615384615384
+ ],
+ "premissas": {
+  "preco_efetivo_aluno_mes": 4.0,
+  "alunos_fim_ano": [
+   10000,
+   30000,
+   52000
+  ],
+  "alunos_inicio_ano": [
+   0,
+   10000,
+   30000
+  ],
+  "meses_receita_ano1": 6,
+  "novas_ies": [
+   2,
+   4,
+   5
+  ],
+  "setup_por_ies": 15000,
+  "pilotos": [
+   6,
+   8,
+   10
+  ],
+  "preco_piloto": 5000,
+  "megagrupo_upside_alunos": 50000,
+  "megagrupo_preco": 3.0,
+  "megagrupo_meses_ano3": 6,
+  "impostos_pct": 0.1,
+  "comissao_pct_arr_novo": 0.08,
+  "usd_brl": 5.5,
+  "ecpu_hora_usd": 0.336,
+  "storage_gb_mes_usd": 0.1156,
+  "horas_mes": 730,
+  "ecpu_medio": [
+   2,
+   4,
+   8
+  ],
+  "storage_gb": [
+   100,
+   300,
+   800
+  ],
+  "meses_oracle_pago_ano1": 6,
+  "outros_cogs_mes": [
+   800,
+   2000,
+   4000
+  ],
+  "equipe": {
+   "Socios (5) - pro-labore": [
+    180000,
+    480000,
+    660000
+   ],
+   "Customer success / implantacao": [
+    0,
+    163200,
+    326400
+   ],
+   "Vendas (SDR/executivo)": [
+    0,
+    122400,
+    244800
+   ],
+   "Engenharia (dev pleno)": [
+    0,
+    0,
+    204000
+   ]
+  },
+  "marketing_digital": [
+   36000,
+   120000,
+   200000
+  ],
+  "comercial_viagens": [
+   24000,
+   60000,
+   90000
+  ],
+  "ga_admin": [
+   36000,
+   60000,
+   84000
+  ]
+ }
+}

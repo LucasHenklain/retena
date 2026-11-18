@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retena · MVP</title>
+<link rel="icon" href="assets/retena_favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topo">
+  <div class="topo-in">
+    <a class="marca" href="#fila" aria-label="Retena - início"><img src="assets/retena_horizontal_claro_sobre_escuro.svg" alt="Retena"></a>
+    <nav class="abas" aria-label="Visões">
+      <a href="#fila" data-aba="fila">Coordenação <span>fila de segunda</span></a>
+      <a href="#diretoria" data-aba="diretoria">Diretoria <span>receita</span></a>
+      <a href="#tecnico" data-aba="tecnico">Time técnico <span>Oracle</span></a>
+    </nav>
+    <div class="status" id="status" role="status" aria-live="polite"><i></i><span>Conectando ao Oracle…</span></div>
+  </div>
+</header>
+
+<div class="offline-aviso" id="offline-aviso" hidden>
+  <b>Banco Oracle indisponível.</b> <span id="offline-msg"></span>
+  Rode <code>iniciar.ps1</code> (ou <code>INICIAR_MVP.cmd</code>) ou abra o <a href="/offline/">painel offline</a> (dados estáticos, sem gravação no banco).
+</div>
+
+<main>
+<!-- ======================================================== COORDENAÇÃO -->
+<section id="v-fila" class="visao" data-visao="fila">
+  <div class="cab">
+    <div>
+      <h1>Quem chamar esta semana</h1>
+      <p>Fila gerada pelo modelo <b>Random Forest treinado dentro do Oracle</b> (OML) e gravada no snapshot pelo job de segunda-feira, ordenada por risco e chance de recuperação. Abra um aluno, faça o contato e registre o resultado: ele é gravado no banco na hora.</p>
+    </div>
+    <div class="meta" id="fila-meta"></div>
+  </div>
+  <div class="filtros" role="toolbar" aria-label="Filtros da fila">
+    <div class="seg" id="seg-escopo">
+      <button data-escopo="fila" aria-pressed="true">Na fila <b id="c-fila">–</b></button>
+      <button data-escopo="tratados" aria-pressed="false">Já tratados <b id="c-tratados">–</b></button>
+      <button data-escopo="todos" aria-pressed="false">Todos <b id="c-todos">–</b></button>
+    </div>
+    <label class="sel">Faixa
+      <select id="f-faixa"><option value="">todas</option><option>Alto</option><option>Médio</option><option>Baixo</option></select>
+    </label>
+  </div>
+  <div class="tabela-wrap">
+    <table class="fila" aria-describedby="fila-legenda">
+      <thead><tr><th>#</th><th>Aluno</th><th>Fase</th><th class="num">Sem acesso</th><th>Risco 21 dias</th><th>Por quê</th><th>Status</th></tr></thead>
+      <tbody id="fila-corpo"><tr><td colspan="7" class="vazio">Carregando a fila do Oracle…</td></tr></tbody>
+    </table>
+  </div>
+  <p class="nota" id="fila-legenda">Risco = probabilidade de o aluno passar 21 dias sem nenhuma ação no LMS (<code>PREDICTION_PROBABILITY</code>). Faixas: alto ≥ 60%, médio 30–60%. Alunos pseudonimizados (dados reais anonimizados da IES parceira, logs até 26/08/2026).</p>
+</section>
+
+<!-- ======================================================== DIRETORIA -->
+<section id="v-diretoria" class="visao" data-visao="diretoria" hidden>
+  <div class="cab">
+    <div>
+      <h1>O que está em jogo e o que já foi recuperado</h1>
+      <p>Todos os números abaixo são recalculados <b>dentro do Oracle</b> (view <code>VW_DIRETORIA_RESUMO</code>) a cada registro de contato feito pela coordenação.</p>
+    </div>
+    <form class="ticket" id="form-ticket">
+      <label for="ticket">Ticket mensal médio (R$)</label>
+      <div><input id="ticket" type="number" min="50" max="5000" step="10" inputmode="numeric" required>
+      <button type="submit">Salvar no banco</button></div>
+      <small id="ticket-msg">Parâmetro da IES em <code>PARAMETRO_IES</code></small>
+    </form>
+  </div>
+  <div class="kpis" id="kpis"></div>
+  <div class="duas">
+    <div class="painel">
+      <h2>Resultado dos contatos registrados</h2>
+      <div id="dir-resultados"></div>
+    </div>
+    <div class="painel">
+      <h2>Meta do piloto de 90 dias</h2>
+      <div id="dir-meta"></div>
+    </div>
+  </div>
+  <div class="painel">
+    <h2>Risco por fase do curso</h2>
+    <div id="dir-fases"></div>
+  </div>
+  <p class="nota">Receita anual em risco = alunos de alto risco × ticket × 12. Perda esperada = soma das probabilidades (alto + médio) × ticket × 12. Receita preservada = alunos cujo último contato foi “reativado” × ticket × 12 — <b>estimativa</b>: em produção a reativação é confirmada quando o LMS registra novo acesso em até 7 dias.</p>
+</section>
+
+<!-- ======================================================== TÉCNICO -->
+<section id="v-tecnico" class="visao" data-visao="tecnico" hidden>
+  <div class="cab">
+    <div>
+      <h1>Por baixo do capô: tudo roda no Oracle</h1>
+      <p>Treino, scoring, agendamento, regra de negócio e API de dados no mesmo banco onde os logs do LMS estão. Nenhum dado de aluno sai do banco para um servidor de ML.</p>
+    </div>
+  </div>
+  <div class="duas">
+    <div class="painel" id="tec-banco"></div>
+    <div class="painel">
+      <h2>Job semanal de scoring <small>DBMS_SCHEDULER</small></h2>
+      <div id="tec-job"></div>
+      <button class="primario" id="btn-scoring" type="button">Rodar o scoring agora</button>
+      <div id="scoring-msg" class="msg" aria-live="polite"></div>
+      <div id="tec-execucoes"></div>
+    </div>
+  </div>
+  <div class="painel">
+    <h2>Prova em SQL <small>consultas fixas, executadas ao vivo</small></h2>
+    <div class="provas" id="provas"></div>
+    <div id="prova-saida" aria-live="polite"></div>
+  </div>
+</section>
+</main>
+
+<!-- ======================================================== PAINEL DO ALUNO -->
+<div class="veu" id="veu" hidden></div>
+<aside class="gaveta" id="gaveta" aria-hidden="true" aria-labelledby="g-titulo" role="dialog">
+  <button class="fechar" id="g-fechar" type="button" aria-label="Fechar">×</button>
+  <div id="g-conteudo"></div>
+</aside>
+
+<footer class="rodape">Retena · Startup One · Enterprise Challenge Oracle · FIAP 2026 · <a href="/docs" target="_blank" rel="noopener">API (OpenAPI)</a> · <a href="/offline/" target="_blank" rel="noopener">Painel offline (análise completa)</a></footer>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+Verificacao do MVP Retena - 2026-11-18 09:55:18 - API http://127.0.0.1:8091
+
+1) Saude do banco
+  banco: Oracle AI Database 26ai Free Release 23.26.3.0.0 - Develop, Learn, and Run for Free
+  [OK]   203 alunos no RISCO_ALUNO_SNAPSHOT; 684723 eventos em EVENTOS_LMS
+  [OK]   modelos OML: RETENA_INATIVO21_GLM (GENERALIZED_LINEAR_MODEL, AUC 0.945), RETENA_INATIVO21_RF (RANDOM_FOREST, AUC 0.949), RETENA_TRANSICAO_GLM (GENERALIZED_LINEAR_MODEL, AUC 0.972)
+  [OK]   job JOB_RETENA_SCORING_SEMANAL estado SCHEDULED, proxima execucao 2026-11-23T06:00:25
+
+2) Fila de segunda
+  [OK]   74 alunos na fila; primeiro: Aluno 0068 (Agir agora, risco 67.3%)
+  [OK]   contagem da API = contagem em SQL (VW_FILA_COORDENACAO)
+
+3) Painel do aluno Aluno 0068
+  [OK]   motivos: 1 dia com acesso nas últimas 4 semanas; 0 ações no LMS em 14 dias; 1 ação no LMS em 28 dias
+  [OK]   atividade das ultimas 12 semanas lida de EVENTOS_LMS: [1, 361, 58, 0, 0, 1, 0, 0, 0, 1, 0, 0]
+
+4) Predicao ao vivo no Oracle (PREDICTION_PROBABILITY)
+  [OK]   agora 67.3% = snapshot 67.3% (1671.3 ms)
+  [OK]   'e se voltar esta semana': 10.6% (< 67.3%)
+
+5) Registro do contato (grava no Oracle)
+  [OK]   HTTP 201, ID_CONTATO 1, novo status REATIVADO
+  [OK]   SQL: SELECT ... FROM CONTATO_RESULTADO WHERE ID_CONTATO = 1 -> ('Aluno 0068', 'REATIVADO', 'WHATSAPP', 'Alto', 0.6733)
+  [OK]   SQL: RISCO_ALUNO_SNAPSHOT.STATUS_ATENDIMENTO = 'REATIVADO' (mesma transacao)
+  [OK]   aluno saiu da fila (74 -> 73)
+
+6) Diretoria recalculada no banco
+  [OK]   receita preservada 0 -> 4200 (+4200 = ticket 350 x 12)
+  [OK]   contatos registrados 0 -> 1
+
+7) Limpeza do teste
+  1 contato(s) de teste apagado(s); status de Aluno 0068 devolvido para PENDENTE
+
+RESULTADO: TODOS OS PASSOS PASSARAM

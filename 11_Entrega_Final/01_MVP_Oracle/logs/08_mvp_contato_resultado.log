@@ -1,0 +1,60 @@
+[2026-11-16 17:31:35] Script: C:\Users\lmhsilva\Projetos\StartupOne\entrega\11_Entrega_Final\01_MVP_Oracle\sql\08_mvp_contato_resultado.sql
+[2026-11-16 17:31:35] Conexao: STARTUP@localhost:1521/FREEPDB1 | 17 statement(s)
+[17:31:35] #01 PLSQL   DECLARE n NUMBER; BEGIN SELECT COUNT(*) INTO n FROM user_tables WHERE table_name = 'PAR...
+      OK em 0.00s
+[17:31:35] #02 MERGE   MERGE INTO PARAMETRO_IES d USING (SELECT 'TICKET_MENSAL' CHAVE, 350 VALOR, 'Mensalidade...
+      OK - 0 linha(s) afetada(s) em 0.00s
+[17:31:35] #03 COMMIT  COMMIT
+      OK em 0.00s
+[17:31:35] #04 PLSQL   DECLARE n NUMBER; BEGIN SELECT COUNT(*) INTO n FROM user_tables WHERE table_name = 'CON...
+      OK em 0.00s
+[17:31:35] #05 COMMENT COMMENT ON TABLE CONTATO_RESULTADO IS 'Retena MVP: resultado de cada contato da coorden...
+      OK em 0.01s
+[17:31:35] #06 PLSQL   BEGIN EXECUTE IMMEDIATE 'ALTER TABLE RISCO_ALUNO_SNAPSHOT DROP CONSTRAINT CK_RISCO_STAT...
+      OK em 0.01s
+[17:31:35] #07 ALTER   ALTER TABLE RISCO_ALUNO_SNAPSHOT ADD CONSTRAINT CK_RISCO_STATUS CHECK (STATUS_ATENDIMEN...
+      OK em 0.02s
+[17:31:35] #08 PLSQL   CREATE OR REPLACE PROCEDURE PRC_REGISTRAR_CONTATO ( p_nome IN VARCHAR2, p_resultado IN ...
+      OK em 0.00s
+[17:31:35] #09 MERGE   MERGE INTO RISCO_ALUNO_SNAPSHOT d USING (SELECT NOME, CASE RESULTADO WHEN 'REATIVADO' T...
+      OK - 0 linha(s) afetada(s) em 0.01s
+[17:31:35] #10 COMMIT  COMMIT
+      OK em 0.00s
+[17:31:35] #11 CREATE  CREATE OR REPLACE VIEW VW_FILA_COORDENACAO AS WITH ult AS ( SELECT NOME, RESULTADO ULTI...
+      OK em 0.02s
+[17:31:35] #12 CREATE  CREATE OR REPLACE VIEW VW_DIRETORIA_RESUMO AS WITH p AS ( SELECT MAX(CASE WHEN CHAVE = ...
+      OK em 0.02s
+[17:31:35] #13 CREATE  CREATE OR REPLACE VIEW VW_RESULTADO_CONTATOS AS SELECT FAIXA_NO_CONTATO AS FAIXA, COUNT...
+      OK em 0.01s
+[17:31:35] #14 SELECT  SELECT CHAVE, VALOR FROM PARAMETRO_IES ORDER BY CHAVE
+      ---------------------+-------
+       CHAVE               | VALOR 
+      ---------------------+-------
+       MESES_HORIZONTE     | 12    
+       META_REATIVACAO_PCT | 30    
+       TICKET_MENSAL       | 350   
+      ---------------------+-------
+      3 linha(s) exibida(s) em 0.00s
+[17:31:35] #15 SELECT  SELECT COUNT(*) contatos_registrados FROM CONTATO_RESULTADO
+      ----------------------
+       CONTATOS_REGISTRADOS 
+      ----------------------
+       0                    
+      ----------------------
+      1 linha(s) exibida(s) em 0.00s
+[17:31:35] #16 SELECT  SELECT NA_FILA, COUNT(*) alunos FROM VW_FILA_COORDENACAO GROUP BY NA_FILA
+      ---------+--------
+       NA_FILA | ALUNOS 
+      ---------+--------
+       0       | 129    
+       1       | 74     
+      ---------+--------
+      2 linha(s) exibida(s) em 0.01s
+[17:31:35] #17 SELECT  SELECT TOTAL_ALUNOS, ALUNOS_ALTO, ALUNOS_MEDIO, NA_FILA, TICKET, RECEITA_ANUAL_EM_RISCO...
+      --------------+-------------+--------------+---------+--------+------------------------+----------------------+------------+-----------------------------
+       TOTAL_ALUNOS | ALUNOS_ALTO | ALUNOS_MEDIO | NA_FILA | TICKET | RECEITA_ANUAL_EM_RISCO | PERDA_ESPERADA_ANUAL | REATIVADOS | RECEITA_PRESERVADA_ESTIMADA 
+      --------------+-------------+--------------+---------+--------+------------------------+----------------------+------------+-----------------------------
+       203          | 59          | 15           | 74      | 350    | 247800                 | 238964.88            | 0          | 0                           
+      --------------+-------------+--------------+---------+--------+------------------------+----------------------+------------+-----------------------------
+      1 linha(s) exibida(s) em 0.01s
+[2026-11-16 17:31:35] Fim: 17 ok, 0 erro(s), 0.2s

@@ -1,0 +1,19 @@
+Pessoal, entrega final da Retena pronta (prazo FIAP ON 27/11). Resumo e o que falta com vocês:
+
+O QUE ESTÁ PRONTO
+- MVP rodando de ponta a ponta no Oracle: fila de segunda (modelo OML no banco) -> painel do aluno com predição ao vivo -> registro do contato gravado no Oracle -> visão da diretoria recalculada no banco. Sobe com um clique (INICIAR_MVP.cmd; precisa Docker Desktop + Python).
+- Documento consolidado (Partes 1–5, BMC, custos com Oracle, projeção 3 anos, KPIs, lançamento), pitch em PDF (14 slides) e vídeo de 5min24 com demonstração real.
+- Repositório: https://github.com/LucasHenklain/retena  (pasta 11_Entrega_Final)
+- O ZIP completo (com os dados anonimizados da IES, que NÃO vão para o GitHub) eu mando por canal privado.
+
+O QUE PRECISAMOS DE VOCÊS: TESTES REAIS COM 3+ USUÁRIOS (obrigatório no enunciado)
+Tudo em 11_Entrega_Final/02_Testes_Usuarios:
+1. Cada um tenta agendar 1 sessão de 30–40 min com alguém do público-alvo: coordenação/tutoria de EAD (pelo menos 2) e alguém de gestão/diretoria acadêmica (pelo menos 1). Professores da FIAP que coordenam EAD contam.
+2. Siga o protocolo_teste_mvp.md (6 tarefas + questionário SUS + 3 perguntas de valor). Pode ser remoto: quem tem o MVP rodando compartilha a tela.
+3. Preencha uma ficha por pessoa (formulario_participante.md -> salvar como P1_ficha.md, P2_ficha.md...). Nome e contato do participante NÃO entram nos arquivos.
+4. Lance os números na consolidacao_testes.xlsx (a aba Resumo calcula sozinha).
+5. Me mandem até dia 24/11 para eu consolidar no documento e regerar o ZIP.
+
+REGRA: só resultados reais. Se fizermos menos de 3, entregamos o número real e declaramos a limitação — nada inventado.
+
+Também preciso de: (a) o papel de cada um no time (vai no documento e no pitch); (b) quem sobe o vídeo novo no YouTube e me manda o link.

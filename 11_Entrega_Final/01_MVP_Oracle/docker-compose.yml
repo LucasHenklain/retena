@@ -1,0 +1,58 @@
+# Retena MVP - Oracle AI Database 26ai Free + (opcional) API em container.
+#
+# Windows (recomendado): .\iniciar.ps1  -> usa so o servico "oracle" daqui e roda a API/carga com o Python local.
+# Qualquer SO, tudo em container (Linux/macOS com Docker):
+#   docker compose --profile completo up -d --build
+#   (o servico "carga" roda uma vez: carrega os eventos, treina os modelos OML e cria as tabelas do MVP;
+#    acompanhe com: docker compose logs -f carga  -> depois abra http://127.0.0.1:8080)
+services:
+  oracle:
+    image: gvenzl/oracle-free:slim-faststart
+    container_name: ${ORACLE_CONTAINER:-oracle-free}
+    ports:
+      - "${ORACLE_PORT:-1521}:1521"
+    environment:
+      ORACLE_PASSWORD: ${ORACLE_SYS_PASSWORD:-Startup2026}   # SYS / SYSTEM
+      APP_USER: STARTUP                                       # recebe DB_DEVELOPER_ROLE (inclui CREATE MINING MODEL)
+      APP_USER_PASSWORD: ${ORACLE_APP_PASSWORD:-Startup2026}
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 60
+      start_period: 60s
+    restart: unless-stopped
+    shm_size: 1g
+
+  carga:
+    profiles: ["completo"]
+    build: { context: ., dockerfile: Dockerfile }
+    depends_on: { oracle: { condition: service_healthy } }
+    environment:
+      ORACLE_DSN: oracle:1521/FREEPDB1
+      ORACLE_USER: STARTUP
+      ORACLE_PASSWORD: ${ORACLE_APP_PASSWORD:-Startup2026}
+    volumes:
+      - ../../06_Oracle:/entrega/06_Oracle:ro
+      - ../../08_Dados:/entrega/08_Dados:ro
+      - ./sql:/app/sql:ro
+    command: ["sh", "/app/carga.sh"]
+    restart: "no"
+
+  api:
+    profiles: ["completo"]
+    build: { context: ., dockerfile: Dockerfile }
+    depends_on:
+      carga: { condition: service_completed_successfully }
+    environment:
+      ORACLE_DSN: oracle:1521/FREEPDB1
+      ORACLE_USER: STARTUP
+      ORACLE_PASSWORD: ${ORACLE_APP_PASSWORD:-Startup2026}
+    ports:
+      - "${API_PORT:-8080}:8080"
+    restart: unless-stopped
+
+volumes:
+  oracle-data:

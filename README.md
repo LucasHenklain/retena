@@ -1,5 +1,7 @@
 # Retena — Radar de permanência para o ensino superior EAD
 
+> **ENTREGA FINAL (27/11/2026): comece por [`11_Entrega_Final/`](11_Entrega_Final/README.md)** — MVP funcional com persistência no Oracle AI Database (fila → registro do contato → diretoria recalculada no banco), documento consolidado (Partes 1–5), pitch em PDF, vídeo com demonstração real e kit de testes com usuários ([`02_Testes_Usuarios`](11_Entrega_Final/02_Testes_Usuarios/README.md); pendente: 3+ sessões reais). Para subir o MVP: `INICIAR_MVP.cmd` (Docker + Python).
+
 > Startup One + Enterprise Challenge Oracle · FIAP 4ESOA-2026 · Fase 6: Refinamento, Validação e Estruturação do MVP
 > "Ninguém desiste de repente. A Retena percebe antes."
 
